@@ -1,0 +1,347 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Part of Speech Tagging</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Project: Part of Speech Tagging</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Plan - Week 3.html">01. Lesson Plan - Week 3</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction.html">02. Introduction</a>
+    </li>
+    <li class="">
+      <a href="03. Workspace Part of Speech Tagging.html">03. Workspace: Part of Speech Tagging</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Part of Speech Tagging.html">Project Description - Part of Speech Tagging</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Part of Speech Tagging.html">Project Rubric - Part of Speech Tagging</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Part of Speech Tagging</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>General Requirements</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Submission includes all files required for grading</p>
+        </td>
+        <td>
+          <ul>
+<li>Includes <code>HMM Tagger.ipynb</code> displaying output for all executed cells</li>
+<li>Includes <code>HMM Tagger.html</code>, which is an HTML copy of the notebook showing the output from executing all cells</li>
+</ul>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Submitted files are complete and do not include any disallowed changes</p>
+        </td>
+        <td>
+          <p>Submitted notebook has made no changes to test case assertions</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Baseline Tagger Implementation</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Student correctly implements the <code>pair_counts()</code> function</p>
+        </td>
+        <td>
+          <p>Emission count test case assertions all pass.</p>
+<ul>
+<li>The emission counts dictionary has 12 keys, one for each of the tags in the universal tagset</li>
+<li>"time" is the most common word tagged as a NOUN</li>
+</ul>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Correct baseline MFC tagger implementation</p>
+        </td>
+        <td>
+          <p>Baseline MFC tagger passes all test case assertions and produces the expected accuracy using the universal tagset.</p>
+<ul>
+<li>&gt;95.5% accuracy on the training sentences</li>
+<li>93% accuracy the test sentences</li>
+</ul>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Calculating Tag Counts</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Correct <code>unigram_counts()</code> implementation</p>
+        </td>
+        <td>
+          <p>All unigram test case assertions pass</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Correct <code>bigram_counts()</code> implementation</p>
+        </td>
+        <td>
+          <p>All bigram test case assertions pass</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Correct <code>start_counts()</code> and <code>end_counts()</code> implementation</p>
+        </td>
+        <td>
+          <p>All start and end count test case assertions pass</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Basic HMM Tagger Implementation</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Correct HMM network construction</p>
+        </td>
+        <td>
+          <p>All model topology test case assertions pass</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Correct basic HMM tagger implementation</p>
+        </td>
+        <td>
+          <p>Basic HMM tagger passes all assertion test cases and produces the expected accuracy using the universal tagset.</p>
+<ul>
+<li>&gt;97% accuracy on the training sentences</li>
+<li>&gt;95.5% accuracy the test sentences</li>
+</ul>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><p>Students may run their taggers on more complex datasets (for example, the <code>nltk.corpus.brown</code> or <code>nltk.corpus.treebank</code> datasets).</p>
+<p>Students may also try more advanced HMMs:</p>
+<ul>
+<li>Using pseudocounts or interpolated smoothing to handle missing data</li>
+<li>Retrain the hidden markov model using Baum-Welch re-estimation (available via the <code>.fit()</code> method in Pomegranate)</li>
+</ul></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Part of Speech Tagging')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

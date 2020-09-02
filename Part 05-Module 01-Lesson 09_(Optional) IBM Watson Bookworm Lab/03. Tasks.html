@@ -1,0 +1,218 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tasks</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>(Optional) IBM Watson Bookworm Lab</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Overview.html">01. Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Getting Started.html">02. Getting Started</a>
+    </li>
+    <li class="">
+      <a href="03. Tasks.html">03. Tasks</a>
+    </li>
+    <li class="">
+      <a href="04. Workspace Bookworm.html">04. Workspace: Bookworm</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Tasks</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Complete each task in the notebook by implementing or modifying code wherever there is a <code>TODO</code> comment in a code cell, and answering any inline questions by modifying markdown cells. E.g.:</p>
+<blockquote>
+  <p><strong>Q</strong>: What is the overall sentiment detected in this text? Mention the type (positive/negative) and score.</p>
+  <p><strong>A</strong>: Negative, -0.798</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Additional instructions are included in the <a href="https://github.com/udacity/AIND-NLP-Bookworm" target="_blank">Bookworm project repository on Github</a>.</p>
+<h3 id="1-create-and-configure-discovery-service">1. Create and configure Discovery service</h3>
+<ul>
+<li><strong>Prepare an environment</strong>: Notebook connects to a Discovery service instance and creates/fetches an environment.</li>
+<li><strong>Test configuration</strong>: The service processes a small sample text and returns enriched output.</li>
+<li><strong>Analyze test output</strong>: All inline questions are answered correctly based on the output, and a word-cloud of keywords is shown.</li>
+</ul>
+<h3 id="2-ingest-documents">2. Ingest documents</h3>
+<ul>
+<li><strong>Prepare a document collection</strong>: A collection is created and documents are added to it, one document per paragraph of text.</li>
+<li><strong>Test query</strong>: A simple query is made against the collection, and relevant results are returned. Inline questions are answered correctly.</li>
+</ul>
+<h3 id="3-parse-natural-language-questions">3. Parse natural language questions</h3>
+<ul>
+<li><p><strong>Add intents</strong>: At least 3 intents are added to the Conversation service, each with at least 5 example utterances. Inline questions are answered adequately.</p></li>
+<li><p><strong>Add entities</strong>: At least 3 entities are added to the Conversation service, each with at least 1 example entity. Inline questions are answered adequately.</p></li>
+<li><p><strong>Design dialog flow</strong>: An appropriate dialog flow has been designed using the Conversation service workspace tool, with at least 3 nodes. Inline questions are answered adequately.</p></li>
+<li><p><strong>Test dialog</strong>: A simple 1-question dialog is demonstrated in the notebook, showing what node was triggered.</p></li>
+</ul>
+<h3 id="4-query-document-collection-to-fetch-answers">4. Query document collection to fetch answers</h3>
+<ul>
+<li><p><strong>Process sample question</strong>: A sample question is run through the Conversation service. The intent and entities identified are extracted, and optionally the dialog node that was triggered.</p></li>
+<li><p><strong>Query the collection</strong>: A query is designed based on the information extracted in the previous step, and run against the Discovery service collection.</p></li>
+<li><p><strong>Process returned results</strong>: Results obtained from the Discovery service are processed to provide a specific response to the natural language question that was asked.</p></li>
+</ul>
+<h3 id="5-reflections">5. Reflections</h3>
+<ul>
+<li><strong>Reflections</strong>: Inline question adequately answered, including strengths and weaknesses of an API-based solution like this.</li>
+</ul>
+<h3 id="optional-extensions">(Optional) Extensions</h3>
+<ul>
+<li>Try with a different dataset (submit data files along with the notebook, or include instructions on how to fetch them).</li>
+<li>Deploy as a Bluemix application.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Workspace Bookworm.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Tasks')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
