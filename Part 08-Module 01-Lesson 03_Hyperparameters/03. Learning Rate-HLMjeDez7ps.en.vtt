@@ -1,0 +1,607 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.540 --> 00:00:03.370
+The learning
+rate is the most important
+
+00:00:03.370 --> 00:00:05.190
+hyperparameter.
+
+00:00:05.190 --> 00:00:07.850
+Even if you apply models
+that other people built
+
+00:00:07.849 --> 00:00:10.800
+to your own dataset, you'll
+find that you'll probably
+
+00:00:10.800 --> 00:00:12.780
+have to try a number
+of different values
+
+00:00:12.779 --> 00:00:16.769
+for the learning rate to get
+the model to train properly.
+
+00:00:16.769 --> 00:00:20.730
+If you took care to normalize
+the inputs to your model,
+
+00:00:20.730 --> 00:00:24.660
+then a good starting
+point is usually 0.01.
+
+00:00:24.660 --> 00:00:28.559
+And these are the usual
+suspects of learning rates.
+
+00:00:28.559 --> 00:00:30.660
+If you try one and your
+model doesn't train,
+
+00:00:30.660 --> 00:00:33.240
+you can try the
+others from this list.
+
+00:00:33.240 --> 00:00:35.700
+Which of the others
+should you try?
+
+00:00:35.700 --> 00:00:39.410
+That depends on the behavior
+of the training error.
+
+00:00:39.409 --> 00:00:41.269
+To better understand
+this, we'll need
+
+00:00:41.270 --> 00:00:44.380
+to look at the intuition
+of the learning rate.
+
+00:00:44.380 --> 00:00:46.609
+Earlier in the course,
+we saw that when
+
+00:00:46.609 --> 00:00:50.869
+we use gradient descent to
+train a neural network model,
+
+00:00:50.869 --> 00:00:53.329
+the training task boils
+down to decreasing
+
+00:00:53.329 --> 00:00:56.600
+the error value calculated
+by a loss function
+
+00:00:56.600 --> 00:00:58.460
+as much as we can.
+
+00:00:58.460 --> 00:01:03.560
+During a learning step, we do a
+forward pass through the model,
+
+00:01:03.560 --> 00:01:07.159
+calculate the loss,
+then find the gradient.
+
+00:01:07.159 --> 00:01:09.289
+Let's assume this
+simplest case, in which
+
+00:01:09.290 --> 00:01:11.410
+our model has only one weight.
+
+00:01:11.409 --> 00:01:13.579
+The gradient will
+tell us which way
+
+00:01:13.579 --> 00:01:16.670
+to nudge the current weight
+so that our predictions become
+
+00:01:16.670 --> 00:01:18.379
+more accurate.
+
+00:01:18.379 --> 00:01:21.019
+To visualize the dynamics
+of the learning rate,
+
+00:01:21.019 --> 00:01:25.369
+let us plot the value of the
+weight versus the error value
+
+00:01:25.370 --> 00:01:27.530
+we obtained by using
+it to calculate
+
+00:01:27.530 --> 00:01:31.189
+a prediction for a random
+training data point.
+
+00:01:31.189 --> 00:01:33.250
+In the perfect case,
+and if we zoom in
+
+00:01:33.250 --> 00:01:35.120
+to the correct
+part of the curve,
+
+00:01:35.120 --> 00:01:37.730
+the relationship of the
+weights and error values
+
+00:01:37.730 --> 00:01:40.939
+look like this
+idealized u-shape.
+
+00:01:40.939 --> 00:01:45.319
+Choosing a random weight and
+calculating the error value
+
+00:01:45.319 --> 00:01:48.809
+would give us a point like
+this one on the curve.
+
+00:01:48.810 --> 00:01:52.010
+Note that we don't know what the
+curve looks like when we start.
+
+00:01:52.010 --> 00:01:54.680
+The only way to know that
+is to calculate the error
+
+00:01:54.680 --> 00:01:56.330
+at every weight point.
+
+00:01:56.329 --> 00:01:59.659
+We're only drawing it here
+to clarify these dynamics.
+
+00:01:59.659 --> 00:02:01.879
+Calculating the
+gradient would tell us
+
+00:02:01.879 --> 00:02:04.939
+which direction to go
+to decrease the error.
+
+00:02:04.939 --> 00:02:06.620
+If we do the
+calculation correctly,
+
+00:02:06.620 --> 00:02:08.419
+the gradient will point
+out which direction
+
+00:02:08.419 --> 00:02:12.020
+to go, meaning whether we
+should increase or decrease
+
+00:02:12.020 --> 00:02:14.240
+the current value of the weight.
+
+00:02:14.240 --> 00:02:16.340
+The learning rate
+is the multiplier
+
+00:02:16.340 --> 00:02:20.099
+we use to push the weight
+towards the right direction.
+
+00:02:20.099 --> 00:02:24.019
+Now, if we had made a
+miraculously correct choice
+
+00:02:24.020 --> 00:02:27.650
+for our learning rate, then
+we'd land on the best weight
+
+00:02:27.650 --> 00:02:30.110
+after only one training step.
+
+00:02:30.110 --> 00:02:32.330
+If the learning rate
+we chose was smaller
+
+00:02:32.330 --> 00:02:34.760
+than the ideal rate,
+then that's OK.
+
+00:02:34.759 --> 00:02:37.699
+Our model can continue
+to learn until it finds
+
+00:02:37.699 --> 00:02:39.149
+a good value for the weight.
+
+00:02:39.150 --> 00:02:42.530
+So each training step it'll
+take a step closer until it
+
+00:02:42.530 --> 00:02:45.560
+lands on that best
+weight at the end.
+
+00:02:45.560 --> 00:02:48.830
+If, however, the learning
+rates had been too little,
+
+00:02:48.830 --> 00:02:52.910
+then our training error would
+be decreasing, but very slowly.
+
+00:02:52.909 --> 00:02:56.299
+And we might go through hundreds
+or thousands of training steps
+
+00:02:56.300 --> 00:02:59.120
+without reaching the
+best value for our model.
+
+00:02:59.120 --> 00:03:02.569
+And it's clear that in cases
+like this what we need to do
+
+00:03:02.569 --> 00:03:05.539
+is to increase
+the learning rate.
+
+00:03:05.539 --> 00:03:08.989
+One other case is that if we
+chose a learning rate that
+
+00:03:08.990 --> 00:03:12.140
+is larger than the
+ideal learning rate,
+
+00:03:12.139 --> 00:03:14.989
+our updated value would
+overshoot the ideal weight
+
+00:03:14.990 --> 00:03:15.881
+value.
+
+00:03:15.881 --> 00:03:17.379
+And then on the
+next update it would
+
+00:03:17.379 --> 00:03:18.949
+overshoot it the other way.
+
+00:03:18.949 --> 00:03:21.829
+But it will keep getting
+closer, and it would probably
+
+00:03:21.830 --> 00:03:24.620
+converge to a reasonable value.
+
+00:03:24.620 --> 00:03:27.080
+Where this becomes
+problematic though is
+
+00:03:27.080 --> 00:03:28.580
+when we choose a
+learning rate that
+
+00:03:28.580 --> 00:03:33.210
+is much larger than the ideal
+rate, more than twice as much.
+
+00:03:33.210 --> 00:03:35.510
+So in this case, we will
+see the weights taking
+
+00:03:35.509 --> 00:03:39.259
+a large step that not only
+overshoots the ideal weight,
+
+00:03:39.259 --> 00:03:41.629
+but it actually gets
+farther and farther
+
+00:03:41.629 --> 00:03:45.919
+from the best error that
+we can get at every step.
+
+00:03:45.919 --> 00:03:49.659
+A contributor to this
+divergence is the gradient.
+
+00:03:49.659 --> 00:03:52.729
+The gradient does not only
+contribute a direction but also
+
+00:03:52.729 --> 00:03:56.000
+a value that corresponds to
+the slope of the line tangent
+
+00:03:56.000 --> 00:03:58.129
+to the curve at that point.
+
+00:03:58.129 --> 00:04:00.769
+The higher the point is on
+the curve, the more steep
+
+00:04:00.770 --> 00:04:04.370
+the slope is, and the larger
+the value of the gradient is.
+
+00:04:04.370 --> 00:04:08.730
+So this makes the problem of the
+large learning rate even worse.
+
+00:04:08.729 --> 00:04:11.750
+So if our training error
+is actually increasing,
+
+00:04:11.750 --> 00:04:14.150
+we might want to try to
+decrease the learning rate
+
+00:04:14.150 --> 00:04:16.009
+and see what happens.
+
+00:04:16.009 --> 00:04:17.719
+These are the
+general cases you'll
+
+00:04:17.720 --> 00:04:20.390
+come across when tuning
+your learning rate.
+
+00:04:20.389 --> 00:04:23.629
+But note that this here is a
+simple example with only one
+
+00:04:23.629 --> 00:04:27.560
+parameter, and an ideal
+convex error curve.
+
+00:04:27.560 --> 00:04:29.970
+Things are more complicated
+in the real world,
+
+00:04:29.970 --> 00:04:31.040
+I'm sure you've seen.
+
+00:04:31.040 --> 00:04:33.740
+Your models are likely to
+have hundreds or thousands
+
+00:04:33.740 --> 00:04:36.110
+of parameters, each
+with its own error
+
+00:04:36.110 --> 00:04:39.680
+curve that changes as the values
+of the other weights change.
+
+00:04:39.680 --> 00:04:42.410
+And the learning rate has
+to shepherd all of them
+
+00:04:42.410 --> 00:04:45.800
+to the best values that
+produce the least error.
+
+00:04:45.800 --> 00:04:48.889
+To make matters even
+more difficult for us,
+
+00:04:48.889 --> 00:04:50.719
+we don't actually
+have any guarantees
+
+00:04:50.720 --> 00:04:53.810
+that the error curves
+would be clean u-shapes.
+
+00:04:53.810 --> 00:04:56.180
+They might, in fact,
+be more complex shapes
+
+00:04:56.180 --> 00:04:58.910
+with local minima that
+the learning algorithm
+
+00:04:58.910 --> 00:05:02.090
+can mistake for the best
+values and converge on.
+
+00:05:02.089 --> 00:05:04.399
+This figure is obviously
+an oversimplification.
+
+00:05:04.399 --> 00:05:07.250
+Because the curve of three
+parameters versus the error
+
+00:05:07.250 --> 00:05:10.850
+value is actually a plane
+in four-dimensional space,
+
+00:05:10.850 --> 00:05:12.240
+and hard to visualize.
+
+00:05:12.240 --> 00:05:16.069
+So think of this complexity
+that these incredible algorithms
+
+00:05:16.069 --> 00:05:17.870
+can help us overcome.
+
+00:05:17.870 --> 00:05:21.769
+It's easy to be intimidated by
+a thousand or a million weights,
+
+00:05:21.769 --> 00:05:23.449
+each with their own
+error curve that
+
+00:05:23.449 --> 00:05:27.589
+depends on all the other
+values, plus each weight having
+
+00:05:27.589 --> 00:05:31.219
+a random starting value, and our
+diligent learning rate pushing
+
+00:05:31.220 --> 00:05:34.280
+them left and right in order
+to fit our training data
+
+00:05:34.279 --> 00:05:36.349
+and find the best model.
+
+00:05:36.350 --> 00:05:39.290
+But this is a monster you
+have slain over and over again
+
+00:05:39.290 --> 00:05:42.430
+in the exercises and
+projects of this Nanodegree.
+
+00:05:42.430 --> 00:05:44.180
+I just wanted to take
+a second and reflect
+
+00:05:44.180 --> 00:05:46.850
+on the incredible
+power we wield,
+
+00:05:46.850 --> 00:05:49.385
+armed with these
+brilliant algorithms.
+
+00:05:49.384 --> 00:05:51.509
+Now that we looked at the
+intuition of the learning
+
+00:05:51.509 --> 00:05:55.219
+rates, and the indications that
+the training error gives us
+
+00:05:55.220 --> 00:05:57.470
+that can help us tune
+the learning rate,
+
+00:05:57.470 --> 00:05:59.060
+let's look at one
+specific case we
+
+00:05:59.060 --> 00:06:02.079
+can often face when
+tuning the learning rate.
+
+00:06:02.079 --> 00:06:06.319
+Think of the case where we chose
+a reasonable learning rate.
+
+00:06:06.319 --> 00:06:09.949
+It manages to decrease the
+error, but up to a point,
+
+00:06:09.949 --> 00:06:11.959
+after which it's
+unable to descend,
+
+00:06:11.959 --> 00:06:14.599
+even though it didn't
+reach the bottom yet.
+
+00:06:14.600 --> 00:06:18.500
+It would be stuck oscillating
+between values that still have
+
+00:06:18.500 --> 00:06:22.129
+a better error value than when
+we started training, but are
+
+00:06:22.129 --> 00:06:25.250
+not the best values
+possible for the model.
+
+00:06:25.250 --> 00:06:28.639
+This scenario is where it's
+useful to have our training
+
+00:06:28.639 --> 00:06:31.279
+algorithm decrease the learning
+rate throughout the training
+
+00:06:31.279 --> 00:06:32.569
+process.
+
+00:06:32.569 --> 00:06:36.079
+This is a technique called
+learning rate decay.
+
+00:06:36.079 --> 00:06:39.289
+Intuitive ways to do this can
+be by decreasing the learning
+
+00:06:39.290 --> 00:06:40.980
+rate linearly.
+
+00:06:40.980 --> 00:06:44.240
+So say, decrease it by
+half every 5 epochs,
+
+00:06:44.240 --> 00:06:46.439
+like this example here.
+
+00:06:46.439 --> 00:06:49.189
+You can also decrease the
+learning rate exponentially.
+
+00:06:49.189 --> 00:06:51.800
+So for example, we'd
+multiplied the learning rate
+
+00:06:51.800 --> 00:06:55.879
+by 0.1 every 8
+epochs, for example.
+
+00:06:55.879 --> 00:06:58.480
+In addition to simply
+decreasing the learning rate,
+
+00:06:58.480 --> 00:07:00.920
+there are more clever
+learning algorithms that
+
+00:07:00.920 --> 00:07:03.199
+have an adaptive learning rate.
+
+00:07:03.199 --> 00:07:05.240
+These algorithms are
+just the learning rate
+
+00:07:05.240 --> 00:07:07.670
+based on what the
+learning algorithm knows
+
+00:07:07.670 --> 00:07:10.670
+about the problem and the
+data that it's seen so far.
+
+00:07:10.670 --> 00:07:13.280
+This means not only decreasing
+the learning rate when needed,
+
+00:07:13.279 --> 00:07:16.859
+but also increasing it when
+it appears to be too low.
+
+00:07:16.860 --> 00:07:19.050
+Below this video, you'll
+find some instructions
+
+00:07:19.050 --> 00:07:24.170
+for using an adaptive learning
+algorithm in TensorFlow.
+

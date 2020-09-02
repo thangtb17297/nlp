@@ -1,0 +1,86 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:03.991 --> 00:00:06.490
+To choose the right
+number of iterations or number
+
+00:00:06.490 --> 00:00:09.490
+of epochs for our
+training step, the metric
+
+00:00:09.490 --> 00:00:13.030
+we should have our eyes on
+is the validation error.
+
+00:00:13.029 --> 00:00:15.910
+The intuitive manual way
+is to have the model train
+
+00:00:15.910 --> 00:00:18.190
+for as many epochs
+or iterations that it
+
+00:00:18.190 --> 00:00:22.000
+takes, as long as the validation
+error keeps decreasing.
+
+00:00:22.000 --> 00:00:26.109
+Luckily, however, we can use a
+technique called early stopping
+
+00:00:26.109 --> 00:00:29.350
+to determine when to
+stop training a model.
+
+00:00:29.350 --> 00:00:32.590
+Early stopping roughly works
+by monitoring the validation
+
+00:00:32.590 --> 00:00:36.340
+error, and stopping the training
+when it stops decreasing.
+
+00:00:36.340 --> 00:00:39.100
+We must be a little flexible
+though in defining the stopping
+
+00:00:39.100 --> 00:00:40.000
+trigger.
+
+00:00:40.000 --> 00:00:42.520
+Validation error will
+often move back and forth,
+
+00:00:42.520 --> 00:00:45.350
+even if it's on
+a downward trend.
+
+00:00:45.350 --> 00:00:47.420
+So instead of
+stopping the training
+
+00:00:47.420 --> 00:00:50.260
+the first time we see the
+validation error increase,
+
+00:00:50.259 --> 00:00:53.320
+we can instead stop the training
+if the validation error has not
+
+00:00:53.320 --> 00:00:56.759
+improved in the
+last 10 or 20 steps.
+
+00:00:56.759 --> 00:01:00.079
+TensorFlow has support
+for early stopping.
+
+00:01:00.079 --> 00:01:02.439
+Check the text below
+the video for how
+
+00:01:02.439 --> 00:01:06.060
+to implement it in TensorFlow.
+

@@ -1,0 +1,158 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.267 --> 00:00:02.867
+NÚMERO DE UNIDADES OCULTAS -
+CAMADAS
+
+00:00:03.967 --> 00:00:07.925
+Vamos falar sobre os hiperparâmetros
+relacionados ao modelo em si,
+
+00:00:07.958 --> 00:00:11.400
+não aos processos
+de treinamento ou otimização.
+
+00:00:11.633 --> 00:00:17.200
+Achei o número de unidades ocultas
+o hiperparâmetro mais misterioso
+
+00:00:17.233 --> 00:00:20.233
+quando comecei a estudar
+sobre aprendizado de máquina.
+
+00:00:20.267 --> 00:00:23.700
+A exigência principal é determinar
+um número de unidades ocultas
+
+00:00:23.733 --> 00:00:26.933
+grande o suficiente,
+entre aspas.
+
+00:00:27.233 --> 00:00:30.467
+Para uma rede neural
+aprender a aproximar uma função
+
+00:00:30.500 --> 00:00:32.267
+ou uma tarefa de previsão,
+
+00:00:32.300 --> 00:00:35.400
+ela precisa ter
+capacidade suficiente
+
+00:00:35.433 --> 00:00:37.567
+para aprender a função.
+
+00:00:37.600 --> 00:00:39.500
+Quanto mais complexa a função,
+
+00:00:39.533 --> 00:00:42.067
+maior será
+a capacidade necessária.
+
+00:00:42.100 --> 00:00:44.433
+O número e a arquitetura
+das unidades ocultas
+
+00:00:44.467 --> 00:00:48.200
+é a medida principal da capacidade
+de aprendizado de um modelo.
+
+00:00:48.233 --> 00:00:51.467
+Se dermos uma capacidade
+muito grande ao modelo,
+
+00:00:51.500 --> 00:00:55.467
+ele vai acabar tentando
+memorizar os dados.
+
+00:00:55.934 --> 00:00:58.467
+Se ocorrer
+um superajuste dos dados,
+
+00:00:58.500 --> 00:01:00.833
+ou seja, se a precisão
+do treinamento
+
+00:01:00.867 --> 00:01:03.367
+for muito melhor
+que a da validação,
+
+00:01:03.400 --> 00:01:06.400
+diminua o número
+de unidades ocultas.
+
+00:01:06.433 --> 00:01:09.067
+Você pode usar técnicas
+de regularização
+
+00:01:09.100 --> 00:01:12.100
+como o dropout
+ou a regularização L2.
+
+00:01:12.600 --> 00:01:15.833
+Em termos de números
+de unidades ocultas,
+
+00:01:15.867 --> 00:01:17.733
+quanto mais, melhor.
+
+00:01:17.767 --> 00:01:21.200
+Se o número for um pouco maior
+que o ideal, tudo bem.
+
+00:01:21.233 --> 00:01:25.433
+Mas um valor muito maior pode
+causar um superajuste no modelo.
+
+00:01:25.466 --> 00:01:27.667
+Se o modelo não estiver
+em treinamento,
+
+00:01:27.700 --> 00:01:31.067
+acrescente mais unidades ocultas
+e acompanhe os erros de validação.
+
+00:01:31.100 --> 00:01:35.267
+Continue acrescentando
+até a validação piorar.
+
+00:01:35.633 --> 00:01:38.567
+Outra heurística
+com a 1ª camada oculta
+
+00:01:38.600 --> 00:01:42.365
+é que escolher um número maior
+que o de inputs
+
+00:01:42.392 --> 00:01:46.333
+é benéfico
+em várias tarefas.
+
+00:01:46.366 --> 00:01:48.367
+E o número de camadas?
+
+00:01:48.400 --> 00:01:51.567
+Segundo Andrej Karpathy,
+na prática,
+
+00:01:51.600 --> 00:01:55.133
+uma rede neural de 3 camadas
+
+00:01:55.167 --> 00:01:57.767
+terá um desempenho melhor
+que uma de 2 camadas,
+
+00:01:57.800 --> 00:02:01.533
+mas que um número maior
+raramente ajuda muito mais.
+
+00:02:01.567 --> 00:02:04.633
+A exceção são as redes neurais
+convolucionais,
+
+00:02:04.667 --> 00:02:07.900
+em que, quanto mais profundas,
+melhor será o desempenho.
+

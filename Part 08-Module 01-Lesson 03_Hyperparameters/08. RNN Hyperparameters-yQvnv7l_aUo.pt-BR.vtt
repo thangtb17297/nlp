@@ -1,0 +1,200 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.300 --> 00:00:02.867
+HIPERPARÂMETROS
+DE REDES NEURAIS RECORRENTES
+
+00:00:03.967 --> 00:00:05.967
+Precisamos fazer duas escolhas
+
+00:00:06.000 --> 00:00:09.800
+ao construir uma rede
+neural recorrente:
+
+00:00:10.400 --> 00:00:12.233
+o tipo de célula -
+
+00:00:12.267 --> 00:00:15.467
+uma célula LSTM,
+
+00:00:15.500 --> 00:00:17.967
+uma célula RNN comum
+
+00:00:18.000 --> 00:00:20.400
+ou uma célula GRU -
+
+00:00:20.800 --> 00:00:24.633
+e a profundidade do modelo,
+ou seja, o número de camadas.
+
+00:00:24.867 --> 00:00:26.800
+Vamos precisar
+de embedding de palavras
+
+00:00:26.833 --> 00:00:28.500
+caso os inputs
+sejam palavras,
+
+00:00:28.533 --> 00:00:31.667
+então também veremos
+a dimensionalidade do embedding.
+
+00:00:31.700 --> 00:00:35.267
+Na prática, células LSTM e GRU
+têm um desempenho melhor
+
+00:00:35.300 --> 00:00:38.433
+que células RNN comuns.
+Isso está claro.
+
+00:00:38.467 --> 00:00:41.100
+Qual das duas
+você deve usar?
+
+00:00:41.333 --> 00:00:44.200
+Células LSTM são
+mais comumente usadas,
+
+00:00:44.233 --> 00:00:47.100
+mas depende da tarefa
+e dos dados.
+
+00:00:47.133 --> 00:00:49.333
+Várias pesquisas
+comparando as duas
+
+00:00:49.367 --> 00:00:51.400
+não decidiram
+qual era melhor.
+
+00:00:51.433 --> 00:00:53.267
+Vamos pegar um exemplo:
+
+00:00:53.300 --> 00:00:55.933
+modelagem de linguagem
+ao nível do caractere.
+
+00:00:55.967 --> 00:00:57.700
+Um ótimo trabalho,
+
+00:00:57.733 --> 00:01:01.400
+"Visualizing and understanding
+recurrent networks",
+
+00:01:01.433 --> 00:01:04.600
+comparou as duas usando
+dois conjuntos de dados.
+
+00:01:04.633 --> 00:01:06.900
+O resultado no primeiro
+
+00:01:06.933 --> 00:01:10.167
+mostrou as GRUs tendo
+um desempenho melhor.
+
+00:01:10.200 --> 00:01:13.167
+Melhor significa uma perda menor
+na entropia cruzada
+
+00:01:13.200 --> 00:01:15.567
+com tamanhos diferentes
+sendo comparados.
+
+00:01:15.600 --> 00:01:18.632
+No outro conjunto,
+houve um empate.
+
+00:01:18.667 --> 00:01:21.700
+Cada uma teve um desempenho
+melhor com um tamanho.
+
+00:01:21.733 --> 00:01:25.733
+No texto abaixo do vídeo,
+falamos mais sobre a comparação,
+
+00:01:25.767 --> 00:01:29.100
+mas a recomendação
+é experimentar as duas
+
+00:01:29.133 --> 00:01:30.600
+e comparar.
+
+00:01:30.633 --> 00:01:33.933
+Você não precisa fazer
+o teste no conjunto todo.
+
+00:01:33.967 --> 00:01:37.433
+Pode experimentar
+num subconjunto aleatório.
+
+00:01:37.667 --> 00:01:42.333
+Em termos do número de camadas,
+resultados para a tarefa em questão
+
+00:01:42.366 --> 00:01:46.300
+mostram que é benéfico
+ter no mínimo duas camadas,
+
+00:01:46.333 --> 00:01:50.333
+mas que aumentar para três
+teve resultados mistos.
+
+00:01:50.366 --> 00:01:54.733
+Em outras tarefas, como
+reconhecimento de fala avançado,
+
+00:01:55.100 --> 00:01:58.300
+5 ou até 7 camadas
+têm resultados melhores,
+
+00:01:58.533 --> 00:02:01.000
+frequentemente
+sem células LSTM.
+
+00:02:01.033 --> 00:02:05.033
+No texto abaixo do vídeo,
+colocamos exemplos de arquiteturas
+
+00:02:05.067 --> 00:02:06.800
+para tarefas diferentes,
+
+00:02:06.833 --> 00:02:10.167
+além do tamanho e do número
+de camadas de cada exemplo.
+
+00:02:10.200 --> 00:02:13.600
+Se sua RNN usar palavras
+como inputs,
+
+00:02:13.633 --> 00:02:16.567
+é preciso escolher o tamanho
+do vetor de embedding.
+
+00:02:16.600 --> 00:02:19.367
+Como escolhemos o número?
+
+00:02:19.600 --> 00:02:24.967
+Resultados do trabalho "How to
+generate a good word embedding"
+
+00:02:25.000 --> 00:02:28.100
+mostram que o desempenho
+de algumas tarefas
+
+00:02:28.133 --> 00:02:30.533
+melhora quanto maior
+for o embedding,
+
+00:02:30.567 --> 00:02:33.235
+pelo menos
+até o tamanho 200.
+
+00:02:33.567 --> 00:02:36.900
+Já em outras tarefas
+há melhoras ínfimas
+
+00:02:36.933 --> 00:02:39.367
+quando o tamanho supera 50.
+

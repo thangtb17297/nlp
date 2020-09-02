@@ -1,0 +1,312 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RNN Hyperparameters</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Hyperparameters</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introducing Jay.html">01. Introducing Jay</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction.html">02. Introduction</a>
+    </li>
+    <li class="">
+      <a href="03. Learning Rate.html">03. Learning Rate</a>
+    </li>
+    <li class="">
+      <a href="04. Learning Rate.html">04. Learning Rate</a>
+    </li>
+    <li class="">
+      <a href="05. Minibatch Size.html">05. Minibatch Size</a>
+    </li>
+    <li class="">
+      <a href="06. Number of Training Iterations  Epochs.html">06. Number of Training Iterations / Epochs</a>
+    </li>
+    <li class="">
+      <a href="07. Number of Hidden Units  Layers.html">07. Number of Hidden Units / Layers</a>
+    </li>
+    <li class="">
+      <a href="08. RNN Hyperparameters.html">08. RNN Hyperparameters</a>
+    </li>
+    <li class="">
+      <a href="09. RNN Hyperparameters.html">09. RNN Hyperparameters</a>
+    </li>
+    <li class="">
+      <a href="10. Sources  References.html">10. Sources &amp; References</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. RNN Hyperparameters</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>RNN Hyperparameters</p></h3>
+  <video controls>
+  <source src="08. RNN Hyperparameters-yQvnv7l_aUo.mp4" type="video/mp4">
+
+  <track default="false" kind="subtitles" srclang="zh-CN" src="08. RNN Hyperparameters-yQvnv7l_aUo.zh-CN.vtt" label="zh-CN">
+  <track default="false" kind="subtitles" srclang="pt-BR" src="08. RNN Hyperparameters-yQvnv7l_aUo.pt-BR.vtt" label="pt-BR">
+  <track default="true" kind="subtitles" srclang="en" src="08. RNN Hyperparameters-yQvnv7l_aUo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="lstm-vs-gru">LSTM Vs GRU</h2>
+<p>"These results clearly indicate the advantages of the gating units over the more traditional recurrent<br />
+units. Convergence is often faster, and the final solutions tend to be better. However, our results are<br />
+not conclusive in comparing the LSTM and the GRU, which suggests that the choice of the type of<br />
+gated recurrent unit may depend heavily on the dataset and corresponding task." </p>
+<p><a href="https://arxiv.org/abs/1412.3555" target="_blank">Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling</a> by Junyoung Chung, Caglar Gulcehre, KyungHyun Cho, Yoshua Bengio</p>
+<p>"The GRU outperformed the LSTM on all tasks with the exception of language modelling" </p>
+<p><a href="http://proceedings.mlr.press/v37/jozefowicz15.pdf" target="_blank">An Empirical Exploration of Recurrent Network Architectures</a> by Rafal Jozefowicz,  Wojciech Zaremba, Ilya Sutskever</p>
+<p>"Our consistent finding is that depth of at least two is<br />
+beneficial. However, between two and three layers our results are mixed. Additionally, the results<br />
+are mixed between the LSTM and the GRU, but both significantly outperform the RNN."</p>
+<p><a href="https://arxiv.org/abs/1506.02078" target="_blank">Visualizing and Understanding Recurrent Networks</a> by Andrej Karpathy, Justin Johnson, Li Fei-Fei</p>
+<p>"Which of these variants is best? Do the differences matter? <a href="https://arxiv.org/pdf/1503.04069.pdf" target="_blank">Greff, et al. (2015)</a> do a nice comparison of popular variants, finding that they’re all about the same. <a href="http://proceedings.mlr.press/v37/jozefowicz15.pdf" target="_blank">Jozefowicz, et al. (2015)</a> tested more than ten thousand RNN architectures, finding some that worked better than LSTMs on certain tasks."</p>
+<p><a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank">Understanding LSTM Networks</a> by Chris Olah</p>
+<p>"In our [Neural Machine Translation] experiments, LSTM cells consistently outperformed GRU cells. Since the computational bottleneck in our architecture is the softmax operation we did not observe large difference in training speed between LSTM and GRU cells. Somewhat to our surprise, we found that the vanilla decoder is unable to learn nearly as well as the gated variant." </p>
+<p><a href="https://arxiv.org/abs/1703.03906v2" target="_blank">Massive Exploration of Neural Machine Translation Architectures</a> by Denny Britz, Anna Goldie, Minh-Thang Luong, Quoc Le</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="example-rnn-architectures">Example RNN Architectures</h2>
+<table>
+<thead>
+<tr>
+<th id="application" style="text-align:center;">Application</th>
+<th id="cell" style="text-align:center;">Cell</th>
+<th id="layers" style="text-align:center;">Layers</th>
+<th id="size" style="text-align:center;">Size</th>
+<th id="vocabulary" style="text-align:center;">Vocabulary</th>
+<th id="embedding_size" style="text-align:center;">Embedding Size</th>
+<th id="learning_rate" style="text-align:center;">Learning Rate</th>
+<th id="" style="text-align:center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">Speech Recognition (large vocabulary)</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">5, 7</td>
+<td style="text-align:center;">600, 1000</td>
+<td style="text-align:center;">82K, 500K</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;"><a href="https://arxiv.org/abs/1610.09975" target="_blank">paper</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Speech Recognition</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">1, 3, 5</td>
+<td style="text-align:center;">250</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">0.001</td>
+<td style="text-align:center;"><a href="https://arxiv.org/abs/1303.5778" target="_blank">paper</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Machine Translation (seq2seq)</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">4</td>
+<td style="text-align:center;">1000</td>
+<td style="text-align:center;">Source: 160K, Target: 80K</td>
+<td style="text-align:center;">1,000</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;"><a href="https://arxiv.org/abs/1409.3215" target="_blank">paper</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Image Captioning</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">512</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">512</td>
+<td style="text-align:center;">(fixed)</td>
+<td style="text-align:center;"><a href="https://arxiv.org/abs/1411.4555" target="_blank">paper</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Image Generation</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">256, 400, 800</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;"><a href="https://arxiv.org/abs/1502.04623" target="_blank">paper</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Question Answering</td>
+<td style="text-align:center;">LSTM</td>
+<td style="text-align:center;">2</td>
+<td style="text-align:center;">500</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;">300</td>
+<td style="text-align:center;">--</td>
+<td style="text-align:center;"><a href="http://www.aclweb.org/anthology/P15-2116" target="_blank">pdf</a></td>
+</tr>
+<tr>
+<td style="text-align:center;">Text Summarization</td>
+<td style="text-align:center;">GRU</td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;">200</td>
+<td style="text-align:center;">Source:  119K, Target:  68K</td>
+<td style="text-align:center;">100</td>
+<td style="text-align:center;">0.001</td>
+<td style="text-align:center;"><a href="https://pdfs.semanticscholar.org/3fbc/45152f20403266b02c4c2adab26fb367522d.pdf" target="_blank">pdf</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. RNN Hyperparameters.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. RNN Hyperparameters')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

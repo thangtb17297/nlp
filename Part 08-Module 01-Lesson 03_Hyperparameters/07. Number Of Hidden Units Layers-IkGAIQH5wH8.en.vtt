@@ -1,0 +1,172 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.000 --> 00:00:06.400
+Let's now talk about
+the hyper parameters that
+
+00:00:06.400 --> 00:00:09.400
+relate to the model itself
+rather than the training
+
+00:00:09.400 --> 00:00:11.740
+or optimization process.
+
+00:00:11.740 --> 00:00:13.870
+The number of hidden
+units, in particular,
+
+00:00:13.869 --> 00:00:17.349
+is the parameter I felt was
+the most mysterious when
+
+00:00:17.350 --> 00:00:20.260
+I started learning
+about machine learning.
+
+00:00:20.260 --> 00:00:23.650
+The main requirement here is
+to set a number of hidden units
+
+00:00:23.649 --> 00:00:27.219
+that is quote
+unquote large enough.
+
+00:00:27.219 --> 00:00:30.500
+For a neural network to learn
+to approximate a function
+
+00:00:30.500 --> 00:00:34.210
+or a prediction task, it needs
+to have enough quote unquote
+
+00:00:34.210 --> 00:00:37.670
+capacity to learn the function.
+
+00:00:37.670 --> 00:00:39.640
+The more complex the
+function, the more
+
+00:00:39.640 --> 00:00:42.310
+learning capacity
+the model will need.
+
+00:00:42.310 --> 00:00:44.440
+The number and architecture
+of the hidden units
+
+00:00:44.439 --> 00:00:48.219
+is the main measure for a
+model's learning capacity.
+
+00:00:48.219 --> 00:00:50.820
+If we provide the model
+with too much capacity,
+
+00:00:50.820 --> 00:00:53.590
+however, it might tend
+to overfit and just try
+
+00:00:53.590 --> 00:00:56.140
+to memorize the training set.
+
+00:00:56.140 --> 00:00:58.420
+If you find your model
+overfitting your data
+
+00:00:58.420 --> 00:01:00.850
+meaning that the
+training accuracy is
+
+00:01:00.850 --> 00:01:03.195
+much better than the
+validation accuracy,
+
+00:01:03.195 --> 00:01:04.569
+you might want to
+try to decrease
+
+00:01:04.569 --> 00:01:06.480
+the number of hidden units.
+
+00:01:06.480 --> 00:01:09.010
+You could also utilize
+regularization techniques
+
+00:01:09.010 --> 00:01:12.609
+like dropout or
+L2 regularization.
+
+00:01:12.609 --> 00:01:17.620
+So as far as number of units is
+concerned, the more the better.
+
+00:01:17.620 --> 00:01:21.160
+A little larger than the
+ideal number is not a problem,
+
+00:01:21.159 --> 00:01:23.109
+but a much larger
+value can often
+
+00:01:23.109 --> 00:01:25.510
+lead to the model overfitting.
+
+00:01:25.510 --> 00:01:27.640
+So if your model
+is not training,
+
+00:01:27.640 --> 00:01:31.060
+add more hidden units and
+track validation error.
+
+00:01:31.060 --> 00:01:33.579
+Keep adding hidden units
+until the validation
+
+00:01:33.579 --> 00:01:35.620
+starts getting worse.
+
+00:01:35.620 --> 00:01:38.439
+Another heuristic involving
+the first hidden layer
+
+00:01:38.439 --> 00:01:41.019
+is that setting it to a
+number larger than the number
+
+00:01:41.019 --> 00:01:43.959
+of the inputs has
+been observed to be
+
+00:01:43.959 --> 00:01:46.549
+beneficial in a number of tasks.
+
+00:01:46.549 --> 00:01:48.509
+What about the number of layers?
+
+00:01:48.510 --> 00:01:51.820
+Andrej Karpathy tells
+us that in practice it's
+
+00:01:51.819 --> 00:01:54.609
+often the case that
+a three layer neural
+
+00:01:54.609 --> 00:01:57.700
+net will outperform
+a two layer net,
+
+00:01:57.700 --> 00:02:01.570
+but going even deeper
+rarely helps much more.
+
+00:02:01.569 --> 00:02:04.569
+The exception to this is
+convolutional neural networks
+
+00:02:04.569 --> 00:02:08.459
+where the deeper they are,
+the better they perform.
+

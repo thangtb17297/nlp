@@ -1,0 +1,543 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.400 --> 00:00:04.634
+A taxa de aprendizado é
+o hiperparâmetro mais importante.
+
+00:00:05.100 --> 00:00:09.267
+Mesmo que você use modelos
+de outras pessoas com seus dados,
+
+00:00:09.300 --> 00:00:14.100
+vai experimentar vários valores
+para a taxa de aprendizado
+
+00:00:14.133 --> 00:00:16.834
+a fim de que o treinamento
+seja adequado.
+
+00:00:16.868 --> 00:00:20.801
+Se você normalizar
+os inputs do modelo,
+
+00:00:20.834 --> 00:00:24.434
+um bom valor inicial é 0,01.
+
+00:00:24.701 --> 00:00:28.534
+Estes são os valores mais comuns
+para a taxa de aprendizado.
+
+00:00:28.567 --> 00:00:32.868
+Se o modelo não treinar
+com um valor, tente esses outros.
+
+00:00:33.125 --> 00:00:35.567
+Quais dos outros usar?
+
+00:00:35.601 --> 00:00:38.968
+Depende do comportamento
+do erro de treinamento.
+
+00:00:39.334 --> 00:00:43.868
+Para entender, vamos ver
+a intuição da taxa de aprendizado.
+
+00:00:44.300 --> 00:00:48.367
+Nós já vimos que, ao usar
+o gradiente descendente
+
+00:00:48.400 --> 00:00:50.801
+para treinar
+um modelo de rede neural,
+
+00:00:50.834 --> 00:00:54.701
+o treinamento se resume
+a diminuir o valor de erro
+
+00:00:54.734 --> 00:00:58.200
+calculado pela função loss
+o máximo possível.
+
+00:00:58.400 --> 00:01:00.934
+Durante um passo
+de aprendizado,
+
+00:01:00.968 --> 00:01:03.801
+fazemos um passo direto
+através do modelo,
+
+00:01:03.834 --> 00:01:07.100
+calculamos a perda
+e encontramos os gradientes.
+
+00:01:07.133 --> 00:01:09.300
+Vamos pensar no caso
+mais simples,
+
+00:01:09.334 --> 00:01:11.601
+em que o modelo
+tem apenas um peso.
+
+00:01:11.634 --> 00:01:15.234
+O gradiente vai dizer a direção
+em que o peso deve ir
+
+00:01:15.267 --> 00:01:18.100
+para nossas previsões
+serem mais precisas.
+
+00:01:18.133 --> 00:01:21.200
+Para visualizar as dinâmicas
+da taxa de aprendizado,
+
+00:01:21.234 --> 00:01:26.100
+vamos plotar o valor do peso
+pelo valor de erro obtido
+
+00:01:26.133 --> 00:01:30.801
+ao usá-lo para obter uma previsão
+de um dado aleatório.
+
+00:01:31.167 --> 00:01:35.033
+No caso ideal, se nos aproximarmos
+da parte correta da curva,
+
+00:01:35.067 --> 00:01:37.734
+a relação entre o peso
+e o valor do erro
+
+00:01:37.767 --> 00:01:40.767
+fica com esse formato de U.
+
+00:01:40.968 --> 00:01:45.033
+Escolher um peso aleatório
+e calcular o valor do erro
+
+00:01:45.334 --> 00:01:48.267
+nos daria um ponto como este
+na curva.
+
+00:01:48.574 --> 00:01:52.067
+Não sabemos como a curva
+será no início.
+
+00:01:52.100 --> 00:01:54.868
+O único jeito de saber
+é calculando o erro
+
+00:01:54.901 --> 00:01:56.467
+de todos os pesos.
+
+00:01:56.501 --> 00:01:59.334
+Aqui só queremos
+esclarecer essa dinâmica.
+
+00:01:59.701 --> 00:02:03.267
+Calcular o gradiente nos dirá
+em que direção seguir
+
+00:02:03.300 --> 00:02:04.868
+para reduzir o erro.
+
+00:02:04.901 --> 00:02:07.901
+Se o cálculo estiver certo,
+o gradiente vai mostrar
+
+00:02:07.934 --> 00:02:09.534
+em que direção seguir,
+
+00:02:09.567 --> 00:02:14.000
+ou seja, se devemos aumentar
+ou reduzir o valor do peso.
+
+00:02:14.267 --> 00:02:16.968
+A taxa de aprendizado
+é o multiplicador usado
+
+00:02:17.000 --> 00:02:19.934
+para levar o peso
+na direção certa.
+
+00:02:19.968 --> 00:02:23.968
+Se tivéssemos feito
+uma escolha acertadíssima
+
+00:02:24.000 --> 00:02:25.467
+para a taxa de aprendizado,
+
+00:02:25.501 --> 00:02:29.567
+teríamos o melhor peso
+bastando um passo.
+
+00:02:30.067 --> 00:02:33.968
+Se a taxa de aprendizado escolhida
+fosse menor que a ideal,
+
+00:02:34.000 --> 00:02:36.868
+não teria problema. O modelo
+pode continuar a aprender
+
+00:02:36.901 --> 00:02:39.400
+até encontrar
+um valor bom para o peso.
+
+00:02:39.434 --> 00:02:42.501
+Cada passo de treinamento
+nos deixará mais perto
+
+00:02:42.534 --> 00:02:45.334
+do peso ideal.
+
+00:02:45.534 --> 00:02:48.767
+Se a taxa de aprendizado
+for baixa demais,
+
+00:02:48.801 --> 00:02:52.868
+o erro de treinamento iria sendo
+reduzido, mas muito lentamente.
+
+00:02:52.901 --> 00:02:56.434
+Passaríamos por centenas
+ou milhares de passos
+
+00:02:56.467 --> 00:02:59.167
+sem chegar ao valor ideal
+para o nosso modelo.
+
+00:02:59.200 --> 00:03:01.434
+Em casos assim,
+
+00:03:01.467 --> 00:03:05.300
+precisamos aumentar
+a taxa de aprendizado.
+
+00:03:05.501 --> 00:03:07.000
+Um outro caso
+
+00:03:07.033 --> 00:03:11.868
+é escolher uma taxa de aprendizado
+maior que a ideal.
+
+00:03:12.200 --> 00:03:15.701
+Nosso valor atualizado
+excederia o peso ideal.
+
+00:03:15.734 --> 00:03:19.100
+Na atualização seguinte,
+excederia na outra direção,
+
+00:03:19.133 --> 00:03:21.300
+mas se aproximaria do ideal
+
+00:03:21.334 --> 00:03:24.400
+e convergiria
+num valor razoável.
+
+00:03:24.667 --> 00:03:28.567
+O problema é escolher
+uma taxa de aprendizado
+
+00:03:28.601 --> 00:03:31.100
+muito maior que a ideal.
+
+00:03:31.133 --> 00:03:33.067
+Duas vezes maior
+que a ideal.
+
+00:03:33.100 --> 00:03:36.567
+Nesse caso,
+o peso dará um passo maior
+
+00:03:36.601 --> 00:03:39.067
+que, além de exceder
+o valor ideal,
+
+00:03:39.100 --> 00:03:44.100
+se distancia cada vez mais
+do valor de erro ideal
+
+00:03:44.133 --> 00:03:45.834
+a cada passo.
+
+00:03:45.868 --> 00:03:49.534
+O gradiente contribuiu
+para essa divergência.
+
+00:03:49.734 --> 00:03:52.133
+O gradiente
+contribui com a direção
+
+00:03:52.167 --> 00:03:55.534
+e com um valor correspondente
+à inclinação da linha
+
+00:03:55.567 --> 00:03:58.100
+tangente à curva
+naquele ponto.
+
+00:03:58.133 --> 00:04:00.234
+Quanto mais alto
+o ponto na curva,
+
+00:04:00.267 --> 00:04:01.868
+mais inclinada é a curva
+
+00:04:01.901 --> 00:04:04.300
+e maior
+é o valor do gradiente.
+
+00:04:04.334 --> 00:04:08.634
+Isso piora o problema da taxa
+de aprendizado mais alta.
+
+00:04:08.667 --> 00:04:12.033
+Se nosso erro de treinamento
+estiver aumentando,
+
+00:04:12.067 --> 00:04:15.934
+vamos reduzir a taxa de aprendizado
+e ver o que acontece.
+
+00:04:15.968 --> 00:04:18.400
+Estes são os casos gerais
+que você vai ver
+
+00:04:18.434 --> 00:04:20.434
+ao ajustar
+a taxa de aprendizado.
+
+00:04:20.467 --> 00:04:24.434
+Este exemplo é simples.
+Só tem um parâmetro
+
+00:04:24.467 --> 00:04:27.067
+e uma curva de erro
+convexa ideal.
+
+00:04:27.534 --> 00:04:31.033
+As coisas são mais complicadas
+no mundo real.
+
+00:04:31.067 --> 00:04:34.934
+Os modelos terão centenas
+ou milhares de parâmetros,
+
+00:04:34.968 --> 00:04:36.968
+cada um com uma curva de erro
+
+00:04:37.000 --> 00:04:39.767
+que muda
+com pesos diferentes.
+
+00:04:39.801 --> 00:04:42.467
+E a taxa de aprendizado
+precisa guiá-los
+
+00:04:42.501 --> 00:04:45.834
+aos melhores valores
+que produzem os menores erros.
+
+00:04:45.868 --> 00:04:48.834
+Para dificultar ainda mais,
+
+00:04:48.868 --> 00:04:51.734
+não temos garantia alguma
+de que as curvas de erro
+
+00:04:51.767 --> 00:04:53.801
+serão em forma de U.
+
+00:04:53.834 --> 00:04:57.334
+Podem ter formas mais complexas,
+com mínimos locais
+
+00:04:57.367 --> 00:05:00.534
+que o algoritmo de aprendizado
+pode tratar como o melhor valor
+
+00:05:00.567 --> 00:05:02.067
+e convergir nesse ponto.
+
+00:05:02.100 --> 00:05:04.501
+Isto é uma simplificação,
+
+00:05:04.534 --> 00:05:06.667
+porque a curva de erro
+de 3 parâmetros
+
+00:05:06.701 --> 00:05:10.767
+pelo valor de erro
+é um plano de 4 dimensões.
+
+00:05:10.801 --> 00:05:12.300
+É difícil visualizar.
+
+00:05:12.334 --> 00:05:16.067
+Pense na complexidade
+que estes algoritmos incríveis
+
+00:05:16.100 --> 00:05:17.601
+nos ajudam a superar.
+
+00:05:17.634 --> 00:05:21.767
+É fácil ser intimidado por milhares
+ou milhões de pesos,
+
+00:05:21.801 --> 00:05:25.701
+cada um com uma curva de erro
+que depende dos outros valores.
+
+00:05:25.734 --> 00:05:29.400
+Além disso, cada peso tem
+um valor inicial aleatório,
+
+00:05:29.434 --> 00:05:32.868
+e a nossa taxa de aprendizado
+os empurra para todos os lados
+
+00:05:32.901 --> 00:05:36.033
+a fim de encontrarmos
+o melhor modelo.
+
+00:05:36.400 --> 00:05:39.300
+Mas você já resolveu
+esse problema várias vezes
+
+00:05:39.334 --> 00:05:42.434
+nos exercícios e projetos
+deste Nanodegree.
+
+00:05:42.467 --> 00:05:45.901
+Quero refletir
+sobre o poder incrível
+
+00:05:45.934 --> 00:05:49.133
+que brandimos com estes
+algoritmos brilhantes.
+
+00:05:49.567 --> 00:05:52.033
+Agora que vimos a intuição
+da taxa de aprendizado
+
+00:05:52.067 --> 00:05:55.167
+e as indicações
+que os erros nos dão
+
+00:05:55.200 --> 00:05:57.400
+para ajustarmos
+a taxa de aprendizado,
+
+00:05:57.434 --> 00:06:00.200
+vamos ver um caso específico
+que encontramos
+
+00:06:00.234 --> 00:06:02.133
+ao ajustarmos
+a taxa de aprendizado.
+
+00:06:02.167 --> 00:06:06.133
+Escolhemos uma taxa
+de aprendizado razoável.
+
+00:06:06.167 --> 00:06:09.868
+Ela consegue reduzir o erro,
+mas só até certo ponto.
+
+00:06:09.901 --> 00:06:11.934
+Depois não consegue
+decrescer mais,
+
+00:06:11.968 --> 00:06:14.501
+apesar de não ter
+chegado ao fundo ainda.
+
+00:06:14.534 --> 00:06:17.601
+Ela ficaria presa,
+oscilando entre valores
+
+00:06:17.634 --> 00:06:21.367
+com um valor de erro
+melhor que o inicial,
+
+00:06:21.400 --> 00:06:25.033
+mas que não são os melhores
+valores para o modelo.
+
+00:06:25.234 --> 00:06:29.267
+Nessa situação, é preciso
+que o algoritmo de treinamento
+
+00:06:29.300 --> 00:06:32.501
+reduza a taxa de aprendizado
+ao longo do processo.
+
+00:06:32.534 --> 00:06:36.033
+É uma técnica chamada
+declínio da taxa de aprendizado.
+
+00:06:36.067 --> 00:06:37.734
+Um jeito intuitivo
+
+00:06:37.767 --> 00:06:40.868
+é reduzindo a taxa de aprendizado
+de forma linear.
+
+00:06:40.901 --> 00:06:44.267
+Por exemplo, reduzindo pela metade
+de 5 em 5 epochs,
+
+00:06:44.300 --> 00:06:45.934
+como neste exemplo.
+
+00:06:46.300 --> 00:06:49.200
+Você pode reduzir a taxa
+de forma exponencial.
+
+00:06:49.234 --> 00:06:51.901
+Por exemplo, multiplicando
+a taxa de aprendizado
+
+00:06:51.934 --> 00:06:55.601
+por 0,1 a cada 8 epochs.
+
+00:06:55.834 --> 00:06:58.467
+Além de reduzir
+a taxa de aprendizado,
+
+00:06:58.501 --> 00:07:00.834
+alguns algoritmos de aprendizado
+inteligentes
+
+00:07:00.868 --> 00:07:03.200
+têm uma taxa de aprendizado
+adaptável.
+
+00:07:03.234 --> 00:07:05.267
+Eles ajustam
+a taxa de aprendizado
+
+00:07:05.300 --> 00:07:08.601
+com base no que o algoritmo de
+aprendizado sabe sobre o problema
+
+00:07:08.634 --> 00:07:10.634
+e com os dados apresentados.
+
+00:07:10.667 --> 00:07:13.400
+Assim eles reduzem a taxa
+quando necessário
+
+00:07:13.434 --> 00:07:16.601
+e a aumentam
+quando está baixa.
+
+00:07:16.834 --> 00:07:19.067
+Abaixo do vídeo,
+temos instruções
+
+00:07:19.100 --> 00:07:22.467
+de como usar algoritmos adaptáveis
+em TensorFlow.
+
