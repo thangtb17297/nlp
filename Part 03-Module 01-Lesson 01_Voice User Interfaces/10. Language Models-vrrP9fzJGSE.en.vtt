@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.029
+So far, we have tools for addressing
+
+00:00:03.029 --> 00:00:06.879
+noise and speech variability through our feature extraction.
+
+00:00:06.879 --> 00:00:10.230
+We have HMM models that can convert those features into
+
+00:00:10.230 --> 00:00:15.630
+phonemes and address the sequencing problems for our full acoustic model.
+
+00:00:15.630 --> 00:00:19.435
+We haven't yet solved the problems in language ambiguity though.
+
+00:00:19.434 --> 00:00:21.479
+The ASR system can't tell from
+
+00:00:21.480 --> 00:00:26.100
+the acoustic model which combinations of words are most reasonable.
+
+00:00:26.100 --> 00:00:27.675
+That requires knowledge.
+
+00:00:27.675 --> 00:00:31.560
+We either need to provide that knowledge to the model or give it
+
+00:00:31.559 --> 00:00:36.100
+a mechanism to learn this contextual information on its own.
+
+00:00:36.100 --> 00:00:39.530
+We'll talk about possible solutions to these problems, next.
+

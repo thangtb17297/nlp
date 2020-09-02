@@ -1,0 +1,250 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.020 --> 00:00:06.343
+Let's take a closer look at the basic VUI pipeline we described earlier.To recap,
+
+00:00:06.344 --> 00:00:08.399
+three general pieces were identified.
+
+00:00:08.398 --> 00:00:12.133
+Voice to text, text input reasoned to text output,
+
+00:00:12.134 --> 00:00:14.775
+and finally, text to speech.
+
+00:00:14.775 --> 00:00:17.010
+It starts with voice to text.
+
+00:00:17.010 --> 00:00:18.914
+This is speech recognition.
+
+00:00:18.914 --> 00:00:22.394
+Speech recognition is historically hard for machines
+
+00:00:22.393 --> 00:00:26.564
+but easy for people and is an important goal of AI.
+
+00:00:26.565 --> 00:00:29.214
+As a person speaks into a microphone,
+
+00:00:29.213 --> 00:00:32.548
+sound vibrations are converted to an audio signal.
+
+00:00:32.548 --> 00:00:34.950
+This signal can be sampled at some rate and
+
+00:00:34.950 --> 00:00:38.969
+those samples converted into vectors of component frequencies.
+
+00:00:38.969 --> 00:00:41.133
+Shown here is a spectrogram,
+
+00:00:41.133 --> 00:00:45.140
+these vectors represent features of sound in a data set,
+
+00:00:45.140 --> 00:00:49.950
+so this step can be thought of as feature extraction.
+
+00:00:49.950 --> 00:00:53.189
+The next step in speech recognition is to decode or
+
+00:00:53.189 --> 00:00:56.969
+recognize the series of vectors as a word or sentence.
+
+00:00:56.969 --> 00:00:58.353
+In order to do that,
+
+00:00:58.353 --> 00:01:04.530
+we need probabilistic models that work well with time series data for the sound patterns.
+
+00:01:04.530 --> 00:01:06.525
+This is the acoustic model.
+
+00:01:06.525 --> 00:01:09.709
+Decoding the vectors with an acoustic model will
+
+00:01:09.709 --> 00:01:13.730
+give us a best guess as to what the words are.
+
+00:01:13.730 --> 00:01:15.390
+This might not be enough though,
+
+00:01:15.390 --> 00:01:19.079
+some sequences of words are much more likely than others.
+
+00:01:19.079 --> 00:01:24.884
+For example, depending on how the phrase "hello world" was said,
+
+00:01:24.885 --> 00:01:28.935
+the acoustic model might not be sure if the words are
+
+00:01:28.935 --> 00:01:33.969
+"hello world" or "how a word" or something else.
+
+00:01:33.968 --> 00:01:38.634
+Now you and I know that it was most likely the first choice, "hello world".
+
+00:01:38.635 --> 00:01:40.334
+But why do we know?
+
+00:01:40.334 --> 00:01:44.393
+We know because we have a language model in our heads,
+
+00:01:44.393 --> 00:01:50.569
+trained from years of experience and that is something we need to add to our decoder.
+
+00:01:50.569 --> 00:01:54.829
+An accent model may be needed for the same reason.
+
+00:01:54.828 --> 00:01:59.529
+If these models are well trained on lots of representative examples,
+
+00:01:59.530 --> 00:02:03.731
+we have a higher probability of producing the correct text.
+
+00:02:03.731 --> 00:02:06.899
+That's a lot of models to train.
+
+00:02:06.899 --> 00:02:10.900
+Acoustic, language and accent models are all needed for
+
+00:02:10.900 --> 00:02:16.384
+a robust system and we haven't even gone through the whole VUI pipeline yet.
+
+00:02:16.383 --> 00:02:19.948
+We'll learn more about speech recognition models in a later lesson,
+
+00:02:19.949 --> 00:02:22.944
+but here's a preview.
+
+00:02:22.943 --> 00:02:28.663
+Remember when I said we need a probabilistic model that works well with time series data,
+
+00:02:28.663 --> 00:02:32.864
+think back to two of these you've already studied in this course.
+
+00:02:32.865 --> 00:02:40.009
+Earlier, we built Hidden Markov Models (HMMs) to decode a series of gestures.
+
+00:02:40.008 --> 00:02:42.049
+In our deep learning lessons,
+
+00:02:42.050 --> 00:02:47.740
+we used Recurrent Neural Networks (RNNs) to train time series data.
+
+00:02:47.740 --> 00:02:51.659
+Both of these models have been used successfully in speech recognition
+
+00:02:51.658 --> 00:02:56.954
+and we'll talk more about them when we study speech recognition in detail.
+
+00:02:56.955 --> 00:02:59.185
+Back to the pipeline,
+
+00:02:59.185 --> 00:03:02.115
+once we have our speech in the form of text,
+
+00:03:02.115 --> 00:03:07.935
+it's time to do the thinking part of our voice application, the reasoning logic.
+
+00:03:07.935 --> 00:03:09.509
+If I ask you,
+
+00:03:09.508 --> 00:03:12.598
+a human, a question like how's the weather?
+
+00:03:12.598 --> 00:03:15.134
+You may respond in many ways,"i don't know?"
+
+00:03:15.134 --> 00:03:19.905
+"It's cold outside", "the thermometer says 90 degrees, " et cetera.
+
+00:03:19.905 --> 00:03:21.658
+In order to come up with a the response,
+
+00:03:21.658 --> 00:03:24.900
+you first had to understand what I was asking for and
+
+00:03:24.900 --> 00:03:29.460
+then process the requests and formulate a response.
+
+00:03:29.460 --> 00:03:33.090
+This was easy because, you're human.
+
+00:03:33.090 --> 00:03:39.324
+It's hard for a computer to understand what we want and what we mean when we speak.
+
+00:03:39.324 --> 00:03:44.879
+The field of natural language of processing (NLP) is devoted to this quest.
+
+00:03:44.878 --> 00:03:47.128
+To fully implement NLP,
+
+00:03:47.128 --> 00:03:49.438
+large datasets of language must be
+
+00:03:49.438 --> 00:03:53.840
+processed and there are a great deal of challenges to overcome.
+
+00:03:53.840 --> 00:03:55.875
+But let's look at a smaller problem,
+
+00:03:55.875 --> 00:04:00.884
+like getting just a weather report from VUI device.
+
+00:04:00.883 --> 00:04:03.448
+Let's imagine an application that has weather
+
+00:04:03.449 --> 00:04:07.245
+information available in response to some text request.
+
+00:04:07.245 --> 00:04:10.072
+Rather than parsing all the words,
+
+00:04:10.072 --> 00:04:13.408
+we could take a shortcut and just map
+
+00:04:13.408 --> 00:04:18.719
+the most probable request phrases for the weather to get weather process.
+
+00:04:18.720 --> 00:04:24.814
+In that case, the application would in fact understand requests most of the time.
+
+00:04:24.814 --> 00:04:30.100
+This won't work if the request hasn't been premapped as a possible choice,
+
+00:04:30.100 --> 00:04:36.300
+but it can be quite effective for limited applications and can be improved over time.
+
+00:04:36.300 --> 00:04:38.305
+Once we have a text response,
+
+00:04:38.305 --> 00:04:44.435
+the remaining task in our VUI pipeline is to convert that text to speech.
+
+00:04:44.435 --> 00:04:47.860
+This is the speech synthesis or text to speech (TTS).
+
+00:04:47.860 --> 00:04:53.800
+Here again examples of how words are spoken can be used to train a model,
+
+00:04:53.800 --> 00:04:58.355
+to provide the most probable pronunciation components of spoken words.
+
+00:04:58.355 --> 00:05:02.769
+The complexity of the task can vary greatly when we move from say,
+
+00:05:02.769 --> 00:05:06.115
+a monotonic robotic voice
+
+00:05:06.115 --> 00:05:11.199
+to a rich human sounding voice that includes inflection and warmth.
+
+00:05:11.199 --> 00:05:14.019
+Some of the most realistic sounding machine voices to
+
+00:05:14.019 --> 00:05:18.468
+date have been produced using deep learning techniques.
+

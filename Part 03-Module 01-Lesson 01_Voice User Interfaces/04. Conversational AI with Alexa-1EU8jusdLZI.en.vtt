@@ -1,0 +1,376 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.240 --> 00:00:10.698
+One of the most popular application areas for voice system today is conversational AI.
+
+00:00:10.698 --> 00:00:14.629
+We've just seen a demonstration of the Amazon Alexa and a variety of
+
+00:00:14.630 --> 00:00:19.969
+Amazon skills that can run on Amazon echo devices using voice only interface.
+
+00:00:19.969 --> 00:00:25.120
+We're fortunate to have a subject matter expert on this technology with us now.
+
+00:00:25.120 --> 00:00:30.589
+I'd like to introduce Jeff Blankenburg-- Alexa Evangelist at Amazon.
+
+00:00:30.588 --> 00:00:34.603
+He's here to educate us on the Amazon Echo and Alexa.
+
+00:00:34.603 --> 00:00:36.714
+Jeff, we're so glad you're here.
+
+00:00:36.715 --> 00:00:39.590
+Thanks. Dana, thanks for inviting me to be a part of this.
+
+00:00:39.590 --> 00:00:43.679
+I'm really excited about what Udacity is doing to help developers learn about Alexa.
+
+00:00:43.679 --> 00:00:45.868
+We are too. In this lesson,
+
+00:00:45.868 --> 00:00:49.115
+we're going to learn how to build our own Alexa skill.
+
+00:00:49.115 --> 00:00:51.140
+Jeff, for a little background.
+
+00:00:51.140 --> 00:00:53.780
+Could you tell us how Conversational AI at
+
+00:00:53.780 --> 00:00:57.439
+Amazon got started and have the Echo and Alexa came to be?
+
+00:00:57.439 --> 00:01:02.524
+Sure. The original inspiration for the Amazon Echo was the Star Trek computer.
+
+00:01:02.524 --> 00:01:04.400
+We wanted to create a computer in the cloud that
+
+00:01:04.400 --> 00:01:07.129
+controlled everything entirely by your voice.
+
+00:01:07.129 --> 00:01:08.329
+You could ask it questions,
+
+00:01:08.328 --> 00:01:09.468
+turn lights on and off,
+
+00:01:09.468 --> 00:01:10.947
+and order stuff for yourself,
+
+00:01:10.947 --> 00:01:13.309
+and it's easy to talk in a natural way.
+
+00:01:13.310 --> 00:01:15.222
+We're a ways off from a Star Trek vision,
+
+00:01:15.221 --> 00:01:17.113
+but that was our inspiration.
+
+00:01:17.114 --> 00:01:18.989
+The cool thing about all of this,
+
+00:01:18.989 --> 00:01:22.560
+is that we're really at a tipping point for so many elements of the technology.
+
+00:01:22.560 --> 00:01:25.885
+We're still a long way from being able to do things the way humans do things.
+
+00:01:25.885 --> 00:01:29.650
+But we're still solving unbelievably complex problems everyday.
+
+00:01:29.650 --> 00:01:31.760
+And as we've seen over the past two years,
+
+00:01:31.760 --> 00:01:33.745
+conversational computing is popular.
+
+00:01:33.745 --> 00:01:37.239
+I think a primary reason for this is because it's so accessible.
+
+00:01:37.239 --> 00:01:39.819
+Echo devices are designed for families to use together.
+
+00:01:39.819 --> 00:01:41.930
+What we hear from parents and other customers is that
+
+00:01:41.930 --> 00:01:44.930
+Alexa provides great fun for the whole family.
+
+00:01:44.930 --> 00:01:49.329
+It's clear. The conversational aspect makes all the difference.
+
+00:01:49.328 --> 00:01:53.108
+In the past we've seen voice systems on phones that step you
+
+00:01:53.108 --> 00:01:57.473
+through the menu but under some circumstances that can be frustrating.
+
+00:01:57.474 --> 00:02:02.230
+It sounds like Alexa is a big step up from that kind of voice interface.
+
+00:02:02.230 --> 00:02:04.269
+Exactly. The phone systems you're talking about took
+
+00:02:04.269 --> 00:02:07.750
+an approach the industry calls graph based interaction.
+
+00:02:07.750 --> 00:02:11.318
+I think this was a choice of necessity because most phone system technologies were built
+
+00:02:11.318 --> 00:02:15.513
+before we had some of the rich Conversational UI that we have today.
+
+00:02:15.514 --> 00:02:19.675
+Graph based interaction mainly focuses on asking pointed questions
+
+00:02:19.675 --> 00:02:24.625
+in a prescribed order and only accepting specific terms as responses.
+
+00:02:24.625 --> 00:02:26.650
+You've seen this plenty of times before when
+
+00:02:26.650 --> 00:02:28.629
+you can't move forward in the system until you provide
+
+00:02:28.628 --> 00:02:30.549
+your user ID or you can't specify
+
+00:02:30.550 --> 00:02:34.155
+your destination until you provided the location you'll be starting from.
+
+00:02:34.155 --> 00:02:36.163
+Here's the example: Alexa,
+
+00:02:36.163 --> 00:02:38.138
+open graph travel agent.
+
+00:02:38.139 --> 00:02:40.240
+Where are you flying from?
+
+00:02:40.240 --> 00:02:43.705
+I want to fly from Columbus to San Francisco on October 9th.
+
+00:02:43.705 --> 00:02:45.574
+You're flying from Columbus.
+
+00:02:45.574 --> 00:02:48.260
+Got it. Where do you want to go?
+
+00:02:48.259 --> 00:02:51.049
+San Francisco on Delta flight 722.
+
+00:02:51.050 --> 00:02:55.444
+Okay. You're trying to find a flight from Columbus to San Francisco.
+
+00:02:55.443 --> 00:02:57.938
+Which airline do you want to use?
+
+00:02:57.938 --> 00:03:00.133
+You can see how that can get a little frustrating.
+
+00:03:00.133 --> 00:03:03.698
+The alternative frame based allows the user to drive the interaction.
+
+00:03:03.699 --> 00:03:05.590
+You can say the words that make sense to you.
+
+00:03:05.590 --> 00:03:09.550
+You can make requests in the order you prefer when it makes sense and you can jump
+
+00:03:09.550 --> 00:03:14.425
+to the part of the menu you want to be in without having to memorize a list of options.
+
+00:03:14.425 --> 00:03:17.880
+Alexa. Open frame travel agent.
+
+00:03:17.879 --> 00:03:20.049
+Where are you flying from?
+
+00:03:20.050 --> 00:03:23.659
+I want to fly from Columbus to San Francisco on October 9th.
+
+00:03:23.658 --> 00:03:29.109
+Okay. You're trying to find a flight from Columbus to San Francisco on October 9th.
+
+00:03:29.110 --> 00:03:31.525
+Which airline do you want to use?
+
+00:03:31.525 --> 00:03:33.014
+That's so exciting.
+
+00:03:33.014 --> 00:03:37.705
+It's exciting because it means there's a lot of flexibility in what we can build,
+
+00:03:37.705 --> 00:03:40.664
+when we design our own Alexa skills.
+
+00:03:40.663 --> 00:03:45.068
+But how do we know what we want to have Alexa listen for?
+
+00:03:45.068 --> 00:03:49.628
+And how does that translate to what we want in response?
+
+00:03:49.628 --> 00:03:53.888
+In the example, you just showed Alexa was very accommodating.
+
+00:03:53.889 --> 00:03:57.954
+One of the cool things about building a Voice User Interface or VUI,
+
+00:03:57.954 --> 00:04:00.650
+is how you define interactions with your users.
+
+00:04:00.650 --> 00:04:04.900
+You get to define a series of actions that the user can perform which we call intense.
+
+00:04:04.900 --> 00:04:07.044
+If our voice skill was a DVD player,
+
+00:04:07.044 --> 00:04:09.055
+our intense might be play,
+
+00:04:09.055 --> 00:04:11.468
+pause, stop, and eject.
+
+00:04:11.468 --> 00:04:13.818
+Our DVD player doesn't have a pizza button
+
+00:04:13.818 --> 00:04:17.014
+because DVD players don't traditionally make pizzas.
+
+00:04:17.014 --> 00:04:20.910
+We then create a set of sample statements which we call utterances that
+
+00:04:20.910 --> 00:04:25.004
+help Alexa understand which intent to use when a user says something.
+
+00:04:25.004 --> 00:04:27.360
+Going back to the DVD player example,
+
+00:04:27.360 --> 00:04:31.740
+someone might say "start the movie" and they would expect the play intent to happen.
+
+00:04:31.740 --> 00:04:35.355
+But they might also say play or go or begin
+
+00:04:35.355 --> 00:04:39.649
+or it's show time and they would expect to have the same reaction.
+
+00:04:39.649 --> 00:04:41.240
+The intention is to play the movie.
+
+00:04:41.240 --> 00:04:43.845
+These example utterances help elect to understand
+
+00:04:43.845 --> 00:04:47.654
+which intent should be called when the user says something to a skill.
+
+00:04:47.653 --> 00:04:53.459
+I see. So if we think about a sort of script we want our user to have with Alexa,
+
+00:04:53.459 --> 00:04:57.394
+we can come up with a number of different ways they might converse.
+
+00:04:57.394 --> 00:05:02.319
+I guess more user testing could help us expand our list of better answers as well.
+
+00:05:02.319 --> 00:05:05.500
+How do we model what the user will say?
+
+00:05:05.500 --> 00:05:08.879
+This is one of my favorite questions to answer.
+
+00:05:08.879 --> 00:05:13.389
+I spend a great deal of my time working with software developers that are building
+
+00:05:13.389 --> 00:05:15.519
+their first or second skill for
+
+00:05:15.519 --> 00:05:19.735
+Alexa and that is one of the most common questions I encounter.
+
+00:05:19.735 --> 00:05:23.734
+What's the best tool for modeling my conversation with my users?
+
+00:05:23.733 --> 00:05:28.258
+The surprising or maybe not so surprising answer is to grab a couple of your colleagues,
+
+00:05:28.259 --> 00:05:33.720
+friends, and complete strangers and ask them to naturally request what outcome they need.
+
+00:05:33.720 --> 00:05:36.779
+Take some notes because you will quickly discover that every person is
+
+00:05:36.778 --> 00:05:39.975
+going to approach the process of this a slightly different way,
+
+00:05:39.975 --> 00:05:42.925
+and your skills should be able to accommodate all of them.
+
+00:05:42.925 --> 00:05:45.660
+An example of this, when you ask Alexa for the weather.
+
+00:05:45.660 --> 00:05:47.774
+You could say what does the temperature outside?
+
+00:05:47.774 --> 00:05:49.298
+Or how hot is it?
+
+00:05:49.298 --> 00:05:50.758
+But you can also just say,
+
+00:05:50.759 --> 00:05:52.319
+Alexa, what's it like?
+
+00:05:52.319 --> 00:05:56.850
+In Mountain View, it's 58 degrees with cloudy skies.
+
+00:05:56.850 --> 00:06:03.535
+Today, you can look for lots of clouds with a high of 69 degrees and a low of 50 degrees.
+
+00:06:03.535 --> 00:06:06.000
+There are hundreds of ways to indicate that you want
+
+00:06:06.000 --> 00:06:09.134
+to know the weather without saying it explicitly.
+
+00:06:09.134 --> 00:06:10.644
+That sounds like fun.
+
+00:06:10.644 --> 00:06:15.014
+Students could even ask others in the classroom and sort of crowdsource,
+
+00:06:15.014 --> 00:06:17.365
+a list of possible utterances.
+
+00:06:17.365 --> 00:06:19.305
+But before we start building a skill,
+
+00:06:19.305 --> 00:06:24.283
+are there some other guidelines we need to keep in mind for a good user experience?
+
+00:06:24.283 --> 00:06:26.882
+I think you're touching on the best practices in VUI
+
+00:06:26.882 --> 00:06:30.359
+design that we need to remain aware of as we build skills.
+
+00:06:30.360 --> 00:06:34.050
+There are a number of ideas to consider when designing a voice only interface.
+
+00:06:34.050 --> 00:06:35.610
+There are different from design of say,
+
+00:06:35.610 --> 00:06:38.334
+text or graphical interfaces.
+
+00:06:38.334 --> 00:06:39.605
+This sounds important.
+
+00:06:39.605 --> 00:06:41.050
+Let's dig a little deeper.
+
