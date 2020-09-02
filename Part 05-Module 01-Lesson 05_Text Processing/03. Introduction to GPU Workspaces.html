@@ -1,0 +1,399 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Introduction to GPU Workspaces</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Text Processing</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Text Processing.html">01. Text Processing</a>
+    </li>
+    <li class="">
+      <a href="02. Coding Exercises.html">02. Coding Exercises</a>
+    </li>
+    <li class="">
+      <a href="03. Introduction to GPU Workspaces.html">03. Introduction to GPU Workspaces</a>
+    </li>
+    <li class="">
+      <a href="04. Workspaces Best Practices.html">04. Workspaces: Best Practices</a>
+    </li>
+    <li class="">
+      <a href="05. Text Processing Coding Examples.html">05. Text Processing Coding Examples</a>
+    </li>
+    <li class="">
+      <a href="06. Capturing Text Data.html">06. Capturing Text Data</a>
+    </li>
+    <li class="">
+      <a href="07. Cleaning.html">07. Cleaning</a>
+    </li>
+    <li class="">
+      <a href="08. Normalization.html">08. Normalization</a>
+    </li>
+    <li class="">
+      <a href="09. Tokenization.html">09. Tokenization</a>
+    </li>
+    <li class="">
+      <a href="10. Stop Word Removal.html">10. Stop Word Removal</a>
+    </li>
+    <li class="">
+      <a href="11. Part-of-Speech Tagging.html">11. Part-of-Speech Tagging</a>
+    </li>
+    <li class="">
+      <a href="12. Named Entity Recognition.html">12. Named Entity Recognition</a>
+    </li>
+    <li class="">
+      <a href="13. Stemming and Lemmatization.html">13. Stemming and Lemmatization</a>
+    </li>
+    <li class="">
+      <a href="14. Summary.html">14. Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Introduction to GPU Workspaces</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/jupyter-logo.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-introduction">## Introduction</h2>
+<p>Udacity Workspaces with GPU support are available for some projects as an alternative to manually configuring your own remote server with GPU support. These workspaces provide a Jupyter notebook server directly in your browser. This lesson will briefly introduce the Workspaces interface.</p>
+<h3 id="important-notes">Important Notes:</h3>
+<ul>
+<li>Workspaces sessions are connections from your browser to a remote server. Each student has a limited number of GPU hours allocated on the servers (the allocation is significantly more than completing the projects is expected to take). There is currently no limit on the number of Workspace hours when GPU mode is disabled.</li>
+<li>Workspace data stored in the user's home folder is preserved between sessions (and can be reset as needed, e.g., to get project updates).</li>
+<li><strong>Only 3 gigabytes of data can be stored in the home folder.</strong></li>
+<li>Workspace sessions are preserved if your connection drops or your browser window is closed, simply return to the classroom and re-open the workspace page; however, workspace sessions are automatically terminated after a period of inactivity. This will prevent you from leaving a session connection open and burning through your time allocation. (See the section on active connections below.)</li>
+<li>The kernel state is preserved as long as the notebook session remains open, but it is <em>not</em> preserved if the session is closed. If you exit the notebook for more than half an hour and the session is closed, you will need to re-run any previously-run cells before continuing.</li>
+</ul>
+<h2 id="-overview">## Overview</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-jupyter.png" alt="The default workspaces interface" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The default workspaces interface</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>When the workspace opens, you'll see the normal Jupyter file browser. From this interface you can open a notebook file, start a remote terminal session, enable the GPU, submit your project, or reset the workspace data, and more. Clicking the three bars in the top left corner above the Jupyter logo will toggle hiding the classroom lessons sidebar.</p>
+<p><strong>NOTE: You can always return to the file browser page from anywhere else in the workspace by clicking the Jupyter logo in the top left corner.</strong></p>
+<h2 id="-opening-a-notebook">## Opening a notebook</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-notebook.png" alt="View of the project notebook" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>View of the project notebook</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Clicking the name of a notebook (*.ipynb) file in the file list will open a standard Jupyter notebook view of the project. The notebook session will remain open as long as you are active, and will be automatically terminated after 30 minutes of inactivity. </p>
+<p>You can exit a notebook by clicking on the Jupyter logo in the top left corner.</p>
+<p><strong>NOTE: Notebooks continue to run in the background unless they are stopped. IF GPU MODE IS ACTIVE, IT WILL REMAIN ACTIVE AFTER CLOSING OR STOPPING A NOTEBOOK. YOU CAN ONLY STOP GPU MODE WITH THE GPU TOGGLE BUTTON. (See next section.)</strong></p>
+<h2 id="-enabling-gpu-mode">## Enabling GPU Mode</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-gpu.png" alt="The GPU Toggle Button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The GPU Toggle Button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>GPU Workspaces can also be run without time restrictions when the GPU mode is disabled. The "Enable"/"Disable" button (circled in red in the image) can be used to toggle GPU mode. <strong>NOTE: Toggling GPU support may switch the physical server your session connects to, which can cause data loss UNLESS YOU CLICK THE SAVE BUTTON BEFORE TOGGLING GPU SUPPORT.</strong></p>
+<p><strong>ALWAYS SAVE YOUR CHANGES BEFORE TOGGLING GPU SUPPORT.</strong></p>
+<h2 id="-keeping-your-session-active">## Keeping Your Session Active</h2>
+<p>Workspaces automatically disconnect after 30 minutes of user inactivity—which means that workspaces can disconnect during long-running tasks (like training neural networks). We have provided a utility that can keep your workspace sessions active for these tasks. However, keep the following guidelines in mind:</p>
+<ul>
+<li>Do not try to permanently hold the workspace session active when you do not have a process running (e.g., do not try to hold the session open in the background)—the limits are in place to preserve your GPU time allocation; there is no guarantee that you'll receive additional time if you exceed the limit.  </li>
+<li>Make sure that you save the results of the long running task to disk as soon as the task ends (e.g., checkpoint your model parameters for deep learning networks); otherwise the workspace will disconnect 30 minutes after the active process ends, and the results will be lost.</li>
+</ul>
+<p>The <code>workspace_utils.py</code> module (available <a href="https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5b06f6c2_workspace-utils/workspace-utils.py" target="_blank">here</a>) includes an iterator wrapper called <code>keep_awake</code> and a context manager called <code>active_session</code> that can be used to maintain an active session during long-running processes. The two functions are equivalent, so use whichever fits better in your code.  <strong>NOTE:</strong> The file may be incorrectly downloaded as <code>workspace-utils.py</code> (note the dash instead of an underscore in the filename). Make sure to correct the filename before uploading to your workspace; Python cannot import from file names including hyphens.</p>
+<p>Example using <code>keep_awake</code>:</p>
+<pre><code>from workspace_utils import keep_awake
+
+for i in keep_awake(range(5)):  #anything that happens inside this loop will keep the workspace active
+    # do iteration with lots of work here</code></pre>
+<p>Example using <code>active_session</code>:</p>
+<pre><code>from workspace_utils import active_session
+
+with active_session():
+    # do long-running work here</code></pre>
+<h2 id="-submitting-a-project">## Submitting a Project</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-submit.png" alt="The Submit Project Button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The Submit Project Button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Some workspaces are able to directly submit projects on your behalf (i.e., you do <strong>not</strong> need to manually submit the project in the classroom). To submit your project, simply click the "Submit Project" button (circled in red in the above image). </p>
+<p>If you do not see the "Submit Project" button, then project submission is not enabled for that workspace. You will need to manually download your project files and submit them in the classroom.</p>
+<p><strong>NOTE: YOU MUST ENSURE THAT YOUR SUBMISSION INCLUDES ALL REQUIRED FILES BEFORE SUBMITTING -- INCLUDING ANY FILE CONVERSIONS (e.g., from ipynb to HTML)</strong></p>
+<h2 id="-opening-a-terminal">## Opening a Terminal</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-new.png" alt="The &quot;New&quot; menu button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The "New" menu button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Jupyter workspaces support several views, including the file browser and notebook view already covered, as well as shell terminals. To open a terminal shell, click the "New" menu button at the top right of the file browser view and select "Terminal".</p>
+<h2 id="-terminals">## Terminals</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-terminal.png" alt="Jupyter terminal shell interface" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Jupyter terminal shell interface</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Terminals provide a full Bash shell that you can use to install or update software packages, fetch updates from github repositories, or run any other terminal commands. As with the notebook view, you can return to the file browser view by clicking on the Jupyter logo at the top left corner of the window.</p>
+<p><strong>NOTE: Your data & changes are persistent across workspace sessions. Any changes you make will need to be repeated if you later reset your workspace data.</strong></p>
+<h2 id="-resetting-data">## Resetting Data</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/workspaces-menu.png" alt="The Menu Button" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>The Menu Button</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>The "Menu" button in the bottom left corner provides support for resetting your Workspaces. The "Refresh Workspace" button will refresh your session, which has no effect on the changes you've made in the workspace.</p>
+<p>The "Reset Data" button discards all changes and restores a clean copy of the workspace. Clicking the button will open a dialog that requires you to type "Reset data" in a confirmation dialog. <strong>ALL OF YOUR DATA WILL BE LOST.</strong></p>
+<p>Resetting should only be required if Udacity makes changes to the project and you can't get them via <code>git pull</code>, or if you destroy the contents of the workspace. If you do need to reset your data, you are <em>strongly</em> encouraged to download a copy of your work from the file interface before clicking Reset Data.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Workspaces Best Practices.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Introduction to GPU Workspaces')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
