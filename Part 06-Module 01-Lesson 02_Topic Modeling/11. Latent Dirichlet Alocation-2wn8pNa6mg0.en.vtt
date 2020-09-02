@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.305
+So, now let's build our LDA model.
+
+00:00:02.305 --> 00:00:03.860
+The idea is the following;
+
+00:00:03.859 --> 00:00:05.365
+We'll have our documents here,
+
+00:00:05.365 --> 00:00:07.474
+let's say these three documents,
+
+00:00:07.474 --> 00:00:09.855
+and then we'll generate some fake documents,
+
+00:00:09.855 --> 00:00:11.464
+like this three over here.
+
+00:00:11.464 --> 00:00:14.339
+The way we generate them is with the topic model,
+
+00:00:14.339 --> 00:00:19.240
+and then what we do is we compare the generated documents with the real ones.
+
+00:00:19.239 --> 00:00:24.324
+This will tell us how far we are from creating the real documents with our model.
+
+00:00:24.324 --> 00:00:27.199
+Like in most Machine Learning algorithms,
+
+00:00:27.199 --> 00:00:31.234
+we learned from these error and we'll be able to improve her topic model.
+
+00:00:31.234 --> 00:00:35.799
+This is what we'll do, in the paper the topic model is drawn like this,
+
+00:00:35.799 --> 00:00:40.129
+this looks complicated but we'll analyze this in the next few videos
+

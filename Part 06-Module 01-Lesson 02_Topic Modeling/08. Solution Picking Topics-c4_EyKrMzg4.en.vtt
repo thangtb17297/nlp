@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.149
+So let's think. In the distribution on the left,
+
+00:00:03.149 --> 00:00:05.370
+we're very likely to pick a point, say,
+
+00:00:05.370 --> 00:00:08.265
+here close to a corner or the edges.
+
+00:00:08.265 --> 00:00:11.480
+Let's say, for example, close to politics.
+
+00:00:11.480 --> 00:00:14.884
+That means our article is 80 percent about politics,
+
+00:00:14.884 --> 00:00:16.300
+10 percent about sports,
+
+00:00:16.300 --> 00:00:18.285
+and 10 percent about science.
+
+00:00:18.285 --> 00:00:19.829
+On the distribution in the middle,
+
+00:00:19.829 --> 00:00:22.009
+we can pick any point with equal probability.
+
+00:00:22.010 --> 00:00:25.140
+Say, this document, which is 40 percent about science,
+
+00:00:25.140 --> 00:00:26.629
+40 percent about politics,
+
+00:00:26.629 --> 00:00:28.744
+and 20 percent about sports.
+
+00:00:28.745 --> 00:00:30.560
+On the distribution on the right,
+
+00:00:30.559 --> 00:00:33.899
+we're very likely to pick points in the middle like this document,
+
+00:00:33.899 --> 00:00:38.100
+which is almost an equal probability science, sports, and politics.
+
+00:00:38.100 --> 00:00:40.664
+That would happen for all the articles we would pick.
+
+00:00:40.664 --> 00:00:44.905
+They would be points in these probability distributions. So let's think.
+
+00:00:44.905 --> 00:00:46.814
+If we have a bunch of articles,
+
+00:00:46.814 --> 00:00:52.075
+would the articles be more likely to be about one topic or three topics at the same time?
+
+00:00:52.075 --> 00:00:55.375
+Well, most articles are about only one thing;
+
+00:00:55.375 --> 00:00:58.048
+either science, sports or politics.
+
+00:00:58.048 --> 00:01:00.329
+Some few articles are about two topics,
+
+00:01:00.329 --> 00:01:04.370
+and almost no article will be about the three topics at the same time.
+
+00:01:04.370 --> 00:01:09.655
+Therefore, the most likely distribution for topics is the one in the left.
+
+00:01:09.655 --> 00:01:11.224
+So, this is what we'll do.
+
+00:01:11.224 --> 00:01:12.640
+For our LDA model,
+
+00:01:12.640 --> 00:01:15.674
+we'll pick a Dirichlet distribution with small parameters Alpha
+
+00:01:15.674 --> 00:01:19.224
+such as 0.7, 0.7, and 0.7.
+
+00:01:19.224 --> 00:01:23.204
+From here, we'll sample a few points to be our documents.
+
+00:01:23.204 --> 00:01:26.584
+Each point gives us a vector of mixture probabilities, Theta,
+
+00:01:26.584 --> 00:01:31.144
+then we'll characterize the distribution of topics for that particular document.
+
+00:01:31.144 --> 00:01:34.484
+This is how Dirichlet distributions look like in 3D.
+
+00:01:34.484 --> 00:01:37.620
+The probability of picking a point on the triangle depends on
+
+00:01:37.620 --> 00:01:40.685
+the height of the probability distribution at that point.
+
+00:01:40.685 --> 00:01:44.530
+Therefore, we want to pick our topics from the model on the left.
+

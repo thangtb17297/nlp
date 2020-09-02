@@ -1,0 +1,211 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.730
+So, let's go to probability distributions.
+
+00:00:02.730 --> 00:00:04.275
+Let's say we have a coin,
+
+00:00:04.275 --> 00:00:05.755
+and we toss it twice.
+
+00:00:05.754 --> 00:00:08.519
+Let's say we get one heads and one tails.
+
+00:00:08.519 --> 00:00:11.019
+What would we think about this coin?
+
+00:00:11.019 --> 00:00:13.294
+Well, it could be a fair coin, right?
+
+00:00:13.294 --> 00:00:16.884
+It could also be slightly biased towards either heads or tails.
+
+00:00:16.885 --> 00:00:19.325
+We don't have enough data to be sure.
+
+00:00:19.324 --> 00:00:22.589
+So, let's say that our verdict is that we think it's fair,
+
+00:00:22.589 --> 00:00:24.179
+but with not much confidence.
+
+00:00:24.179 --> 00:00:29.355
+So, let's think of the probability p that this coin lands on heads.
+
+00:00:29.355 --> 00:00:30.940
+With a little bit of confidence,
+
+00:00:30.940 --> 00:00:32.310
+p is one half,
+
+00:00:32.310 --> 00:00:34.344
+but it could be a lot of other values.
+
+00:00:34.344 --> 00:00:37.964
+So, the probability distribution for p is something like this graph.
+
+00:00:37.965 --> 00:00:39.480
+Higher at one half,
+
+00:00:39.479 --> 00:00:41.640
+but a bit even in the entire interval,
+
+00:00:41.640 --> 00:00:44.109
+and very low on the corner zero and one.
+
+00:00:44.109 --> 00:00:49.159
+Now, let's say we toss the coin 20 times and we get 10 heads, 10 tails.
+
+00:00:49.159 --> 00:00:52.144
+Now, we have a bit more confidence that the coin is fair.
+
+00:00:52.145 --> 00:00:55.605
+So, the distribution for the new value p is something more like
+
+00:00:55.604 --> 00:00:59.099
+this graph with a higher peak at 0.5.
+
+00:00:59.100 --> 00:01:01.260
+Now, let's say we toss a coin four times,
+
+00:01:01.259 --> 00:01:04.355
+and we get heads three times, and tails one.
+
+00:01:04.355 --> 00:01:08.240
+The probability distribution for p is now centered at
+
+00:01:08.239 --> 00:01:12.184
+0.75 since we get three heads out of four tries.
+
+00:01:12.185 --> 00:01:14.120
+But also with not much confidence.
+
+00:01:14.120 --> 00:01:15.795
+So, it's a graph like this.
+
+00:01:15.795 --> 00:01:17.900
+But if we toss it 400 times,
+
+00:01:17.900 --> 00:01:19.755
+and it lands on heads 300,
+
+00:01:19.754 --> 00:01:24.119
+then we're much more confident that the value of p is close to 0.5.
+
+00:01:24.120 --> 00:01:27.260
+Therefore, the probability distribution for p is something like
+
+00:01:27.260 --> 00:01:30.290
+this with a huge peak at at 0.75,
+
+00:01:30.290 --> 00:01:31.865
+and almost flat everywhere else.
+
+00:01:31.864 --> 00:01:33.989
+This is called a Beta distribution,
+
+00:01:33.989 --> 00:01:36.609
+and it works for any values of A and B.
+
+00:01:36.609 --> 00:01:39.989
+If we get heads A times and tails B times,
+
+00:01:39.989 --> 00:01:44.294
+the graph looks like this with a peak at A over A+B.
+
+00:01:44.295 --> 00:01:45.870
+The formula is this.
+
+00:01:45.870 --> 00:01:47.680
+Gamma of A plus B,
+
+00:01:47.680 --> 00:01:50.570
+divided by Gamma of A times Gamma of B,
+
+00:01:50.569 --> 00:01:52.969
+times X to the A minus one,
+
+00:01:52.969 --> 00:01:55.454
+times Y to the B minus one.
+
+00:01:55.454 --> 00:01:57.609
+If you haven't seen the Gamma function,
+
+00:01:57.609 --> 00:02:00.849
+think of it as a continuous version of the factorial function.
+
+00:02:00.849 --> 00:02:03.409
+In this case, if A is an integer,
+
+00:02:03.409 --> 00:02:06.875
+then Gamma of A is A minus one factorial.
+
+00:02:06.875 --> 00:02:10.300
+For example, Gamma of five is four factorial,
+
+00:02:10.300 --> 00:02:16.064
+which is 24, and Gamma of six is five factorial, which is 120.
+
+00:02:16.064 --> 00:02:18.050
+But the interesting thing about
+
+00:02:18.050 --> 00:02:21.400
+the Gamma function is that it also takes values in between.
+
+00:02:21.400 --> 00:02:25.125
+So, we can define things like Gamma of 5.5,
+
+00:02:25.125 --> 00:02:28.425
+and it will be something between 24 and 120.
+
+00:02:28.425 --> 00:02:30.920
+The actual formula for the Gamma function is in
+
+00:02:30.919 --> 00:02:34.544
+the instructor comments although is not something we'll use in this class.
+
+00:02:34.544 --> 00:02:37.919
+So, what happens if we have values that are not integers like say,
+
+00:02:37.919 --> 00:02:40.875
+0.1 for heads, and 0.4 for tails.
+
+00:02:40.875 --> 00:02:45.775
+This makes no sense since we can get 0.1 heads and 0.4 tails.
+
+00:02:45.775 --> 00:02:48.395
+But that's okay for the Beta distribution.
+
+00:02:48.395 --> 00:02:52.460
+We just need to grab the right formula using the Gamma function.
+
+00:02:52.460 --> 00:02:54.460
+For values smaller than one,
+
+00:02:54.460 --> 00:02:56.320
+like 0.1 and 0.4,
+
+00:02:56.319 --> 00:02:58.014
+we get this graph.
+
+00:02:58.014 --> 00:03:01.399
+That means p is much more likely to be either close
+
+00:03:01.400 --> 00:03:04.789
+to zero or close to one than to be in the middle.
+
+00:03:04.789 --> 00:03:06.564
+This makes a bit of sense, right?
+
+00:03:06.564 --> 00:03:09.224
+If p is closer to zero or to one,
+
+00:03:09.224 --> 00:03:13.250
+then we're likely to have either zero heads or zero tails,
+
+00:03:13.250 --> 00:03:17.530
+which at least gets us close to one of the values 0.1 or 0.4.
+

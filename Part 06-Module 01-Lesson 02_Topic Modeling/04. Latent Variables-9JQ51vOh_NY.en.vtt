@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.040
+Well, the answer is, we need one arrow for each pair document word.
+
+00:00:05.040 --> 00:00:08.195
+Since we have 500 documents and 1,000 words,
+
+00:00:08.195 --> 00:00:11.875
+the number of parameters is the number of documents times the number of words.
+
+00:00:11.875 --> 00:00:16.469
+This is 500 times 1,000, which is 500,000.
+
+00:00:16.469 --> 00:00:18.890
+This is too many parameters to figure out.
+
+00:00:18.890 --> 00:00:23.024
+Is there any way we can reduce this number and still keep most of the information?
+
+00:00:23.024 --> 00:00:25.750
+The answer is yes. We can reduce the number of
+
+00:00:25.750 --> 00:00:28.320
+parameters and still catch most of the information.
+
+00:00:28.320 --> 00:00:32.530
+We'll do this by adding to the model the notion of a small set of topics or
+
+00:00:32.530 --> 00:00:36.730
+latent variables that actually drive the generation of words in each document.
+
+00:00:36.729 --> 00:00:38.320
+So, in this model,
+
+00:00:38.320 --> 00:00:42.980
+any document is considered to have an underlying mixture of topics associated with it.
+
+00:00:42.979 --> 00:00:47.709
+Similarly, a topic is considered to be a mixture of terms that is likely to generate.
+
+00:00:47.710 --> 00:00:52.645
+In here, we have say three topics: Science, politics, and sports.
+
+00:00:52.645 --> 00:00:54.790
+So now, there are two sets of parameters of
+
+00:00:54.789 --> 00:00:57.325
+probability distributions that we need to compute.
+
+00:00:57.325 --> 00:01:02.234
+The probability of a topic given a document d or
+
+00:01:02.234 --> 00:01:09.625
+P(z/d) and the probability of a term P given a topic z, or P(t/z).
+
+00:01:09.625 --> 00:01:12.750
+Our new probability of a document given a term can be
+
+00:01:12.750 --> 00:01:16.504
+expressed as a sum over the two previous probabilities.
+
+00:01:16.504 --> 00:01:18.149
+We'll see more about this later.
+
+00:01:18.150 --> 00:01:20.465
+So, it's time for another quiz.
+
+00:01:20.465 --> 00:01:22.525
+If we have 500 documents,
+
+00:01:22.525 --> 00:01:25.225
+10 topics and 1,000 words,
+
+00:01:25.224 --> 00:01:28.164
+how many parameters does this new model have?
+
+00:01:28.165 --> 00:01:30.070
+Enter your answer below.
+

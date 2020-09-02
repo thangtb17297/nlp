@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.940
+Now, we'll do the same thing for topics and words.
+
+00:00:02.940 --> 00:00:07.925
+Let's say for the sake of visualization that we only have four words: space,
+
+00:00:07.924 --> 00:00:10.839
+climate, vote, and rule.
+
+00:00:10.839 --> 00:00:14.570
+Now we have a different distribution, beta.
+
+00:00:14.570 --> 00:00:18.050
+This one is similar to the previous one but it is three-dimensional,
+
+00:00:18.050 --> 00:00:21.045
+is not around a triangle but it's around a simplex.
+
+00:00:21.045 --> 00:00:25.580
+Again, the red parts are high probability and the blue parts are low probability.
+
+00:00:25.579 --> 00:00:27.089
+If we had more words,
+
+00:00:27.089 --> 00:00:29.414
+we would still have a very clear distribution except it would
+
+00:00:29.414 --> 00:00:32.024
+be in a much higher dimensional simplex.
+
+00:00:32.024 --> 00:00:36.079
+This is why we picked four words because we can visualize that simplex in 3D.
+
+00:00:36.079 --> 00:00:38.280
+So, in this distribution beta,
+
+00:00:38.280 --> 00:00:41.039
+we pick a random point and it will very likely be
+
+00:00:41.039 --> 00:00:44.570
+close to a corner or an edge. Let's say it's here.
+
+00:00:44.570 --> 00:00:48.280
+This point generates the following multinomial distribution,
+
+00:00:48.280 --> 00:00:51.700
+0.4 for space, 0.4 for climate,
+
+00:00:51.700 --> 00:00:53.990
+and 0.1 for vote and rule.
+
+00:00:53.990 --> 00:00:57.060
+This multinomial distribution we'll be called phi and it
+
+00:00:57.060 --> 00:01:00.715
+represents the connections between the words and the topic.
+
+00:01:00.715 --> 00:01:02.490
+Now from this distribution,
+
+00:01:02.490 --> 00:01:06.504
+we will sample random words which are 40 percent likely to be space,
+
+00:01:06.504 --> 00:01:10.274
+40 for climate, 10 for vote and 10 for rule.
+
+00:01:10.275 --> 00:01:12.359
+The words could look like this.
+
+00:01:12.359 --> 00:01:14.459
+Now we do this for every topic.
+
+00:01:14.459 --> 00:01:18.094
+So, Topic 1 is say around here close to Space and Climate,
+
+00:01:18.094 --> 00:01:20.469
+topic 2 is here close to vote,
+
+00:01:20.469 --> 00:01:23.685
+and on topic 3 is here close to rule.
+
+00:01:23.685 --> 00:01:26.500
+Notice that we don't know what topics they are,
+
+00:01:26.500 --> 00:01:30.109
+we just know them as topic 1, 2, and 3.
+
+00:01:30.109 --> 00:01:32.840
+After some inspection, we can infer that topic
+
+00:01:32.840 --> 00:01:36.965
+1 being close to Space and Climate must be science.
+
+00:01:36.965 --> 00:01:41.015
+Similarly, topic 2 being close to vote could be Politics,
+
+00:01:41.015 --> 00:01:44.314
+and topic 3 being close to rule could be sports.
+
+00:01:44.314 --> 00:01:47.730
+But this is something that we'd be doing at the end of the model.
+
+00:01:47.730 --> 00:01:49.250
+And as a final step,
+
+00:01:49.250 --> 00:01:54.000
+we join these three together to obtain our other matrix in the LDA model.
+

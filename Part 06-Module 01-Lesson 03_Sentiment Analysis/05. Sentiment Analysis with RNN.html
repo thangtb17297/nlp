@@ -1,0 +1,234 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sentiment Analysis with RNN</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Sentiment Analysis</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Sentiment Analysis with a Regular Classifier.html">02. Sentiment Analysis with a Regular Classifier</a>
+    </li>
+    <li class="">
+      <a href="03. Notebook Sentiment Analysis with a regular classifier.html">03. Notebook: Sentiment Analysis with a regular classifier</a>
+    </li>
+    <li class="">
+      <a href="04. [SOLUTION] Sentiment Analysis with a regular clas.html">04. [SOLUTION]: Sentiment Analysis with a regular clas</a>
+    </li>
+    <li class="">
+      <a href="05. Sentiment Analysis with RNN.html">05. Sentiment Analysis with RNN</a>
+    </li>
+    <li class="">
+      <a href="06. Notebook Sentiment Analysis with an RNN.html">06. Notebook: Sentiment Analysis with an RNN</a>
+    </li>
+    <li class="">
+      <a href="07. [SOLUTION] Sentiment Analysis with an RNN.html">07. [SOLUTION]: Sentiment Analysis with an RNN</a>
+    </li>
+    <li class="">
+      <a href="08. Optional Material.html">08. Optional Material</a>
+    </li>
+    <li class="">
+      <a href="09. Outro.html">09. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Sentiment Analysis with RNN</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="sentiment-analysis-with-rnns">Sentiment Analysis with RNNs</h1>
+<p>Here's where things get a bit more complicated. Consider the following two reviews:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/sentences.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>One is positive, and one is negative, even though they have very similar words. In a one-hot encoding, or in a bag of words model, their vectors would be very similar, so one would imagine that the output is very similar too.</p>
+<p>One way to fix this is to consider the <em>order</em> of the words. This is where RNNs and LSTMs come to the rescue. With an RNN (LSTM) architecture, we'd be feeding the one-hot-encoded word vectors one by one. At each point, the model takes as input, the previous output, joined with the new word, in order to produce an output. The final output is an encoding of the sentence.</p>
+<p>Once we have the encoding of this sentence, we run that through one or more dense layers, which will then get trained to predict the sentiment of the review.</p>
+<p>This process is illustrated in the video below.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Sentiment Analysis RNN GIF</p></h3>
+  <video controls>
+  <source src="05. Sentiment Analysis RNN GIF-GZWyEHOdZ0w.mp4" type="video/mp4">
+
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="review-material">Review Material</h1>
+<p>For the next lab, if you need a refresher on either RNNs or Keras, please feel free to check the <strong>Extracurricular Material</strong> for optional lessons on those topics.</p>
+<ul>
+<li><a href="https://classroom.udacity.com/nanodegrees/nd892/parts/40fbbde5-9ddb-4a1a-8082-c229f990e2e5" target="_blank">Recurrent Neural Networks</a></li>
+<li><a href="https://classroom.udacity.com/nanodegrees/nd892/parts/31db15bf-c704-4f04-ba36-bcd825ae42ef" target="_blank">Keras</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Notebook Sentiment Analysis with an RNN.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Sentiment Analysis with RNN')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

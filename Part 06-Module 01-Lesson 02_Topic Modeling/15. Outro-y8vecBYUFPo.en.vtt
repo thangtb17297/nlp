@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.995
+That's it. Great job.
+
+00:00:01.995 --> 00:00:04.470
+In this lesson, we've learned topic model and
+
+00:00:04.469 --> 00:00:08.320
+document categorization using Latent Dirichlet Allocation.
+
+00:00:08.320 --> 00:00:10.740
+This will give us the mixture model of topics in
+
+00:00:10.740 --> 00:00:15.004
+a new document and the probabilities of these topics generating all the words.
+
+00:00:15.005 --> 00:00:16.789
+Now, in the following lab,
+
+00:00:16.789 --> 00:00:19.364
+you'll be able to put all this in practice by applying
+
+00:00:19.364 --> 00:00:23.599
+LDA to a set of documents and splitting them into topics.
+

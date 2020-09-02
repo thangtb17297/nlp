@@ -1,0 +1,157 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.459
+This is the example we'll use in this section,
+
+00:00:02.459 --> 00:00:04.605
+the IMDb Movie Reviews.
+
+00:00:04.605 --> 00:00:07.125
+We will be splitting them into two kinds.
+
+00:00:07.125 --> 00:00:09.404
+Reviews such as what a great movie,
+
+00:00:09.404 --> 00:00:13.049
+which we'll classify as positive and review such as,
+
+00:00:13.050 --> 00:00:16.380
+that was terrible which we'll classify as negative.
+
+00:00:16.379 --> 00:00:18.179
+For machine learning perspective,
+
+00:00:18.179 --> 00:00:22.214
+you can think of sentiment analysis are classification or a regression problem
+
+00:00:22.214 --> 00:00:26.640
+depending on whether you want to identify specific emotional categories or labels,
+
+00:00:26.640 --> 00:00:28.800
+such as positive versus negative or
+
+00:00:28.800 --> 00:00:32.350
+a real number that captures a more fine grained sentiment value.
+
+00:00:32.350 --> 00:00:36.429
+In either case, you start with a given corpus say of movie reviews.
+
+00:00:36.429 --> 00:00:38.089
+You process each review as
+
+00:00:38.090 --> 00:00:42.400
+a individual document and extract a set of features that represents it.
+
+00:00:42.399 --> 00:00:46.390
+This representation can be a direct document representation such as bag of
+
+00:00:46.390 --> 00:00:50.950
+words or TF IDF or a sequence of word vectors combined together.
+
+00:00:50.950 --> 00:00:53.859
+And then you pick classify which can be anything;
+
+00:00:53.859 --> 00:00:57.384
+a decision tree, a neural network or anything you prefer.
+
+00:00:57.384 --> 00:01:00.085
+The representation depends on what model you choose.
+
+00:01:00.085 --> 00:01:03.189
+Example, if you want to use an SVM to predict sentiment labels.
+
+00:01:03.189 --> 00:01:04.590
+You can use bag of words.
+
+00:01:04.590 --> 00:01:06.325
+But if you want to apply an RNN,
+
+00:01:06.325 --> 00:01:08.055
+you'll need word vectors.
+
+00:01:08.055 --> 00:01:11.440
+Begin appropriate loss functions such as categorical cross entry for
+
+00:01:11.439 --> 00:01:14.980
+classification or mean squared error for regression to train your model.
+
+00:01:14.980 --> 00:01:16.359
+In more simple terms,
+
+00:01:16.359 --> 00:01:18.400
+here's what we'll do. We'll take a review.
+
+00:01:18.400 --> 00:01:21.040
+For example, what a great movie and we'll
+
+00:01:21.040 --> 00:01:24.060
+extract the words into a One-hot encoding vector.
+
+00:01:24.060 --> 00:01:27.430
+The way we'll create the vector is by taking all the words from
+
+00:01:27.430 --> 00:01:31.555
+A to zygote and locate the ones that we have in the review.
+
+00:01:31.555 --> 00:01:35.290
+We had a one for those entries and a zero for all the other ones.
+
+00:01:35.290 --> 00:01:38.500
+And these are the vectors that we feed into our model.
+
+00:01:38.500 --> 00:01:40.825
+That's it. Pretty simple isn't it?
+
+00:01:40.825 --> 00:01:43.689
+So the question is, what to do with repeated words?
+
+00:01:43.689 --> 00:01:45.414
+For example in this review.
+
+00:01:45.415 --> 00:01:48.520
+Great movie, great cast, great experience.
+
+00:01:48.519 --> 00:01:51.069
+The word great appears three times.
+
+00:01:51.069 --> 00:01:52.659
+If we One-hot encode,
+
+00:01:52.659 --> 00:01:55.269
+then we'll just write a one in that entry,
+
+00:01:55.269 --> 00:01:57.429
+even if the word appears three times.
+
+00:01:57.430 --> 00:02:01.555
+We really only care of the word great appears to see that the review is great.
+
+00:02:01.555 --> 00:02:03.580
+We can also have a bag of words approach and
+
+00:02:03.579 --> 00:02:05.679
+record the number of appearances of the word.
+
+00:02:05.680 --> 00:02:08.920
+This could make sense is if a review has the word great three times,
+
+00:02:08.919 --> 00:02:12.429
+it could just be greater than reviews that only has the word great once, right?
+
+00:02:12.430 --> 00:02:15.740
+And finally, the classifier M as we said can be anything.
+
+00:02:15.740 --> 00:02:17.520
+In the last, we've picked one for you.
+
+00:02:17.520 --> 00:02:20.469
+But you can change it to any other classifier you want and
+
+00:02:20.469 --> 00:02:24.340
+explore to see which ones will give you greater accuracy on this data set.
+
+00:02:24.340 --> 00:02:27.800
+And that's all you need to know to start a [inaudible]. Good luck.
+

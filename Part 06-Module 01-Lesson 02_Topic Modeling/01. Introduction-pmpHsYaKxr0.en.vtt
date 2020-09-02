@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.514
+Hello, this is Luis.
+
+00:00:01.514 --> 00:00:04.049
+Welcome to the Topic Modeling section.
+
+00:00:04.049 --> 00:00:07.320
+While classification is an interesting supervised learning problem
+
+00:00:07.320 --> 00:00:09.690
+and a lot of tasks fall under that category,
+
+00:00:09.689 --> 00:00:13.605
+there's a whole world of further unsupervised problems that I find fascinating.
+
+00:00:13.605 --> 00:00:16.004
+One of these is Topic Modeling.
+
+00:00:16.004 --> 00:00:18.079
+In this section, we'll study a model,
+
+00:00:18.079 --> 00:00:19.644
+which given a set of documents,
+
+00:00:19.644 --> 00:00:22.189
+it classifies them into different topics.
+
+00:00:22.190 --> 00:00:26.010
+The bag-of-words approach we've learned previously tries to represent
+
+00:00:26.010 --> 00:00:29.975
+documents in a dataset directly using the words that appear in them.
+
+00:00:29.975 --> 00:00:32.560
+But often, these words are predicated on
+
+00:00:32.560 --> 00:00:37.344
+some underlying parameters are very among documents such as a topic being discussed.
+
+00:00:37.344 --> 00:00:41.750
+In this section, we'll begin with discussing this hidden or latent variables.
+
+00:00:41.750 --> 00:00:44.020
+Then, we'll look at a specific technique used to
+
+00:00:44.020 --> 00:00:47.120
+estimate them called Latent Dirichlet Allocation.
+
+00:00:47.119 --> 00:00:50.259
+Finally, you'll get to apply the knowledge you've learned to
+
+00:00:50.259 --> 00:00:53.599
+perform topic modeling on a collection of documents.
+

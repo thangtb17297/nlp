@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.700
+Let's start by picking some topics for our documents.
+
+00:00:02.700 --> 00:00:06.185
+We start with some declared distribution with parameters Alpha.
+
+00:00:06.184 --> 00:00:10.744
+And the parameters should be small for the distribution to be spiky towards the sites.
+
+00:00:10.744 --> 00:00:14.454
+Which means, if we pick a point somewhere in the distribution,
+
+00:00:14.455 --> 00:00:18.585
+it will most likely be close to a corner or at least to an edge.
+
+00:00:18.585 --> 00:00:21.990
+Let's say we pick this point close to the politics corner which
+
+00:00:21.989 --> 00:00:25.889
+generates the following values 0.1 for Science,
+
+00:00:25.890 --> 00:00:29.505
+0.8 for politics and 0.1 for sports.
+
+00:00:29.504 --> 00:00:33.820
+These values represent a mixture of topics for this particular document.
+
+00:00:33.820 --> 00:00:37.564
+They also give us a multinomial distribution theta.
+
+00:00:37.564 --> 00:00:39.439
+Now from this distribution,
+
+00:00:39.439 --> 00:00:41.164
+we'll start picking topics.
+
+00:00:41.164 --> 00:00:46.609
+That means the topics we'll pick are Science with a 10 percent probability,
+
+00:00:46.609 --> 00:00:51.539
+politics with an 80 percent probability and sports with a 10 percent probability.
+
+00:00:51.539 --> 00:00:54.049
+So, we'll pick some topics say politics,
+
+00:00:54.049 --> 00:00:56.919
+science, politics, sports etc.
+
+00:00:56.920 --> 00:00:58.890
+And we do this for several documents.
+
+00:00:58.890 --> 00:01:02.890
+So, each document is a point in this declared distribution.
+
+00:01:02.890 --> 00:01:07.984
+Let's say document one is here which gives us this multinomial distribution.
+
+00:01:07.984 --> 00:01:11.750
+Then, document two is here which gives us this other one,
+
+00:01:11.750 --> 00:01:14.129
+and we'll do this for all the documents.
+
+00:01:14.129 --> 00:01:17.810
+And now, we merge all these vectors to get the first matrix.
+
+00:01:17.810 --> 00:01:21.799
+The matrix that indexes documents with their corresponding topics.
+

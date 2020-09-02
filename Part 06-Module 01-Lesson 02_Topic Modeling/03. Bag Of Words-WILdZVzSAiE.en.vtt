@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.020
+Let's start with a regular bag of words model.
+
+00:00:03.020 --> 00:00:05.900
+If you think about the Bag of Words model graphically,
+
+00:00:05.900 --> 00:00:08.115
+it represents the relationship between a set of
+
+00:00:08.115 --> 00:00:10.675
+document objects and a set of word objects.
+
+00:00:10.675 --> 00:00:13.685
+It's very simple. Let's say we've got an article like this
+
+00:00:13.685 --> 00:00:17.219
+one and we look at what words are in that article.
+
+00:00:17.219 --> 00:00:19.890
+We'll assume that we do the correct stemming and text
+
+00:00:19.890 --> 00:00:22.714
+processing so that we only look at the important words.
+
+00:00:22.714 --> 00:00:27.460
+So this article has three words namely space, vote and explore.
+
+00:00:27.460 --> 00:00:29.530
+The word space appears twice,
+
+00:00:29.530 --> 00:00:32.329
+the word vote appears once and the word explore or it's
+
+00:00:32.329 --> 00:00:35.449
+related words like exploration appears three times.
+
+00:00:35.450 --> 00:00:38.150
+To find the probabilities of each word appearing in the article,
+
+00:00:38.149 --> 00:00:41.979
+we divide by the total number of words and we get some probabilities.
+
+00:00:41.979 --> 00:00:44.289
+This gives us three parameters.
+
+00:00:44.289 --> 00:00:47.409
+Now to add some notation, we call documents d,
+
+00:00:47.409 --> 00:00:50.809
+our words or terms t and the parameters
+
+00:00:50.810 --> 00:00:54.219
+are precisely the probability of a word appearing in the documents,
+
+00:00:54.219 --> 00:00:58.875
+so that is P of t given d. Specifically this parameter say,
+
+00:00:58.875 --> 00:01:02.509
+for any given document d and observed term t.
+
+00:01:02.509 --> 00:01:06.754
+How likely is it that the document d generated the term t?
+
+00:01:06.754 --> 00:01:10.530
+So now we do this for a bunch of documents and a bunch of words.
+
+00:01:10.530 --> 00:01:14.099
+We draw all these probabilities. And let's have a quiz.
+
+00:01:14.099 --> 00:01:18.129
+Let's say we have 500 documents and 1000 unique words.
+
+00:01:18.129 --> 00:01:21.015
+How many parameters are in this model?
+
+00:01:21.015 --> 00:01:23.200
+Enter your answer below.
+

@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.720
+Hi, this is Louis.
+
+00:00:01.720 --> 00:00:04.205
+Welcome to the Sentiment Analysis section.
+
+00:00:04.205 --> 00:00:06.140
+Sentiment Analysis is probably one of
+
+00:00:06.139 --> 00:00:09.785
+the most popular uses of natural language processing these days.
+
+00:00:09.785 --> 00:00:13.294
+Sentiment Analysis has become an important tool for many purposes.
+
+00:00:13.294 --> 00:00:15.800
+For example: understanding customer sentiment
+
+00:00:15.800 --> 00:00:18.410
+around the company for making investment decisions,
+
+00:00:18.410 --> 00:00:21.960
+getting a feedback signal for social media and advertising campaigns,
+
+00:00:21.960 --> 00:00:25.519
+as a quantitative measure for book and movie reviews, and so on.
+
+00:00:25.519 --> 00:00:27.679
+This will be a short section since the topic is
+
+00:00:27.679 --> 00:00:30.155
+simple once you know classification algorithms,
+
+00:00:30.155 --> 00:00:31.714
+but it will have two labs.
+
+00:00:31.714 --> 00:00:34.729
+Both labs will train a classifier and movie reviews in
+
+00:00:34.729 --> 00:00:37.744
+the Internet Movie Database or IMDB dataset.
+
+00:00:37.744 --> 00:00:39.559
+The first lab will do it with
+
+00:00:39.560 --> 00:00:42.109
+a regular supervised learning classifier by
+
+00:00:42.109 --> 00:00:45.829
+looking at a review as an unorganized collection of words.
+
+00:00:45.829 --> 00:00:49.519
+The second lab will exploit the sequentiality of the sentences and
+
+00:00:49.520 --> 00:00:53.130
+will train a more accurate classifier using a recurring neural network.
+
+00:00:53.130 --> 00:00:55.940
+If you need a refresher on recurrent neural networks,
+
+00:00:55.939 --> 00:00:59.000
+please check the extracurricular material in the Nanodegree for
+
+00:00:59.000 --> 00:01:02.929
+a full refresher section on RNN's and one LSDM's.
+
