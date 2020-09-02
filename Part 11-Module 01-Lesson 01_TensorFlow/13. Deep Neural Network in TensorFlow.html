@@ -1,0 +1,326 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deep Neural Network in TensorFlow</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>TensorFlow</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Installing TensorFlow.html">02. Installing TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="03. Hello, Tensor World!.html">03. Hello, Tensor World!</a>
+    </li>
+    <li class="">
+      <a href="04. Quiz TensorFlow Linear Function.html">04. Quiz: TensorFlow Linear Function</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz TensorFlow Softmax.html">05. Quiz: TensorFlow Softmax</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz TensorFlow Cross Entropy.html">06. Quiz: TensorFlow Cross Entropy</a>
+    </li>
+    <li class="">
+      <a href="07. Quiz Mini-batch.html">07. Quiz: Mini-batch</a>
+    </li>
+    <li class="">
+      <a href="08. Epochs.html">08. Epochs</a>
+    </li>
+    <li class="">
+      <a href="09. Pre-Lab NotMNIST in TensorFlow.html">09. Pre-Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="10. Lab NotMNIST in TensorFlow.html">10. Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="11. Two-layer Neural Network.html">11. Two-layer Neural Network</a>
+    </li>
+    <li class="">
+      <a href="12. Quiz TensorFlow ReLUs.html">12. Quiz: TensorFlow ReLUs</a>
+    </li>
+    <li class="">
+      <a href="13. Deep Neural Network in TensorFlow.html">13. Deep Neural Network in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="14. Save and Restore TensorFlow Models.html">14. Save and Restore TensorFlow Models</a>
+    </li>
+    <li class="">
+      <a href="15. Finetuning.html">15. Finetuning</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz TensorFlow Dropout.html">16. Quiz: TensorFlow Dropout</a>
+    </li>
+    <li class="">
+      <a href="17. Outro.html">17. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">13. Deep Neural Network in TensorFlow</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="deep-neural-network-in-tensorflow">Deep Neural Network in TensorFlow</h1>
+<p>You've seen how to build a logistic classifier using TensorFlow. Now you're going to see how to use the logistic classifier to build a deep neural network.</p>
+<h2 id="step-by-step">Step by Step</h2>
+<p>In the following walkthrough, we'll step through TensorFlow code written to classify the letters in the MNIST database.  If you would like to run the network on your computer, the file is provided <a href="https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58a61a3a_multilayer-perceptron/multilayer-perceptron.zip" target="_blank">here</a>.  You can find this and many more examples of TensorFlow at <a href="https://github.com/aymericdamien/TensorFlow-Examples" target="_blank">Aymeric Damien's GitHub repository</a>.</p>
+<h2 id="code">Code</h2>
+<h3 id="tensorflow-mnist">TensorFlow MNIST</h3>
+<pre><code class="python language-python">from tensorflow.examples.tutorials.mnist import input_data
+mnist = input_data.read_data_sets(".", one_hot=True, reshape=False)</code></pre>
+<p>You'll use the MNIST dataset provided by TensorFlow, which batches and One-Hot encodes the data for you. </p>
+<h3 id="learning-parameters">Learning Parameters</h3>
+<pre><code class="python language-python">import tensorflow as tf
+
+# Parameters
+learning_rate = 0.001
+training_epochs = 20
+batch_size = 128  # Decrease batch size if you don't have enough memory
+display_step = 1
+
+n_input = 784  # MNIST data input (img shape: 28*28)
+n_classes = 10  # MNIST total classes (0-9 digits)</code></pre>
+<p>The focus here is on the architecture of multilayer neural networks, not parameter tuning, so here we'll just give you the learning parameters.</p>
+<h3 id="hidden-layer-parameters">Hidden Layer Parameters</h3>
+<pre><code class="python language-python">n_hidden_layer = 256 # layer number of features</code></pre>
+<p>The variable <code>n_hidden_layer</code> determines the size of the hidden layer in the neural network.  This is also known as the width of a layer.</p>
+<h3 id="weights-and-biases">Weights and Biases</h3>
+<pre><code class="python language-python"># Store layers weight &amp; bias
+weights = {
+    'hidden_layer': tf.Variable(tf.random_normal([n_input, n_hidden_layer])),
+    'out': tf.Variable(tf.random_normal([n_hidden_layer, n_classes]))
+}
+biases = {
+    'hidden_layer': tf.Variable(tf.random_normal([n_hidden_layer])),
+    'out': tf.Variable(tf.random_normal([n_classes]))
+}</code></pre>
+<p>Deep neural networks use multiple layers with each layer requiring it's own weight and bias.  The <code>'hidden_layer'</code> weight and bias is for the hidden layer.  The <code>'out'</code> weight and bias is for the output layer.  If the neural network were deeper, there would be weights and biases for each additional layer.</p>
+<h3 id="input">Input</h3>
+<pre><code class="python language-python"># tf Graph input
+x = tf.placeholder("float", [None, 28, 28, 1])
+y = tf.placeholder("float", [None, n_classes])
+
+x_flat = tf.reshape(x, [-1, n_input])</code></pre>
+<p>The MNIST data is made up of 28px by 28px images with a single <a href="https://en.wikipedia.org/wiki/Channel_(digital_image%29" target="_blank">channel</a>.  The <a href="https://www.tensorflow.org/versions/master/api_docs/python/tf/reshape" target="_blank"><code>tf.reshape()</code></a> function above reshapes the 28px by 28px matrices in <code>x</code> into row vectors of 784px.</p>
+<h3 id="multilayer-perceptron">Multilayer Perceptron</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/multi-layer.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python"># Hidden layer with RELU activation
+layer_1 = tf.add(tf.matmul(x_flat, weights['hidden_layer']),\
+    biases['hidden_layer'])
+layer_1 = tf.nn.relu(layer_1)
+# Output layer with linear activation
+logits = tf.add(tf.matmul(layer_1, weights['out']), biases['out'])</code></pre>
+<p>You've seen the linear function <code>tf.add(tf.matmul(x_flat, weights['hidden_layer']), biases['hidden_layer'])</code> before, also known as <code>xw + b</code>.  Combining linear functions together using a ReLU will give you a two layer network.</p>
+<h3 id="optimizer">Optimizer</h3>
+<pre><code class="python language-python"># Define loss and optimizer
+cost = tf.reduce_mean(\
+    tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=y))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)\
+    .minimize(cost)</code></pre>
+<p>This is the same optimization technique used in the Intro to TensorFLow lab.</p>
+<h3 id="session">Session</h3>
+<pre><code class="python language-python"># Initializing the variables
+init = tf.global_variables_initializer()
+
+
+# Launch the graph
+with tf.Session() as sess:
+    sess.run(init)
+    # Training cycle
+    for epoch in range(training_epochs):
+        total_batch = int(mnist.train.num_examples/batch_size)
+        # Loop over all batches
+        for i in range(total_batch):
+            batch_x, batch_y = mnist.train.next_batch(batch_size)
+            # Run optimization op (backprop) and cost op (to get loss value)
+            sess.run(optimizer, feed_dict={x: batch_x, y: batch_y})</code></pre>
+<p>The MNIST library in TensorFlow provides the ability to receive the dataset in batches.  Calling the <code>mnist.train.next_batch()</code> function returns a subset of the training data.  </p>
+<h2 id="deeper-neural-network">Deeper Neural Network</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/layers.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>That's it!  Going from one layer to two is easy.  Adding more layers to the network allows you to solve more complicated problems.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="14. Save and Restore TensorFlow Models.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. Deep Neural Network in TensorFlow')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

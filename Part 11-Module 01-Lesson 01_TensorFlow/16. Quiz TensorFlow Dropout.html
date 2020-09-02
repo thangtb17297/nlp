@@ -1,0 +1,421 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: TensorFlow Dropout</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>TensorFlow</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Installing TensorFlow.html">02. Installing TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="03. Hello, Tensor World!.html">03. Hello, Tensor World!</a>
+    </li>
+    <li class="">
+      <a href="04. Quiz TensorFlow Linear Function.html">04. Quiz: TensorFlow Linear Function</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz TensorFlow Softmax.html">05. Quiz: TensorFlow Softmax</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz TensorFlow Cross Entropy.html">06. Quiz: TensorFlow Cross Entropy</a>
+    </li>
+    <li class="">
+      <a href="07. Quiz Mini-batch.html">07. Quiz: Mini-batch</a>
+    </li>
+    <li class="">
+      <a href="08. Epochs.html">08. Epochs</a>
+    </li>
+    <li class="">
+      <a href="09. Pre-Lab NotMNIST in TensorFlow.html">09. Pre-Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="10. Lab NotMNIST in TensorFlow.html">10. Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="11. Two-layer Neural Network.html">11. Two-layer Neural Network</a>
+    </li>
+    <li class="">
+      <a href="12. Quiz TensorFlow ReLUs.html">12. Quiz: TensorFlow ReLUs</a>
+    </li>
+    <li class="">
+      <a href="13. Deep Neural Network in TensorFlow.html">13. Deep Neural Network in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="14. Save and Restore TensorFlow Models.html">14. Save and Restore TensorFlow Models</a>
+    </li>
+    <li class="">
+      <a href="15. Finetuning.html">15. Finetuning</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz TensorFlow Dropout.html">16. Quiz: TensorFlow Dropout</a>
+    </li>
+    <li class="">
+      <a href="17. Outro.html">17. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">16. Quiz: TensorFlow Dropout</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="tensorflow-dropout">TensorFlow Dropout</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/dropout-node.jpeg" alt="Figure 1: Taken from the paper &quot;Dropout: A Simple Way to Prevent Neural Networks from
+Overfitting&quot; (https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf)" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Figure 1: Taken from the paper "Dropout: A Simple Way to Prevent Neural Networks from<br />
+Overfitting" (<a href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf" target="_blank">https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf</a>)</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Dropout is a regularization technique for reducing overfitting.  The technique temporarily drops units (<a href="https://en.wikipedia.org/wiki/Artificial_neuron" target="_blank">artificial neurons</a>) from the network, along with all of those units' incoming and outgoing connections. Figure 1 illustrates how dropout works.</p>
+<p>TensorFlow provides the <a href="https://www.tensorflow.org/api_docs/python/tf/nn/dropout" target="_blank"><code>tf.nn.dropout()</code></a> function, which you can use to implement dropout. </p>
+<p>Let's look at an example of how to use <a href="https://www.tensorflow.org/api_docs/python/tf/nn/dropout" target="_blank"><code>tf.nn.dropout()</code></a>.</p>
+<pre><code class="python language-python">keep_prob = tf.placeholder(tf.float32) # probability to keep units
+
+hidden_layer = tf.add(tf.matmul(features, weights[0]), biases[0])
+hidden_layer = tf.nn.relu(hidden_layer)
+hidden_layer = tf.nn.dropout(hidden_layer, keep_prob)
+
+logits = tf.add(tf.matmul(hidden_layer, weights[1]), biases[1])</code></pre>
+<p>The code above illustrates how to apply dropout to a neural network.  </p>
+<p>The <a href="https://www.tensorflow.org/api_docs/python/tf/nn/dropout" target="_blank"><code>tf.nn.dropout()</code></a> function takes in two parameters:</p>
+<ol>
+<li><code>hidden_layer</code>: the tensor to which you would like to apply dropout</li>
+<li><code>keep_prob</code>: the probability of keeping (i.e. <em>not</em> dropping) any given unit </li>
+</ol>
+<p><code>keep_prob</code> allows you to adjust the number of units to drop. In order to compensate for dropped units, <a href="https://www.tensorflow.org/api_docs/python/tf/nn/dropout" target="_blank"><code>tf.nn.dropout()</code></a> multiplies all units that are kept (i.e. <em>not</em> dropped) by <code>1/keep_prob</code>. </p>
+<p>During training, a good starting value for <code>keep_prob</code> is <code>0.5</code>.</p>
+<p>During testing, use a <code>keep_prob</code> value of <code>1.0</code> to keep all units and maximize the power of the model.</p>
+<h2 id="quiz-1">Quiz 1</h2>
+<p>Take a look at the code snippet below.  Do you see what's wrong?</p>
+<p>There's nothing wrong with the syntax, however the test accuracy is extremely low.</p>
+<pre><code class="python language-python">...
+
+keep_prob = tf.placeholder(tf.float32) # probability to keep units
+
+hidden_layer = tf.add(tf.matmul(features, weights[0]), biases[0])
+hidden_layer = tf.nn.relu(hidden_layer)
+hidden_layer = tf.nn.dropout(hidden_layer, keep_prob)
+
+logits = tf.add(tf.matmul(hidden_layer, weights[1]), biases[1])
+
+...
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+
+    for epoch_i in range(epochs):
+        for batch_i in range(batches):
+            ....
+
+            sess.run(optimizer, feed_dict={
+                features: batch_features,
+                labels: batch_labels,
+                keep_prob: 0.5})
+
+    validation_accuracy = sess.run(accuracy, feed_dict={
+        features: test_features,
+        labels: test_labels,
+        keep_prob: 0.5})</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What's wrong with the above code?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1478643461582" name="205033" id="a1478643461582">
+        <label for="a1478643461582"><p>Dropout doesn't work with batching.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1478646143808" name="205033" id="a1478646143808">
+        <label for="a1478646143808"><p>The keep_prob value of 0.5 is too low.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1478646160078" name="205033" id="a1478646160078">
+        <label for="a1478646160078"><p>There shouldn't be a value passed to keep_prob when testing for accuracy.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1478646212823" name="205033" id="a1478646212823">
+        <label for="a1478646212823"><p>keep_prob should be set to 1.0 when evaluating validation accuracy.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    keep_prob should be set to 1.0 when evaluating validation accuracy.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="quiz-2">Quiz 2</h2>
+<p>This quiz will be starting with the code from the ReLU Quiz and applying a dropout layer.  Build a model with a ReLU layer and dropout layer using the <code>keep_prob</code> placeholder to pass in a probability of <code>0.5</code>.  Print the logits from the model.</p>
+<p>Note: Output will be different every time the code is run.  This is caused by dropout randomizing the units it drops.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+
+  <h4>Start Quiz:</h4>
+  <div>
+  <div class="nav nav-tabs nav-fill" role="tablist" id="question-tabs">
+    <a href="#205002-quiz-py" class="nav-item nav-link  active show" id="tab-205002-quiz-py" data-toggle="tab" role="tab"
+      aria-controls="205002-quiz-py" aria-selected="true">quiz.py</a>
+    <a href="#205002-solution-py" class="nav-item nav-link " id="tab-205002-solution-py" data-toggle="tab" role="tab"
+      aria-controls="205002-solution-py" aria-selected="false">solution.py</a>
+  </div>
+
+  <div class="tab-content" style="padding: 20px 0;" id="question-tab-contents">
+    <div class="tab-pane  active show" id="205002-quiz-py" aria-labelledby="tab-205002-quiz-py" role="tabpanel">
+      <pre><code></code># Solution is available in the other &quot;solution.py&quot; tab
+import tensorflow as tf
+
+hidden_layer_weights &#x3D; [
+    [0.1, 0.2, 0.4],
+    [0.4, 0.6, 0.6],
+    [0.5, 0.9, 0.1],
+    [0.8, 0.2, 0.8]]
+out_weights &#x3D; [
+    [0.1, 0.6],
+    [0.2, 0.1],
+    [0.7, 0.9]]
+
+# Weights and biases
+weights &#x3D; [
+    tf.Variable(hidden_layer_weights),
+    tf.Variable(out_weights)]
+biases &#x3D; [
+    tf.Variable(tf.zeros(3)),
+    tf.Variable(tf.zeros(2))]
+
+# Input
+features &#x3D; tf.Variable([[0.0, 2.0, 3.0, 4.0], [0.1, 0.2, 0.3, 0.4], [11.0, 12.0, 13.0, 14.0]])
+
+# TODO: Create Model with Dropout
+
+
+# TODO: Print logits from a session
+</code></pre>
+    </div>
+    <div class="tab-pane " id="205002-solution-py" aria-labelledby="tab-205002-solution-py" role="tabpanel">
+      <pre><code></code># Quiz Solution
+# Note: You can&#x27;t run code in this tab
+import tensorflow as tf
+
+hidden_layer_weights &#x3D; [
+    [0.1, 0.2, 0.4],
+    [0.4, 0.6, 0.6],
+    [0.5, 0.9, 0.1],
+    [0.8, 0.2, 0.8]]
+out_weights &#x3D; [
+    [0.1, 0.6],
+    [0.2, 0.1],
+    [0.7, 0.9]]
+
+# Weights and biases
+weights &#x3D; [
+    tf.Variable(hidden_layer_weights),
+    tf.Variable(out_weights)]
+biases &#x3D; [
+    tf.Variable(tf.zeros(3)),
+    tf.Variable(tf.zeros(2))]
+
+# Input
+features &#x3D; tf.Variable([[0.0, 2.0, 3.0, 4.0], [0.1, 0.2, 0.3, 0.4], [11.0, 12.0, 13.0, 14.0]])
+
+# TODO: Create Model with Dropout
+keep_prob &#x3D; tf.placeholder(tf.float32)
+hidden_layer &#x3D; tf.add(tf.matmul(features, weights[0]), biases[0])
+hidden_layer &#x3D; tf.nn.relu(hidden_layer)
+hidden_layer &#x3D; tf.nn.dropout(hidden_layer, keep_prob)
+
+logits &#x3D; tf.add(tf.matmul(hidden_layer, weights[1]), biases[1])
+
+# TODO: Print logits from a session
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    print(sess.run(logits, feed_dict&#x3D;{keep_prob: 0.5}))
+
+</code></pre>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="17. Outro.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('16. Quiz: TensorFlow Dropout')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

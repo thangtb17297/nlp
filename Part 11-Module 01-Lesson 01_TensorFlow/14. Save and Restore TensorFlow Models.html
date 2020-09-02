@@ -1,0 +1,480 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Save and Restore TensorFlow Models</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>TensorFlow</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Installing TensorFlow.html">02. Installing TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="03. Hello, Tensor World!.html">03. Hello, Tensor World!</a>
+    </li>
+    <li class="">
+      <a href="04. Quiz TensorFlow Linear Function.html">04. Quiz: TensorFlow Linear Function</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz TensorFlow Softmax.html">05. Quiz: TensorFlow Softmax</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz TensorFlow Cross Entropy.html">06. Quiz: TensorFlow Cross Entropy</a>
+    </li>
+    <li class="">
+      <a href="07. Quiz Mini-batch.html">07. Quiz: Mini-batch</a>
+    </li>
+    <li class="">
+      <a href="08. Epochs.html">08. Epochs</a>
+    </li>
+    <li class="">
+      <a href="09. Pre-Lab NotMNIST in TensorFlow.html">09. Pre-Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="10. Lab NotMNIST in TensorFlow.html">10. Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="11. Two-layer Neural Network.html">11. Two-layer Neural Network</a>
+    </li>
+    <li class="">
+      <a href="12. Quiz TensorFlow ReLUs.html">12. Quiz: TensorFlow ReLUs</a>
+    </li>
+    <li class="">
+      <a href="13. Deep Neural Network in TensorFlow.html">13. Deep Neural Network in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="14. Save and Restore TensorFlow Models.html">14. Save and Restore TensorFlow Models</a>
+    </li>
+    <li class="">
+      <a href="15. Finetuning.html">15. Finetuning</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz TensorFlow Dropout.html">16. Quiz: TensorFlow Dropout</a>
+    </li>
+    <li class="">
+      <a href="17. Outro.html">17. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">14. Save and Restore TensorFlow Models</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="save-and-restore-tensorflow-models">Save and Restore TensorFlow Models</h1>
+<p>Training a model can take hours. But once you close your TensorFlow session, you lose all the trained weights and biases.  If you were to reuse the model in the future, you would have to train it all over again!</p>
+<p>Fortunately, TensorFlow gives you the ability to save your progress using a class called <a href="https://www.tensorflow.org/api_docs/python/tf/train/Saver" target="_blank"><code>tf.train.Saver</code></a>.  This class provides the functionality to save any <a href="https://www.tensorflow.org/api_docs/python/tf/Variable" target="_blank"><code>tf.Variable</code></a> to your file system.</p>
+<h2 id="saving-variables">Saving Variables</h2>
+<p>Let's start with a simple example of saving <code>weights</code> and <code>bias</code> Tensors.  For the first example you'll just save two variables.  Later examples will save all the weights in a practical model.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python">import tensorflow as tf
+
+# The file path to save the data
+save_file = './model.ckpt'
+
+# Two Tensor Variables: weights and bias
+weights = tf.Variable(tf.truncated_normal([2, 3]))
+bias = tf.Variable(tf.truncated_normal([3]))
+
+# Class used to save and/or restore Tensor Variables
+saver = tf.train.Saver()
+
+with tf.Session() as sess:
+    # Initialize all the Variables
+    sess.run(tf.global_variables_initializer())
+
+    # Show the values of weights and bias
+    print('Weights:')
+    print(sess.run(weights))
+    print('Bias:')
+    print(sess.run(bias))
+
+    # Save the model
+    saver.save(sess, save_file)</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Weights:</p>
+</blockquote>
+<blockquote>
+  <p>[[-0.97990924  1.03016174  0.74119264]</p>
+</blockquote>
+<blockquote>
+  <p>[-0.82581609 -0.07361362 -0.86653847]]</p>
+</blockquote>
+<blockquote>
+  <p>Bias:</p>
+</blockquote>
+<blockquote>
+  <p>[ 1.62978125 -0.37812829  0.64723819]</p>
+</blockquote>
+<p>The Tensors <code>weights</code> and <code>bias</code> are set to random values using the <a href="https://www.tensorflow.org/api_docs/python/tf/truncated_normal" target="_blank"><code>tf.truncated_normal()</code></a> function.  The values  are then saved to the <code>save_file</code> location, "model.ckpt", using the <a href="https://www.tensorflow.org/api_docs/python/tf/train/Saver#save" target="_blank"><code>tf.train.Saver.save()</code></a> function.  (The ".ckpt" extension stands for "checkpoint".)</p>
+<p>If you're using TensorFlow 0.11.0RC1 or newer, a file called "model.ckpt.meta" will also be created.  This file contains the TensorFlow graph.</p>
+<h2 id="loading-variables">Loading Variables</h2>
+<p>Now that the Tensor Variables are saved, let's load them back into a new model.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python"># Remove the previous weights and bias
+tf.reset_default_graph()
+
+# Two Variables: weights and bias
+weights = tf.Variable(tf.truncated_normal([2, 3]))
+bias = tf.Variable(tf.truncated_normal([3]))
+
+# Class used to save and/or restore Tensor Variables
+saver = tf.train.Saver()
+
+with tf.Session() as sess:
+    # Load the weights and bias
+    saver.restore(sess, save_file)
+
+    # Show the values of weights and bias
+    print('Weight:')
+    print(sess.run(weights))
+    print('Bias:')
+    print(sess.run(bias))</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Weights:</p>
+</blockquote>
+<blockquote>
+  <p>[[-0.97990924  1.03016174  0.74119264]</p>
+</blockquote>
+<blockquote>
+  <p>[-0.82581609 -0.07361362 -0.86653847]]</p>
+</blockquote>
+<blockquote>
+  <p>Bias:</p>
+</blockquote>
+<blockquote>
+  <p>[ 1.62978125 -0.37812829  0.64723819]</p>
+</blockquote>
+<p>You'll notice you still need to create the <code>weights</code> and <code>bias</code> Tensors in Python.  The <a href="https://www.tensorflow.org/api_docs/python/tf/train/Saver#restore" target="_blank"><code>tf.train.Saver.restore()</code></a> function loads the saved data into <code>weights</code> and <code>bias</code>.  </p>
+<p>Since <a href="https://www.tensorflow.org/api_docs/python/tf/train/Saver#restore" target="_blank"><code>tf.train.Saver.restore()</code></a> sets all the TensorFlow Variables, you don't need to call <a href="https://www.tensorflow.org/api_docs/python/tf/global_variables_initializer" target="_blank"><code>tf.global_variables_initializer()</code></a>.</p>
+<h2 id="save-a-trained-model">Save a Trained Model</h2>
+<p>Let's see how to train a model and save its weights.</p>
+<p>First start with a model:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python"># Remove previous Tensors and Operations
+tf.reset_default_graph()
+
+from tensorflow.examples.tutorials.mnist import input_data
+import numpy as np
+
+learning_rate = 0.001
+n_input = 784  # MNIST data input (img shape: 28*28)
+n_classes = 10  # MNIST total classes (0-9 digits)
+
+# Import MNIST data
+mnist = input_data.read_data_sets('.', one_hot=True)
+
+# Features and Labels
+features = tf.placeholder(tf.float32, [None, n_input])
+labels = tf.placeholder(tf.float32, [None, n_classes])
+
+# Weights &amp; bias
+weights = tf.Variable(tf.random_normal([n_input, n_classes]))
+bias = tf.Variable(tf.random_normal([n_classes]))
+
+# Logits - xW + b
+logits = tf.add(tf.matmul(features, weights), bias)
+
+# Define loss and optimizer
+cost = tf.reduce_mean(\
+    tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=labels))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)\
+    .minimize(cost)
+
+# Calculate accuracy
+correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(labels, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Let's train that model, then save the weights:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python">import math
+
+save_file = './train_model.ckpt'
+batch_size = 128
+n_epochs = 100
+
+saver = tf.train.Saver()
+
+# Launch the graph
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+
+    # Training cycle
+    for epoch in range(n_epochs):
+        total_batch = math.ceil(mnist.train.num_examples / batch_size)
+
+        # Loop over all batches
+        for i in range(total_batch):
+            batch_features, batch_labels = mnist.train.next_batch(batch_size)
+            sess.run(
+                optimizer,
+                feed_dict={features: batch_features, labels: batch_labels})
+
+        # Print status for every 10 epochs
+        if epoch % 10 == 0:
+            valid_accuracy = sess.run(
+                accuracy,
+                feed_dict={
+                    features: mnist.validation.images,
+                    labels: mnist.validation.labels})
+            print('Epoch {:&lt;3} - Validation Accuracy: {}'.format(
+                epoch,
+                valid_accuracy))
+
+    # Save the model
+    saver.save(sess, save_file)
+    print('Trained Model Saved.')</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Epoch 0   - Validation Accuracy: 0.06859999895095825</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 10  - Validation Accuracy: 0.20239999890327454</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 20  - Validation Accuracy: 0.36980000138282776</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 30  - Validation Accuracy: 0.48820000886917114</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 40  - Validation Accuracy: 0.5601999759674072</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 50  - Validation Accuracy: 0.6097999811172485</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 60  - Validation Accuracy: 0.6425999999046326</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 70  - Validation Accuracy: 0.6733999848365784</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 80  - Validation Accuracy: 0.6916000247001648</p>
+</blockquote>
+<blockquote>
+  <p>Epoch 90  - Validation Accuracy: 0.7113999724388123</p>
+</blockquote>
+<blockquote>
+  <p>Trained Model Saved.</p>
+</blockquote>
+<h2 id="load-a-trained-model">Load a Trained Model</h2>
+<p>Let's load the weights and bias from memory, then check the test accuracy.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <pre><code class="python language-python">saver = tf.train.Saver()
+
+# Launch the graph
+with tf.Session() as sess:
+    saver.restore(sess, save_file)
+
+    test_accuracy = sess.run(
+        accuracy,
+        feed_dict={features: mnist.test.images, labels: mnist.test.labels})
+
+print('Test Accuracy: {}'.format(test_accuracy))</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <blockquote>
+  <p>Test Accuracy: 0.7229999899864197</p>
+</blockquote>
+<p>That's it!  You now know how to save and load a trained model in TensorFlow.  Let's look at loading weights and biases into modified models in the next section.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="15. Finetuning.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('14. Save and Restore TensorFlow Models')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

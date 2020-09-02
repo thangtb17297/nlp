@@ -1,0 +1,234 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pre-Lab: NotMNIST in TensorFlow</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>TensorFlow</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Installing TensorFlow.html">02. Installing TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="03. Hello, Tensor World!.html">03. Hello, Tensor World!</a>
+    </li>
+    <li class="">
+      <a href="04. Quiz TensorFlow Linear Function.html">04. Quiz: TensorFlow Linear Function</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz TensorFlow Softmax.html">05. Quiz: TensorFlow Softmax</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz TensorFlow Cross Entropy.html">06. Quiz: TensorFlow Cross Entropy</a>
+    </li>
+    <li class="">
+      <a href="07. Quiz Mini-batch.html">07. Quiz: Mini-batch</a>
+    </li>
+    <li class="">
+      <a href="08. Epochs.html">08. Epochs</a>
+    </li>
+    <li class="">
+      <a href="09. Pre-Lab NotMNIST in TensorFlow.html">09. Pre-Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="10. Lab NotMNIST in TensorFlow.html">10. Lab: NotMNIST in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="11. Two-layer Neural Network.html">11. Two-layer Neural Network</a>
+    </li>
+    <li class="">
+      <a href="12. Quiz TensorFlow ReLUs.html">12. Quiz: TensorFlow ReLUs</a>
+    </li>
+    <li class="">
+      <a href="13. Deep Neural Network in TensorFlow.html">13. Deep Neural Network in TensorFlow</a>
+    </li>
+    <li class="">
+      <a href="14. Save and Restore TensorFlow Models.html">14. Save and Restore TensorFlow Models</a>
+    </li>
+    <li class="">
+      <a href="15. Finetuning.html">15. Finetuning</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz TensorFlow Dropout.html">16. Quiz: TensorFlow Dropout</a>
+    </li>
+    <li class="">
+      <a href="17. Outro.html">17. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">09. Pre-Lab: NotMNIST in TensorFlow</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="tensorflow-neural-network-lab">TensorFlow Neural Network Lab</h1>
+<p><a href="http://yaroslavvb.blogspot.com/2011/09/notmnist-dataset.html" target="_blank"><img src="media/nmn.png" alt="notMNIST dataset samples" /></a></p>
+<h1 id="tensorflow-lab">TensorFlow Lab</h1>
+<p>We've prepared a Jupyter notebook that will guide you through the process of creating a single layer neural network in TensorFlow. You'll implement data normalization, then build and train the network with TensorFlow.</p>
+<h2 id="getting-the-notebook">Getting the notebook</h2>
+<p>The notebook and all related files are available from <a href="https://github.com/udacity/deep-learning" target="_blank">our GitHub repository</a>. Either clone the repository or download it as a Zip file.</p>
+<p>Use Git to clone the repository.</p>
+<pre><code class="bash language-bash">git clone https://github.com/udacity/deep-learning.git</code></pre>
+<p>If you're unfamiliar with Git and GitHub, I highly recommend checking out <a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775" target="_blank">our course</a>. If you'd rather not use Git, you can download the repository as a Zip archive. You can find <a href="https://github.com/udacity/deep-learning" target="_blank">the repo here</a>.</p>
+<h2 id="view-the-notebook">View The Notebook</h2>
+<p>In the directory with the notebook file, start your Jupyter notebook server</p>
+<pre><code class="bash language-bash">jupyter notebook</code></pre>
+<p>This should open a browser window for you. If it doesn't, go to <a href="http://localhost:8888/tree" target="_blank">http://localhost:8888/tree</a>. Although, the port number might be different if you have other notebook servers running, so try 8889 instead of 8888 if you can't find the right server.</p>
+<p>You should see the notebook <code>intro_to_tensorflow.ipynb</code>, this is the notebook you'll be working on.  The notebook has 3 problems for you to solve:</p>
+<ul>
+<li>Problem 1: Normalize the features</li>
+<li>Problem 2: Use TensorFlow operations to create features, labels, weight, and biases tensors</li>
+<li>Problem 3: Tune the learning rate, number of steps, and batch size for the best accuracy</li>
+</ul>
+<p>This is a self-assessed lab.  Compare your answers to the solutions <a href="https://github.com/udacity/deep-learning/blob/master/intro-to-tensorflow/intro_to_tensorflow_solution.ipynb" target="_blank">here</a>.  If you have any difficulty completing the lab, Udacity provides a few services to answer any questions you might have.</p>
+<h2 id="help">Help</h2>
+<p>Remember that you can get assistance from your mentor, the Forums (click the link on the left side of the classroom), or the Slack channel. You can also review the concepts from the previous lessons.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="10. Lab NotMNIST in TensorFlow.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Pre-Lab: NotMNIST in TensorFlow')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
