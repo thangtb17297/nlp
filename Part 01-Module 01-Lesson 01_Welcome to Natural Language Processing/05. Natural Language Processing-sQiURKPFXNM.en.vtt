@@ -1,0 +1,160 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.825
+Natural Language Processing, even with its current challenges,
+
+00:00:03.825 --> 00:00:05.490
+holds a lot of promise.
+
+00:00:05.490 --> 00:00:09.351
+To help us better understand how NLP is being used today,
+
+00:00:09.351 --> 00:00:13.285
+we have with us Armen Pischdotchian from IBM.
+
+00:00:13.285 --> 00:00:15.314
+Hello. My name is Armen.
+
+00:00:15.314 --> 00:00:19.230
+In my current role as an Academic Tech Mentor I lecture and conduct
+
+00:00:19.230 --> 00:00:23.234
+workshops using Watson Cognitive Services for universities,
+
+00:00:23.234 --> 00:00:27.129
+highschools, STEM programs, and the girls who code.
+
+00:00:27.129 --> 00:00:32.689
+We also run hackathons using IBM Watson Cognitive Services that reside on Bluemix,
+
+00:00:32.689 --> 00:00:34.914
+our platform as a service.
+
+00:00:34.914 --> 00:00:40.588
+Another aspect of the work that we do is often wearing a Solution Architect cap because
+
+00:00:40.588 --> 00:00:43.798
+most universities are also working with clients who
+
+00:00:43.798 --> 00:00:47.689
+use the academic environment as their development arena.
+
+00:00:47.689 --> 00:00:51.719
+I especially look forward to such extended engagements where I strive
+
+00:00:51.719 --> 00:00:56.835
+to build a proof of concept for such clients. And you're right, Arpun.
+
+00:00:56.835 --> 00:01:02.490
+We are seeing an increasing number of projects that use NLP in one way or another.
+
+00:01:02.490 --> 00:01:05.819
+And it is being used today, not in isolation,
+
+00:01:05.819 --> 00:01:11.189
+but embedded as part of intelligent end to end solutions that use a number of
+
+00:01:11.188 --> 00:01:14.143
+different technologies often augmented with
+
+00:01:14.144 --> 00:01:17.605
+understanding vision and not just a bag of words.
+
+00:01:17.605 --> 00:01:23.800
+I see. So, what would you say is the primary role of NLP in such a system?
+
+00:01:23.799 --> 00:01:29.128
+NLP is characterized as a hard problem in computer science.
+
+00:01:29.129 --> 00:01:33.015
+Human language is rarely precise or plainly spoken.
+
+00:01:33.015 --> 00:01:37.064
+To understand human language is to understand not only the words
+
+00:01:37.063 --> 00:01:41.468
+but the concepts and how they are linked together to create meaning.
+
+00:01:41.468 --> 00:01:45.411
+Despite language being one of the easiest things for humans to learn,
+
+00:01:45.412 --> 00:01:47.819
+the ambiguity of language is what makes
+
+00:01:47.819 --> 00:01:53.069
+Natural Language Processing a difficult problem for computers to master.
+
+00:01:53.069 --> 00:01:55.191
+For example, consider this phrase,
+
+00:01:55.191 --> 00:01:58.650
+this fountain is not drinking water.
+
+00:01:58.650 --> 00:02:01.569
+A cognitive system that can tokenize, parse,
+
+00:02:01.569 --> 00:02:03.859
+and annotate the phrase will infer that
+
+00:02:03.858 --> 00:02:08.210
+the fountain is currently not engaged in the act of drinking water.
+
+00:02:08.210 --> 00:02:13.555
+But we know that it means we should not drink the water from this fountain.
+
+00:02:13.555 --> 00:02:17.259
+Today's systems go beyond analyzing utterances.
+
+00:02:17.258 --> 00:02:19.848
+They understand the relationship of the words,
+
+00:02:19.848 --> 00:02:23.718
+the context surrounding the utterances.
+
+00:02:23.718 --> 00:02:28.859
+For example, why do I need to scan through dozens of airbnb reviews to find
+
+00:02:28.860 --> 00:02:34.755
+a suitable accommodation when I can better describe what I want in my own words?
+
+00:02:34.754 --> 00:02:37.519
+I am looking for an apartment with views of the river,
+
+00:02:37.520 --> 00:02:39.750
+facing the Manhattan skyline,
+
+00:02:39.750 --> 00:02:43.128
+but I don't want a noisy and smelly location.
+
+00:02:43.128 --> 00:02:45.948
+I expect the cognitive system to uncover
+
+00:02:45.949 --> 00:02:50.895
+customer reviews that depict exactly the criteria that I am seeking.
+
+00:02:50.895 --> 00:02:53.604
+And that's where NLP comes in.
+
+00:02:53.604 --> 00:02:57.169
+It can help understand the user's intentions and what
+
+00:02:57.169 --> 00:03:00.919
+they like or dislike and process large volumes of
+
+00:03:00.919 --> 00:03:03.530
+text to better infer the context of
+
+00:03:03.530 --> 00:03:09.033
+our conversations and just exactly what we mean by what we say.
+
+00:03:09.033 --> 00:03:11.174
+Here's an example for you, Arpun.
+
+00:03:11.175 --> 00:03:16.474
+A wise man is absolutely not the same as a wise guy.
+
+00:03:16.473 --> 00:03:21.000
+Consider this, a slim chance is the same as a fat chance.
+
