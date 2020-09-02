@@ -1,0 +1,235 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.239 --> 00:00:05.709
+Agora veremos o terceiro método
+de pontuação comumente usado.
+
+00:00:05.742 --> 00:00:07.647
+Ele se chama "concat",
+
+00:00:07.680 --> 00:00:12.072
+e nele usamos uma rede neural
+feedforward.
+
+00:00:12.105 --> 00:00:13.656
+Para dar um exemplo simples,
+
+00:00:13.689 --> 00:00:17.952
+digamos que estamos pontuando
+este estado oculto do codificador,
+
+00:00:17.985 --> 00:00:20.352
+no 4º instante de tempo
+no decodificador.
+
+00:00:20.385 --> 00:00:24.591
+Este é um exemplo simplificado,
+pontuando apenas 1.
+
+00:00:24.624 --> 00:00:26.896
+Na verdade,
+faríamos uma matriz
+
+00:00:26.929 --> 00:00:29.335
+e toda pontuação
+em uma única etapa.
+
+00:00:29.368 --> 00:00:31.856
+O método de pontuação concat,
+
+00:00:31.889 --> 00:00:34.904
+é feito pela concatenação
+dos vetores,
+
+00:00:34.937 --> 00:00:39.063
+fazendo disso o input
+para uma rede neural feedforward.
+
+00:00:39.096 --> 00:00:40.567
+Vejamos como isso funciona.
+
+00:00:40.600 --> 00:00:44.615
+Nós os fundimos,
+concatenamos em um vetor,
+
+00:00:44.648 --> 00:00:47.879
+e depois passamos
+por uma rede neural.
+
+00:00:47.912 --> 00:00:50.343
+Essa rede
+tem uma única camada oculta
+
+00:00:50.376 --> 00:00:53.719
+e gera essa pontuação.
+
+00:00:53.752 --> 00:00:57.615
+Os parâmetros desta rede
+são aprendidos no treinamento,
+
+00:00:57.648 --> 00:01:00.848
+a matriz de pesos Wa
+
+00:01:00.881 --> 00:01:03.400
+e a matriz de pesos Va.
+
+00:01:03.433 --> 00:01:08.024
+Veja como o cálculo é feito:
+este é o vetor concatenado,
+
+00:01:08.057 --> 00:01:11.687
+no qual multiplicamos por Wa,
+
+00:01:11.720 --> 00:01:14.287
+aplicamos a ativação
+da tangente hiperbólica
+
+00:01:14.320 --> 00:01:17.960
+produzindo esta matriz de 2x1,
+
+00:01:17.993 --> 00:01:22.455
+multiplicamos isso
+pela matriz de pesos Va
+
+00:01:22.488 --> 00:01:26.736
+e obtemos a pontuação para esse
+estado oculto do codificador.
+
+00:01:26.769 --> 00:01:29.328
+Formalmente, é expresso assim,
+
+00:01:29.361 --> 00:01:34.263
+onde ht é o estado oculto
+no instante de tempo atual,
+
+00:01:34.296 --> 00:01:40.216
+e hs é a coleção do conjunto
+dos estados ocultos do codificador.
+
+00:01:40.249 --> 00:01:43.904
+Esta é a concatenação.
+A multiplicamos por Wa,
+
+00:01:43.937 --> 00:01:45.774
+pela ativação
+da tangente hiperbólica
+
+00:01:45.807 --> 00:01:48.731
+e pela va transposta.
+
+00:01:49.359 --> 00:01:51.824
+Perceba a diferença.
+
+00:01:51.857 --> 00:01:53.886
+Concat é muito parecido
+
+00:01:53.919 --> 00:01:56.647
+com o método de pontuação
+do artigo de Bahdanau,
+
+00:01:57.488 --> 00:02:01.215
+mas este é o método concat
+do artigo de Luong,
+
+00:02:01.248 --> 00:02:04.064
+no qual há apenas
+uma matriz de pesos.
+
+00:02:04.097 --> 00:02:08.223
+No artigo de Bahdanau,
+existem duas grandes diferenças.
+
+00:02:08.256 --> 00:02:11.286
+Uma delas é que a matriz de pesos
+é dividida em duas -
+
+00:02:11.319 --> 00:02:14.375
+então não temos apenas Wa,
+mas Wa e Ua -,
+
+00:02:14.408 --> 00:02:18.301
+e cada uma é aplicada
+ao respectivo vetor.
+
+00:02:18.334 --> 00:02:20.658
+O estado oculto
+do decodificador, neste caso,
+
+00:02:20.691 --> 00:02:23.008
+e o estado oculto
+do codificador, neste caso.
+
+00:02:23.785 --> 00:02:26.775
+Outra coisa a ser notada
+é que o artigo de Bahdanau
+
+00:02:26.808 --> 00:02:31.840
+usa o estado oculto do instante
+de tempo anterior no decodificador,
+
+00:02:31.873 --> 00:02:33.710
+enquanto o artigo de Luong
+
+00:02:33.743 --> 00:02:37.257
+usa o instante de tempo atual
+no decodificador.
+
+00:02:38.416 --> 00:02:42.543
+Vou dizer algo sobre
+essa notação,
+
+00:02:42.576 --> 00:02:44.977
+caso você esteja
+planejando ler os artigos.
+
+00:02:45.871 --> 00:02:49.448
+Aqui usamos mais a notação
+do artigo de Luong,
+
+00:02:49.481 --> 00:02:53.137
+que se refere aos estados ocultos
+do codificador e do decodificador
+
+00:02:53.170 --> 00:02:56.120
+como "h" -
+ht para o decodificador,
+
+00:02:56.153 --> 00:02:58.910
+e hs para o codificador.
+
+00:02:58.943 --> 00:03:02.943
+Então "h" é para o estado oculto,
+"t" é para o alvo,
+
+00:03:02.976 --> 00:03:05.036
+então essa é a sequência-alvo,
+
+00:03:05.069 --> 00:03:07.358
+portanto está associada
+com o decodificador.
+
+00:03:07.391 --> 00:03:09.257
+E "s" é para a fonte.
+
+00:03:09.290 --> 00:03:11.330
+No artigo do Bahdanau,
+
+00:03:11.363 --> 00:03:13.273
+isso é chamado de "s".
+
+00:03:13.306 --> 00:03:16.162
+Então não é "h", mas "s".
+
+00:03:16.195 --> 00:03:18.322
+Agora a imagem está completa.
+
+00:03:18.355 --> 00:03:21.858
+Analisamos
+todo o processo de atenção.
+
+00:03:21.891 --> 00:03:25.523
+Veremos algumas aplicações
+no próximo vídeo.
+

@@ -1,0 +1,214 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.049 --> 00:00:09.464
+Hello, I'm Jay, and in this lesson,
+
+00:00:09.464 --> 00:00:10.769
+we'll be talking about one of
+
+00:00:10.769 --> 00:00:15.394
+the most important innovations in deep learning in the last few years, Attention.
+
+00:00:15.394 --> 00:00:17.370
+Attention started out in the field of
+
+00:00:17.370 --> 00:00:20.880
+computer vision as an attempt to mimic human perception.
+
+00:00:20.879 --> 00:00:24.949
+This is a quote from a paper on Visual Attention from 2014.
+
+00:00:24.949 --> 00:00:28.699
+It says that, "One important property of human perception is that one does
+
+00:00:28.699 --> 00:00:32.589
+not tend to process a scene in its entirety all at once.
+
+00:00:32.590 --> 00:00:36.590
+Instead humans focus attention selectively on parts of
+
+00:00:36.590 --> 00:00:40.580
+the visual space to acquire information when and where it's needed,
+
+00:00:40.579 --> 00:00:43.820
+and then combine information from different fixations over
+
+00:00:43.820 --> 00:00:47.780
+time to build up an internal representation of the entire scene,
+
+00:00:47.780 --> 00:00:50.789
+guiding future eye movement and decision-making."
+
+00:00:50.789 --> 00:00:55.089
+What that means is that when we look at a scene in our daily lives,
+
+00:00:55.090 --> 00:00:59.345
+our brains do not just process a visual snapshot all at once.
+
+00:00:59.344 --> 00:01:03.500
+Instead we selectively focus on different parts of the image,
+
+00:01:03.500 --> 00:01:07.299
+and we sequentially collect and process that visual information over time.
+
+00:01:07.299 --> 00:01:09.799
+Say, for example, you're shopping in a shopping mall.
+
+00:01:09.799 --> 00:01:14.189
+Now, the footage that we're going to see here is from an eye-tracking device.
+
+00:01:14.189 --> 00:01:15.659
+If you haven't seen those before,
+
+00:01:15.659 --> 00:01:18.259
+it's a device that records both what's in front of
+
+00:01:18.260 --> 00:01:21.150
+you and it also records your eye movement.
+
+00:01:21.150 --> 00:01:24.410
+Then, we can overlay these two recordings so we can have
+
+00:01:24.409 --> 00:01:27.974
+an idea of where you were looking at each time in the video.
+
+00:01:27.974 --> 00:01:33.179
+So, what we're seeing here is footage from a person wearing the eye-tracking device,
+
+00:01:33.180 --> 00:01:37.790
+where the orange circle is highlighting where the person is looking at each moment.
+
+00:01:37.790 --> 00:01:41.820
+So, we can see attention in general visual perception,
+
+00:01:41.819 --> 00:01:46.934
+but you can also see it in reading and trying to process text one word at a time.
+
+00:01:46.935 --> 00:01:48.969
+This type of device is used,
+
+00:01:48.969 --> 00:01:51.340
+for example, in user experience testing.
+
+00:01:51.340 --> 00:01:55.730
+If you wanted to build a user interface for an app or website and you
+
+00:01:55.730 --> 00:01:57.950
+wanted to track if the most important things are
+
+00:01:57.950 --> 00:02:00.579
+actually grabbing the attention of the users,
+
+00:02:00.579 --> 00:02:06.439
+and since that's how humans tend to understand a visual picture sequentially over time,
+
+00:02:06.439 --> 00:02:09.409
+the idea from computer vision researchers was to try to
+
+00:02:09.409 --> 00:02:13.104
+adopt a method that does that for computer vision models.
+
+00:02:13.104 --> 00:02:16.114
+In machine learning, attention methods give us
+
+00:02:16.115 --> 00:02:20.080
+a mechanism for adding selective focus into a machine learning model.
+
+00:02:20.080 --> 00:02:23.830
+Typically, one that does its processing sequentially.
+
+00:02:23.830 --> 00:02:26.330
+Attention is a concept that powers up some of
+
+00:02:26.330 --> 00:02:31.820
+the best performing models spanning both natural language processing and computer vision.
+
+00:02:31.819 --> 00:02:35.424
+These models include: neural machine translation,
+
+00:02:35.425 --> 00:02:38.189
+image captioning, speech recognition,
+
+00:02:38.189 --> 00:02:41.319
+and text summarization, as well as others.
+
+00:02:41.319 --> 00:02:45.104
+Take image classification in captioning as an example.
+
+00:02:45.104 --> 00:02:47.049
+Before the use of attention,
+
+00:02:47.050 --> 00:02:49.955
+convolutional neural networks were able to classify
+
+00:02:49.955 --> 00:02:54.300
+images by looking at the whole image and outputting a class label.
+
+00:02:54.300 --> 00:02:58.515
+But not all of this image is necessary to produce that classification;
+
+00:02:58.514 --> 00:03:02.389
+only some of these pixels are needed to identify a bird,
+
+00:03:02.389 --> 00:03:07.319
+and attention came out of the desire to attend to these most important pixels.
+
+00:03:07.319 --> 00:03:09.409
+Now, not only that,
+
+00:03:09.409 --> 00:03:13.039
+but attention also improved our ability to describe images with
+
+00:03:13.039 --> 00:03:15.259
+full sentences by focusing on
+
+00:03:15.259 --> 00:03:19.194
+different parts of the image as we generate our output sentence.
+
+00:03:19.194 --> 00:03:22.669
+Attention achieved its rise to fame, however,
+
+00:03:22.669 --> 00:03:26.894
+from how useful it became in tasks like neural machine translation.
+
+00:03:26.895 --> 00:03:31.520
+As sequence to sequence models started to exhibit impressive results,
+
+00:03:31.520 --> 00:03:33.950
+they were held back by certain limitations that made it
+
+00:03:33.949 --> 00:03:37.439
+difficult for them to process long sentences, for example.
+
+00:03:37.439 --> 00:03:40.699
+Classic sequence to sequence models, without attention,
+
+00:03:40.699 --> 00:03:44.719
+have to look at the original sentence that you want to translate one time
+
+00:03:44.719 --> 00:03:50.009
+and then use that entire input to produce every single small outputted work.
+
+00:03:50.009 --> 00:03:53.419
+Attention, however, allows the model to look at
+
+00:03:53.419 --> 00:03:58.834
+this small relevant parts of the input as you generate the output over time.
+
+00:03:58.835 --> 00:04:03.110
+When attention was incorporated in sequence to sequence models,
+
+00:04:03.110 --> 00:04:06.540
+they became the state of the art in neural machine translation.
+
+00:04:06.539 --> 00:04:10.534
+This is what like Google to adopt neural machine translation with
+
+00:04:10.534 --> 00:04:15.685
+attention as the translation engine for Google translate in the end of 2016.
+
+00:04:15.685 --> 00:04:20.670
+In this lesson, we'll look at how attention works and how and where it can be applied.
+

@@ -1,0 +1,151 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.247 --> 00:00:03.460
+Agora que mostrei uma visão geral
+de como a atenção funciona
+
+00:00:03.493 --> 00:00:05.456
+num modelo
+Sequence to Sequence,
+
+00:00:05.489 --> 00:00:07.977
+vamos analisá-la
+com mais profundidade.
+
+00:00:08.010 --> 00:00:10.627
+Usaremos a tradução automática
+como exemplo,
+
+00:00:10.660 --> 00:00:14.471
+já que é a aplicação mais abordada
+pelos artigos sobre atenção.
+
+00:00:14.504 --> 00:00:18.371
+Mas tudo o que fizermos aqui
+serve para outras aplicações.
+
+00:00:18.404 --> 00:00:22.056
+É importante saber que existem
+outros poucos algoritmos de atenção.
+
+00:00:22.089 --> 00:00:24.295
+Veremos um algoritmo simples.
+
+00:00:24.328 --> 00:00:26.220
+Vamos começar
+pelo codificador.
+
+00:00:26.253 --> 00:00:29.998
+Neste exemplo, o codificador é
+uma rede neural recorrente.
+
+00:00:30.031 --> 00:00:31.774
+Quando criamos uma RNN,
+
+00:00:31.807 --> 00:00:35.323
+temos que declarar o número
+de unidades ocultas na célula RNN.
+
+00:00:35.356 --> 00:00:37.913
+Isso se aplica
+quando temos uma RNN vanilla,
+
+00:00:37.946 --> 00:00:40.905
+uma célula LSTM
+ou uma célula GRU.
+
+00:00:40.938 --> 00:00:43.500
+Antes de passarmos
+as palavras da sequência de input
+
+00:00:43.533 --> 00:00:44.634
+para o codificador,
+
+00:00:44.667 --> 00:00:47.074
+elas têm que passar
+por um processo de embedding,
+
+00:00:47.107 --> 00:00:50.221
+que transforma cada palavra
+num vetor.
+
+00:00:50.254 --> 00:00:54.045
+Aqui podemos ver o vetor
+que representa cada palavra.
+
+00:00:54.078 --> 00:00:57.235
+Este é um embedding de amostra
+de tamanho 4,
+
+00:00:57.268 --> 00:00:59.763
+para facilitar a visualização.
+
+00:00:59.796 --> 00:01:01.481
+Em situações do mundo real,
+
+00:01:01.514 --> 00:01:04.939
+200 ou 300 é um tamanho
+mais apropriado.
+
+00:01:04.972 --> 00:01:07.591
+Continuaremos usando
+estas caixas coloridas
+
+00:01:07.624 --> 00:01:09.494
+para representar os vetores,
+
+00:01:09.527 --> 00:01:13.137
+para não ficar um monte de números
+espalhados pela tela.
+
+00:01:13.523 --> 00:01:17.819
+Agora que já temos as palavras
+e seus embeddings,
+
+00:01:17.852 --> 00:01:20.862
+estamos prontos para passá-los
+para o codificador.
+
+00:01:20.895 --> 00:01:25.406
+Alimentar a 1ª palavra
+para o 1º instante de tempo da RNN
+
+00:01:25.439 --> 00:01:27.665
+produz o 1º estado oculto.
+
+00:01:27.698 --> 00:01:31.213
+Esta é a chamada
+"exibição desenrolada" da RNN,
+
+00:01:31.246 --> 00:01:34.204
+em que podemos ver a RNN
+em cada instante de tempo.
+
+00:01:34.237 --> 00:01:35.685
+Permaneceremos neste estado,
+
+00:01:35.718 --> 00:01:39.008
+e a RNN continuará processando
+o próximo instante de tempo.
+
+00:01:39.041 --> 00:01:41.046
+Ela pegará a 2ª palavra
+
+00:01:41.079 --> 00:01:44.009
+e passá-la à RNN
+no 2º instante de tempo.
+
+00:01:44.042 --> 00:01:47.223
+E fará a mesma coisa
+com a 3ª palavra.
+
+00:01:47.256 --> 00:01:50.763
+Agora que processamos
+toda a sequência de input,
+
+00:01:50.796 --> 00:01:54.331
+podemos passar o estado oculto
+para o decodificador de atenção.
+

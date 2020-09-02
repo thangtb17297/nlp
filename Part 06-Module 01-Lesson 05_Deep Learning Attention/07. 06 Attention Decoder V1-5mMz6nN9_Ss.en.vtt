@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.109
+Let's now look at things on the decoder side.
+
+00:00:03.109 --> 00:00:04.984
+In models without attention,
+
+00:00:04.985 --> 00:00:09.269
+we'd only feed the last context vector to the decoder RNN,
+
+00:00:09.269 --> 00:00:11.855
+in addition to the embedding of the end token,
+
+00:00:11.855 --> 00:00:17.079
+and it will begin to generate an element of the output sequence at each time-step.
+
+00:00:17.079 --> 00:00:21.364
+The case is different in an attention decoder, however.
+
+00:00:21.364 --> 00:00:26.364
+An attention decoder has the ability to look at the inputted words,
+
+00:00:26.364 --> 00:00:28.684
+and the decoders own hidden state,
+
+00:00:28.684 --> 00:00:30.734
+and then it would do the following.
+
+00:00:30.734 --> 00:00:37.189
+It would use a scoring function to score each hidden state in the context matrix.
+
+00:00:37.189 --> 00:00:39.780
+We'll talk later about the scoring function,
+
+00:00:39.780 --> 00:00:43.355
+but after scoring each context vector would end up with
+
+00:00:43.354 --> 00:00:47.640
+a certain score and if we feed these scores into a softmax function,
+
+00:00:47.640 --> 00:00:50.179
+we end up with scores that are all positive,
+
+00:00:50.179 --> 00:00:52.015
+that are all between zero and one,
+
+00:00:52.015 --> 00:00:53.670
+and that all sum up to one.
+
+00:00:53.670 --> 00:00:57.980
+These values are how much each vector will be expressed in
+
+00:00:57.979 --> 00:01:02.434
+the attention vector that the decoder will look at before producing an output.
+
+00:01:02.435 --> 00:01:07.730
+Simply multiplying each vector by its softmax score and then,
+
+00:01:07.730 --> 00:01:13.400
+summing up these vectors produces an attention contexts vector,
+
+00:01:13.400 --> 00:01:16.495
+this is a basic weighted sum operation.
+
+00:01:16.495 --> 00:01:20.765
+The context vector is an important milestone in this process,
+
+00:01:20.765 --> 00:01:22.299
+but it's not the end goal.
+
+00:01:22.299 --> 00:01:26.149
+In a later video, we'll explain how the context vector merges with
+
+00:01:26.150 --> 00:01:31.609
+the decoders hidden state to create the real output of the decoder at the time-step.
+
+00:01:31.609 --> 00:01:38.914
+The decoder has now looked at the input word and at the attention context vector,
+
+00:01:38.915 --> 00:01:43.570
+which focused its attention on the appropriate place in the input sequence.
+
+00:01:43.569 --> 00:01:49.839
+So, it produces a hidden state and it produces the first word in the output sequence.
+
+00:01:49.840 --> 00:01:52.780
+Now, this is still an over-simplified look,
+
+00:01:52.780 --> 00:01:54.935
+that's why we have the asterisks here.
+
+00:01:54.935 --> 00:01:57.109
+There is still a step,
+
+00:01:57.108 --> 00:01:58.834
+whether we'll talk about in later video,
+
+00:01:58.834 --> 00:02:02.114
+between the RNN and the final output.
+
+00:02:02.114 --> 00:02:04.414
+In the next time-step,
+
+00:02:04.415 --> 00:02:08.724
+the RNN takes its previous output as an input,
+
+00:02:08.724 --> 00:02:12.919
+and it generates its own context vector for that time-step,
+
+00:02:12.919 --> 00:02:15.664
+as well as the hidden state from the previous time-step,
+
+00:02:15.664 --> 00:02:19.789
+and that produces new hidden state for the decoder,
+
+00:02:19.789 --> 00:02:23.025
+and a new word in the output sequence,
+
+00:02:23.025 --> 00:02:27.330
+and this goes on until we've completed our output sequence.
+

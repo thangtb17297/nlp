@@ -1,0 +1,334 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:06.845 --> 00:00:09.319
+Olá! Sou Jay e, nesta aula,
+
+00:00:09.352 --> 00:00:12.068
+falaremos sobre uma das inovações
+mais importantes
+
+00:00:12.101 --> 00:00:15.022
+do aprendizado profundo
+dos últimos anos: atenção.
+
+00:00:15.599 --> 00:00:18.241
+A atenção surgiu
+na área de visão computacional
+
+00:00:18.274 --> 00:00:20.958
+como uma tentativa de reproduzir
+a percepção humana.
+
+00:00:20.991 --> 00:00:25.073
+Esta é uma citação de um artigo
+sobre atenção visual de 2014.
+
+00:00:25.106 --> 00:00:27.968
+Ela diz que uma propriedade
+importante da percepção humana
+
+00:00:28.001 --> 00:00:31.258
+é que as pessoas não têm a tendência
+de processar uma cena inteira
+
+00:00:31.291 --> 00:00:32.671
+de uma só vez.
+
+00:00:32.704 --> 00:00:35.791
+Em vez disso, o ser humano
+concentra sua atenção seletivamente
+
+00:00:35.824 --> 00:00:37.470
+em partes do espaço visual
+
+00:00:37.503 --> 00:00:40.388
+para adquirir informações
+quando e onde for necessário,
+
+00:00:40.421 --> 00:00:44.322
+depois junta informações
+de diferentes fixações com o tempo
+
+00:00:44.355 --> 00:00:47.551
+para construir uma representação
+interna da cena inteira,
+
+00:00:47.584 --> 00:00:50.602
+guiando movimentos oculares futuros
+e tomadas de decisão.
+
+00:00:51.113 --> 00:00:54.958
+Isso significa que,
+ao vermos uma cena no dia a dia,
+
+00:00:54.991 --> 00:00:57.996
+o cérebro não processa
+uma imagem instantânea
+
+00:00:58.029 --> 00:00:59.340
+de uma só vez.
+
+00:00:59.373 --> 00:01:03.218
+Nós nos concentramos seletivamente
+em diferentes partes da imagem
+
+00:01:03.251 --> 00:01:05.265
+e sequencialmente
+juntamos e processamos
+
+00:01:05.298 --> 00:01:07.313
+essa informação visual
+com o tempo.
+
+00:01:07.346 --> 00:01:10.142
+Digamos que você está
+fazendo compras num shopping.
+
+00:01:10.175 --> 00:01:12.048
+A cena que veremos agora
+
+00:01:12.081 --> 00:01:14.227
+é de um dispositivo
+de rastreamento ocular.
+
+00:01:14.260 --> 00:01:15.589
+Se você não o conhece,
+
+00:01:15.622 --> 00:01:18.681
+é um dispositivo que filma
+não só o que está à sua frente
+
+00:01:18.714 --> 00:01:21.193
+como também
+o movimento dos seus olhos.
+
+00:01:21.226 --> 00:01:23.572
+Depois podemos sobrepor
+as duas filmagens
+
+00:01:23.605 --> 00:01:26.074
+para saber
+para onde você estava olhando
+
+00:01:26.107 --> 00:01:27.709
+em cada momento do vídeo.
+
+00:01:28.301 --> 00:01:31.070
+O que vemos aqui é
+uma filmagem de uma pessoa
+
+00:01:31.103 --> 00:01:33.291
+usando o dispositivo
+de rastreamento ocular,
+
+00:01:33.324 --> 00:01:35.409
+e o círculo laranja destaca
+
+00:01:35.442 --> 00:01:38.096
+o lugar para onde a pessoa
+olhava em cada momento.
+
+00:01:38.129 --> 00:01:41.960
+Então podemos ver a atenção
+na percepção visual geral,
+
+00:01:41.993 --> 00:01:45.033
+mas também na leitura
+e na tentativa de processar texto,
+
+00:01:45.066 --> 00:01:47.097
+uma palavra de cada vez.
+
+00:01:47.130 --> 00:01:49.472
+Esse tipo de dispositivo é usado,
+por exemplo,
+
+00:01:49.505 --> 00:01:51.448
+em testes de usabilidade,
+
+00:01:51.481 --> 00:01:55.276
+para criar a interface do usuário
+de um aplicativo ou site
+
+00:01:55.309 --> 00:01:57.751
+e rastrear se os elementos
+mais importantes
+
+00:01:57.784 --> 00:02:00.707
+conseguem prender
+a atenção dos usuários.
+
+00:02:00.740 --> 00:02:04.442
+E, já que o ser humano costuma
+entender uma representação visual
+
+00:02:04.475 --> 00:02:06.239
+sequencialmente com o tempo,
+
+00:02:06.272 --> 00:02:08.476
+a ideia dos estudiosos
+de visão computacional
+
+00:02:08.509 --> 00:02:11.055
+foi tentar adotar
+um método que faça isso
+
+00:02:11.088 --> 00:02:13.253
+nos modelos
+de visão computacional.
+
+00:02:13.286 --> 00:02:16.104
+No aprendizado de máquina,
+os métodos de atenção oferecem
+
+00:02:16.137 --> 00:02:18.247
+um mecanismo
+para adicionar foco seletivo
+
+00:02:18.280 --> 00:02:20.159
+num modelo
+de aprendizado de máquina.
+
+00:02:20.192 --> 00:02:23.676
+Em geral, um modelo que faça
+esse processamento sequencialmente.
+
+00:02:24.085 --> 00:02:27.774
+A atenção é um conceito que supre
+um dos modelos de melhor desempenho,
+
+00:02:27.807 --> 00:02:30.120
+abrangendo o processamento
+de linguagem natural
+
+00:02:30.153 --> 00:02:32.055
+e a visão computacional.
+
+00:02:32.088 --> 00:02:35.370
+Entre esses modelos estão
+a tradução automática neural,
+
+00:02:35.403 --> 00:02:38.013
+a legendagem de imagens,
+o reconhecimento de fala
+
+00:02:38.046 --> 00:02:40.906
+e a sumarização automática,
+entre outros.
+
+00:02:41.697 --> 00:02:45.358
+Pense na classificação e legendagem
+de imagens como exemplo.
+
+00:02:45.391 --> 00:02:46.963
+Antes do uso da atenção,
+
+00:02:46.996 --> 00:02:50.524
+as redes neurais convolucionais
+eram capazes de classificar imagens
+
+00:02:50.557 --> 00:02:54.632
+analisando a imagem inteira
+e retornando um rótulo de classe.
+
+00:02:54.665 --> 00:02:58.613
+Mas não precisamos da imagem inteira
+para produzir essa classificação.
+
+00:02:58.646 --> 00:03:02.685
+Apenas alguns pixels são necessários
+para identificar um pássaro.
+
+00:03:02.718 --> 00:03:07.395
+A atenção surgiu do desejo de captar
+esses pixels mais importantes.
+
+00:03:07.428 --> 00:03:11.538
+Além disso, a atenção melhorou
+a nossa capacidade
+
+00:03:11.571 --> 00:03:14.097
+de descrever imagens
+com frases completas,
+
+00:03:14.130 --> 00:03:16.448
+ao se concentrar
+em diferentes partes da imagem
+
+00:03:16.481 --> 00:03:18.505
+enquanto gera
+a frase de output.
+
+00:03:19.612 --> 00:03:22.636
+Mas a atenção conquistou
+notoriedade
+
+00:03:22.669 --> 00:03:27.135
+por sua grande utilidade em tarefas
+como tradução automática neural.
+
+00:03:27.168 --> 00:03:31.325
+Os modelos Sequence to Sequence
+começaram a mostrar bons resultados,
+
+00:03:31.358 --> 00:03:33.363
+mas estagnaram
+por certas limitações
+
+00:03:33.396 --> 00:03:37.638
+que os impediam de processar direito
+frases longas, por exemplo.
+
+00:03:37.671 --> 00:03:40.518
+Os modelos Sequence to Sequence
+clássicos, sem a atenção,
+
+00:03:40.551 --> 00:03:44.692
+têm que processar a frase original
+que queremos traduzir uma vez
+
+00:03:44.725 --> 00:03:49.470
+e usar esse input inteiro para gerar
+cada pequena palavra de output.
+
+00:03:50.602 --> 00:03:53.108
+No entanto, a atenção permite
+que o modelo processe
+
+00:03:53.141 --> 00:03:55.747
+as pequenas partes relevantes
+do input
+
+00:03:55.780 --> 00:03:58.689
+conforme geramos o output
+com o tempo.
+
+00:03:59.343 --> 00:04:02.859
+Quando a atenção foi incorporada
+aos modelos Sequence to Sequence,
+
+00:04:02.892 --> 00:04:06.612
+eles se tornaram a última palavra
+em tradução automática neural.
+
+00:04:06.645 --> 00:04:08.610
+Isso levou o Google a adotar
+
+00:04:08.643 --> 00:04:11.271
+a tradução automática neural
+com atenção
+
+00:04:11.304 --> 00:04:15.976
+como o mecanismo de tradução
+do Google Tradutor no final de 2016.
+
+00:04:16.009 --> 00:04:18.813
+Nesta aula, veremos
+como a atenção funciona
+
+00:04:18.846 --> 00:04:20.550
+e como e quando
+pode ser aplicada.
+

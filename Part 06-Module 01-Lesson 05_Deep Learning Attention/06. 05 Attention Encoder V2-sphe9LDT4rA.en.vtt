@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.730
+Now that we've taken a high level look at how
+
+00:00:02.730 --> 00:00:05.480
+attention works in a sequence to sequence model,
+
+00:00:05.480 --> 00:00:07.745
+let's look into it in more detail.
+
+00:00:07.745 --> 00:00:11.160
+We'll use machine translation as the example as that's
+
+00:00:11.160 --> 00:00:14.250
+the application the main papers on attention tackled.
+
+00:00:14.250 --> 00:00:15.750
+But whatever we do here,
+
+00:00:15.750 --> 00:00:18.259
+translates into other applications as well.
+
+00:00:18.260 --> 00:00:22.240
+It's important to note that there is a small variety of attention algorithms.
+
+00:00:22.239 --> 00:00:24.159
+We'll be looking at a simple one here.
+
+00:00:24.160 --> 00:00:26.214
+Let's start from the Encoder.
+
+00:00:26.214 --> 00:00:29.995
+In this example, the Encoder is a recurrent neural network.
+
+00:00:29.995 --> 00:00:31.800
+When creating an RNN,
+
+00:00:31.800 --> 00:00:35.289
+we have to declare the number of hidden units in the RNN cell.
+
+00:00:35.289 --> 00:00:40.664
+This applies whether we have a vanilla RNN or an LSTM or GRU cell.
+
+00:00:40.664 --> 00:00:44.679
+Before we start feeding our input sequence words to the Encoder,
+
+00:00:44.679 --> 00:00:50.149
+they have to pass through an embedding process which translates each word into a vector.
+
+00:00:50.149 --> 00:00:54.060
+Here we can see the vector representing each of these words.
+
+00:00:54.060 --> 00:00:59.800
+Now, this is a toy embedding of size four just for the purpose of easier visualization.
+
+00:00:59.799 --> 00:01:04.829
+In real-world applications, a size like 200 or 300 is more appropriate.
+
+00:01:04.829 --> 00:01:09.444
+We'll continue to use these color-coded boxes to represent the vectors,
+
+00:01:09.444 --> 00:01:13.264
+just so we don't have a lot of numbers plastered all over the screen.
+
+00:01:13.265 --> 00:01:17.659
+Now that we have our words and their embeddings,
+
+00:01:17.659 --> 00:01:20.685
+we're ready to feed that into our Encoder.
+
+00:01:20.685 --> 00:01:23.420
+Feeding the first word into
+
+00:01:23.420 --> 00:01:27.555
+the first time step of the RNN produces the first hidden state.
+
+00:01:27.555 --> 00:01:31.400
+This is what's called an unrolled view of the RNN,
+
+00:01:31.400 --> 00:01:34.105
+where we can see the RNN at each time step.
+
+00:01:34.105 --> 00:01:38.780
+We'll hold onto this state and the RNN would continue to process the next time step.
+
+00:01:38.780 --> 00:01:44.329
+So, it would take the second word and pass it to the RNN at the second time step,
+
+00:01:44.329 --> 00:01:47.234
+and then it would do that with the third word as well.
+
+00:01:47.234 --> 00:01:50.989
+Now that we have processed the entire input sequence,
+
+00:01:50.989 --> 00:01:55.089
+we're ready to pass the hidden states to the attention decoder.
+

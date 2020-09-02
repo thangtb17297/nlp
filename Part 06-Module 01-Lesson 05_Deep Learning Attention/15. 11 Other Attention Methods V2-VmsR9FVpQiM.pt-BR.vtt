@@ -1,0 +1,310 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.203 --> 00:00:02.537
+Como os dois principais
+artigos sobre atenção
+
+00:00:02.570 --> 00:00:05.209
+foram publicados
+em 2014 e em 2015,
+
+00:00:05.242 --> 00:00:07.697
+a atenção tem sido
+uma área ativa de pesquisa
+
+00:00:07.730 --> 00:00:09.265
+com muitas melhorias.
+
+00:00:09.298 --> 00:00:12.459
+Enquanto os dois mecanismos
+continuam a ser comumente usados,
+
+00:00:12.492 --> 00:00:16.097
+houve melhorias
+significativas ao longo dos anos.
+
+00:00:16.130 --> 00:00:19.113
+Neste vídeo, veremos uma
+dessas melhorias
+
+00:00:19.146 --> 00:00:22.937
+publicada em um artigo intitulado
+"Attention is All You Need".
+
+00:00:22.970 --> 00:00:25.294
+Esse artigo observou
+que a complexidade
+
+00:00:25.327 --> 00:00:28.300
+dos modelos com atenção
+no codificador e no decodificador
+
+00:00:28.333 --> 00:00:31.752
+poderia ser simplificada
+com um novo tipo de modelo
+
+00:00:31.785 --> 00:00:35.393
+que usa apenas a atenção,
+sem RNNs.
+
+00:00:35.426 --> 00:00:38.345
+Eles chamaram esse modelo
+de "Transformer".
+
+00:00:38.378 --> 00:00:41.794
+Em dois dos experimentos
+em tarefas de tradução automática,
+
+00:00:41.827 --> 00:00:44.209
+o modelo se mostrou
+superior em qualidade
+
+00:00:44.242 --> 00:00:47.633
+e por exigir significativamente
+menos tempo para treinar.
+
+00:00:47.666 --> 00:00:51.304
+O Transformer pega uma sequência
+de input e gera outra sequência,
+
+00:00:51.337 --> 00:00:54.625
+assim como os modelos
+Sequence to Sequence que vimos.
+
+00:00:54.658 --> 00:00:56.547
+A diferença aqui, no entanto,
+
+00:00:56.580 --> 00:00:58.543
+é que ele não pega os inputs
+um a um -
+
+00:00:58.576 --> 00:01:00.487
+como no caso de uma RNN -,
+
+00:01:00.520 --> 00:01:03.527
+mas produz todos juntos
+em paralelo.
+
+00:01:03.560 --> 00:01:07.894
+Cada elemento pode ser processado
+por uma GPU separada, se quisermos.
+
+00:01:07.927 --> 00:01:12.838
+Ele produz o output, um a um,
+mas também não usa uma RNN.
+
+00:01:12.871 --> 00:01:17.447
+O modelo também se divide
+em codificador e decodificador,
+
+00:01:17.480 --> 00:01:19.068
+mas, em vez de RNNs,
+
+00:01:19.101 --> 00:01:21.318
+ele usa redes neurais
+feedforward
+
+00:01:21.351 --> 00:01:23.943
+e um conceito
+chamado de "autoatenção".
+
+00:01:23.976 --> 00:01:27.036
+Essa combinação permite
+que o codificador e o decodificador
+
+00:01:27.069 --> 00:01:28.822
+funcionem sem RNNs,
+
+00:01:28.855 --> 00:01:30.620
+e isso melhora muito
+o desempenho,
+
+00:01:30.653 --> 00:01:33.349
+uma vez que permite
+a paralelização do processamento
+
+00:01:33.382 --> 00:01:35.970
+que não era possível
+com as RNNs.
+
+00:01:36.003 --> 00:01:38.752
+O Transformer contém uma pilha
+
+00:01:38.785 --> 00:01:41.169
+de codificadores
+e decodificadores idênticos.
+
+00:01:41.202 --> 00:01:43.696
+Seis é o número
+proposto pelo artigo.
+
+00:01:43.729 --> 00:01:48.025
+Vamos observar o codificador
+em uma camada com atenção.
+
+00:01:48.058 --> 00:01:51.258
+Cada camada do codificador
+contém duas subcamadas:
+
+00:01:51.291 --> 00:01:54.007
+uma camada de autoatenção
+multidirigida
+
+00:01:54.040 --> 00:01:56.369
+e uma camada feedforward.
+
+00:01:56.402 --> 00:01:59.313
+Como você pode notar,
+este componente de atenção
+
+00:01:59.346 --> 00:02:01.506
+está completamente
+do lado do codificador,
+
+00:02:01.539 --> 00:02:03.984
+e não é um componente
+do decodificador,
+
+00:02:04.017 --> 00:02:06.649
+como nos mecanismos de atenção
+anteriores.
+
+00:02:06.682 --> 00:02:10.464
+Este componente de atenção ajuda
+o codificador a entender os inputs,
+
+00:02:10.497 --> 00:02:13.889
+concentrando-se em outras partes
+da sequência de input
+
+00:02:13.922 --> 00:02:17.618
+que são relevantes para cada
+elemento de input processado.
+
+00:02:17.651 --> 00:02:20.736
+Essa ideia é uma extensão
+do trabalho feito anteriormente
+
+00:02:20.769 --> 00:02:25.321
+no conceito de autoatenção
+para ajudar na compreensão.
+
+00:02:25.354 --> 00:02:27.162
+Em um artigo, por exemplo,
+
+00:02:27.195 --> 00:02:31.905
+esse tipo de atenção é usado
+no contexto de leitura de máquina,
+
+00:02:31.938 --> 00:02:36.009
+no qual os experimentos com essa
+técnica coincidiram ou superaram
+
+00:02:36.042 --> 00:02:40.753
+as práticas daquela época em tarefas
+como modelagem de linguagem,
+
+00:02:40.786 --> 00:02:45.145
+análise de sentimentos
+e inferência de linguagem natural.
+
+00:02:45.178 --> 00:02:49.353
+Eles ainda usaram RNNs,
+mas fomentaram essa ideia
+
+00:02:49.386 --> 00:02:52.113
+que mais tarde
+se tornou a autoatenção.
+
+00:02:52.146 --> 00:02:55.617
+O exemplo que eles usaram nesse
+artigo sobre leitura de máquina
+
+00:02:55.650 --> 00:03:00.415
+mostra onde o modelo treinado
+presta atenção ao ler cada palavra.
+
+00:03:00.448 --> 00:03:04.944
+Então, por exemplo, quando o modelo
+lê a frase usando uma LSTM,
+
+00:03:04.977 --> 00:03:08.567
+ele aprende em quais outras partes
+do input prestar atenção
+
+00:03:08.600 --> 00:03:11.271
+conforme processa
+cada palavra do input.
+
+00:03:11.304 --> 00:03:13.519
+Então, o vermelho
+é onde ele está lendo
+
+00:03:13.552 --> 00:03:17.694
+e o azul é onde está prestando
+atenção enquanto lê a palavra.
+
+00:03:17.727 --> 00:03:21.134
+Em cada passo, ele lê uma palavra
+e presta atenção
+
+00:03:21.167 --> 00:03:25.896
+nas palavras anteriores relevantes
+que ajudariam a compreendê-la.
+
+00:03:26.600 --> 00:03:29.560
+A estrutura do Transformer,
+no entanto,
+
+00:03:29.593 --> 00:03:34.033
+permite que o codificador não apenas
+se concentre em palavras anteriores,
+
+00:03:34.066 --> 00:03:37.978
+mas também em palavras
+que aparecem depois.
+
+00:03:38.011 --> 00:03:42.178
+Este, no entanto, não é o único
+componente de atenção.
+
+00:03:42.211 --> 00:03:45.930
+O decodificador contém
+dois componentes de atenção,
+
+00:03:45.963 --> 00:03:50.258
+um que permite que ele se concentre
+na parte relevante dos inputs
+
+00:03:50.291 --> 00:03:55.171
+e outro que só presta atenção
+nos outputs anteriores.
+
+00:03:55.204 --> 00:03:56.450
+Prontinho.
+
+00:03:56.483 --> 00:04:00.314
+Temos uma visão de alto nível
+dos componentes do Transformer.
+
+00:04:00.347 --> 00:04:03.724
+Podemos ver até que ponto
+esse modelo usa a atenção.
+
+00:04:03.757 --> 00:04:06.538
+Podemos ver três componentes
+de atenção aqui.
+
+00:04:06.571 --> 00:04:08.995
+Eles não funcionam exatamente
+da mesma maneira,
+
+00:04:09.028 --> 00:04:12.442
+mas se resumem basicamente
+à atenção multiplicativa,
+
+00:04:12.475 --> 00:04:14.460
+que já entendemos.
+

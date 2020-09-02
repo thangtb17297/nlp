@@ -1,0 +1,208 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.230
+Since the two main Attention papers were published in 2014 and '15,
+
+00:00:05.230 --> 00:00:09.255
+Attention has been an active area of research with many developments.
+
+00:00:09.255 --> 00:00:12.600
+While the two mechanisms continue to be commonly used,
+
+00:00:12.599 --> 00:00:15.834
+there have been significant developments over the years.
+
+00:00:15.835 --> 00:00:18.179
+In this video, we will look at one of
+
+00:00:18.179 --> 00:00:22.739
+these developments published in a paper titled Attention Is All You Need.
+
+00:00:22.739 --> 00:00:28.559
+This paper noted that the complexity of encoder-decoder with Attention models can be
+
+00:00:28.559 --> 00:00:34.984
+simplified by adopting a new type of model that only uses Attention, no RNNs.
+
+00:00:34.984 --> 00:00:38.225
+They called this new model the Transformer.
+
+00:00:38.225 --> 00:00:41.685
+In two of their experiments on machine translation tasks,
+
+00:00:41.685 --> 00:00:44.285
+the model proved superior in quality
+
+00:00:44.284 --> 00:00:47.329
+as well as requiring significantly less time to train.
+
+00:00:47.329 --> 00:00:51.320
+The Transformer takes a sequence as an input and generate a sequence,
+
+00:00:51.320 --> 00:00:54.405
+just like the sequence-sequence models we've seen so far.
+
+00:00:54.405 --> 00:00:56.359
+The difference here, however,
+
+00:00:56.359 --> 00:00:58.479
+that it does not take the inputs one by one,
+
+00:00:58.479 --> 00:01:00.254
+as in the case of an RNN.
+
+00:01:00.255 --> 00:01:03.395
+It can produce all of them together in parallel.
+
+00:01:03.395 --> 00:01:07.564
+Perhaps each element is processed by a separate GPU if we want.
+
+00:01:07.564 --> 00:01:12.500
+It then produces the output one by one but also not using an RNN.
+
+00:01:12.500 --> 00:01:17.359
+The Transformer model also breaks down into an encoder and a decoder.
+
+00:01:17.359 --> 00:01:18.840
+But instead of RNNs,
+
+00:01:18.840 --> 00:01:23.950
+they use feed-forward neural networks and a concept called self-attention.
+
+00:01:23.950 --> 00:01:28.740
+This combination allows the encoder and decoder to work without RNNs,
+
+00:01:28.739 --> 00:01:31.489
+which vastly improves performance since it allows
+
+00:01:31.489 --> 00:01:35.759
+parallelization of processing that was not possible with RNNs.
+
+00:01:35.760 --> 00:01:41.120
+The Transformer contains a stack of identical encoders and decoders.
+
+00:01:41.120 --> 00:01:43.683
+Six is the number the paper proposes.
+
+00:01:43.683 --> 00:01:47.670
+Let's focus on the encoder in more layer and look at it more closely.
+
+00:01:47.670 --> 00:01:51.695
+Each encoder layer contains two sublayers: a
+
+00:01:51.694 --> 00:01:56.224
+multi-headed self-attention layer and a feed-forward layer.
+
+00:01:56.224 --> 00:01:57.679
+As you might notice,
+
+00:01:57.680 --> 00:02:01.790
+this Attention component is completely on the encoder side as
+
+00:02:01.790 --> 00:02:06.830
+opposed to being a decoder component like the previous Attention mechanisms we've seen.
+
+00:02:06.829 --> 00:02:11.764
+This Attention component helps the encoder comprehend its inputs by focusing on
+
+00:02:11.764 --> 00:02:17.449
+other parts of the input sequence that are relevant to each input element it processes.
+
+00:02:17.449 --> 00:02:20.869
+This idea is an extension of work previously done on
+
+00:02:20.870 --> 00:02:24.879
+the concept of self-attention and how it can aid comprehension.
+
+00:02:24.879 --> 00:02:27.294
+In one paper, for example,
+
+00:02:27.294 --> 00:02:31.679
+this type of Attention is used in the context of machine reading,
+
+00:02:31.680 --> 00:02:36.025
+where the experiments on this technique matched or outperformed
+
+00:02:36.025 --> 00:02:40.824
+the state of the art at that time in tasks like language modeling,
+
+00:02:40.824 --> 00:02:44.825
+sentiment analysis and natural language inference.
+
+00:02:44.824 --> 00:02:47.929
+They still used RNNs but they augmented it with
+
+00:02:47.930 --> 00:02:51.855
+this idea that later became self-attention.
+
+00:02:51.854 --> 00:02:54.530
+The example they used in this machine reading
+
+00:02:54.530 --> 00:03:00.215
+paper shows where the train model pays attention as it reads each word.
+
+00:03:00.215 --> 00:03:05.004
+So, for example, when the model reads the sentence using an LSTM,
+
+00:03:05.004 --> 00:03:07.819
+it learns which other parts of the input to pay
+
+00:03:07.819 --> 00:03:11.104
+attention to as it processes each word of the input.
+
+00:03:11.104 --> 00:03:14.179
+So, the red is where it's reading and the blue is
+
+00:03:14.180 --> 00:03:17.640
+where it's paying attention as it's reading this word.
+
+00:03:17.639 --> 00:03:21.500
+At each step, it reads a word and it pays attention to
+
+00:03:21.500 --> 00:03:26.259
+the relevant previous words that would aid in comprehending that word.
+
+00:03:26.259 --> 00:03:29.564
+The structure of the Transformer, however,
+
+00:03:29.564 --> 00:03:34.189
+allows the encoder to not only focus on previous words in the input sequence,
+
+00:03:34.189 --> 00:03:37.664
+but also on words that appeared later in the input sequence.
+
+00:03:37.664 --> 00:03:42.150
+This, however, is not the only Attention component in the Transformer.
+
+00:03:42.150 --> 00:03:45.885
+The decoder contains two Attention components.
+
+00:03:45.884 --> 00:03:49.280
+One that allows it to focus on the relevant part of
+
+00:03:49.280 --> 00:03:54.860
+the inputs and another that only pays attention to previous decoder outputs,
+
+00:03:54.860 --> 00:03:56.480
+and there you have it.
+
+00:03:56.479 --> 00:03:59.924
+A high-level view of the components of the Transformer.
+
+00:03:59.925 --> 00:04:03.700
+We can see how extensively this model uses Attention.
+
+00:04:03.699 --> 00:04:06.339
+We can see three Attention components here.
+
+00:04:06.340 --> 00:04:09.049
+They don't all work exactly the same way,
+
+00:04:09.049 --> 00:04:12.400
+but they all boil down pretty much to multiplicative attention,
+
+00:04:12.400 --> 00:04:14.719
+which we already understand.
+

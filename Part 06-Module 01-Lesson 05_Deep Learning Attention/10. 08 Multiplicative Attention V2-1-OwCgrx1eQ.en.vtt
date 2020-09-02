@@ -1,0 +1,274 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.705
+Earlier in this lesson,
+
+00:00:01.705 --> 00:00:07.960
+we looked at how the key concept of attention is to calculate an attention weight vector,
+
+00:00:07.960 --> 00:00:10.740
+which is used to amplify the signal from
+
+00:00:10.740 --> 00:00:14.820
+the most relevant parts of the input sequence and in the same time,
+
+00:00:14.820 --> 00:00:17.329
+drown out the irrelevant parts.
+
+00:00:17.329 --> 00:00:20.070
+In this video, we'll begin to look at
+
+00:00:20.070 --> 00:00:24.125
+the scoring functions that produce these attention weights.
+
+00:00:24.125 --> 00:00:28.649
+An attention scoring function tends to be a function that takes in
+
+00:00:28.649 --> 00:00:34.424
+the hidden state of the decoder and the set of hidden states of the encoder.
+
+00:00:34.424 --> 00:00:40.114
+Since this is something we'll do at each timestep on the decoder side,
+
+00:00:40.115 --> 00:00:43.130
+we only use the hidden state of the decoder at
+
+00:00:43.130 --> 00:00:47.870
+that timestep or the previous timestep in some scoring methods.
+
+00:00:47.869 --> 00:00:49.789
+Given these two inputs,
+
+00:00:49.789 --> 00:00:52.585
+this vector and this matrix,
+
+00:00:52.585 --> 00:00:57.529
+it produces a vector that scores each of these columns.
+
+00:00:57.529 --> 00:01:00.020
+Before looking at the matrix version,
+
+00:01:00.020 --> 00:01:04.375
+which calculates the scores for all the encoder hidden states in one step,
+
+00:01:04.375 --> 00:01:09.734
+let's simplify it by looking at how to score a single encoder hidden state.
+
+00:01:09.734 --> 00:01:13.670
+The first scoring method and the simplest is to
+
+00:01:13.670 --> 00:01:17.540
+just calculate the dot product of the two input vectors.
+
+00:01:17.540 --> 00:01:23.705
+The dot product of two vectors produces a single number, so that's good.
+
+00:01:23.704 --> 00:01:27.969
+But the important thing is the significance of this number.
+
+00:01:27.969 --> 00:01:32.450
+Geometrically, the dot product of two vectors is equal to
+
+00:01:32.450 --> 00:01:37.520
+multiplying the lengths of the two vectors by the cosine of the angle between them,
+
+00:01:37.519 --> 00:01:39.799
+and we know that cosine has
+
+00:01:39.799 --> 00:01:46.250
+this convenient property that it equals one if the angle is zero and it decreases,
+
+00:01:46.250 --> 00:01:48.474
+the wider the angle becomes.
+
+00:01:48.474 --> 00:01:53.899
+What this means is that if we have two vectors with the same length,
+
+00:01:53.900 --> 00:01:56.469
+the smaller the angle between them,
+
+00:01:56.469 --> 00:01:59.609
+the larger the dot product becomes.
+
+00:01:59.609 --> 00:02:04.825
+This dot product is a similarity measure between vectors.
+
+00:02:04.825 --> 00:02:07.659
+The dot product produces a larger number,
+
+00:02:07.659 --> 00:02:10.585
+the smaller the angle between the vectors are.
+
+00:02:10.585 --> 00:02:14.210
+In practice, however, we want to speed up the calculation
+
+00:02:14.210 --> 00:02:17.735
+by scoring all the encoder hidden states at once,
+
+00:02:17.735 --> 00:02:23.060
+which leads us to the formal mathematical definition of dot product attention.
+
+00:02:23.060 --> 00:02:25.125
+That's what we have here.
+
+00:02:25.125 --> 00:02:29.405
+It is the hidden state of the current timestep transposed
+
+00:02:29.405 --> 00:02:35.569
+times the matrix of the encoder hidden timesteps.
+
+00:02:35.569 --> 00:02:41.324
+That looks like this and that will produce the vector of the scores.
+
+00:02:41.324 --> 00:02:45.079
+With the simplicity of this method comes the drawback of assuming
+
+00:02:45.080 --> 00:02:48.965
+the encoder and decoder have the same embedding space.
+
+00:02:48.965 --> 00:02:52.944
+So, while this might work for text summarization, for example,
+
+00:02:52.944 --> 00:02:58.430
+where the encoder and decoder use the same language and the same embedding space.
+
+00:02:58.430 --> 00:03:00.705
+For machine translation, however,
+
+00:03:00.705 --> 00:03:05.460
+you might find that each language tends to have its own embedding space.
+
+00:03:05.460 --> 00:03:10.435
+This is a case where we might want to use the second scoring method,
+
+00:03:10.435 --> 00:03:13.284
+which is a slight variation on the first.
+
+00:03:13.284 --> 00:03:17.854
+It simply introduces a weight matrix between
+
+00:03:17.854 --> 00:03:23.199
+the multiplication of the decoder hidden state and the encoder hidden states.
+
+00:03:23.199 --> 00:03:28.609
+This weight matrix is a linear transformation that allows the inputs and outputs to use
+
+00:03:28.610 --> 00:03:34.790
+different embeddings and the result of this multiplication would be the weights vector.
+
+00:03:34.789 --> 00:03:37.774
+Let us now look back at this animation
+
+00:03:37.774 --> 00:03:41.275
+and incorporate everything that we know about attention.
+
+00:03:41.275 --> 00:03:47.150
+The first time step in the attention decoder starts by taking
+
+00:03:47.150 --> 00:03:53.469
+an initial hidden state as well as the embedding for the end symbol.
+
+00:03:53.469 --> 00:03:59.840
+It does its calculation and generates the hidden state at that timestep and here,
+
+00:03:59.840 --> 00:04:02.284
+we are ignoring the actual outputs of the RNN,
+
+00:04:02.284 --> 00:04:04.409
+we're just using the hidden states.
+
+00:04:04.409 --> 00:04:07.435
+Then we do our attention step.
+
+00:04:07.435 --> 00:04:12.969
+We do that by taking in the matrix of the hidden states of the encoder.
+
+00:04:12.969 --> 00:04:15.794
+We produce a scoring as we've mentioned.
+
+00:04:15.794 --> 00:04:17.500
+So, if we're doing multiplicative attention,
+
+00:04:17.500 --> 00:04:18.574
+we'll use the dot product.
+
+00:04:18.574 --> 00:04:23.079
+In general, we produce the scores,
+
+00:04:23.079 --> 00:04:25.359
+we do a softmax,
+
+00:04:25.360 --> 00:04:32.389
+we multiply the softmax scores by each corresponding hidden state from the encoder,
+
+00:04:32.389 --> 00:04:38.399
+we sum them up producing our attention context vector and then what we do next is this,
+
+00:04:38.399 --> 00:04:42.154
+we concatenate the attention context vector
+
+00:04:42.154 --> 00:04:46.269
+with the hidden state of a decoder at that timestep so h4.
+
+00:04:46.269 --> 00:04:50.264
+So this would be c4 concatenated with h4,
+
+00:04:50.264 --> 00:04:52.060
+that's what we will do here.
+
+00:04:52.060 --> 00:04:56.750
+So, we basically glued them together as one vector and then we pass them through
+
+00:04:56.750 --> 00:05:00.680
+a fully connected neural network which is basically
+
+00:05:00.680 --> 00:05:05.920
+multiplying by the weights matrix WC and apply a tanh activation.
+
+00:05:05.920 --> 00:05:09.230
+The output of this fully connected layer would be
+
+00:05:09.230 --> 00:05:14.134
+our first outputted word in the output sequence.
+
+00:05:14.134 --> 00:05:16.879
+We can now proceed to the second step,
+
+00:05:16.879 --> 00:05:23.634
+passing the hidden state to it and taking the output from the first decoder timestep.
+
+00:05:23.634 --> 00:05:31.055
+We produce h5, we start our attention at this step as well, we score,
+
+00:05:31.055 --> 00:05:33.915
+we produce a weights vector,
+
+00:05:33.915 --> 00:05:36.270
+we do softmax, we multiply,
+
+00:05:36.269 --> 00:05:38.889
+we add them up producing c5.
+
+00:05:38.889 --> 00:05:41.930
+The attention context vector at step five,
+
+00:05:41.930 --> 00:05:44.179
+we glue it together with the hidden state,
+
+00:05:44.178 --> 00:05:49.939
+we pass it through the same fully-connected network with tanh activation producing
+
+00:05:49.939 --> 00:05:53.089
+the second word in our output and this goes on
+
+00:05:53.089 --> 00:05:57.599
+until we have completed outputting the output sequence.
+
+00:05:57.600 --> 00:06:03.415
+This is pretty much the full view of how attention works in sequence-to-sequence models.
+
+00:06:03.415 --> 00:06:07.819
+In the next video, we'll touch on additive attention.
+

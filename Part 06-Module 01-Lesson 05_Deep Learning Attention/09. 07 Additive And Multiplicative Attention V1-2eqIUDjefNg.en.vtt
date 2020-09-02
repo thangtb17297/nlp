@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.054
+Before delving into the details of scoring functions,
+
+00:00:04.054 --> 00:00:08.175
+we need to make a distinction of the two major types of attention.
+
+00:00:08.175 --> 00:00:13.420
+These are often referred to as "Additive Attention and Multiplicative Attention."
+
+00:00:13.419 --> 00:00:17.265
+Sometimes they're also called "Bahdanau Attention" and "Luong
+
+00:00:17.265 --> 00:00:21.750
+Attention," referring to the first authors of the papers, which described them.
+
+00:00:21.750 --> 00:00:25.214
+Bahdanau attention refers to Dzmitry Badanau,
+
+00:00:25.214 --> 00:00:27.149
+the first author of the paper,
+
+00:00:27.149 --> 00:00:29.820
+"Neural machine translation by jointly learning to
+
+00:00:29.820 --> 00:00:33.274
+align and translate," which proposed a lot of these ideas.
+
+00:00:33.274 --> 00:00:37.739
+The scoring function in Bahdanau attention looks like this,
+
+00:00:37.740 --> 00:00:42.204
+where h of j is the hidden state from the encoder,
+
+00:00:42.204 --> 00:00:50.239
+s of i minus one is the hidden state of the decoder in the previous time step.
+
+00:00:50.240 --> 00:00:53.865
+u of a, W of a, and v of a,
+
+00:00:53.865 --> 00:00:59.150
+are all weight matrices that are learned during the training process.
+
+00:00:59.149 --> 00:01:01.269
+Basically, this is a scoring function,
+
+00:01:01.270 --> 00:01:04.015
+which takes the hidden state of the encoder,
+
+00:01:04.015 --> 00:01:05.620
+hidden state of the decoder,
+
+00:01:05.620 --> 00:01:09.990
+and produces a single number for each decoder time step.
+
+00:01:09.989 --> 00:01:13.420
+If this looks too complicated, don't worry about it.
+
+00:01:13.420 --> 00:01:17.170
+We'll get into more detail and with a visual explanation as well.
+
+00:01:17.170 --> 00:01:19.750
+The scores are then passed into softmax,
+
+00:01:19.750 --> 00:01:21.694
+this is what softmax looks like,
+
+00:01:21.694 --> 00:01:25.059
+and then this is our weighted sum operation,
+
+00:01:25.060 --> 00:01:29.254
+where we multiply each encoder hidden state,
+
+00:01:29.254 --> 00:01:32.064
+by its score, and then we sum them all up,
+
+00:01:32.064 --> 00:01:35.299
+producing our attention context vector.
+
+00:01:35.299 --> 00:01:40.280
+In their architecture, the encoder is a bidirectional RNN,
+
+00:01:40.280 --> 00:01:45.265
+and they produce the encoder vector by concatenating the states of these two layers.
+
+00:01:45.265 --> 00:01:48.174
+Multiplicative attention or Luong attention,
+
+00:01:48.174 --> 00:01:49.929
+referring to Thang Luong,
+
+00:01:49.930 --> 00:01:51.820
+the first author of the paper,
+
+00:01:51.819 --> 00:01:55.459
+"Effective Approaches to Attention-based Neural Machine Translation."
+
+00:01:55.459 --> 00:01:57.640
+Luong attention built on top of
+
+00:01:57.640 --> 00:02:01.265
+the Bahdanau attention by adding a couple more scoring function.
+
+00:02:01.265 --> 00:02:04.715
+Their architecture is also different and that they used
+
+00:02:04.715 --> 00:02:08.944
+only the hidden states from the top RNN layer in the encoder.
+
+00:02:08.944 --> 00:02:13.829
+This allows the encoder and the decoder to both be stacks of RNNs,
+
+00:02:13.830 --> 00:02:16.925
+which we'll see later in the applications videos,
+
+00:02:16.925 --> 00:02:21.540
+which led to some of the premier models that are in production right now.
+
+00:02:21.539 --> 00:02:27.534
+The scoring functions in multiplicative attention are three that we can choose from.
+
+00:02:27.534 --> 00:02:30.924
+The simplest one is the dot scoring function,
+
+00:02:30.925 --> 00:02:37.775
+which is multiplying the hidden states of the encoder by the hidden state of the decoder.
+
+00:02:37.775 --> 00:02:40.849
+The second scoring function is called general,
+
+00:02:40.849 --> 00:02:45.889
+it builds on top of it and just adds a weight matrix between them,
+
+00:02:45.889 --> 00:02:47.689
+and this multiplication in
+
+00:02:47.689 --> 00:02:51.354
+the dot product is where multiplicative attention gets its name.
+
+00:02:51.354 --> 00:02:54.810
+The third is very similar to Bahdanau attention,
+
+00:02:54.810 --> 00:03:00.319
+in that it adds up the hidden state of the encoder with the hidden state of the decoder,
+
+00:03:00.319 --> 00:03:04.479
+and so this addition is where additive attention gets its name,
+
+00:03:04.479 --> 00:03:07.709
+then multiplies it by a weight matrix,
+
+00:03:07.710 --> 00:03:13.409
+applies a tanh activation and then multiplies it by another weight matrix.
+
+00:03:13.409 --> 00:03:17.419
+So, this is a function that we give the hidden state of the decoder at
+
+00:03:17.419 --> 00:03:23.174
+this time step and the hidden states of the encoder at all the time steps,
+
+00:03:23.175 --> 00:03:26.350
+and it will produce a score for each one of them.
+
+00:03:26.349 --> 00:03:29.465
+We then do softmax just as we did before,
+
+00:03:29.465 --> 00:03:32.700
+and then that would produce c of t here,
+
+00:03:32.699 --> 00:03:34.759
+they are called the attention context vector,
+
+00:03:34.759 --> 00:03:39.034
+and so this is the step that would produce the final output of the decoder.
+
+00:03:39.034 --> 00:03:42.259
+Again, if this doesn't make a lot of sense right now,
+
+00:03:42.259 --> 00:03:45.489
+don't worry about it, we'll look at it more visually in the next video.
+
+00:03:45.490 --> 00:03:50.150
+This is an example from the paper that gives an illustration about
+
+00:03:50.150 --> 00:03:55.034
+attention methods compared to previous sequence to sequence models without attention.
+
+00:03:55.034 --> 00:03:58.555
+So, this is an English to German translation,
+
+00:03:58.555 --> 00:04:02.939
+this is the source English phrase, this is the reference,
+
+00:04:02.939 --> 00:04:06.409
+this is the label correct German translation,
+
+00:04:06.409 --> 00:04:07.754
+this is what their model did.
+
+00:04:07.754 --> 00:04:10.259
+So, it translated it very well,
+
+00:04:10.259 --> 00:04:14.829
+and this is the the base or the benchmark model without attention,
+
+00:04:14.830 --> 00:04:18.129
+where we see it got the name Luong.
+
+00:04:18.129 --> 00:04:21.903
+This is something we can attribute to the difficulty of capturing
+
+00:04:21.903 --> 00:04:26.074
+all the information just in the last hidden state of the encoder.
+
+00:04:26.074 --> 00:04:29.254
+This is one of the powerful things that attention does.
+
+00:04:29.254 --> 00:04:33.740
+It gives the encoder the ability to look at parts of the input sequence,
+
+00:04:33.740 --> 00:04:37.129
+no matter how far back they were in the input sequence.
+

@@ -1,0 +1,262 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.645
+Let's look at how self-attention works in a little bit more detail.
+
+00:00:03.645 --> 00:00:05.669
+Let's say, we have these words that we want
+
+00:00:05.669 --> 00:00:09.120
+our encoder to read and create a representation of.
+
+00:00:09.119 --> 00:00:13.469
+As always, we begin by embedding them into vectors.
+
+00:00:13.470 --> 00:00:18.125
+Since the transformer gives us a lot of flexibility for parallelization,
+
+00:00:18.125 --> 00:00:21.134
+this example assumes we're looking at the process or
+
+00:00:21.135 --> 00:00:25.530
+GPU tasked with encoding the second word of the input sequence.
+
+00:00:25.530 --> 00:00:27.570
+First step is to compare them.
+
+00:00:27.570 --> 00:00:29.910
+So, we score the embeddings against each other.
+
+00:00:29.910 --> 00:00:32.009
+So, we have a score here and a score here,
+
+00:00:32.009 --> 00:00:34.710
+comparing this word that we're currently reading or
+
+00:00:34.710 --> 00:00:37.730
+encoding with the other words in the input sequence.
+
+00:00:37.729 --> 00:00:39.674
+We scale the score.
+
+00:00:39.674 --> 00:00:41.809
+We basically divide by two here.
+
+00:00:41.810 --> 00:00:43.240
+The dimension of the keys,
+
+00:00:43.240 --> 00:00:46.240
+which we're using a toy dimension of four,
+
+00:00:46.240 --> 00:00:48.490
+so that would be two.
+
+00:00:48.490 --> 00:00:51.710
+We do a softmax for these, and then,
+
+00:00:51.710 --> 00:00:53.810
+we multiply the softmax score with
+
+00:00:53.810 --> 00:00:57.615
+the embedding to get the level of expression of each of these vectors.
+
+00:00:57.615 --> 00:01:01.435
+The embedding of the current word, just [inaudible] as it is.
+
+00:01:01.435 --> 00:01:07.700
+We add them up, and that produces the self-attention context vector,
+
+00:01:07.700 --> 00:01:10.230
+if that's something we'd like to call it.
+
+00:01:10.230 --> 00:01:13.340
+This is the image the authors of the paper showed when they
+
+00:01:13.340 --> 00:01:17.015
+presented this paper first at the NIPS Conference.
+
+00:01:17.015 --> 00:01:20.545
+Then, we're looking at the second word.
+
+00:01:20.545 --> 00:01:22.560
+So, we have the words here, and then,
+
+00:01:22.560 --> 00:01:24.475
+they have their embeddings, and then,
+
+00:01:24.474 --> 00:01:27.309
+these are the vectors of the embeddings.
+
+00:01:27.310 --> 00:01:34.325
+So, this word is compared or scored against each of the other words in the input vector.
+
+00:01:34.325 --> 00:01:39.265
+This score is then multiplied by the embedding of that relevant word,
+
+00:01:39.265 --> 00:01:41.424
+and then, all of these are added up.
+
+00:01:41.424 --> 00:01:44.164
+We did not score the current word.
+
+00:01:44.165 --> 00:01:46.130
+We scored all the other words.
+
+00:01:46.129 --> 00:01:51.409
+After we add them up, we just pass this up to the feedforward neural network.
+
+00:01:51.409 --> 00:01:53.019
+If we implement it like this, however,
+
+00:01:53.019 --> 00:01:57.269
+we could see that the model is mainly focusing on other similar words,
+
+00:01:57.269 --> 00:01:59.649
+if we judge it only on the embedding of the word.
+
+00:01:59.650 --> 00:02:02.810
+So, there's a little modification that we need to do here.
+
+00:02:02.810 --> 00:02:05.920
+We need to create queries out of each embedding.
+
+00:02:05.920 --> 00:02:10.659
+We do that by just multiplying by a query matrix or just
+
+00:02:10.659 --> 00:02:16.155
+passing it through a query feedforward neural network.
+
+00:02:16.155 --> 00:02:17.895
+We also create keys.
+
+00:02:17.895 --> 00:02:21.370
+So, we have another separate matrix of keys.
+
+00:02:21.370 --> 00:02:23.120
+We can calculate that again.
+
+00:02:23.120 --> 00:02:24.435
+So, we have our embeddings,
+
+00:02:24.435 --> 00:02:26.265
+we create the queries.
+
+00:02:26.264 --> 00:02:28.134
+We're only processing the second word here.
+
+00:02:28.134 --> 00:02:32.009
+So, that's where we created the query for.
+
+00:02:32.009 --> 00:02:33.694
+Then, we have our keys here.
+
+00:02:33.694 --> 00:02:37.699
+The scoring is comparing the query versus the key.
+
+00:02:37.699 --> 00:02:40.119
+So, that's where we get these numbers here,
+
+00:02:40.120 --> 00:02:41.724
+40, and then, 26.
+
+00:02:41.724 --> 00:02:44.299
+We scale softmax, and then,
+
+00:02:44.300 --> 00:02:47.545
+we multiply the softmax score with the key.
+
+00:02:47.544 --> 00:02:53.794
+That gets us the self-attention context vector after we add all of these together.
+
+00:02:53.794 --> 00:02:55.879
+This is an acceptable way of doing it,
+
+00:02:55.879 --> 00:02:59.294
+but there is a variation that we need to look at as well.
+
+00:02:59.294 --> 00:03:01.969
+So, these are our embeddings.
+
+00:03:01.969 --> 00:03:03.530
+We have our queries,
+
+00:03:03.530 --> 00:03:08.724
+which are made by multiplying the embedding by the Q matrix,
+
+00:03:08.724 --> 00:03:11.389
+which is learned from the training process.
+
+00:03:11.389 --> 00:03:18.929
+We have our keys, which are created by multiplying the embeddings by the K matrix,
+
+00:03:18.930 --> 00:03:21.409
+and we have our values,
+
+00:03:21.409 --> 00:03:24.829
+which are produced the same way by multiplying by the V matrix,
+
+00:03:24.830 --> 00:03:27.295
+which is also learned in the training process.
+
+00:03:27.294 --> 00:03:31.589
+This is a graphic from the authors as well in their NIPS presentation,
+
+00:03:31.590 --> 00:03:34.164
+where they outline how to create the key,
+
+00:03:34.164 --> 00:03:35.704
+the query, and the value.
+
+00:03:35.705 --> 00:03:37.399
+So, this is the embedding.
+
+00:03:37.399 --> 00:03:40.300
+We multiply it by V to get the value.
+
+00:03:40.300 --> 00:03:42.450
+We multiply it by Q to get the query.
+
+00:03:42.449 --> 00:03:45.854
+You multiply it by K to get the key.
+
+00:03:45.854 --> 00:03:49.079
+So, the final form of self-attention,
+
+00:03:49.080 --> 00:03:50.490
+as presented in this paper,
+
+00:03:50.490 --> 00:03:52.265
+is, we have our embeddings.
+
+00:03:52.264 --> 00:03:53.794
+We've calculated our V,
+
+00:03:53.794 --> 00:03:56.469
+Q, our values, keys, and queries.
+
+00:03:56.469 --> 00:03:59.520
+We score the queries against the keys,
+
+00:03:59.520 --> 00:04:03.575
+and then, that softmax score is multiplied by the values.
+
+00:04:03.574 --> 00:04:09.185
+These we add up and pass to the feedforward neural network.
+
+00:04:09.185 --> 00:04:12.629
+This is a very high-level view at this model here
+
+00:04:12.629 --> 00:04:16.284
+and discussion of the self-attention concept.
+
+00:04:16.285 --> 00:04:17.725
+In the text below the video,
+
+00:04:17.725 --> 00:04:20.530
+we'll link to the paper and some implementations of it,
+
+00:04:20.529 --> 00:04:24.659
+if you're interested to go a little bit deeper into the transformer.
+

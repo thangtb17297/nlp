@@ -1,0 +1,185 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.249 --> 00:00:03.326
+Vamos ver o processo
+pelo lado do decodificador.
+
+00:00:03.359 --> 00:00:04.864
+Nos modelos sem atenção,
+
+00:00:04.897 --> 00:00:07.264
+nós só alimentamos
+o último vetor de contexto
+
+00:00:07.297 --> 00:00:11.941
+para a RNN do decodificador,
+além do embedding do token final,
+
+00:00:11.974 --> 00:00:15.253
+e ele começará a gerar um elemento
+da sequência de output
+
+00:00:15.286 --> 00:00:17.210
+em cada instante de tempo.
+
+00:00:17.243 --> 00:00:21.557
+Mas isso não se aplica
+ao decodificador de atenção.
+
+00:00:21.590 --> 00:00:26.324
+O decodificador de atenção é capaz
+de processar as palavras passadas
+
+00:00:26.357 --> 00:00:28.722
+e os estados ocultos
+do próprio decodificador
+
+00:00:28.755 --> 00:00:30.752
+e depois fazer o seguinte:
+
+00:00:30.785 --> 00:00:35.013
+usar uma função de pontuação
+para pontuar cada estado oculto
+
+00:00:35.046 --> 00:00:37.323
+na matriz de contexto.
+
+00:00:37.356 --> 00:00:39.831
+Falaremos mais tarde
+sobre a função de pontuação.
+
+00:00:39.864 --> 00:00:41.048
+Mas, após a pontuação,
+
+00:00:41.081 --> 00:00:44.403
+cada vetor de contexto
+receberia um escore.
+
+00:00:44.436 --> 00:00:47.647
+E, se alimentarmos esses escores
+para uma função softmax,
+
+00:00:47.680 --> 00:00:50.030
+teremos escores
+que são números positivos,
+
+00:00:50.063 --> 00:00:53.783
+que variam entre 0 e 1
+e, juntos, somam 1.
+
+00:00:53.817 --> 00:00:56.706
+Esses valores representam
+o quanto cada vetor
+
+00:00:56.739 --> 00:00:59.111
+será expresso
+no vetor de atenção
+
+00:00:59.144 --> 00:01:02.510
+que o decodificador vai processar
+antes de produzir um output.
+
+00:01:02.543 --> 00:01:07.171
+Ao multiplicarmos cada vetor
+pelo seu escore softmax
+
+00:01:07.204 --> 00:01:09.816
+e depois somarmos
+esses vetores,
+
+00:01:09.849 --> 00:01:13.429
+produzimos
+um vetor de contexto de atenção.
+
+00:01:13.462 --> 00:01:16.739
+Essa é uma operação básica
+de soma ponderada.
+
+00:01:16.772 --> 00:01:20.739
+O vetor de contexto é
+um passo importante neste processo,
+
+00:01:20.772 --> 00:01:22.324
+mas não é o objetivo final.
+
+00:01:22.357 --> 00:01:25.247
+Num vídeo posterior,
+explicarei como o vetor de contexto
+
+00:01:25.280 --> 00:01:27.758
+se funde ao estado oculto
+do decodificador
+
+00:01:27.791 --> 00:01:30.017
+para criar
+o output certo do decodificador
+
+00:01:30.050 --> 00:01:31.363
+no instante de tempo.
+
+00:01:32.038 --> 00:01:36.013
+O decodificador já processou
+a palavra de input
+
+00:01:36.046 --> 00:01:39.095
+e o vetor de contexto
+de atenção,
+
+00:01:39.128 --> 00:01:41.653
+que concentra essa atenção
+no lugar certo
+
+00:01:41.686 --> 00:01:43.646
+da sequência de input.
+
+00:01:43.679 --> 00:01:46.093
+Então ele produz
+um estado oculto
+
+00:01:46.126 --> 00:01:49.552
+e a 1ª palavra
+da sequência de output.
+
+00:01:50.297 --> 00:01:52.769
+Esta é uma representação
+bem simplificada,
+
+00:01:52.802 --> 00:01:55.138
+por isso aqui há um asterisco.
+
+00:01:55.171 --> 00:01:58.704
+Ainda há outro passo,
+do qual falarei em outro vídeo,
+
+00:01:58.737 --> 00:02:02.371
+entre a RNN e o último output.
+
+00:02:02.404 --> 00:02:04.438
+No próximo instante de tempo,
+
+00:02:04.471 --> 00:02:08.912
+a RNN pega o output anterior
+como input
+
+00:02:08.945 --> 00:02:12.668
+e gera o próprio vetor de contexto
+para esse instante de tempo,
+
+00:02:12.701 --> 00:02:15.701
+assim como o estado oculto
+do instante de tempo anterior,
+
+00:02:15.734 --> 00:02:19.674
+e isso produz um novo estado oculto
+para o decodificador
+
+00:02:19.707 --> 00:02:23.218
+e uma nova palavra
+na sequência de output.
+
+00:02:23.251 --> 00:02:26.563
+Isso continua até completarmos
+a nossa sequência de output.
+

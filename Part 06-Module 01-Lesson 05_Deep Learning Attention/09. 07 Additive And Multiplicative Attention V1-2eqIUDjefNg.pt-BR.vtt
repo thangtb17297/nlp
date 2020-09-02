@@ -1,0 +1,341 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.232 --> 00:00:04.142
+Antes de nos aprofundarmos nos
+detalhes das funções de pontuação,
+
+00:00:04.175 --> 00:00:08.422
+precisamos distinguir
+os dois principais tipos de atenção.
+
+00:00:08.455 --> 00:00:13.507
+Eles são chamados de "atenção
+aditiva" e "atenção multiplicativa".
+
+00:00:13.540 --> 00:00:16.503
+Eles também são chamados
+de "atenção de Bahdanau"
+
+00:00:16.536 --> 00:00:18.030
+e "atenção de Luong",
+
+00:00:18.063 --> 00:00:21.981
+referindo-se aos primeiros autores
+dos artigos que os descreveram.
+
+00:00:22.014 --> 00:00:25.098
+A atenção de Bahdanau
+faz referência a Dzmitry Bahdanau,
+
+00:00:25.131 --> 00:00:27.050
+o primeiro autor do artigo
+
+00:00:27.083 --> 00:00:28.707
+"Neural Machine Translation
+
+00:00:28.740 --> 00:00:31.106
+by Jointly Learning
+to Align and Translate",
+
+00:00:31.139 --> 00:00:33.538
+que propõe
+muitas dessas ideias.
+
+00:00:33.571 --> 00:00:37.996
+A função de pontuação
+da atenção de Bahdanau é assim.
+
+00:00:38.029 --> 00:00:42.230
+Hj é o estado oculto
+do codificador,
+
+00:00:42.263 --> 00:00:48.041
+e si-1 é o estado oculto
+do decodificador
+
+00:00:48.074 --> 00:00:50.335
+no instante de tempo anterior.
+
+00:00:50.368 --> 00:00:53.966
+Ua, Wa e va
+
+00:00:53.999 --> 00:00:59.317
+são todas as matrizes de peso
+aprendidas durante o treinamento.
+
+00:00:59.350 --> 00:01:01.883
+Basicamente,
+esta é uma função de pontuação,
+
+00:01:01.916 --> 00:01:04.125
+que pega o estado oculto
+do codificador,
+
+00:01:04.158 --> 00:01:05.692
+o do decodificador,
+
+00:01:05.725 --> 00:01:07.572
+e produz um único número
+
+00:01:07.605 --> 00:01:10.160
+para cada instante de tempo
+do decodificador.
+
+00:01:10.193 --> 00:01:14.887
+Se isso parece muito complicado,
+nós detalharemos
+
+00:01:14.920 --> 00:01:17.366
+com uma explicação visual.
+
+00:01:17.399 --> 00:01:19.743
+As pontuações
+são passadas para uma softmax -
+
+00:01:19.776 --> 00:01:21.886
+é assim que a softmax
+se parece -
+
+00:01:21.919 --> 00:01:24.887
+e então esta é a operação
+de soma,
+
+00:01:25.493 --> 00:01:29.284
+na qual multiplicamos
+cada estado oculto do codificador
+
+00:01:29.317 --> 00:01:32.148
+pela sua pontuação
+e somamos tudo,
+
+00:01:32.181 --> 00:01:34.919
+produzindo nosso vetor
+de contexto de atenção.
+
+00:01:35.943 --> 00:01:40.206
+Na arquitetura, o codificador
+é uma RNN bidirecional
+
+00:01:40.239 --> 00:01:42.053
+que produz
+o vetor do codificador
+
+00:01:42.086 --> 00:01:45.502
+concatenando os estados
+dessas duas camadas.
+
+00:01:45.535 --> 00:01:48.181
+A atenção multiplicativa,
+ou atenção de Luong,
+
+00:01:48.214 --> 00:01:49.996
+faz referência a Thang Luong,
+
+00:01:50.029 --> 00:01:51.834
+autor do artigo
+
+00:01:51.867 --> 00:01:53.943
+"Effective Approaches
+to Attention-Based
+
+00:01:53.976 --> 00:01:55.601
+Neural Machine Translation".
+
+00:01:55.634 --> 00:01:58.977
+A atenção de Luong foi construída
+em cima da atenção de Bahdanau,
+
+00:01:59.010 --> 00:02:01.387
+adicionando mais algumas
+funções de pontuação.
+
+00:02:01.420 --> 00:02:03.454
+A arquitetura também
+é diferente,
+
+00:02:03.487 --> 00:02:09.009
+pois só usa os estados ocultos da
+camada RNN superior no codificador.
+
+00:02:09.042 --> 00:02:11.952
+Isso permite que o codificador
+e o decodificador
+
+00:02:11.985 --> 00:02:13.897
+sejam ambos
+empilhamentos de RNNs,
+
+00:02:13.930 --> 00:02:17.257
+que veremos mais adiante
+nos vídeos de aplicação,
+
+00:02:17.290 --> 00:02:21.815
+que originaram alguns dos principais
+modelos que estão em produção.
+
+00:02:21.848 --> 00:02:25.112
+As funções de pontuação
+na atenção multiplicativa
+
+00:02:25.145 --> 00:02:27.612
+são três que podemos escolher.
+
+00:02:27.645 --> 00:02:31.062
+A mais simples
+é a função de pontuação de ponto,
+
+00:02:31.095 --> 00:02:34.871
+que multiplica os estados ocultos
+do codificador
+
+00:02:34.904 --> 00:02:37.958
+pelo estado oculto
+do decodificador.
+
+00:02:37.991 --> 00:02:40.751
+A segunda função de pontuação
+é chamada de "geral",
+
+00:02:40.784 --> 00:02:42.726
+ela constrói em cima disso
+
+00:02:42.759 --> 00:02:45.871
+e adiciona uma matriz de peso
+entre eles.
+
+00:02:45.904 --> 00:02:48.662
+E esta multiplicação
+no produto de ponto
+
+00:02:48.695 --> 00:02:51.590
+é de onde a atenção multiplicativa
+obtém o nome.
+
+00:02:51.623 --> 00:02:54.760
+A terceira é muito parecida
+com a atenção de Bahdanau,
+
+00:02:54.793 --> 00:02:58.143
+ela adiciona o estado oculto
+do codificador
+
+00:02:58.176 --> 00:03:00.183
+ao estado oculto
+do decodificador -
+
+00:03:00.216 --> 00:03:04.428
+é dessa adição que
+a atenção aditiva recebe o nome -,
+
+00:03:04.461 --> 00:03:07.911
+multiplica
+por uma matriz de peso,
+
+00:03:07.944 --> 00:03:10.839
+aplica uma ativação
+de tangente hiperbólica
+
+00:03:10.872 --> 00:03:13.326
+e multiplica
+por outra matriz de peso.
+
+00:03:13.359 --> 00:03:17.166
+Essa é uma função na qual damos
+o estado oculto do decodificador
+
+00:03:17.199 --> 00:03:19.047
+em um instante de tempo
+
+00:03:19.080 --> 00:03:23.223
+e os estados ocultos do codificador
+em todos os instantes de tempo,
+
+00:03:23.256 --> 00:03:26.534
+e isso produz
+uma pontuação para cada um deles.
+
+00:03:26.567 --> 00:03:29.503
+Então fazemos a softmax,
+exatamente como fizemos antes,
+
+00:03:29.536 --> 00:03:32.719
+e isso produzirá ct.
+
+00:03:32.752 --> 00:03:35.225
+O vetor de contexto de atenção
+é chamado,
+
+00:03:35.258 --> 00:03:39.370
+e esta é a etapa que produzirá
+o output final do decodificador.
+
+00:03:39.403 --> 00:03:42.241
+Se isso não fizer
+muito sentido agora,
+
+00:03:42.274 --> 00:03:45.881
+não se preocupe, veremos isso
+mais visualmente no próximo vídeo.
+
+00:03:45.914 --> 00:03:51.063
+Este é um exemplo do artigo
+que ilustra os métodos de atenção
+
+00:03:51.096 --> 00:03:55.106
+em comparação com os modelos
+de sequência sem atenção.
+
+00:03:55.139 --> 00:03:58.529
+Esta é uma tradução
+do inglês para o alemão,
+
+00:03:58.562 --> 00:04:02.899
+esta é a frase inglesa original,
+esta é a referência
+
+00:04:02.932 --> 00:04:06.434
+e este é o rótulo
+da tradução alemã correta.
+
+00:04:06.467 --> 00:04:07.971
+Foi isto que o modelo fez,
+
+00:04:08.004 --> 00:04:10.093
+ele traduziu muito bem.
+
+00:04:10.716 --> 00:04:14.852
+E esta é a base ou o modelo
+de referência sem atenção,
+
+00:04:14.885 --> 00:04:17.637
+na qual o nome está errado.
+
+00:04:18.580 --> 00:04:21.890
+Isso é algo que atribuímos
+à dificuldade de obter
+
+00:04:21.923 --> 00:04:23.124
+todas as informações
+
+00:04:23.157 --> 00:04:25.837
+apenas no último
+estado oculto do codificador.
+
+00:04:26.525 --> 00:04:29.227
+Essa é uma das coisas poderosas
+que a atenção faz,
+
+00:04:29.260 --> 00:04:31.611
+ela dá ao codificador
+a capacidade
+
+00:04:31.644 --> 00:04:33.757
+de examinar partes
+da sequência de input,
+
+00:04:33.790 --> 00:04:36.700
+independentemente da posição
+na sequência de input.
+

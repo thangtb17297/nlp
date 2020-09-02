@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.415
+A Sequence to Sequence Model with attention works in the following way.
+
+00:00:04.415 --> 00:00:08.128
+First, the encoder processes the input sequence
+
+00:00:08.128 --> 00:00:12.279
+just like the model without attention one word at a time,
+
+00:00:12.279 --> 00:00:16.464
+producing a hidden state and using that hidden state and the next step.
+
+00:00:16.464 --> 00:00:19.920
+Next, the model passes a context vector to
+
+00:00:19.920 --> 00:00:24.150
+the decoder but unlike the context vector in the model without attention,
+
+00:00:24.149 --> 00:00:28.779
+this one is not just the final hidden state it's all of the hidden states.
+
+00:00:28.780 --> 00:00:33.359
+This gives us the benefit of having the flexibility in the context size.
+
+00:00:33.359 --> 00:00:35.369
+So longer sequences can have
+
+00:00:35.369 --> 00:00:40.649
+longer contexts vectors that better capture the information from the input sequence.
+
+00:00:40.649 --> 00:00:46.000
+One additional point that's important for the intuition of attention,
+
+00:00:46.000 --> 00:00:50.179
+is that each hidden state is sort of associated the most
+
+00:00:50.179 --> 00:00:55.005
+with the part of the input sequence that preceded how that word was generated.
+
+00:00:55.005 --> 00:00:58.785
+So, the first hidden state was outputted after processing the first word,
+
+00:00:58.784 --> 00:01:03.819
+so it captures the essence of the first word the most.
+
+00:01:03.820 --> 00:01:05.750
+So when we focus on this vector,
+
+00:01:05.750 --> 00:01:07.829
+we will be focusing on that word the most,
+
+00:01:07.829 --> 00:01:14.105
+the same with the second hidden state with the second word with the third word,
+
+00:01:14.105 --> 00:01:16.880
+even though that last and third vector
+
+00:01:16.879 --> 00:01:21.199
+incorporates a little bit of everything that preceded it as well.
+

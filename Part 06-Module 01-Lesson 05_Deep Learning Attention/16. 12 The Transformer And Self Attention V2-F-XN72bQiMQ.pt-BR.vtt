@@ -1,0 +1,329 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.218 --> 00:00:03.600
+Vejamos os detalhes
+do funcionamento da autoatenção.
+
+00:00:03.633 --> 00:00:06.680
+Digamos que o codificador
+deva ler essas palavras
+
+00:00:06.713 --> 00:00:09.304
+para criar uma representação.
+
+00:00:09.337 --> 00:00:13.520
+Como sempre, começamos
+incorporando-as em vetores.
+
+00:00:13.553 --> 00:00:18.080
+Como o Transformer nos dá
+flexibilidade para paralelização,
+
+00:00:18.113 --> 00:00:22.344
+o exemplo assume que observamos
+o processo ou a GPU encarregada
+
+00:00:22.377 --> 00:00:25.705
+de codificar a segunda palavra
+da sequência de input.
+
+00:00:25.738 --> 00:00:27.437
+O primeiro passo é comparar.
+
+00:00:27.470 --> 00:00:30.046
+Pontuamos os embeddings
+uns contra os outros.
+
+00:00:30.079 --> 00:00:33.134
+Temos uma pontuação aqui e outra
+aqui, comparando a palavra
+
+00:00:33.167 --> 00:00:35.170
+que estamos
+lendo ou codificando
+
+00:00:35.203 --> 00:00:37.918
+com as outras palavras
+na sequência de input,
+
+00:00:37.951 --> 00:00:39.623
+escalonamos a pontuação
+
+00:00:39.656 --> 00:00:43.159
+basicamente dividindo
+a dimensão das chaves por 2 -
+
+00:00:43.192 --> 00:00:46.501
+estamos usando uma dimensão
+de amostra de 4 -,
+
+00:00:46.534 --> 00:00:48.815
+então isso seria 2.
+
+00:00:48.848 --> 00:00:51.005
+Fazemos uma softmax para isto
+
+00:00:51.038 --> 00:00:54.301
+e multiplicamos a pontuação
+softmax com o embedding
+
+00:00:54.334 --> 00:00:57.863
+para obtermos o nível de expressão
+de cada um desses vetores.
+
+00:00:57.896 --> 00:01:01.718
+O embedding da palavra atual
+passa como está.
+
+00:01:01.751 --> 00:01:07.583
+Nós os somamos, e isso produz
+o vetor de contexto de autoatenção,
+
+00:01:07.616 --> 00:01:10.496
+que é como costumamos chamar.
+
+00:01:10.529 --> 00:01:13.138
+Esta é a imagem que os autores
+do artigo mostraram
+
+00:01:13.171 --> 00:01:16.983
+quando apresentaram o artigo
+na NIPS Conference.
+
+00:01:17.016 --> 00:01:20.806
+Estamos olhando
+para a segunda palavra.
+
+00:01:20.839 --> 00:01:22.239
+Temos as palavras aqui,
+
+00:01:22.272 --> 00:01:24.022
+elas têm os embeddings,
+
+00:01:24.055 --> 00:01:27.389
+e estes são os vetores
+dos embeddings.
+
+00:01:27.422 --> 00:01:30.206
+Essa palavra é comparada
+ou pontuada
+
+00:01:30.239 --> 00:01:34.366
+em relação a cada uma das outras
+palavras no vetor de input.
+
+00:01:34.399 --> 00:01:36.583
+Esta pontuação
+é então multiplicada
+
+00:01:36.616 --> 00:01:39.350
+pelo embedding
+da palavra relevante,
+
+00:01:39.383 --> 00:01:41.495
+e tudo isso é adicionado.
+
+00:01:41.528 --> 00:01:44.095
+Não pontuamos a palavra atual,
+
+00:01:44.128 --> 00:01:46.079
+mas todas as outras palavras.
+
+00:01:46.112 --> 00:01:47.366
+Depois de adicioná-las,
+
+00:01:47.399 --> 00:01:51.454
+passamos isso
+para a rede neural feedforward.
+
+00:01:51.487 --> 00:01:52.991
+Se implementarmos assim,
+
+00:01:53.024 --> 00:01:57.002
+veremos que o modelo se concentrará
+em outras palavras semelhantes,
+
+00:01:57.035 --> 00:02:00.148
+se julgarmos apenas
+pelo embedding da palavra.
+
+00:02:00.181 --> 00:02:02.978
+Precisamos fazer
+uma pequena modificação aqui.
+
+00:02:03.011 --> 00:02:06.074
+Precisamos criar consultas
+a partir de cada embedding.
+
+00:02:06.107 --> 00:02:09.939
+Fazemos isso multiplicando
+por uma matriz de consulta
+
+00:02:09.972 --> 00:02:14.006
+ou passando
+por uma rede neural
+
+00:02:14.039 --> 00:02:16.236
+feedforward de consulta.
+
+00:02:16.269 --> 00:02:17.839
+Também criamos chaves,
+
+00:02:17.872 --> 00:02:21.015
+então, temos outra matriz
+de chaves separada.
+
+00:02:21.742 --> 00:02:24.414
+Podemos calcular isso de novo.
+Temos os embeddings,
+
+00:02:24.447 --> 00:02:26.214
+criamos as consultas...
+
+00:02:26.247 --> 00:02:28.199
+Estamos processando
+a segunda palavra,
+
+00:02:28.232 --> 00:02:31.974
+e é para isso
+que criamos a consulta.
+
+00:02:32.007 --> 00:02:33.949
+Então, temos as chaves aqui.
+
+00:02:33.982 --> 00:02:37.893
+A pontuação é a comparação
+da consulta com a chave.
+
+00:02:37.926 --> 00:02:41.758
+É daí que obtivemos os números
+40 e 26.
+
+00:02:41.791 --> 00:02:43.691
+Nós escalamos com softmax
+
+00:02:43.724 --> 00:02:47.444
+e multiplicamos a pontuação
+da softmax com a chave.
+
+00:02:47.477 --> 00:02:51.092
+Isso nos dará o vetor de contexto
+de autoatenção,
+
+00:02:51.125 --> 00:02:53.884
+depois de somarmos tudo.
+
+00:02:53.917 --> 00:02:55.780
+Essa é uma forma
+de fazer isso,
+
+00:02:55.813 --> 00:02:59.414
+mas há uma variação
+que também precisamos analisar.
+
+00:02:59.447 --> 00:03:02.062
+Estes são nossos embeddings.
+
+00:03:02.095 --> 00:03:03.422
+Nós temos as consultas,
+
+00:03:03.455 --> 00:03:08.636
+que são feitas pela multiplicação
+do embedding pela matriz q -
+
+00:03:08.669 --> 00:03:11.350
+que é aprendida
+no processo de treinamento -,
+
+00:03:11.383 --> 00:03:12.894
+temos as chaves,
+
+00:03:12.927 --> 00:03:18.827
+que são criadas multiplicando
+os embeddings pela matriz k,
+
+00:03:18.860 --> 00:03:21.547
+e temos os valores,
+
+00:03:21.580 --> 00:03:25.032
+que são produzidos da mesma maneira,
+multiplicando pela matriz v -
+
+00:03:25.065 --> 00:03:27.671
+que também é aprendida
+no processo de treinamento.
+
+00:03:27.704 --> 00:03:31.491
+Este é um gráfico dos autores,
+da apresentação na NIPS,
+
+00:03:31.524 --> 00:03:34.220
+no qual descrevem
+como criar a chave,
+
+00:03:34.253 --> 00:03:35.766
+a consulta e o valor.
+
+00:03:35.799 --> 00:03:37.404
+Este é o embedding.
+
+00:03:37.437 --> 00:03:40.277
+Multiplicamos isso
+por V para obter o valor,
+
+00:03:40.310 --> 00:03:42.452
+multiplicamos por Q
+para obter a consulta
+
+00:03:42.485 --> 00:03:45.406
+e multiplicamos por K
+para obter a chave.
+
+00:03:46.125 --> 00:03:48.965
+Então, na forma final
+da autoatenção -
+
+00:03:48.998 --> 00:03:52.192
+como apresentada no artigo -,
+temos os embeddings,
+
+00:03:52.225 --> 00:03:54.297
+calculamos o V, o Q,
+
+00:03:54.330 --> 00:03:56.480
+os valores, as chaves
+e as consultas,
+
+00:03:56.513 --> 00:03:59.593
+pontuamos as consultas
+contra as chaves
+
+00:03:59.626 --> 00:04:03.497
+e a pontuação da softmax
+foi multiplicada pelos valores.
+
+00:04:03.530 --> 00:04:09.401
+Somamos e passamos
+para a rede neural feedforward.
+
+00:04:09.434 --> 00:04:12.688
+Esta é uma visão de alto nível
+deste modelo
+
+00:04:12.721 --> 00:04:16.184
+e da discussão do conceito
+de autoatenção.
+
+00:04:16.217 --> 00:04:17.702
+No texto abaixo do vídeo,
+
+00:04:17.735 --> 00:04:20.586
+há um link para o artigo
+e algumas implementações dele,
+
+00:04:20.619 --> 00:04:24.192
+caso queira saber mais
+sobre o Transformer.
+

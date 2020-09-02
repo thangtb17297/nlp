@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.309 --> 00:00:02.557
+O modelo Sequence to Sequence
+com atenção
+
+00:00:02.590 --> 00:00:04.486
+funciona
+como descrito a seguir.
+
+00:00:04.519 --> 00:00:07.965
+Primeiro o codificador processa
+a sequência de input
+
+00:00:07.998 --> 00:00:10.742
+assim como o modelo
+sem atenção:
+
+00:00:10.775 --> 00:00:13.715
+uma palavra de cada vez,
+produzindo um estado oculto
+
+00:00:13.748 --> 00:00:16.802
+e usando esse estado oculto
+no passo seguinte.
+
+00:00:16.835 --> 00:00:20.744
+Em seguida, o modelo passa um vetor
+de contexto ao decodificador.
+
+00:00:20.777 --> 00:00:23.966
+Mas, diferentemente do vetor
+de contexto no modelo sem atenção,
+
+00:00:23.999 --> 00:00:26.645
+esse vetor não consiste
+só no último estado oculto,
+
+00:00:26.678 --> 00:00:28.842
+mas em todos
+os estados ocultos.
+
+00:00:28.875 --> 00:00:33.365
+Isso nos oferece certa flexibilidade
+quanto ao tamanho de contexto.
+
+00:00:33.398 --> 00:00:36.838
+Então sequências maiores podem ter
+vetores de sequência maiores,
+
+00:00:36.871 --> 00:00:40.890
+que captam melhor as informações
+da sequência de input.
+
+00:00:40.923 --> 00:00:46.017
+Outra questão importante
+para a intuição da atenção
+
+00:00:46.050 --> 00:00:49.986
+é que cada estado oculto
+é mais associado
+
+00:00:50.019 --> 00:00:52.545
+com a parte
+da sequência de input
+
+00:00:52.578 --> 00:00:54.879
+que previu
+como a palavra foi gerada.
+
+00:00:54.912 --> 00:00:58.760
+Aqui o 1º estado oculto foi gerado
+depois de processar a 1ª palavra,
+
+00:00:58.793 --> 00:01:03.807
+então captou melhor
+a essência da 1ª palavra.
+
+00:01:03.840 --> 00:01:07.892
+Ao nos concentrarmos neste vetor,
+nos concentramos mais nesta palavra.
+
+00:01:07.925 --> 00:01:11.552
+É assim com o 2º estado oculto
+e a 2ª palavra
+
+00:01:11.585 --> 00:01:14.163
+e com o 3º estado oculto
+e a 3ª palavra,
+
+00:01:14.196 --> 00:01:17.911
+embora o 3º e último vetor
+também incorpore
+
+00:01:17.944 --> 00:01:20.960
+um pouco de tudo
+o que o precedeu.
+

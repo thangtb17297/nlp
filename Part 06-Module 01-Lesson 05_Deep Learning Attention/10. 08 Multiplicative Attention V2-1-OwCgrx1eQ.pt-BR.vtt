@@ -1,0 +1,428 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.198 --> 00:00:01.804
+Anteriormente, nesta aula,
+
+00:00:01.837 --> 00:00:04.524
+vimos como o conceito-chave
+da atenção
+
+00:00:04.557 --> 00:00:08.245
+calcula um vetor
+de peso de atenção,
+
+00:00:08.278 --> 00:00:11.910
+que amplia o sinal
+das partes mais relevantes
+
+00:00:11.943 --> 00:00:14.663
+da sequência de input
+e, ao mesmo tempo,
+
+00:00:14.696 --> 00:00:17.439
+retira as partes irrelevantes.
+
+00:00:17.472 --> 00:00:21.492
+Neste vídeo, veremos
+as funções de pontuação
+
+00:00:21.525 --> 00:00:24.173
+que produzem
+esses pesos de atenção.
+
+00:00:24.206 --> 00:00:26.460
+Uma função
+de pontuação de atenção
+
+00:00:26.493 --> 00:00:30.885
+tende a ser uma função que usa
+o estado oculto do decodificador
+
+00:00:30.918 --> 00:00:34.869
+e o conjunto de estados ocultos
+do codificador.
+
+00:00:34.902 --> 00:00:39.838
+Como isso é algo que faremos em cada
+instante de tempo do decodificador,
+
+00:00:40.581 --> 00:00:42.884
+só usaremos o estado oculto
+do decodificador
+
+00:00:42.917 --> 00:00:44.581
+naquele instante de tempo,
+
+00:00:44.614 --> 00:00:48.004
+ou no instante anterior,
+em alguns métodos de pontuação.
+
+00:00:48.037 --> 00:00:52.814
+Dados estes dois inputs -
+este vetor e esta matriz -,
+
+00:00:52.847 --> 00:00:57.725
+produziremos um vetor que pontuará
+cada uma dessas colunas.
+
+00:00:57.758 --> 00:00:59.964
+Antes de olharmos
+para a versão da matriz,
+
+00:00:59.997 --> 00:01:04.339
+que calcula as pontuações
+dos estados ocultos do codificador,
+
+00:01:04.372 --> 00:01:07.028
+vamos simplificar observando
+como pontuar
+
+00:01:07.061 --> 00:01:09.486
+um único estado oculto
+do codificador.
+
+00:01:10.101 --> 00:01:13.092
+No primeiro método de pontuação -
+o mais simples -,
+
+00:01:13.125 --> 00:01:17.725
+calculamos o produto escalar
+dos dois vetores de input.
+
+00:01:17.758 --> 00:01:20.219
+O produto escalar
+de dois vetores
+
+00:01:20.252 --> 00:01:23.093
+produz um único número -
+e isso é bom -,
+
+00:01:24.374 --> 00:01:28.340
+mas o importante
+é o significado desse número.
+
+00:01:28.373 --> 00:01:31.612
+Geometricamente, o produto escalar
+de dois vetores
+
+00:01:31.645 --> 00:01:35.093
+é igual à multiplicação
+dos comprimentos dos dois vetores
+
+00:01:35.126 --> 00:01:37.717
+pelo cosseno
+do ângulo entre eles.
+
+00:01:37.750 --> 00:01:41.509
+Sabemos que o cosseno
+tem essa propriedade conveniente,
+
+00:01:42.270 --> 00:01:45.061
+que é igual a 1,
+se o ângulo for zero,
+
+00:01:45.094 --> 00:01:48.181
+e que diminui,
+conforme o ângulo fica maior.
+
+00:01:48.918 --> 00:01:53.549
+Isso significa que, se tivermos dois
+vetores com o mesmo comprimento,
+
+00:01:54.421 --> 00:01:56.444
+quanto menor
+for o ângulo entre eles,
+
+00:01:56.477 --> 00:01:59.022
+maior será o produto escalar.
+
+00:02:00.261 --> 00:02:05.220
+Este produto escalar é uma medida
+de semelhança entre vetores.
+
+00:02:05.253 --> 00:02:07.667
+O produto escalar
+produz um número maior,
+
+00:02:07.700 --> 00:02:11.004
+se o ângulo entre os vetores
+for menor.
+
+00:02:11.037 --> 00:02:14.093
+Na prática, no entanto,
+queremos acelerar o cálculo
+
+00:02:14.126 --> 00:02:17.973
+pontuando todos os estados ocultos
+do codificador de uma só vez,
+
+00:02:18.006 --> 00:02:20.797
+o que nos leva à definição
+matemática formal
+
+00:02:20.830 --> 00:02:22.782
+da atenção do produto escalar.
+
+00:02:23.568 --> 00:02:25.125
+É isso que temos aqui.
+
+00:02:25.158 --> 00:02:29.609
+É o estado oculto do instante
+de tempo atual transposto,
+
+00:02:29.642 --> 00:02:35.178
+vezes a matriz dos instantes
+de tempo ocultos do codificador.
+
+00:02:36.041 --> 00:02:37.977
+Isso ficará assim
+
+00:02:38.609 --> 00:02:41.688
+e produzirá o vetor
+das pontuações.
+
+00:02:41.721 --> 00:02:44.232
+A simplicidade desse método
+traz a desvantagem
+
+00:02:44.265 --> 00:02:46.720
+de pensar que o codificador
+e o decodificador
+
+00:02:46.753 --> 00:02:49.130
+possuem o mesmo
+espaço de embedding.
+
+00:02:49.163 --> 00:02:52.963
+Enquanto isso pode funcionar
+para o resumo de texto, por exemplo,
+
+00:02:52.996 --> 00:02:55.233
+no qual o codificador
+e o decodificador
+
+00:02:55.266 --> 00:02:58.226
+usam a mesma língua
+e o mesmo espaço de embedding,
+
+00:02:58.937 --> 00:03:01.087
+para tradução automática,
+no entanto,
+
+00:03:01.120 --> 00:03:04.887
+cada idioma tende a ter
+seu próprio espaço de embedding.
+
+00:03:06.328 --> 00:03:10.535
+Nesse caso, seria melhor usar
+o segundo método de pontuação,
+
+00:03:10.568 --> 00:03:13.008
+que é uma ligeira variação
+do primeiro.
+
+00:03:13.728 --> 00:03:17.007
+Ele simplesmente adiciona
+uma matriz de pesos
+
+00:03:17.040 --> 00:03:20.608
+entre a multiplicação do estado
+oculto do decodificador
+
+00:03:20.641 --> 00:03:23.210
+e os estados ocultos
+do codificador.
+
+00:03:23.826 --> 00:03:26.264
+Essa matriz de pesos
+é uma transformação linear
+
+00:03:26.297 --> 00:03:30.448
+que permite que o input e o output
+usem diferentes embeddings,
+
+00:03:30.481 --> 00:03:35.132
+e o resultado dessa multiplicação
+seria o vetor de pesos.
+
+00:03:35.165 --> 00:03:37.811
+Vamos observar esta animação
+
+00:03:37.844 --> 00:03:41.547
+e incorporar tudo o que sabemos
+sobre atenção.
+
+00:03:41.580 --> 00:03:45.596
+O primeiro instante de tempo
+no decodificador de atenção
+
+00:03:45.629 --> 00:03:48.868
+começa pegando
+o estado oculto inicial,
+
+00:03:50.076 --> 00:03:53.779
+além do embedding
+do símbolo &lt;END&gt;.
+
+00:03:53.812 --> 00:03:59.139
+Ele faz o cálculo e gera o estado
+oculto naquele instante de tempo.
+
+00:03:59.172 --> 00:04:02.223
+Aqui ignoramos os outputs
+da RNN,
+
+00:04:02.256 --> 00:04:04.835
+usamos apenas
+os estados ocultos.
+
+00:04:04.868 --> 00:04:07.788
+Então fazemos
+o passo de atenção,
+
+00:04:07.821 --> 00:04:12.725
+tomando a matriz dos estados
+ocultos do codificador.
+
+00:04:13.429 --> 00:04:15.835
+Produzimos uma pontuação,
+como mencionamos -
+
+00:04:15.868 --> 00:04:20.250
+se for uma atenção multiplicativa,
+usaremos o produto escalar -,
+
+00:04:20.937 --> 00:04:22.817
+produzimos as pontuações,
+
+00:04:23.425 --> 00:04:25.519
+fazemos uma softmax,
+
+00:04:25.552 --> 00:04:28.384
+multiplicamos
+as pontuações softmax
+
+00:04:28.417 --> 00:04:32.528
+por cada estado oculto
+correspondente ao codificador,
+
+00:04:32.561 --> 00:04:36.103
+somamos produzindo
+o vetor de contexto de atenção
+
+00:04:36.136 --> 00:04:38.375
+e então fazemos o seguinte:
+
+00:04:38.408 --> 00:04:42.175
+concatenamos o vetor
+de contexto de atenção
+
+00:04:42.208 --> 00:04:44.615
+com o estado oculto
+do decodificador
+
+00:04:44.648 --> 00:04:46.328
+no instante de tempo h4.
+
+00:04:46.361 --> 00:04:50.680
+Isso seria c4
+concatenado com h4.
+
+00:04:50.713 --> 00:04:52.352
+É isso que faremos aqui.
+
+00:04:52.385 --> 00:04:55.312
+Basicamente colamos tudo
+como um vetor
+
+00:04:55.345 --> 00:04:59.833
+e depois passamos eles por uma
+rede neural completamente conectada,
+
+00:04:59.866 --> 00:05:03.692
+que basicamente multiplica isso
+pela matriz de pesos Wc
+
+00:05:03.725 --> 00:05:06.305
+e aplica uma ativação
+de tangente hiperbólica.
+
+00:05:06.338 --> 00:05:08.656
+O output desta camada
+completamente conectada
+
+00:05:08.689 --> 00:05:14.506
+seria nossa primeira palavra
+produzida na sequência de output.
+
+00:05:14.539 --> 00:05:16.955
+Podemos prosseguir
+para o segundo passo,
+
+00:05:16.988 --> 00:05:19.250
+passando
+o estado oculto para ele
+
+00:05:19.283 --> 00:05:21.257
+e pegando o output
+
+00:05:21.290 --> 00:05:23.844
+do primeiro instante de tempo
+do decodificador.
+
+00:05:23.877 --> 00:05:26.581
+Produzimos h5 -
+
+00:05:26.614 --> 00:05:29.757
+começamos nossa atenção
+nesta etapa também -,
+
+00:05:29.790 --> 00:05:31.133
+pontuamos,
+
+00:05:31.166 --> 00:05:33.948
+produzimos um vetor de pesos,
+
+00:05:33.981 --> 00:05:36.516
+fazemos softmax, multiplicamos,
+
+00:05:36.549 --> 00:05:39.008
+somamos produzindo c5 -
+
+00:05:39.041 --> 00:05:41.813
+o vetor de contexto de atenção
+no instante 5 -,
+
+00:05:41.846 --> 00:05:44.028
+colamos tudo no estado oculto
+
+00:05:44.061 --> 00:05:47.512
+e passamos pela mesma rede
+completamente conectada
+
+00:05:47.545 --> 00:05:49.443
+com ativação
+de tangente hiperbólica,
+
+00:05:49.476 --> 00:05:52.039
+produzindo a segunda palavra
+no output.
+
+00:05:52.072 --> 00:05:57.319
+Isso segue até concluirmos
+a sequência de output.
+
+00:05:58.016 --> 00:06:00.055
+Essa é praticamente
+a visão completa
+
+00:06:00.088 --> 00:06:03.669
+de como a atenção funciona
+nos modelos Sequence to Sequence.
+
+00:06:03.702 --> 00:06:07.489
+No próximo vídeo,
+falaremos sobre atenção aditiva.
+
