@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.875
+Hi again. Welcome to the part of speech tagging section.
+
+00:00:03.875 --> 00:00:07.049
+In this section, we'll study a very interesting problem which consists in
+
+00:00:07.049 --> 00:00:10.425
+tagging sentences with their parts of speech like noun,
+
+00:00:10.425 --> 00:00:12.570
+verb, adjective et cetera.
+
+00:00:12.570 --> 00:00:14.849
+These types of models are particularly useful
+
+00:00:14.849 --> 00:00:17.429
+for applications like grammar or spelling checkers.
+
+00:00:17.429 --> 00:00:20.234
+We'll use several methods to implement part of speech tagging
+
+00:00:20.234 --> 00:00:23.480
+including Hidden Markov Model. Let's begin.
+

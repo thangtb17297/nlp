@@ -1,0 +1,16 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.250
+Great job. In this section,
+
+00:00:02.250 --> 00:00:05.849
+you have learned Hidden Markov Models and how to apply them to part-of-speech tagging.
+
+00:00:05.849 --> 00:00:08.939
+Now in the project, you will have the chance to apply this algorithm in
+
+00:00:08.939 --> 00:00:13.640
+a real data set of sentences to create your own part-of-speech tagger. Let's go.
+

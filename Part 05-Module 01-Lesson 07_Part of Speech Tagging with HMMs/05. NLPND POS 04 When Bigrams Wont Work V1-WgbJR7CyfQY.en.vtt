@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.700
+Okay. So now let's complicate the problem a little bit.
+
+00:00:02.700 --> 00:00:05.205
+We still have Mary, Jane and Will.
+
+00:00:05.205 --> 00:00:08.615
+And let's say there's a new member of the gang called Spot.
+
+00:00:08.615 --> 00:00:12.099
+And now our data is formed by the following four sentences,
+
+00:00:12.099 --> 00:00:14.140
+Mary, Jane can see Will.
+
+00:00:14.140 --> 00:00:16.065
+Spot will see Mary.
+
+00:00:16.065 --> 00:00:17.865
+Will Jane spot Mary?
+
+00:00:17.864 --> 00:00:20.039
+And Mary will pat Spot.
+
+00:00:20.039 --> 00:00:21.914
+And these are tied in someway.
+
+00:00:21.914 --> 00:00:24.734
+We'll show you later. And we want to tag the sentence,
+
+00:00:24.734 --> 00:00:26.714
+Jane will spot Will.
+
+00:00:26.714 --> 00:00:29.370
+So let's try a lookup table and I won't fill it in,
+
+00:00:29.370 --> 00:00:31.530
+but let's say we can fill it in based on the data.
+
+00:00:31.530 --> 00:00:33.495
+What's a potential problem here?
+
+00:00:33.494 --> 00:00:36.119
+Well, when we look at the first pair Jane will,
+
+00:00:36.119 --> 00:00:37.664
+we notice that that's not in the data.
+
+00:00:37.664 --> 00:00:39.765
+This pair of words never appears.
+
+00:00:39.765 --> 00:00:41.969
+But somehow, it's a pair that makes sense.
+
+00:00:41.969 --> 00:00:44.850
+So, a problem with bigrams or n-grams in general is
+
+00:00:44.850 --> 00:00:48.149
+that sometimes every pair or every n-gram doesn't appear,
+
+00:00:48.149 --> 00:00:51.689
+and then we have no way to fill in the extra information.
+
+00:00:51.689 --> 00:00:55.129
+So for this, we'll introduce hidden mark of models.
+

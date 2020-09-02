@@ -1,0 +1,190 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.660
+So now, here is how the Hidden Markov Model generates a sentence.
+
+00:00:03.660 --> 00:00:06.570
+We start by placing ourselves at the start.
+
+00:00:06.570 --> 00:00:08.070
+And with some probability,
+
+00:00:08.070 --> 00:00:09.990
+we walk around the hidden states.
+
+00:00:09.990 --> 00:00:13.095
+Let's say we walk into the N of noun.
+
+00:00:13.095 --> 00:00:17.190
+Once we're at the N, then we have some options to generate observations.
+
+00:00:17.190 --> 00:00:19.020
+So let's say with some probability,
+
+00:00:19.019 --> 00:00:20.710
+we generate the word, Jane.
+
+00:00:20.710 --> 00:00:22.350
+So we record this word.
+
+00:00:22.350 --> 00:00:25.155
+Then we walk around the hidden states some more.
+
+00:00:25.155 --> 00:00:28.720
+Let's say we land on the M for modal and this generates the word Will.
+
+00:00:28.719 --> 00:00:34.524
+So, we record this and then we walk to the V of verb and generate the word spot.
+
+00:00:34.524 --> 00:00:39.714
+Record that then walk to the N of noun and generate the word Will.
+
+00:00:39.715 --> 00:00:44.490
+And finally, we walk to the end state and generate the end of the sentence or a period.
+
+00:00:44.490 --> 00:00:46.875
+And when we reach this, we're done.
+
+00:00:46.875 --> 00:00:50.725
+Now, it is clear that most sentences can be generated this way.
+
+00:00:50.725 --> 00:00:55.149
+So now, what we'll do is we'll record the probability of the sentence being generated.
+
+00:00:55.149 --> 00:00:57.460
+So, we start again at the starting state.
+
+00:00:57.460 --> 00:00:58.840
+And as we remember,
+
+00:00:58.840 --> 00:01:01.810
+we walked to the N. The transition probability from
+
+00:01:01.810 --> 00:01:05.155
+the start state to N is three-quarters.
+
+00:01:05.155 --> 00:01:07.820
+So we'll record this three-quarters.
+
+00:01:07.819 --> 00:01:10.359
+Now, at N we generate the word Jane.
+
+00:01:10.359 --> 00:01:13.090
+This happens with emission probability two-ninths,
+
+00:01:13.090 --> 00:01:14.260
+so we record that.
+
+00:01:14.260 --> 00:01:18.430
+Now, we move to M and the transition probability is
+
+00:01:18.430 --> 00:01:24.105
+one-third and generate Will with emission probability of three-quarters.
+
+00:01:24.105 --> 00:01:25.990
+Then, we move to V with
+
+00:01:25.989 --> 00:01:28.839
+transition probability three-quarters and generate
+
+00:01:28.840 --> 00:01:32.215
+spot with the emission probability one-quarter.
+
+00:01:32.215 --> 00:01:35.350
+Then, we move back to N with transition probability
+
+00:01:35.349 --> 00:01:40.284
+one and we generate Will with emission probability one over nine.
+
+00:01:40.284 --> 00:01:44.935
+Finally, we move to the end state with transition probability four over nine.
+
+00:01:44.935 --> 00:01:48.850
+So, since the transition moves are all independent of each other and
+
+00:01:48.849 --> 00:01:52.859
+the emission moves are conditional on the hidden state that were located at,
+
+00:01:52.859 --> 00:01:55.299
+the probability that this Hidden Markov Model
+
+00:01:55.299 --> 00:01:58.310
+generates a sentence is the product of these probabilities.
+
+00:01:58.310 --> 00:02:02.079
+We multiply them and get the total probability of the sentence
+
+00:02:02.079 --> 00:02:06.775
+being emitted is 0.0003858.
+
+00:02:06.775 --> 00:02:09.460
+It looks small, but actually it's large considering
+
+00:02:09.460 --> 00:02:12.969
+the huge amount of sentences we can generate of many lengths.
+
+00:02:12.969 --> 00:02:15.060
+So let's repeat this path for,
+
+00:02:15.060 --> 00:02:16.680
+Jane will spot Will.
+
+00:02:16.680 --> 00:02:20.430
+We have the parts of speech noun, modal, verb, noun
+
+00:02:20.430 --> 00:02:27.960
+and the probabilities, and their product is 0.0003858.
+
+00:02:27.960 --> 00:02:30.385
+Let's see if another path can generate this sentence.
+
+00:02:30.384 --> 00:02:32.889
+What about the path noun noun noun noun?
+
+00:02:32.889 --> 00:02:37.914
+We hope this is smaller since it's a bit of a nonsensical pattern of parts of speech.
+
+00:02:37.914 --> 00:02:40.060
+And indeed, it is very small.
+
+00:02:40.060 --> 00:02:46.270
+It is the product of these numbers which is 0.0000002788.
+
+00:02:46.270 --> 00:02:47.780
+So, among these two,
+
+00:02:47.780 --> 00:02:51.650
+we pick the one on top because it generates the sentence with a higher probability.
+
+00:02:51.650 --> 00:02:56.289
+And in general, what we'll do is from all the possible combinations of parts of speech,
+
+00:02:56.289 --> 00:02:58.734
+we'll pick the one that generates the sentence,
+
+00:02:58.735 --> 00:02:59.980
+Jane will spot Will,
+
+00:02:59.979 --> 00:03:01.704
+with the highest probability.
+
+00:03:01.705 --> 00:03:03.520
+This is called maximum likelihood.
+
+00:03:03.520 --> 00:03:07.435
+It's the core of many algorithms and artificial intelligence. So that's simple.
+
+00:03:07.435 --> 00:03:10.150
+All we have to do is go over all the possible chains
+
+00:03:10.150 --> 00:03:13.030
+of parts of speech that could generate the sentence.
+
+00:03:13.030 --> 00:03:15.115
+So, let's have a small quiz.
+
+00:03:15.115 --> 00:03:17.930
+How many of these chains are there?
+

@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.035
+Correct. The answer is 81.
+
+00:00:02.035 --> 00:00:04.845
+And the reason is that we have three possibilities for game,
+
+00:00:04.844 --> 00:00:09.120
+three for will, three for spot, and three for Will.
+
+00:00:09.119 --> 00:00:11.474
+Here are the 81 possibilities.
+
+00:00:11.474 --> 00:00:13.049
+So this is not so bad.
+
+00:00:13.050 --> 00:00:16.635
+We could check 81 products of four things and find the largest one.
+
+00:00:16.635 --> 00:00:21.040
+But what if we have say 30 parts of speech and we need to take a sentence of 10 words.
+
+00:00:21.039 --> 00:00:23.794
+Then we have 30 to the 10 possibilities.
+
+00:00:23.795 --> 00:00:25.235
+That starts being pretty large.
+
+00:00:25.234 --> 00:00:27.059
+In general, it's exponential and we don't want to
+
+00:00:27.059 --> 00:00:28.890
+have to check exponentially many things.
+
+00:00:28.890 --> 00:00:31.050
+We need to have a smarter algorithm.
+
+00:00:31.050 --> 00:00:34.980
+So, here's another way to see this 81 combinations as paths.
+
+00:00:34.979 --> 00:00:36.609
+Here we have our sentence,
+
+00:00:36.609 --> 00:00:38.549
+and here we have our states.
+
+00:00:38.549 --> 00:00:44.804
+The start state and then three choices for each word and then the end state.
+
+00:00:44.804 --> 00:00:49.534
+This gives us the three times three times three times three, which is 81.
+
+00:00:49.534 --> 00:00:54.494
+Notice that each combination of four states also gives us a path from left to right.
+
+00:00:54.494 --> 00:00:56.894
+For example, the combination noun,
+
+00:00:56.895 --> 00:01:00.010
+modal, verb, noun, gives us this path over here.
+
+00:01:00.009 --> 00:01:03.689
+Unless we called that for each element in the path vertices and edges,
+
+00:01:03.689 --> 00:01:06.719
+we have a corresponding probability which comes from
+
+00:01:06.719 --> 00:01:10.114
+the emission and the transition probability tables.
+
+00:01:10.114 --> 00:01:15.159
+And then, we multiply these probabilities to get the total probability of the path.
+
+00:01:15.159 --> 00:01:16.609
+So, at the end of the day,
+
+00:01:16.609 --> 00:01:19.439
+what we have to do is find the path from left to right,
+
+00:01:19.439 --> 00:01:21.629
+that gives us the highest probability.
+
+00:01:21.629 --> 00:01:23.670
+We'll do that in the next video.
+

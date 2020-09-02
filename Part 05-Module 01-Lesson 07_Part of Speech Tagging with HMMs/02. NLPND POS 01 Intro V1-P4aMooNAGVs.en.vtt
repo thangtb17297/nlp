@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.214
+Okay, here's the problem we're going to solve in this section.
+
+00:00:03.214 --> 00:00:05.394
+We have a sentence, for example,
+
+00:00:05.394 --> 00:00:07.264
+Mary had a little lamb,
+
+00:00:07.264 --> 00:00:09.774
+and we need to figure out which words are nouns,
+
+00:00:09.775 --> 00:00:13.225
+verbs, adjectives, adverbs, et cetera.
+
+00:00:13.224 --> 00:00:16.669
+Now, a thorough knowledge in grammar is not needed in this section only to
+
+00:00:16.670 --> 00:00:20.140
+know that words are normally given these labels or tags.
+
+00:00:20.140 --> 00:00:25.010
+For this sentence, the tags are noun for Mary, verb for had,
+
+00:00:25.010 --> 00:00:28.550
+determinant for a, adjective for little,
+
+00:00:28.550 --> 00:00:30.410
+and again noun for lamb.
+
+00:00:30.410 --> 00:00:32.890
+These labels are called parts of speech and
+
+00:00:32.890 --> 00:00:35.414
+so this problem is called part-of-speech tagging,
+
+00:00:35.414 --> 00:00:38.920
+and what we'll do in this section is develop some models that will help us label
+
+00:00:38.920 --> 00:00:43.880
+these words with their corresponding part of speech based on existing label data.
+
+00:00:43.880 --> 00:00:46.995
+The main model that we'll learn today is a hidden Markov model.
+
+00:00:46.994 --> 00:00:50.699
+So for simplicity, in this section we'll only be using three parts of speech.
+
+00:00:50.700 --> 00:00:52.540
+Along in the project, you'll use more.
+
+00:00:52.539 --> 00:00:54.390
+The ones we'll use are noun.
+
+00:00:54.390 --> 00:00:55.829
+So, things like house,
+
+00:00:55.829 --> 00:00:58.189
+car, Mary, Bob, et cetera.
+
+00:00:58.189 --> 00:00:59.679
+Then, we have a modal verb,
+
+00:00:59.679 --> 00:01:01.520
+which is normally used with another verb.
+
+00:01:01.520 --> 00:01:03.160
+These are words like can,
+
+00:01:03.159 --> 00:01:06.140
+would, should, may, et cetera.
+
+00:01:06.140 --> 00:01:07.820
+And finally, we'll have verbs,
+
+00:01:07.819 --> 00:01:09.594
+which are actions like run, see,
+
+00:01:09.594 --> 00:01:11.789
+jump, eat, walk, et cetera.
+
+00:01:11.790 --> 00:01:13.460
+So, when we have a sentence like,
+
+00:01:13.459 --> 00:01:17.079
+John can run, we tag it with the parts of speech as follows.
+
+00:01:17.079 --> 00:01:18.439
+John is the noun,
+
+00:01:18.439 --> 00:01:21.599
+can is the modal verb, and run is the verb.
+

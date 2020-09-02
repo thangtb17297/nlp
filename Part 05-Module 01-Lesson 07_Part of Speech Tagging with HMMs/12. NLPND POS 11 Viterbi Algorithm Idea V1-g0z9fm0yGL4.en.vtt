@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.569
+So in the last video, we saw a method of removing paths which
+
+00:00:03.569 --> 00:00:07.290
+brought our calculations down from 81 paths to four.
+
+00:00:07.290 --> 00:00:10.500
+But that was still a bit lucky and it required a lot of thinking.
+
+00:00:10.500 --> 00:00:13.814
+We want a better algorithm. So let's think.
+
+00:00:13.814 --> 00:00:17.504
+Let's look at only these two paths and let's merge them.
+
+00:00:17.504 --> 00:00:20.250
+So now, what happens at say this point.
+
+00:00:20.250 --> 00:00:22.664
+There are two ways to get to that point.
+
+00:00:22.664 --> 00:00:24.509
+And here are the two ways.
+
+00:00:24.510 --> 00:00:27.330
+And the probabilities for the mini path in the left
+
+00:00:27.329 --> 00:00:30.629
+is much smaller than that of the mini path on the right.
+
+00:00:30.629 --> 00:00:33.969
+So, we're really just concerned with the mini path on the right,
+
+00:00:33.969 --> 00:00:35.710
+and we can forget about the other one.
+
+00:00:35.710 --> 00:00:37.250
+At the end of the day,
+
+00:00:37.250 --> 00:00:38.549
+that's what we want.
+
+00:00:38.549 --> 00:00:40.294
+For every possible state,
+
+00:00:40.295 --> 00:00:44.500
+we will record the highest probability path that ends in that state.
+
+00:00:44.500 --> 00:00:47.034
+This known as the Viterbi algorithm.
+
+00:00:47.034 --> 00:00:50.000
+We'll develop it more thoroughly in the next video.
+

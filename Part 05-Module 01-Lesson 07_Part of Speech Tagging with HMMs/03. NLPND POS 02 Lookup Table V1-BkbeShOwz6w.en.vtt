@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.605
+So, let's start with some friends.
+
+00:00:01.605 --> 00:00:03.120
+Let's say we have our friend, Mary,
+
+00:00:03.120 --> 00:00:05.490
+our friend, Jane, and our friend, Will.
+
+00:00:05.490 --> 00:00:08.699
+And we want to tag the sentence: Mary saw Will.
+
+00:00:08.699 --> 00:00:09.899
+And to figure this out,
+
+00:00:09.900 --> 00:00:12.734
+we have some exciting data in the form of some sentences,
+
+00:00:12.734 --> 00:00:14.669
+which are "Mary saw Jane.",
+
+00:00:14.669 --> 00:00:15.929
+and "Jane so Will."
+
+00:00:15.929 --> 00:00:17.914
+And these are tagged as follows.
+
+00:00:17.914 --> 00:00:20.939
+Mary, Jane, and Will are tagged as nouns,
+
+00:00:20.940 --> 00:00:23.370
+and saw is tagged as a verb.
+
+00:00:23.370 --> 00:00:25.530
+On our first algorithm it's going to be very simple.
+
+00:00:25.530 --> 00:00:29.089
+We're just going to tag each word with the most common part of speech.
+
+00:00:29.089 --> 00:00:31.410
+So, we make a little table where the rows are
+
+00:00:31.410 --> 00:00:34.350
+the words and the columns are the parts of speech,
+
+00:00:34.350 --> 00:00:38.085
+and we write down how often each one appears in the existing data.
+
+00:00:38.085 --> 00:00:40.820
+For the first row, Mary appears once as a noun,
+
+00:00:40.820 --> 00:00:42.395
+and zero times as a verb.
+
+00:00:42.395 --> 00:00:45.540
+Then saw appears zero times as a noun,
+
+00:00:45.539 --> 00:00:48.390
+and two as a verb, et cetera.
+
+00:00:48.390 --> 00:00:52.469
+And then when we want to tag our new sentence, Mary saw Will,
+
+00:00:52.469 --> 00:00:54.449
+then we go word by word and pick
+
+00:00:54.450 --> 00:00:57.075
+the most common part of speech associated with that word.
+
+00:00:57.075 --> 00:01:00.075
+So, that's the largest number in the corresponding row.
+
+00:01:00.075 --> 00:01:03.679
+We start with Mary which in the table gets associated to noun,
+
+00:01:03.679 --> 00:01:05.239
+thanks to this one over here.
+
+00:01:05.239 --> 00:01:11.129
+Then saw gets associated with verb and Will gets associated with noun, and we're done.
+

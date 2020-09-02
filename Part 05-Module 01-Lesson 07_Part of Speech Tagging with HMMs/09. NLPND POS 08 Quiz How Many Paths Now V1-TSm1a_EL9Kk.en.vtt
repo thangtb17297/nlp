@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.784
+So, here we are, we have our diagram,
+
+00:00:01.784 --> 00:00:03.794
+which is called a Trellis diagram.
+
+00:00:03.794 --> 00:00:07.699
+And in here, we're going to find the path of the highest probability.
+
+00:00:07.700 --> 00:00:11.294
+Let's recall that transition and emission probability tables.
+
+00:00:11.294 --> 00:00:13.919
+We'll record the emission probabilities and we won't
+
+00:00:13.919 --> 00:00:16.800
+record the transmission ones yet because they will look too messy.
+
+00:00:16.800 --> 00:00:18.750
+But we'll simplify this graph a bit.
+
+00:00:18.750 --> 00:00:21.920
+First, let's remove all the edges of probability zero.
+
+00:00:21.920 --> 00:00:25.395
+And now, let's remove all the vertices with probability zero.
+
+00:00:25.394 --> 00:00:28.079
+The reason is that, any path that goes through these edges or
+
+00:00:28.079 --> 00:00:31.409
+vertices will have probability zero as a probability that,
+
+00:00:31.410 --> 00:00:33.405
+that path gives of the sentence,
+
+00:00:33.405 --> 00:00:37.365
+is the product of all the probabilities at the edges and vertices.
+
+00:00:37.365 --> 00:00:40.530
+And finally, since we need the path to go from start to finish,
+
+00:00:40.530 --> 00:00:43.484
+we'll remove the edges that don't take us to the end.
+
+00:00:43.484 --> 00:00:44.880
+And now, we need to find
+
+00:00:44.880 --> 00:00:48.870
+the maximum probability path in this Trellis, a much simpler one.
+
+00:00:48.869 --> 00:00:53.729
+So, here's a quiz, how many paths do we have to check now?
+

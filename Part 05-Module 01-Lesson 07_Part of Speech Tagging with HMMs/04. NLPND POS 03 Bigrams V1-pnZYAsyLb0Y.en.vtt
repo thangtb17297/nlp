@@ -1,0 +1,166 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.944
+Now, of course we can't really expect the Lookup Table method to work all the time.
+
+00:00:03.944 --> 00:00:07.379
+Here's a new example where the sentences are getting a bit more complicated.
+
+00:00:07.379 --> 00:00:10.650
+Now, our data is formed by the sentences,
+
+00:00:10.650 --> 00:00:12.315
+Mary will see Jane,
+
+00:00:12.314 --> 00:00:13.839
+Will will see Mary,
+
+00:00:13.839 --> 00:00:15.679
+and Jane will see Will.
+
+00:00:15.679 --> 00:00:17.355
+And the tags are as follows.
+
+00:00:17.355 --> 00:00:19.410
+Noun, modal, and verb.
+
+00:00:19.410 --> 00:00:21.530
+And our goal is to tag the sentence,
+
+00:00:21.530 --> 00:00:23.100
+Mary will see Will.
+
+00:00:23.100 --> 00:00:25.385
+So we do a normal Lookup Table like this,
+
+00:00:25.385 --> 00:00:27.015
+and let's tag our sentence.
+
+00:00:27.015 --> 00:00:29.429
+Mary gets correctly tagged as a noun.
+
+00:00:29.429 --> 00:00:32.159
+Then Will, get correctly tagged as a modal.
+
+00:00:32.159 --> 00:00:34.739
+See gets correctly tagged as a verb,
+
+00:00:34.740 --> 00:00:36.130
+and here's a problem.
+
+00:00:36.130 --> 00:00:38.780
+Will, always get tagged as a modal since it
+
+00:00:38.780 --> 00:00:41.774
+appears three times as modal and two times as a noun,
+
+00:00:41.774 --> 00:00:46.225
+but in this sentence, we know Will is a noun since it's referring to our friend Will.
+
+00:00:46.225 --> 00:00:48.359
+This is a problem. In particular,
+
+00:00:48.359 --> 00:00:52.049
+Lookup Tables won't work very well if a word can have two different tags,
+
+00:00:52.049 --> 00:00:53.939
+since it will always pick the most common tags that's
+
+00:00:53.939 --> 00:00:56.085
+associated with no matter the context.
+
+00:00:56.085 --> 00:00:57.600
+So now the question is,
+
+00:00:57.600 --> 00:00:59.579
+how do we take the context into account?
+
+00:00:59.579 --> 00:01:03.869
+Well, the simplest way to think of context is to look at each words neighbor.
+
+00:01:03.869 --> 00:01:07.049
+So for instance, if we tag pairs of words.
+
+00:01:07.049 --> 00:01:09.869
+For example, here we tagged the consecutive pair,
+
+00:01:09.870 --> 00:01:12.840
+see-Jane as a verb-noun one time,
+
+00:01:12.840 --> 00:01:15.719
+as it appears once as verb-noun.
+
+00:01:15.719 --> 00:01:17.924
+And now, onto tag other sentence.
+
+00:01:17.924 --> 00:01:20.560
+We'll tag the first word using the previous table.
+
+00:01:20.560 --> 00:01:22.655
+So let's tag Mary as a noun.
+
+00:01:22.655 --> 00:01:24.290
+Now, for each following word,
+
+00:01:24.290 --> 00:01:25.895
+we'll tag using the previous one,
+
+00:01:25.894 --> 00:01:29.214
+and the Lookup Table to find the pair of tags that correspond to them.
+
+00:01:29.215 --> 00:01:31.365
+So for example, to tag the word will,
+
+00:01:31.364 --> 00:01:34.179
+we look at Mary-will in particular where Mary is
+
+00:01:34.180 --> 00:01:38.515
+a noun and we see that the most common one is when will is a modal.
+
+00:01:38.515 --> 00:01:40.614
+So we'll tag will as a modal.
+
+00:01:40.614 --> 00:01:42.670
+We continue tagging see as a verb,
+
+00:01:42.670 --> 00:01:44.620
+and the second Will correctly as a noun,
+
+00:01:44.620 --> 00:01:47.380
+since the pair see-Will is tagged as a verb-noun.
+
+00:01:47.379 --> 00:01:49.989
+Notice that I was a bit vague with this algorithm.
+
+00:01:49.989 --> 00:01:52.734
+The reason is there are many ways to define the details here,
+
+00:01:52.734 --> 00:01:54.224
+and most of them work well.
+
+00:01:54.224 --> 00:01:56.604
+I encourage you to think of ways to refine this.
+
+00:01:56.605 --> 00:02:00.265
+For example, let's say you're tagging a word based on itself and the previous one,
+
+00:02:00.265 --> 00:02:03.060
+and your Lookup Table actually corrects the tagging of the previous word,
+
+00:02:03.060 --> 00:02:05.695
+do you keep the existing one, or use the new one?
+
+00:02:05.694 --> 00:02:09.544
+These are all decisions that are based on what fits the data best.
+
+00:02:09.544 --> 00:02:11.934
+Of course, Bigrams are not the end of the story,
+
+00:02:11.935 --> 00:02:14.289
+we can do it with three words at a time or even more.
+
+00:02:14.289 --> 00:02:18.530
+These are called Ingrams and they're also very good with part of speech tagging.
+
