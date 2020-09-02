@@ -1,0 +1,428 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project: DNN Speech Recognizer</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Project: DNN Speech Recognizer</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Overview.html">01. Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction to GPU Workspaces.html">02. Introduction to GPU Workspaces</a>
+    </li>
+    <li class="">
+      <a href="03. Workspaces Best Practices.html">03. Workspaces: Best Practices</a>
+    </li>
+    <li class="">
+      <a href="04. Tasks.html">04. Tasks</a>
+    </li>
+    <li class="">
+      <a href="05. VUI Speech Recognizer Workspace.html">05. VUI Speech Recognizer Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Project DNN Speech Recognizer.html">Project Description - Project: DNN Speech Recognizer</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Project DNN Speech Recognizer.html">Project Rubric - Project: DNN Speech Recognizer</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Project: DNN Speech Recognizer</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>STEP 2: Model 0: RNN</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Trained Model 0</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_0.pickle</code> are undefined.  The trained weights for the model specified in <code>simple_rnn_model</code> are stored in <code>model_0.h5</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Model 1: RNN + TimeDistributed Dense</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Completed <code>rnn_model</code> Module</p>
+        </td>
+        <td>
+          <p>The submission includes a <code>sample_models.py</code> file with a completed <code>rnn_model</code> module containing the correct architecture. </p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Trained Model 1</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_1.pickle</code> are undefined.  The trained weights for the model specified in <code>rnn_model</code> are stored in <code>model_1.h5</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Model 2: CNN + RNN + TimeDistributed Dense</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Completed <code>cnn_rnn_model</code> Module</p>
+        </td>
+        <td>
+          <p>The submission includes a <code>sample_models.py</code> file with a completed <code>cnn_rnn_model</code> module containing the correct architecture.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Trained Model 2</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_2.pickle</code> are undefined.  The trained weights for the model specified in <code>cnn_rnn_model</code> are stored in <code>model_2.h5</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Model 3: Deeper RNN + TimeDistributed Dense</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Completed <code>deep_rnn_model</code> Module</p>
+        </td>
+        <td>
+          <p>The submission includes a <code>sample_models.py</code> file with a completed <code>deep_rnn_model</code> module containing the correct architecture.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Trained Model 3</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_3.pickle</code> are undefined.  The trained weights for the model specified in <code>deep_rnn_model</code> are stored in <code>model_3.h5</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Model 4: Bidirectional RNN + TimeDistributed Dense</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Completed <code>bidirectional_rnn_model</code> Module</p>
+        </td>
+        <td>
+          <p>The submission includes a <code>sample_models.py</code> file with a completed <code>bidirectional_rnn_model</code> module containing the correct architecture.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Trained Model 4</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_4.pickle</code> are undefined.  The trained weights for the model specified in <code>bidirectional_rnn_model</code> are stored in <code>model_4.h5</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Compare the Models</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Question 1</p>
+        </td>
+        <td>
+          <p>The submission includes a detailed analysis of why different models might perform better than others.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>STEP 2: Final Model</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Trained Final Model</p>
+        </td>
+        <td>
+          <p>The submission trained the model for at least 20 epochs, and none of the loss values in <code>model_end.pickle</code> are undefined.  The trained weights for the model specified in <code>final_model</code> are stored in <code>model_end.h5</code>.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Completed <code>final_model</code> Module</p>
+        </td>
+        <td>
+          <p>The submission includes a <code>sample_models.py</code> file with a completed <code>final_model</code> module containing a final architecture that is not identical to any of the previous architectures.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Question 2</p>
+        </td>
+        <td>
+          <p>The submission includes a detailed description of how the final model architecture was designed.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><h2 id="1-add-a-language-model-to-the-decoder">(1) Add a Language Model to the Decoder</h2>
+<p>The performance of the decoding step can be greatly enhanced by incorporating a language model.  Build your own language model from scratch, or leverage a repository or toolkit that you find online to improve your predictions.</p>
+<h2 id="2-train-on-bigger-data">(2) Train on Bigger Data</h2>
+<p>In the project, you used some of the smaller downloads from the LibriSpeech corpus.  Try training your model on some larger datasets - instead of using <code>dev-clean.tar.gz</code>, download one of the larger training sets on the <a href="http://www.openslr.org/12/" target="_blank">website</a>.</p>
+<h2 id="3-try-out-different-audio-features">(3) Try out Different Audio Features</h2>
+<p>In this project, you had the choice to use <em>either</em> spectrogram or MFCC features.  Take the time to test the performance of <em>both</em> of these features.  For a special challenge, train a network that uses raw audio waveforms!</p></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Project: DNN Speech Recognizer')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

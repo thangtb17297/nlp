@@ -1,0 +1,217 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Workspaces: Best Practices</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Project: DNN Speech Recognizer</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Overview.html">01. Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction to GPU Workspaces.html">02. Introduction to GPU Workspaces</a>
+    </li>
+    <li class="">
+      <a href="03. Workspaces Best Practices.html">03. Workspaces: Best Practices</a>
+    </li>
+    <li class="">
+      <a href="04. Tasks.html">04. Tasks</a>
+    </li>
+    <li class="">
+      <a href="05. VUI Speech Recognizer Workspace.html">05. VUI Speech Recognizer Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Project DNN Speech Recognizer.html">Project Description - Project: DNN Speech Recognizer</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Project DNN Speech Recognizer.html">Project Rubric - Project: DNN Speech Recognizer</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Workspaces: Best Practices</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="-best-practices">## Best Practices</h2>
+<p>Follow the best practices outlined below to avoid common issues with Workspaces.</p>
+<ul>
+<li><h3 id="keep-your-home-folder-small">Keep your home folder small</h3>
+<p><strong>Your home folder (including subfolders) must be less than 2GB</strong> or you may lose data when your session terminates. You may use directories outside of the home folder for more space, but only the contents of the home folder are persisted between sessions and submitted with your project.<br />
+<br><br><br />
+<strong>NOTE:</strong> <strong>Your home folder (including subfolders) must be less than 25 megabytes to submit as a project.</strong> If the site becomes unresponsive when you try to submit your project, it is likely that your home folder is too large. You can check the size of your home folder by opening a terminal and running the command <code>du -h . | tail -1</code> You can use <code>ls</code> to list the files in your terminal and <code>rm</code> to remove unwanted files. (Search for both commands online to find example usage.)</p>
+<ul>
+<li>##### What's the "home folder"?<br />
+"Home folder" refers to the directory where users files are stored (compared to locations where system files are stored, for example). (Ref. Wikipedia: <a href="https://en.wikipedia.org/wiki/Home_directory" target="_blank">home directory</a>) In Workspaces, the home folder is <code>/home/workspace</code>. Any files in this folder or any subfolder are part of your home folder contents, which means they're saved between sessions and transferred automatically when you switch between CPU/GPU mode.<br />
+<br><br><br />
+The folder <code>/tmp</code> is <em>not</em> in the home folder; files in any folder outside your home folder are <strong>not</strong> persisted between sessions or transferred between CPU/GPU mode. You can create a folder outside the home folder using the command <code>mkdir</code> from a terminal. For example you could create a temporary folder to store data using <code>mkdir -p /data</code> to create a folder at the root directory. You will need to recreate the folder and recreate any data inside every time you start a new Workspace session.</li></ul></li>
+<li><p>### Keeping your connection alive during long processes<br />
+Workspaces automatically disconnect when the connection is inactive for about 30 minutes, which includes inactivity while deep learning models are training. You can use the workspace_utils.py module <a href="https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5b0dea96_workspace-utils/workspace-utils.py" target="_blank">here</a> to keep your connection alive during training. The module provides a context manager and an iterator wrapper—see example use below.<br />
+<br><br><br />
+<strong>NOTE:</strong> The script sometimes raises a connection error if the request is opened too frequently; just restart the jupyter kernel &amp; run the cells again to reset the error.<br />
+<br><br><br />
+<strong>NOTE:</strong> These scripts will keep your connection alive while the training process is <em>running</em>, but the workspace will still disconnect 30 minutes after the last notebook cell finishes. Modify the notebook cells to <strong>save your work</strong> at the end of the last cell or else you'll lose all progress when the workspace terminates.</p></li>
+</ul>
+<p><strong>Example using context manager:</strong></p>
+<pre><code class="python language-python">from workspace_utils import active_session
+
+with active_session():
+    # do long-running work here</code></pre>
+<p><strong>Example using iterator wrapper:</strong></p>
+<pre><code class="python language-python">from workspace_utils import keep_awake
+
+for i in keep_awake(range(5)):
+    # do iteration with lots of work here</code></pre>
+<ul>
+<li><h3 id="manage-your-gpu-time">Manage your GPU time</h3>
+<p>It is important to avoid wasting GPU time in Workspace projects that have GPU acceleration enabled. The benefits of GPU acceleration are most useful when evaluating deep learning models—especially during <em>training</em>. In most cases, you can build and test your model (including data pre-processing, defining model architecture, etc.) in CPU mode, then activate GPU mode to accelerate training.</p></li>
+<li><p>### Handling "Out of Memory" errors<br />
+This issue isn't specific to Workspaces, but rather it is an apparent issue between Pytorch &amp; Jupyter, where Jupyter reports "out of memory" after a cell crashes. Jupyter holds references to active objects as long as the kernel is running—including objects created before an error is raised. This can cause Jupyter to persist large objects in memory long after they are no longer required. The only known solution so far is to reset the kernel and run the notebook cells again.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Tasks.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Workspaces: Best Practices')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
