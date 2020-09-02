@@ -1,0 +1,230 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project: Machine Translation</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Project: Machine Translation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction to GPU Workspaces.html">01. Introduction to GPU Workspaces</a>
+    </li>
+    <li class="">
+      <a href="02. Workspaces Best Practices.html">02. Workspaces: Best Practices</a>
+    </li>
+    <li class="">
+      <a href="03. NLP Machine Translation Workspace.html">03. NLP Machine Translation Workspace</a>
+    </li>
+    <li class="">
+      <a href="04. Project Machine Translation.html">04. Project: Machine Translation</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Project Machine Translation.html">Project Description - Project: Machine Translation</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Project Machine Translation.html">Project Rubric - Project: Machine Translation</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Project: Machine Translation</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+    
+    <h2 id="instructions">Instructions</h2>
+<p>This project requires GPU acceleration to run efficiently. Please refer to the instructions below to complete the project.</p>
+<h3 id="option-1-udacity-workspaces-with-gpu-support-highly-recommended">Option 1: Udacity Workspaces with GPU Support (Highly Recommended)</h3>
+<p>Open the NLP Machine Translation Workspace](<a href="https://classroom.udacity.com/nanodegrees/nd892/parts/94230570-1456-442c-a152-ca4e171acbfc/modules/162cd048-bbff-412e-8f14-29c34cc2c960/lessons/30f31cf9-74bd-4764-a223-ea2967820ac7/concepts/b7226898-22d9-46ea-bafc-28f166c632ea" target="_blank">https://classroom.udacity.com/nanodegrees/nd892/parts/94230570-1456-442c-a152-ca4e171acbfc/modules/162cd048-bbff-412e-8f14-29c34cc2c960/lessons/30f31cf9-74bd-4764-a223-ea2967820ac7/concepts/b7226898-22d9-46ea-bafc-28f166c632ea</a>) lesson above and complete the project.</p>
+<h3 id="option-2-aws-ec2-recommended---but-more-difficult-than-workspaces">Option 2: AWS EC2 (Recommended - but more difficult than Workspaces)</h3>
+<ol>
+<li><p>Follow the <a href="https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/3511c7a0-6792-416f-89e6-a677f0770380/lessons/acd7408c-556a-493f-9a5f-c408177d40d4/concepts/b7bc490f-065d-4b4f-b65a-e1cdf1c55d33" target="_blank">Udacity instructions</a> to launch an EC2 GPU instance .  <strong>All of the remaining instructions should be executed in the EC2 instance.</strong></p></li>
+<li><p>Clone the project GitHub repository, and navigate to the downloaded folder: </p></li>
+</ol>
+<pre><code class="bash language-bash"> git clone https://github.com/udacity/aind2-nlp-capstone
+ cd aind2-nlp-capstone</code></pre>
+<ol>
+<li><p>Start Jupyter: <code>jupyter notebook --ip=0.0.0.0 --no-browser</code></p></li>
+<li><p>Look at the output in the window, and find the line that looks like the following:</p></li>
+</ol>
+<pre><code class="text language-text">Copy/paste this URL into your browser when you connect for the first time to login with a token: 
+http://0.0.0.0:8888/?token=3156e...</code></pre>
+<ol>
+<li><p>Copy and paste the <strong>complete URL</strong> into the address bar of a web browser (Firefox, Safari, Chrome, etc).  Before navigating to the URL, replace <code>0.0.0.0</code> in the URL with the "IPv4 Public IP" address from the EC2 Dashboard.  Press Enter.</p></li>
+<li><p>Click on <strong>machine_translation.ipynb</strong>.  Follow the instructions in the notebook.</p></li>
+</ol>
+<h3 id="option-3-running-on-your-local-machine-not-recommended">Option 3: Running on your Local Machine (NOT Recommended)</h3>
+<ol>
+<li>Clone the repository, and navigate to the downloaded folder.</li>
+</ol>
+<pre><code class="bash language-bash"> git clone https://github.com/udacity/aind2-nlp-capstone
+ cd aind2-nlp-capstone</code></pre>
+<ol>
+<li>Create (and activate) a new environment with Python 3.5 and the <code>numpy</code> package.</li>
+</ol>
+<pre><code class="bash language-bash">conda create --name aind-nlp-capstone python=3.5 numpy
+source activate aind-nlp-capstone</code></pre>
+<ol>
+<li>Install/Update TensorFlow.</li>
+</ol>
+<pre><code class="bash language-bash">pip install tensorflow==1.1 -U</code></pre>
+<ol>
+<li>Install/Update Keras.</li>
+</ol>
+<pre><code class="bash language-bash">pip install keras -U</code></pre>
+<ol>
+<li>Switch <a href="https://keras.io/backend/" target="_blank">Keras backend</a> to TensorFlow.</li>
+</ol>
+<pre><code class="bash language-bash">KERAS_BACKEND=tensorflow python -c "from keras import backend"</code></pre>
+<ol>
+<li>Start Jupyter: <code>jupyter notebook --no-browser</code></li>
+<li>Look at the output in the window, and find the line that looks like the following:</li>
+</ol>
+<pre><code class="text language-text">Copy/paste this URL into your browser when you connect for the first time to login with a token: 
+http://0.0.0.0:8888/?token=3156e...</code></pre>
+<ol>
+<li><p>Copy and paste the <strong>complete URL</strong> into the address bar of a web browser (Firefox, Safari, Chrome, etc).  Press Enter.</p></li>
+<li><p>Click on <strong>machine_translation.ipynb</strong>.  Follow the instructions in the notebook.</p></li>
+</ol>
+<h1 id="submission">Submission</h1>
+<p>Follow the instructions in the notebook to submit your project.</p>
+  
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Project: Machine Translation')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
