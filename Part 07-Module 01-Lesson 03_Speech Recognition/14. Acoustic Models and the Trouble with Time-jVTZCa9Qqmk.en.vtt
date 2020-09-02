@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.754
+We've got our data now.
+
+00:00:01.754 --> 00:00:04.769
+With feature extraction, we've addressed noise problems due to
+
+00:00:04.769 --> 00:00:08.695
+environmental factors as well as variability of speakers.
+
+00:00:08.695 --> 00:00:13.635
+Phonetics gives us a representation for sounds and language that we can map to.
+
+00:00:13.634 --> 00:00:18.329
+That mapping, from the sound representation to the phonetic representation,
+
+00:00:18.329 --> 00:00:21.359
+is the task of our acoustic model.
+
+00:00:21.359 --> 00:00:26.625
+We still haven't solved the problem of matching variable lengths of the same word.
+
+00:00:26.625 --> 00:00:30.320
+We've talked about this problem before in another lesson,
+
+00:00:30.320 --> 00:00:33.780
+when the dynamic time warping algorithm was introduced.
+
+00:00:33.780 --> 00:00:39.359
+To recap, DTW calculates the similarity between two signals,
+
+00:00:39.359 --> 00:00:42.295
+even if their time lengths differ.
+
+00:00:42.295 --> 00:00:45.075
+This can be used in speech recognition, for instance,
+
+00:00:45.075 --> 00:00:48.359
+to align the sequence data of a new word to
+
+00:00:48.359 --> 00:00:52.545
+its most similar counterpart in a dictionary of word examples.
+
+00:00:52.545 --> 00:00:54.240
+As we'll soon see,
+
+00:00:54.240 --> 00:00:58.020
+hidden Markov models are well-suited for solving this type
+
+00:00:58.020 --> 00:01:02.640
+of time series pattern sequencing within an acoustic model, as well.
+
+00:01:02.640 --> 00:01:05.519
+This characteristic explains their popularity in
+
+00:01:05.519 --> 00:01:09.524
+speech recognition solutions for the past 30 years.
+
+00:01:09.525 --> 00:01:13.380
+If we choose to use deep neural networks for our acoustic model,
+
+00:01:13.379 --> 00:01:15.899
+the sequencing problem reappears.
+
+00:01:15.900 --> 00:01:20.415
+We can address the problem with a hybrid HMM/DNN system,
+
+00:01:20.415 --> 00:01:23.250
+or we can solve it another way.
+
+00:01:23.250 --> 00:01:27.150
+Later, we'll talk about how we can solve the problem in DNNs with
+
+00:01:27.150 --> 00:01:32.340
+connectionist temporal classification or CTC.
+
+00:01:32.340 --> 00:01:37.530
+First though, we'll review HMMs and how they're used in speech recognition.
+

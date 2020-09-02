@@ -1,0 +1,566 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab: Voice Data</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Speech Recognition</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Challenges in ASR.html">02. Challenges in ASR</a>
+    </li>
+    <li class="">
+      <a href="03. Signal Analysis.html">03. Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="04. References Signal Analysis.html">04. References: Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz FFT.html">05. Quiz: FFT</a>
+    </li>
+    <li class="">
+      <a href="06. Feature Extraction with MFCC.html">06. Feature Extraction with MFCC</a>
+    </li>
+    <li class="">
+      <a href="07. References Feature Extraction.html">07. References: Feature Extraction</a>
+    </li>
+    <li class="">
+      <a href="08. Quiz MFCC.html">08. Quiz: MFCC</a>
+    </li>
+    <li class="">
+      <a href="09. Phonetics.html">09. Phonetics</a>
+    </li>
+    <li class="">
+      <a href="10. References Phonetics.html">10. References: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Phonetics.html">11. Quiz: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="12. Voice Data Lab Introduction.html">12. Voice Data Lab Introduction</a>
+    </li>
+    <li class="">
+      <a href="13. Lab Voice Data.html">13. Lab: Voice Data</a>
+    </li>
+    <li class="">
+      <a href="14. Acoustic Models and the Trouble with Time.html">14. Acoustic Models and the Trouble with Time</a>
+    </li>
+    <li class="">
+      <a href="15. HMMs in Speech Recognition.html">15. HMMs in Speech Recognition</a>
+    </li>
+    <li class="">
+      <a href="16. Language Models.html">16. Language Models</a>
+    </li>
+    <li class="">
+      <a href="17. N-Grams.html">17. N-Grams</a>
+    </li>
+    <li class="">
+      <a href="18. Quiz N-Grams.html">18. Quiz: N-Grams</a>
+    </li>
+    <li class="">
+      <a href="19. References Traditional ASR.html">19. References: Traditional ASR</a>
+    </li>
+    <li class="">
+      <a href="20. A New Paradigm.html">20. A New Paradigm</a>
+    </li>
+    <li class="">
+      <a href="21. Deep Neural Networks as Speech Models.html">21. Deep Neural Networks as Speech Models</a>
+    </li>
+    <li class="">
+      <a href="22. Connectionist Tempora Classification (CTC).html">22. Connectionist Tempora Classification (CTC)</a>
+    </li>
+    <li class="">
+      <a href="23. References Deep Neural Network ASR.html">23. References: Deep Neural Network ASR</a>
+    </li>
+    <li class="">
+      <a href="24. Outro.html">24. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">13. Lab: Voice Data</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="lab-voice-data">Lab: Voice Data</h1>
+<p>The purpose of this lab is to gain familiarity with speech data you might use to train an Automatic Speech Recognition (ASR) system.  In the following steps, you'll:</p>
+<ul>
+<li>Explore the LibriSpeech data set and format</li>
+<li>Create your own audio files</li>
+<li>Build your own audio data set</li>
+</ul>
+<p>As you complete each step , check it off in the task list that follows:</p>
+<h1 id="lab-task-list">Lab Task List</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--0">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--0"><p>Clone the  <a href="https://github.com/udacity/AIND-VUI-Lab-Voice-Data" target="_blank">AIND-VUI-Lab-Voice-Data</a> repository</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--1">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--1"><p>Visit the LibriSpeech web site</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--2">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--2"><p>Complete the LibriSpeech Corpus Quiz</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--3">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--3"><p>Extract and explore <code>LibriSpeech_Samples.zip</code></p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--4">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--4"><p>Complete the LibriSpeech Data Quiz</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--5">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--5"><p>Install the Sonic Visualizer</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--6">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--6"><p>Create five <code>.wav</code> files of about a sentence each</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--7">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--7"><p>View a spectrogram of your audio</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--8">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--8"><p>Create data set: Step 1 - convert and structure</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--9">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--9"><p>Create data set: Step 2 - add utterances</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="0d74e66c-5632-49ca-8969-355b3aa5494f--10">
+        <label for="0d74e66c-5632-49ca-8969-355b3aa5494f--10"><p>Create data set: Step 3 - create .json file needed for processing</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Great job!  You've created a mini-data set in a format for ASR training and testing!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="clone-the-repository">Clone the repository</h2>
+<p>To get started, clone or download the lab repository at  <a href="https://github.com/udacity/AIND-VUI-Lab-Voice-Data" target="_blank">AIND-VUI-Lab-Voice-Data</a>. The repository contains some data and utility files for you to use in this lab.  </p>
+<h2 id="visit-the-librispeech-corpushttpwwwopenslrorg12--web-site">Visit the <a href="http://www.openslr.org/12/" target="_blank">LibriSpeech corpus</a>  web site.</h2>
+<p>Review the information found on the site landing page to answer the following quiz question.</p>
+<h2 id="librispeech-corpus-quiz">LibriSpeech Corpus Quiz</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Title</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of the following are true about the LibriSpeech data set?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1498537435199" name="340352" id="a1498537435199">
+      <label for="a1498537435199"><p>The data set consists of 1000 hours of speech</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537577267" name="340352" id="a1498537577267">
+      <label for="a1498537577267"><p>The data set costs $0.10 per hour of speech downloaded</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537625134" name="340352" id="a1498537625134">
+      <label for="a1498537625134"><p>The data set is free to use</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537639204" name="340352" id="a1498537639204">
+      <label for="a1498537639204"><p>The data set is segmented</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537661751" name="340352" id="a1498537661751">
+      <label for="a1498537661751"><p>The data set includes French and Spanish</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537691414" name="340352" id="a1498537691414">
+      <label for="a1498537691414"><p>The data set is in English</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498537705844" name="340352" id="a1498537705844">
+      <label for="a1498537705844"><p>The data set is appropriate for large scale speech training</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>The data set consists of 1000 hours of speech</li>
+      <li>The data set is free to use</li>
+      <li>The data set is segmented</li>
+      <li>The data set is in English</li>
+      <li>The data set is appropriate for large scale speech training</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="extract-and-explore-librispeech_samples">Extract and explore <strong>LibriSpeech_Samples</strong></h2>
+<p>Extract the <strong>LibriSpeech_Samples</strong> directory from the <code>LibriSpeech_Samples.zip</code> file in the <strong>AIND-VUI-Lab-Voice-Data</strong> directory.  This sample includes the <code>README.TXT</code>, <code>BOOKS.TXT</code>, <code>CHAPTERS.TXT</code>, and <code>SPEAKERS.TXT</code> information files for you to explore.  In addition, it contains a single path of data through <strong>dev-clean/1993/147965/[1993-147965.trans.txt, 1993-147965-0000.wav, …]</strong>.  "1993" is the speaker number and  "147965" is the chapter number.  You can look up which speakers and chapters these files correspond to in the information files.  Within the chapter directory, there are <code>.wav</code> audio files and one transcription file.  </p>
+<p>The full LibriSpeech data sets are much larger, with many more speakers and chapters.  There are <code>.flac</code> files rather than <code>.wav</code> files, which would need to be converted.  This has been done for you for the lab.  You will work with the larger corpus data set when you get to the Capstone project.</p>
+<p>Refer to the <strong>LibriSpeech_Samples</strong> files to answer the following quiz.</p>
+<p>## LibriSpeech Data Quiz</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Explore the LibriSpeech sampler and check all the following <em>true</em> statements about it.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1498538384956" name="340369" id="a1498538384956">
+      <label for="a1498538384956"><p>The speaker is named Dawn</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540317744" name="340369" id="a1498540317744">
+      <label for="a1498540317744"><p>The speaker is named Amanda</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540336295" name="340369" id="a1498540336295">
+      <label for="a1498540336295"><p>The speaker is named Wendy</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540360052" name="340369" id="a1498540360052">
+      <label for="a1498540360052"><p>The book that is being read from is "Frankenstein"</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540509706" name="340369" id="a1498540509706">
+      <label for="a1498540509706"><p>The book that is being read from is "My Antonia"</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540555635" name="340369" id="a1498540555635">
+      <label for="a1498540555635"><p>The book that is being read from is "Pollyanna"</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540578013" name="340369" id="a1498540578013">
+      <label for="a1498540578013"><p>The transcripts have no punctuation other than apostrophes</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1498540616999" name="340369" id="a1498540616999">
+      <label for="a1498540616999"><p>The transcripts are entirely in upper case</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>The speaker is named Wendy</li>
+      <li>The book that is being read from is "My Antonia"</li>
+      <li>The transcripts have no punctuation other than apostrophes</li>
+      <li>The transcripts are entirely in upper case</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="sonic-visualizer">Sonic Visualizer</h2>
+<p>Download and install the free <a href="http://www.sonicvisualiser.org/" target="_blank">Sonic Visualizer</a>.  </p>
+<p>Open the <strong>Sonic Visualizer</strong> application.  The controls are fairly straightforward and include a red button for recording and the usual array of play buttons.  Note the "Solo Current Pane" button, shown here with a red arrow, which will come in handy if you want to play back a single snippet when several are open.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/sv-controls.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Choose five sentences from a book or create your own.  Record them one at a time with the Sonic Visualizer.  You should see something like this:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/sv-sentences.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="create-wav-files">Create <code>.wav</code> files</h2>
+<p>Create a folder for your audio files called <strong>my_audio</strong> in your <strong>AIND-VUI-Lab-Voice-Data</strong> directory, and save each of these recordings there as a <code>.wav</code> file.  Your audio recordings can be located with the <code>File-&gt;Browse Recorded Audio Folder</code> command or exported individually with the <code>File-&gt;Export Audio File</code> command.  </p>
+<h2 id="create-a-spectrogram">Create a spectrogram</h2>
+<p>Spend as much time as you wish exploring the features of the visualizer.  To see a spectrogram of your audio, try the <code>Pane-&gt;Add Spectrogram</code> command.  To see it in multiple colors, change the color choice on the right side to "fruit salad".  You may get a better view of the spectrogram by closing some of the panes first.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/spectrogram.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="build-your-data-set---step-1-convert-and-structure">Build your data set - Step 1: Convert and structure</h2>
+<p>Open a terminal window in the <strong>AIND-VUI-Lab-Voice-Data</strong> folder.  Set the environment to a python 3 environment, such as the conda <strong>aind</strong> environment created in previous projects, and install the <a href="https://pysoundfile.readthedocs.io/en/0.9.0/" target="_blank">pysoundfile</a> library:</p>
+<ul>
+<li>Mac/Unix</li>
+</ul>
+<pre><code>$ source activate aind
+$ pip install pysoundfile</code></pre>
+<ul>
+<li>Windows</li>
+</ul>
+<pre><code>$ activate aind
+$ pip install pysoundfile</code></pre>
+<p>The <code>.wav</code> files need to be converted from an IEEE-FLOAT format produced by Sonic Visualizer to a lower resolution PCM-16 format required in later processing steps.  In addition, the audio files need to named and placed in a structure similar to the LibriSpeech file structure, i.e. sorted and identified by speaker and chapter.  We need an arbitrary speaker number and chapter number to do this.  A utiltiy <code>convert_flt_pcm.py</code> has been provided for this purpose:  </p>
+<pre><code class="text language-text">usage: convert_flt_pcm.py [-h]
+                          input_directory data_directory group speaker chapter
+
+positional arguments:
+  input_directory  Path to input directory
+  data_directory   Path to output data directory
+  group            group
+  speaker          speaker number
+  chapter          chapter number
+
+optional arguments:
+  -h, --help       show this help message and exit </code></pre>
+<p>Convert the files with the following command (you can use different speaker and chapter numbers if you wish).</p>
+<pre><code class="shell language-shell">$ python convert_flt_pcm.py my_audio MySpeech my_dev 1 12345</code></pre>
+<h2 id="build-your-data-set---step-2-add-the-utterances">Build your data set - Step 2: Add the utterances</h2>
+<p>You should now have a file structure with renamed <code>.wav</code> files in the <strong>MySpeech/my_dev/1/12345</strong> directory.  There should also be a file named <code>1-12345.trans.txt</code> with the following lines:</p>
+<pre><code class="text language-text">1-12345-0000 
+1-12345-0001 
+1-12345-0002 
+1-12345-0003 
+1-12345-0004 </code></pre>
+<p>Note these will have different ID's if you gave different "speaker" and "chapter" numbers during the conversion step.  Add sentences that correspond to your <code>.wav</code> files with the same ID.  You may need to "play" them to be sure of their contents.  The utterances should contain all capital letters and no punctuation except for apostrophes where needed.  Here's an example:</p>
+<pre><code class="text language-text">1-12345-0000 WHEN I DREAMED UP THE DRACO TAVERN, MY INTENT WAS TO DEAL WITH QUESTIONS OF A CERTAIN TYPE
+1-12345-0001 I'M A SCIENCE FICTION WRITER AFTER ALL
+1-12345-0002 I'M SUPPOSED TO BE ABLE TO DEAL WITH QUESTIONS OF HUGE IMPORT
+1-12345-0003 IN ADDITION I'M GOOD AT VIGNETTES AND I WANTED TO GET BETTER
+1-12345-0004 I WANTED A FORMAT IN WHICH TO DEAL WITH THE SIMPLEST MOST UNIVERSAL QUESTIONS</code></pre>
+<h2 id="build-your-data-set---step-3-create-json-file-needed-for-processing">Build your data set - Step 3: Create <code>.json</code> file needed for processing</h2>
+<p>In order to use this data to train an ASR, the data generator needs a concise way to access the audio files and match them to the transcription.  The following utility walks through the data structure and creates a <code>.json</code> description file.</p>
+<pre><code class="text language-text">usage: create_desc_json.py [-h] data_directory output_file
+
+positional arguments:
+  data_directory  Path to data directory
+  output_file     Path to output file
+
+optional arguments:
+  -h, --help      show this help message and exit</code></pre>
+<p>In the terminal window, run the following:</p>
+<pre><code>$ python create_desc_json.py MySpeech/my_dev my_dev.json</code></pre>
+<p>That's it!  Take a look at <code>my_dev.json</code> to make sure it contains the file descriptions.  The example above yielded the following - yours should be similar but not identical:</p>
+<pre><code class="text language-text">{"key": "MySpeech/my_dev\\1\\12345\\1-12345-0000.wav", "duration": 2.608253968253968, "text": "when i dreamed up the draco tavern, my intent was to deal with questions of a certain type"}
+{"key": "MySpeech/my_dev\\1\\12345\\1-12345-0001.wav", "duration": 1.6910657596371883, "text": "i'm a science fiction writer after all"}
+{"key": "MySpeech/my_dev\\1\\12345\\1-12345-0002.wav", "duration": 1.6337414965986394, "text": "i'm supposed to be able to deal with questions of huge import"}
+{"key": "MySpeech/my_dev\\1\\12345\\1-12345-0003.wav", "duration": 1.4904308390022676, "text": "in addition i'm good at vignettes and i wanted to get better"}
+{"key": "MySpeech/my_dev\\1\\12345\\1-12345-0004.wav", "duration": 1.6910657596371883, "text": "i wanted a format in which to deal with the simplest most universal questions"}</code></pre>
+<p>Be sure to check all the boxes in the Task List that you have completed!</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="14. Acoustic Models and the Trouble with Time.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. Lab: Voice Data')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

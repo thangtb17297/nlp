@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.110
+Congratulations on completing the speech recognition module.
+
+00:00:04.110 --> 00:00:06.075
+We've covered a lot of ground.
+
+00:00:06.075 --> 00:00:10.769
+We started with signal analysis taking apart the sound characteristics of the signal,
+
+00:00:10.769 --> 00:00:15.059
+and extracting only the features we required to decode the sounds and the words.
+
+00:00:15.060 --> 00:00:17.370
+We learned how the features could be mapped to
+
+00:00:17.370 --> 00:00:20.775
+sound representations of phonemes with HMM models,
+
+00:00:20.774 --> 00:00:25.875
+and how language models increase accuracy when decoding words and sentences.
+
+00:00:25.875 --> 00:00:30.809
+Finally, we shifted our paradigm and looked into the future of speech recognition,
+
+00:00:30.809 --> 00:00:36.000
+where we may not need feature extraction or separate language models at all.
+
+00:00:36.000 --> 00:00:39.274
+Now, you're ready to implement your capstone project.
+
+00:00:39.274 --> 00:00:43.920
+I hope you've enjoyed learning this subject as much as I've enjoyed teaching it.
+
+00:00:43.920 --> 00:00:50.000
+This one's for you, an end to end ASR using deep neural networks. Enjoy.
+

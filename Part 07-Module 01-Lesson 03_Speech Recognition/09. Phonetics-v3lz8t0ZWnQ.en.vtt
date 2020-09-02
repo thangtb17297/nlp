@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.710
+Phonetics is the study of sound in human speech.
+
+00:00:03.710 --> 00:00:07.189
+Linguistic analysis of language around the world is used to
+
+00:00:07.190 --> 00:00:11.105
+break down human words into their smallest sound segments.
+
+00:00:11.105 --> 00:00:12.755
+In any given language,
+
+00:00:12.755 --> 00:00:18.410
+some number of phonemes define the distinct sounds in that language.
+
+00:00:18.410 --> 00:00:24.394
+In US English, there are generally 39 to 44 phonemes to find.
+
+00:00:24.394 --> 00:00:26.794
+A Grapheme, in contrast,
+
+00:00:26.795 --> 00:00:31.130
+is the smallest distinct unit that can be written in a language.
+
+00:00:31.129 --> 00:00:34.310
+In US English the smallest grapheme set we can
+
+00:00:34.310 --> 00:00:39.690
+define is a set of the 26 letters in the alphabet plus a space.
+
+00:00:39.689 --> 00:00:42.589
+Unfortunately, we can't simply map
+
+00:00:42.590 --> 00:00:46.190
+phonemes to grapheme or individual letters because some
+
+00:00:46.189 --> 00:00:49.280
+letters map to multiple phonemes sounds and
+
+00:00:49.280 --> 00:00:53.005
+some phonemes map to more than one letter combination.
+
+00:00:53.005 --> 00:01:00.645
+For example, in English the C letter sounds different in cat, chat, and circle.
+
+00:01:00.645 --> 00:01:05.570
+Meanwhile, the phoneme E sound we hear in receive,
+
+00:01:05.569 --> 00:01:11.629
+beat, and beat, is represented by different letter combinations.
+
+00:01:11.629 --> 00:01:16.189
+Here's a sample of a US English phoneme set called Arpabet.
+
+00:01:16.189 --> 00:01:21.890
+Arpabet was developed in 1971 for speech recognition research,
+
+00:01:21.890 --> 00:01:24.320
+and contains thirty nine phonemes,
+
+00:01:24.319 --> 00:01:27.500
+15 vowel sounds and 24 consonants,
+
+00:01:27.500 --> 00:01:31.564
+each represented as a one or two letter symbol.
+
+00:01:31.564 --> 00:01:34.429
+Check the reference section for links to the full set.
+
+00:01:34.430 --> 00:01:39.535
+Phonemes are often a useful intermediary between speech and text.
+
+00:01:39.534 --> 00:01:44.179
+If we can successfully produce an acoustic model that decodes a sound signal into
+
+00:01:44.180 --> 00:01:50.450
+phonemes the remaining task would be to map those phonemes to their matching words.
+
+00:01:50.450 --> 00:01:53.180
+This step is called Lexical Decoding,
+
+00:01:53.180 --> 00:01:57.830
+and is based on a lexicon or dictionary of the data set.
+
+00:01:57.829 --> 00:02:02.765
+Why not just use our acoustic model to translate directly into words?
+
+00:02:02.765 --> 00:02:05.859
+Why take the intermediary step?
+
+00:02:05.859 --> 00:02:08.360
+That's a good question and there are systems
+
+00:02:08.360 --> 00:02:11.660
+that do translate features directly to words.
+
+00:02:11.659 --> 00:02:16.150
+This is a design choice and depends on the dimensionality of the problem.
+
+00:02:16.150 --> 00:02:20.784
+If we want to train a limited vocabulary of words we might just skip the phonemes,
+
+00:02:20.784 --> 00:02:24.935
+but if we have a large vocabulary converting to smaller units first,
+
+00:02:24.935 --> 00:02:29.140
+reduces the number of comparisons that need to be made in the system overall.
+

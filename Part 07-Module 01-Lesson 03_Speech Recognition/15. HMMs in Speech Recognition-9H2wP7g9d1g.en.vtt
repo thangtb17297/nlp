@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.190
+You learned the basics of hidden Markov models in an earlier lesson.
+
+00:00:05.190 --> 00:00:10.164
+To recap, HMMs are useful for detecting patterns through time.
+
+00:00:10.164 --> 00:00:14.349
+This is exactly what we are trying to do with an acoustic model.
+
+00:00:14.349 --> 00:00:16.350
+HMMs can solve the challenge,
+
+00:00:16.350 --> 00:00:19.859
+we identified earlier, of time variability.
+
+00:00:19.859 --> 00:00:25.244
+For instance, my earlier example of speech versus speech,
+
+00:00:25.245 --> 00:00:28.255
+the same word but spoken at different speeds.
+
+00:00:28.254 --> 00:00:32.519
+We could train an HMM with label time series sequences to
+
+00:00:32.520 --> 00:00:37.630
+create individual HMM models for each particular sound unit.
+
+00:00:37.630 --> 00:00:39.615
+The units could be phonemes,
+
+00:00:39.615 --> 00:00:43.609
+syllables, words, or even groups of words.
+
+00:00:43.609 --> 00:00:46.009
+Training and recognition are fairly straightforward,
+
+00:00:46.009 --> 00:00:49.379
+if our training and test data are isolated units.
+
+00:00:49.380 --> 00:00:51.557
+We have many examples,
+
+00:00:51.557 --> 00:00:55.174
+we train them, we get a model for each word.
+
+00:00:55.174 --> 00:00:58.409
+Then recognition of a single word comes
+
+00:00:58.409 --> 00:01:02.719
+down to scoring the new observation likelihood over each model.
+
+00:01:02.719 --> 00:01:05.819
+It gets more complicated when our training data consists of
+
+00:01:05.819 --> 00:01:10.949
+continuous phrases or sentences which we'll refer to as utterances.
+
+00:01:10.950 --> 00:01:15.350
+How can the series of phonemes or words be separated in training?
+
+00:01:15.349 --> 00:01:18.269
+In this example, we have the word brick,
+
+00:01:18.269 --> 00:01:23.219
+connected continuously in nine different utterance combinations.
+
+00:01:23.219 --> 00:01:28.965
+To train from continuous utterances HMMs can be tied together as pairs.
+
+00:01:28.965 --> 00:01:32.585
+We define these connectors as HMMs.
+
+00:01:32.584 --> 00:01:35.579
+In this case, we would train her brick,
+
+00:01:35.579 --> 00:01:38.219
+my brick, a brick,
+
+00:01:38.219 --> 00:01:41.129
+brick house, brick walkway,
+
+00:01:41.129 --> 00:01:46.164
+and brick wall, by tying the connecting states together.
+
+00:01:46.165 --> 00:01:48.435
+This will increase dimensionality.
+
+00:01:48.435 --> 00:01:52.215
+Not only will we need an HMM for each word,
+
+00:01:52.215 --> 00:01:55.395
+we need one for each possible work connection,
+
+00:01:55.394 --> 00:01:59.689
+which could be a lot if there are a lot of words.
+
+00:01:59.689 --> 00:02:03.134
+The same principle applies if we use phonemes.
+
+00:02:03.135 --> 00:02:05.085
+But for large vocabularies,
+
+00:02:05.084 --> 00:02:09.299
+the dimensionality increase isn't as profound as with words.
+
+00:02:09.300 --> 00:02:11.259
+With a set of 40 phonemes,
+
+00:02:11.258 --> 00:02:15.659
+we need 1600 HMMs to account for the transitions.
+
+00:02:15.659 --> 00:02:17.870
+Still a manageable number.
+
+00:02:17.870 --> 00:02:21.509
+Once trained, the HMM models can be used to score
+
+00:02:21.509 --> 00:02:25.289
+new utterances through chains of probable paths.
+

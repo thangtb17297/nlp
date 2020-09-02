@@ -1,0 +1,483 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: FFT</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Speech Recognition</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Challenges in ASR.html">02. Challenges in ASR</a>
+    </li>
+    <li class="">
+      <a href="03. Signal Analysis.html">03. Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="04. References Signal Analysis.html">04. References: Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz FFT.html">05. Quiz: FFT</a>
+    </li>
+    <li class="">
+      <a href="06. Feature Extraction with MFCC.html">06. Feature Extraction with MFCC</a>
+    </li>
+    <li class="">
+      <a href="07. References Feature Extraction.html">07. References: Feature Extraction</a>
+    </li>
+    <li class="">
+      <a href="08. Quiz MFCC.html">08. Quiz: MFCC</a>
+    </li>
+    <li class="">
+      <a href="09. Phonetics.html">09. Phonetics</a>
+    </li>
+    <li class="">
+      <a href="10. References Phonetics.html">10. References: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Phonetics.html">11. Quiz: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="12. Voice Data Lab Introduction.html">12. Voice Data Lab Introduction</a>
+    </li>
+    <li class="">
+      <a href="13. Lab Voice Data.html">13. Lab: Voice Data</a>
+    </li>
+    <li class="">
+      <a href="14. Acoustic Models and the Trouble with Time.html">14. Acoustic Models and the Trouble with Time</a>
+    </li>
+    <li class="">
+      <a href="15. HMMs in Speech Recognition.html">15. HMMs in Speech Recognition</a>
+    </li>
+    <li class="">
+      <a href="16. Language Models.html">16. Language Models</a>
+    </li>
+    <li class="">
+      <a href="17. N-Grams.html">17. N-Grams</a>
+    </li>
+    <li class="">
+      <a href="18. Quiz N-Grams.html">18. Quiz: N-Grams</a>
+    </li>
+    <li class="">
+      <a href="19. References Traditional ASR.html">19. References: Traditional ASR</a>
+    </li>
+    <li class="">
+      <a href="20. A New Paradigm.html">20. A New Paradigm</a>
+    </li>
+    <li class="">
+      <a href="21. Deep Neural Networks as Speech Models.html">21. Deep Neural Networks as Speech Models</a>
+    </li>
+    <li class="">
+      <a href="22. Connectionist Tempora Classification (CTC).html">22. Connectionist Tempora Classification (CTC)</a>
+    </li>
+    <li class="">
+      <a href="23. References Deep Neural Network ASR.html">23. References: Deep Neural Network ASR</a>
+    </li>
+    <li class="">
+      <a href="24. Outro.html">24. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Quiz: FFT</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="fast-fourier-transforms">Fast Fourier Transforms</h2>
+<p>An <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform" target="_blank">FFT</a>, or Fast Fourier Transform, is an efficient implementation of a Discrete Fourier Transform.  The algorithm transforms a sum of sinusoidal signals into into its pure frequency components.  In the following quiz, we will demonstrate adding sinusoidal waves together and then deconstructing them back into their component frequencies.  </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/sum-of-components.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="instructions">Instructions</h3>
+<h5 id="choose_frequencies"><code>choose_frequencies</code></h5>
+<p>In the first definition, <code>choose_frequencies</code>, choose three frequencies in a range from 1 to 50.  These are the number of full cycles each sinusoidal wave will have in one "time unit".  Running the definition will produce a visual of the three chosen frequencies as well as a new wave that is the sum of the three.  This is similar to an acoustic signal, which is the sum of many sinusoidal waves.  The waves may have different phases and amplitudes as well.  Here's an example of a choice of (3, 8, 1) for the three frequencies.</p>
+<h5 id="add_the_waves"><code>add_the_waves</code></h5>
+<p>The second definition is where the waves are created.  For this demonstration, we will only create three.  This has been done for you with the <code>utils.make_waves</code> function - take a look at to understand how it works. You just need to add them together.  This simulates an audio signal, which is really just sinusoidal waves added together.  In audio signals, the sinusoidal waves are created by sound vibrations and may be at varying amplitudes and phase as well as frequency.  To simulate this variety, the <code>utils.make_waves</code> function provides random amplitudes and phase shifts.</p>
+<h5 id="demo_fft"><code>demo_fft</code></h5>
+<p>An FFT can be created with a variety of library functions including <a href="https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.fftpack.fft.html" target="_blank">scipy.fftpack.fft</a> , which we'll use in this quiz.  Read the linked reference to understand how to use it in code.  </p>
+<p>This FFT algorithm will create both positive and negative values, but we'll just display the positive ones.  When you're done, you should see something like the following, showing peaks at the three frequency values originally provided!</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/fft.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+
+  <h4>Start Quiz:</h4>
+  <div>
+  <div class="nav nav-tabs nav-fill" role="tablist" id="question-tabs">
+    <a href="#331273-function-py" class="nav-item nav-link  active show" id="tab-331273-function-py" data-toggle="tab" role="tab"
+      aria-controls="331273-function-py" aria-selected="true">function.py</a>
+    <a href="#331273-utils-py" class="nav-item nav-link " id="tab-331273-utils-py" data-toggle="tab" role="tab"
+      aria-controls="331273-utils-py" aria-selected="false">utils.py</a>
+    <a href="#331273-solution-py" class="nav-item nav-link " id="tab-331273-solution-py" data-toggle="tab" role="tab"
+      aria-controls="331273-solution-py" aria-selected="false">solution.py</a>
+  </div>
+
+  <div class="tab-content" style="padding: 20px 0;" id="question-tab-contents">
+    <div class="tab-pane  active show" id="331273-function-py" aria-labelledby="tab-331273-function-py" role="tabpanel">
+      <pre><code></code>import numpy as np
+import scipy.fftpack
+import utils as utils
+
+def choose_frequencies():
+    &quot;&quot;&quot;
+    # provide three frequencies in a range between 1 and 50    
+    :return: [int, int, int]
+    &quot;&quot;&quot;
+    # *** TODO provide three frequencies between 1 and 50
+    freq1 &#x3D; None
+    freq2 &#x3D; None
+    freq3 &#x3D; None
+    # end TODO
+
+    return [freq1, freq2, freq3]
+
+
+def add_the_waves(freqs):
+    &quot;&quot;&quot;
+    create three sinusoidal waves and one wave that is the sum of the three
+    :param freqs: [int, int, int]
+    :return: [np.array, np.array, np.array, np.array]
+        representing wave1, wave2, wave3, sum of waves
+        each array contains 500(by default) discrete values for plotting a sinusoidal
+    &quot;&quot;&quot;
+    _, _, t &#x3D; utils.get_wave_timing()
+    w1, w2, w3 &#x3D; utils.make_waves(t, freqs)
+
+    # TODO sum the waves together to form sum_waves
+    sum_waves &#x3D; None
+    # end TODO
+
+    return [w1, w2, w3, sum_waves]
+
+
+def demo_fft(sum_waves):
+    num_samples, spacing, _ &#x3D; utils.get_wave_timing()
+
+    # TODO create a Fast Fourier Transform of the waveform using scipy.fftpack.fft
+    # named &#x27;y_fft&#x27;
+    y_fft &#x3D; None
+    # end TODO
+
+    x_fft &#x3D; np.linspace(0.0, 1.0/spacing, num_samples)
+    return x_fft, y_fft</code></pre>
+    </div>
+    <div class="tab-pane " id="331273-utils-py" aria-labelledby="tab-331273-utils-py" role="tabpanel">
+      <pre><code></code>import matplotlib.pyplot as plt
+import numpy as np
+
+def sinusoid(freq):
+    &quot;&quot;&quot;
+    return a sinusoidal of random amplitude and phase for a given frequency
+    :param freq: 
+    :return: 
+    &quot;&quot;&quot;
+    phase &#x3D; np.random.random()
+    amplitude &#x3D; 2 * (np.random.random_integers(1, 10))
+    return amplitude * np.cos(2 * np.pi * freq - phase)
+
+
+def get_wave_timing(num_samples&#x3D;500, range_of_time &#x3D; 5.0):
+    &quot;&quot;&quot;
+    provide an array of time values of size num_samples spread evenly over range_of_time
+    :param num_samples: int 
+    :param range_of_time: float
+    :return: int, float, np.array
+    &quot;&quot;&quot;
+    # sample spacing
+    spacing &#x3D; range_of_time / num_samples
+    # array for time samples
+    t &#x3D; np.linspace(0.0, range_of_time, num_samples)
+    return num_samples, spacing, t
+
+
+def make_waves(t, freqs):
+    &quot;&quot;&quot;
+    convert three frequencies into arrays of discrete values representing sinusoidal waves
+    :param freqs: [float, float, float]
+    :return: [np.array, np.array, np.array]
+    &quot;&quot;&quot;
+    w0 &#x3D; sinusoid(t * freqs[0])
+    w1 &#x3D; sinusoid(t * freqs[1])
+    w2 &#x3D; sinusoid(t * freqs[2])
+    return w0, w1, w2
+
+
+# def display_sinusoids(time_array, f1, f2, f3, sum):
+#     # plot three frequencies with random phase shifts on y axis
+#     # plt.figure()
+#     fig, ax &#x3D; plt.subplots(4, 1)
+#     # plt.subplot(411)  # 3 rows, 1 column, fignum 1
+#     ax[0].plot(time_array, f1)
+#     ax[0].set_title(&#x27;1st frequency component&#x27;)
+
+#     # plt.subplot(412)  # 3 rows, 1 column, fignum 2
+#     ax[1].plot(time_array, f2)
+#     ax[1].set_title(&#x27;2nd frequency component&#x27;)
+
+#     # plt.subplot(413)  # 3 rows, 1 column, fignum 3
+#     ax[2].plot(time_array, f3)
+#     ax[2].set_title(&#x27;3rd frequency component&#x27;)
+
+#     # sum
+#     # plt.subplot(414)  # 3 rows, 1 column, fignum 4
+#     ax[3].plot(time_array, sum, &#x27;r&#x27;)
+#     ax[3].set_title(&#x27;Sum of components&#x27;)
+#     ax[3].set_ylabel(&#x27;amplitude&#x27;)
+#     ax[3].set_xlabel(&#x27;time&#x27;)
+
+#     # adjust format of display to make room for titles
+#     plt.subplots_adjust(
+#         top&#x3D;0.94,
+#         bottom&#x3D;0.11,
+#         left&#x3D;0.11,
+#         right&#x3D;0.97,
+#         hspace&#x3D;0.65,
+#         wspace&#x3D;0.2
+#     )
+#     # plt.show()
+#     return fig
+
+
+# def display_fft(xf, yf):
+#     num_samples &#x3D; np.shape(yf)[0]
+#     fig, ax &#x3D; plt.subplots()
+#     ax.plot(xf, 2.0 / num_samples * np.abs(yf[:num_samples // 2]))
+#     plt.title(&#x27;Fast Fourier Transform&#x27;)
+#     plt.xlabel(&#x27;frequency&#x27;)
+#     plt.ylabel(&#x27;amplitude&#x27;)
+#     return fig
+</code></pre>
+    </div>
+    <div class="tab-pane " id="331273-solution-py" aria-labelledby="tab-331273-solution-py" role="tabpanel">
+      <pre><code></code>import numpy as np
+import scipy.fftpack
+import utils as utils
+
+def choose_frequencies():
+    &quot;&quot;&quot;
+    # provide three frequencies in a range between 1 and 50    
+    :return: [int, int, int]
+    &quot;&quot;&quot;
+    # *** TODO provide three frequencies between 1 and 50
+    freq1 &#x3D; 1
+    freq2 &#x3D; 5
+    freq3 &#x3D; 25
+    # end TODO
+
+    return [freq1, freq2, freq3]
+
+
+def add_the_waves(freqs):
+    &quot;&quot;&quot;
+    create three sinusoidal waves and one wave that is the sum of the three
+    :param freqs: [int, int, int]
+    :return: [np.array, np.array, np.array, np.array]
+        representing wave1, wave2, wave3, sum of waves
+        each array contains 500(by default) discrete values for plotting a sinusoidal
+    &quot;&quot;&quot;
+    _, _, t &#x3D; utils.get_wave_timing()
+    w1, w2, w3 &#x3D; utils.make_waves(t, freqs)
+
+    # TODO sum the waves together to form sum_waves
+    sum_waves &#x3D; w1+w2+w3
+    # end TODO
+
+    return [w1, w2, w3, sum_waves]
+
+
+def demo_fft(sum_waves):
+    num_samples, spacing, _ &#x3D; utils.get_wave_timing()
+
+    # TODO create a Fast Fourier Transform of the waveform using scipy.fftpack.fft
+    # named &#x27;y_fft&#x27;
+    y_fft &#x3D; scipy.fftpack.fft(sum_waves)
+    # end TODO
+
+    x_fft &#x3D; np.linspace(0.0, 1.0/spacing, num_samples)
+    return x_fft, y_fft</code></pre>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Feature Extraction with MFCC.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Quiz: FFT')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

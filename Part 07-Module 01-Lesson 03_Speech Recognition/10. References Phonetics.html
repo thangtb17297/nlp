@@ -1,0 +1,479 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>References: Phonetics</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Speech Recognition</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Intro.html">01. Intro</a>
+    </li>
+    <li class="">
+      <a href="02. Challenges in ASR.html">02. Challenges in ASR</a>
+    </li>
+    <li class="">
+      <a href="03. Signal Analysis.html">03. Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="04. References Signal Analysis.html">04. References: Signal Analysis</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz FFT.html">05. Quiz: FFT</a>
+    </li>
+    <li class="">
+      <a href="06. Feature Extraction with MFCC.html">06. Feature Extraction with MFCC</a>
+    </li>
+    <li class="">
+      <a href="07. References Feature Extraction.html">07. References: Feature Extraction</a>
+    </li>
+    <li class="">
+      <a href="08. Quiz MFCC.html">08. Quiz: MFCC</a>
+    </li>
+    <li class="">
+      <a href="09. Phonetics.html">09. Phonetics</a>
+    </li>
+    <li class="">
+      <a href="10. References Phonetics.html">10. References: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Phonetics.html">11. Quiz: Phonetics</a>
+    </li>
+    <li class="">
+      <a href="12. Voice Data Lab Introduction.html">12. Voice Data Lab Introduction</a>
+    </li>
+    <li class="">
+      <a href="13. Lab Voice Data.html">13. Lab: Voice Data</a>
+    </li>
+    <li class="">
+      <a href="14. Acoustic Models and the Trouble with Time.html">14. Acoustic Models and the Trouble with Time</a>
+    </li>
+    <li class="">
+      <a href="15. HMMs in Speech Recognition.html">15. HMMs in Speech Recognition</a>
+    </li>
+    <li class="">
+      <a href="16. Language Models.html">16. Language Models</a>
+    </li>
+    <li class="">
+      <a href="17. N-Grams.html">17. N-Grams</a>
+    </li>
+    <li class="">
+      <a href="18. Quiz N-Grams.html">18. Quiz: N-Grams</a>
+    </li>
+    <li class="">
+      <a href="19. References Traditional ASR.html">19. References: Traditional ASR</a>
+    </li>
+    <li class="">
+      <a href="20. A New Paradigm.html">20. A New Paradigm</a>
+    </li>
+    <li class="">
+      <a href="21. Deep Neural Networks as Speech Models.html">21. Deep Neural Networks as Speech Models</a>
+    </li>
+    <li class="">
+      <a href="22. Connectionist Tempora Classification (CTC).html">22. Connectionist Tempora Classification (CTC)</a>
+    </li>
+    <li class="">
+      <a href="23. References Deep Neural Network ASR.html">23. References: Deep Neural Network ASR</a>
+    </li>
+    <li class="">
+      <a href="24. Outro.html">24. Outro</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">10. References: Phonetics</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="references-phonetics">References: Phonetics</h1>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/phonetics.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><a href="https://en.wikipedia.org/wiki/Phonetics" target="_blank">Phonetics</a> is a branch of linguistics for the study of sounds of human speech: physical properties, production, acoustics, articulation, etc.</p>
+<h3 id="phoneme">Phoneme</h3>
+<p>In any given language, a <a href="https://en.wikipedia.org/wiki/Phoneme" target="_blank">phoneme</a> is the smallest sound segment that can be used to distinguish one word from another.  For example "bat" and "chat" have only one sound different but this changes the word.  The phonemes in question are "B" and "CH".  What exactly these are and how many exist varies a bit and may be influenced by accents included.  Generally, US English consists of 39 to 44 phonemes.  See ARPAbet below for more phoneme examples.</p>
+<h3 id="grapheme">Grapheme</h3>
+<p>The definition of a <a href="https://en.wikipedia.org/wiki/Grapheme" target="_blank">grapheme</a> is somewhat inconsistent in the literature.  In our context, a grapheme is the smallest symbol that distinguishes one written word from another.  For example, "bat" and "chat" have a difference of two graphemes, even though "CH" is considered to be a single phoneme.  In US English, 26 letters and a space combine for 27 possible graphemes. </p>
+<h3 id="lexicon">Lexicon</h3>
+<p>A lexicon for speech recognition is a lookup file for converting speech parts to words.  An example of this is <a href="http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/sphinxdict/cmudict_SPHINX_40" target="_blank">cmudict</a>, the Carnegie Mellon tool for speech recognition compatible with the open source <a href="https://cmusphinx.github.io/" target="_blank">Sphinx</a> project.  Here's a short excerpt:</p>
+<pre><code class="text language-text">AARDVARK    AA R D V AA R K
+AARON    EH R AH N
+AARON'S    EH R AH N Z
+AARONS    EH R AH N Z
+AARONSON    EH R AH N S AH N
+AARONSON'S    EH R AH N S AH N Z
+AARONSON'S(2)    AA R AH N S AH N Z
+AARONSON(2)    AA R AH N S AH N
+...</code></pre>
+<h3 id="arpabet">ARPAbet</h3>
+<p>A set of phonemes developed by the Advanced Research Projects Agency(ARPA) for the Speech Understanding Project (1970's).</p>
+<p><a href="https://en.wikipedia.org/wiki/Arpabet" target="_blank">ARPAnet on Wikipedia</a><br />
+<a href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict" target="_blank">ARPAnet dictionary at CMU</a>:</p>
+<table>
+<thead>
+<tr>
+<th id="phoneme">Phoneme</th>
+<th id="example">Example</th>
+<th id="translation">Translation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AA</td>
+<td>odd</td>
+<td>AA D</td>
+</tr>
+<tr>
+<td>AE</td>
+<td>at</td>
+<td>AE T</td>
+</tr>
+<tr>
+<td>AH</td>
+<td>hut</td>
+<td>HH AH T</td>
+</tr>
+<tr>
+<td>AO</td>
+<td>ought</td>
+<td>AO T</td>
+</tr>
+<tr>
+<td>AW</td>
+<td>cow</td>
+<td>K AW</td>
+</tr>
+<tr>
+<td>AY</td>
+<td>hide</td>
+<td>HH AY D</td>
+</tr>
+<tr>
+<td>B</td>
+<td>be</td>
+<td>B IY</td>
+</tr>
+<tr>
+<td>CH</td>
+<td>cheese</td>
+<td>CH IY Z</td>
+</tr>
+<tr>
+<td>D</td>
+<td>dee</td>
+<td>D IY</td>
+</tr>
+<tr>
+<td>DH</td>
+<td>thee</td>
+<td>DH IY</td>
+</tr>
+<tr>
+<td>EH</td>
+<td>Ed</td>
+<td>EH D</td>
+</tr>
+<tr>
+<td>ER</td>
+<td>hurt</td>
+<td>HH ER T</td>
+</tr>
+<tr>
+<td>EY</td>
+<td>ate</td>
+<td>EY T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>fee</td>
+<td>F IY</td>
+</tr>
+<tr>
+<td>G</td>
+<td>green</td>
+<td>G R IY N</td>
+</tr>
+<tr>
+<td>HH</td>
+<td>he</td>
+<td>HH IY</td>
+</tr>
+<tr>
+<td>IH</td>
+<td>it</td>
+<td>IH T</td>
+</tr>
+<tr>
+<td>IY</td>
+<td>eat</td>
+<td>IY T</td>
+</tr>
+<tr>
+<td>JH</td>
+<td>gee</td>
+<td>JH IY</td>
+</tr>
+<tr>
+<td>K</td>
+<td>key</td>
+<td>K IY</td>
+</tr>
+<tr>
+<td>L</td>
+<td>lee</td>
+<td>L IY</td>
+</tr>
+<tr>
+<td>M</td>
+<td>me</td>
+<td>M IY</td>
+</tr>
+<tr>
+<td>N</td>
+<td>knee</td>
+<td>N IY</td>
+</tr>
+<tr>
+<td>NG</td>
+<td>ping</td>
+<td>P IH NG</td>
+</tr>
+<tr>
+<td>OW</td>
+<td>oat</td>
+<td>OW T</td>
+</tr>
+<tr>
+<td>OY</td>
+<td>toy</td>
+<td>T OY</td>
+</tr>
+<tr>
+<td>P</td>
+<td>pee</td>
+<td>P IY</td>
+</tr>
+<tr>
+<td>R</td>
+<td>read</td>
+<td>R IY D</td>
+</tr>
+<tr>
+<td>S</td>
+<td>sea</td>
+<td>S IY</td>
+</tr>
+<tr>
+<td>SH</td>
+<td>she</td>
+<td>SH IY</td>
+</tr>
+<tr>
+<td>T</td>
+<td>tea</td>
+<td>T IY</td>
+</tr>
+<tr>
+<td>TH</td>
+<td>theta</td>
+<td>TH EY T AH</td>
+</tr>
+<tr>
+<td>UH</td>
+<td>hood</td>
+<td>HH UH D</td>
+</tr>
+<tr>
+<td>UW</td>
+<td>two</td>
+<td>T UW</td>
+</tr>
+<tr>
+<td>V</td>
+<td>vee</td>
+<td>V IY</td>
+</tr>
+<tr>
+<td>W</td>
+<td>we</td>
+<td>W IY</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>yield</td>
+<td>Y IY L D</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>zee</td>
+<td>Z IY</td>
+</tr>
+<tr>
+<td>ZH</td>
+<td>seizure</td>
+<td>S IY ZH ER</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="11. Quiz Phonetics.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. References: Phonetics')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

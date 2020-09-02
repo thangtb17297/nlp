@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.139
+When we speak we create sinusoidal vibrations in the air.
+
+00:00:04.139 --> 00:00:08.849
+Higher pitches vibrate faster with a higher frequency than lower pitches.
+
+00:00:08.849 --> 00:00:12.365
+These vibrations can be detected by a microphone and
+
+00:00:12.365 --> 00:00:16.749
+transduced from acoustical energy carried in the sound wave,
+
+00:00:16.748 --> 00:00:21.074
+to electrical energy where it is recorded as an audio signal.
+
+00:00:21.074 --> 00:00:24.780
+The audio signal for hello world looks like this.
+
+00:00:24.780 --> 00:00:26.789
+As in any other kind of modeling,
+
+00:00:26.789 --> 00:00:30.530
+we need to get a handle on the features that make up our input.
+
+00:00:30.530 --> 00:00:33.804
+So, what's going on in this signal?
+
+00:00:33.804 --> 00:00:37.409
+We can see that it seems to be in two blobs and
+
+00:00:37.409 --> 00:00:42.229
+those blobs do correspond to the two words, hello and world.
+
+00:00:42.229 --> 00:00:45.299
+We also see immediately that some of the vibrations in
+
+00:00:45.299 --> 00:00:49.214
+the signal are taller than the others or have a higher amplitude.
+
+00:00:49.215 --> 00:00:54.375
+The amplitude in the audio signal tells us how much acoustical energy is in the sound,
+
+00:00:54.375 --> 00:00:56.284
+how loud it is.
+
+00:00:56.284 --> 00:00:59.889
+If we look closer at a time slice of the signal,
+
+00:00:59.890 --> 00:01:03.380
+we can see it has an irregular wiggle shape to it.
+
+00:01:03.380 --> 00:01:07.094
+Our speech is made up of many frequencies at the same time.
+
+00:01:07.094 --> 00:01:12.614
+The signal we see here is really a sum of all those frequencies stuck together.
+
+00:01:12.614 --> 00:01:14.879
+To properly analyze the signal,
+
+00:01:14.879 --> 00:01:18.610
+we would like to use the component frequencies as features.
+
+00:01:18.611 --> 00:01:23.305
+We can use a fourier transform to break the signal into these components.
+
+00:01:23.305 --> 00:01:27.295
+The FFT algorithm or Fast Fourier Transform,
+
+00:01:27.295 --> 00:01:30.129
+is widely available for this task.
+
+00:01:30.129 --> 00:01:34.799
+We can use this splitting technique to convert the sound to a Spectrogram.
+
+00:01:34.799 --> 00:01:37.605
+In this Spectrogram of the hello world phrase,
+
+00:01:37.605 --> 00:01:41.909
+we see the frequency on the vertical axis plotted against the time,
+
+00:01:41.909 --> 00:01:43.590
+on the horizontal axis.
+
+00:01:43.590 --> 00:01:47.579
+The intensity of shading indicates the amplitude of the signal.
+
+00:01:47.579 --> 00:01:50.159
+To create a Spectrogram first,
+
+00:01:50.159 --> 00:01:52.354
+divide the signal into time frames.
+
+00:01:52.355 --> 00:01:57.840
+Then split each frame signal into frequency components with an FFT.
+
+00:01:57.840 --> 00:02:03.810
+Each time frame is now represented with a vector of amplitudes at each frequency.
+
+00:02:03.810 --> 00:02:07.909
+If we line up the vectors again in their time series order,
+
+00:02:07.909 --> 00:02:12.134
+we can have a visual picture of the sound components, the Spectrogram.
+
+00:02:12.134 --> 00:02:16.679
+The Spectrogram can be lined up with the original audio signal in time.
+
+00:02:16.680 --> 00:02:20.735
+With the Spectrogram we have a complete representation of our sound data.
+
+00:02:20.735 --> 00:02:25.110
+But we still have noise and variability embedded into the data.
+
+00:02:25.110 --> 00:02:29.280
+In addition, there may be more information here than we really need.
+
+00:02:29.280 --> 00:02:32.789
+Next, we'll look at Feature Extraction techniques to, both,
+
+00:02:32.789 --> 00:02:36.709
+reduce the noise and reduce the dimensionality of our data.
+

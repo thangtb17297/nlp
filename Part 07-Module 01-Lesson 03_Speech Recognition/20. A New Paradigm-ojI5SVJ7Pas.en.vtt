@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.290
+The previous lessons identified the problems of speech recognition,
+
+00:00:04.290 --> 00:00:07.349
+and provided a traditional ASR solution using
+
+00:00:07.349 --> 00:00:10.925
+feature extraction HMMs and language models.
+
+00:00:10.925 --> 00:00:15.370
+These systems have gotten better and better since they were introduced in the 1980's.
+
+00:00:15.369 --> 00:00:17.070
+But is there a better way?
+
+00:00:17.070 --> 00:00:21.105
+As computers become more powerful and data more available,
+
+00:00:21.105 --> 00:00:24.839
+deep neural networks have become the go to solution for
+
+00:00:24.839 --> 00:00:29.835
+all kinds of large probabilistic problems including speech recognition.
+
+00:00:29.835 --> 00:00:35.219
+In particular, recurrent neural networks RNNs can be leveraged,
+
+00:00:35.219 --> 00:00:38.899
+because these types of networks have temporal memory,
+
+00:00:38.899 --> 00:00:42.935
+an important characteristic for training and decoding speech.
+
+00:00:42.935 --> 00:00:46.295
+This is a hot topic and an area of active research.
+
+00:00:46.295 --> 00:00:50.910
+The information that follows is primarily based on recent research presentations.
+
+00:00:50.909 --> 00:00:52.394
+The tech is bleeding edge,
+
+00:00:52.395 --> 00:00:57.000
+and changing rapidly but we're going to jump right in. Here we go.
+

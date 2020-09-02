@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.809
+What part of the audio signal is really important for recognizing speech?
+
+00:00:04.809 --> 00:00:08.564
+One human creates words and another human hears them.
+
+00:00:08.564 --> 00:00:10.739
+Our speech is constrained by
+
+00:00:10.740 --> 00:00:15.120
+both our voice-making mechanisms and what we can perceive with our ears.
+
+00:00:15.119 --> 00:00:18.269
+Let's start with the ear and the pitches we can hear.
+
+00:00:18.269 --> 00:00:21.644
+The Mel Scale was developed in 1937
+
+00:00:21.644 --> 00:00:25.464
+and tells us what pitches human listeners can truly discern.
+
+00:00:25.464 --> 00:00:29.579
+It turns out that some frequencies sound the same to us but we
+
+00:00:29.579 --> 00:00:34.409
+hear differences in lower frequencies more distinctly than in higher frequencies.
+
+00:00:34.409 --> 00:00:35.949
+If we can't hear a pitch,
+
+00:00:35.950 --> 00:00:38.440
+there is no need to include it in our data,
+
+00:00:38.439 --> 00:00:41.640
+and if our ear can't distinguish two different frequencies,
+
+00:00:41.640 --> 00:00:45.420
+then they might as well be considered the same for our purposes.
+
+00:00:45.420 --> 00:00:48.140
+For the purposes of feature extraction,
+
+00:00:48.140 --> 00:00:51.689
+we can put the frequencies of the spectrogram into bins that are
+
+00:00:51.689 --> 00:00:56.604
+relevant to our own ears and filter out sound that we can't hear.
+
+00:00:56.604 --> 00:01:01.164
+This reduces the number of frequencies we're looking at by quite a bit.
+
+00:01:01.164 --> 00:01:03.354
+That's not the end of the story though.
+
+00:01:03.354 --> 00:01:08.039
+We also need to separate the elements of sound that are speaker-independent.
+
+00:01:08.040 --> 00:01:12.765
+For this, we focus on the voice-making mechanism we use to create speech.
+
+00:01:12.765 --> 00:01:15.510
+Human voices vary from person to person
+
+00:01:15.510 --> 00:01:19.079
+even though our basic anatomy features are the same.
+
+00:01:19.079 --> 00:01:24.870
+We can think of a human voice production model as a combination of source and filter,
+
+00:01:24.870 --> 00:01:29.010
+where the source is unique to an individual and the filter
+
+00:01:29.010 --> 00:01:33.770
+is the articulation of words that we all use when speaking.
+
+00:01:33.769 --> 00:01:39.314
+Cepstral analysis relies on this model for separating the two.
+
+00:01:39.314 --> 00:01:41.670
+The cepstrum can be extracted from
+
+00:01:41.670 --> 00:01:44.905
+a signal with an algorithm you'll find in the references.
+
+00:01:44.905 --> 00:01:49.590
+The main thing to remember is that we're dropping the component of speech unique to
+
+00:01:49.590 --> 00:01:55.520
+individual vocal chords and preserving the shape of the sound made by the vocal tract.
+
+00:01:55.519 --> 00:01:59.549
+Cepstral analysis combined with mel frequency analysis get you
+
+00:01:59.549 --> 00:02:04.000
+12 or 13 MFCC features related to speech.
+
+00:02:04.000 --> 00:02:11.150
+Delta and Delta-Delta MFCC features can optionally be appended to the feature set.
+
+00:02:11.150 --> 00:02:13.920
+This will double or triple the number of features
+
+00:02:13.919 --> 00:02:17.429
+but has been shown to give better results in ASR.
+
+00:02:17.430 --> 00:02:22.620
+The takeaway for using MFCC feature extraction is that we greatly reduce
+
+00:02:22.620 --> 00:02:28.200
+the dimensionality of our data and at the same time we squeeze noise out of the system.
+
+00:02:28.199 --> 00:02:31.409
+Next, we'll look at sound from a language perspective,
+
+00:02:31.409 --> 00:02:33.419
+the phonetics of the words we hear.
+
