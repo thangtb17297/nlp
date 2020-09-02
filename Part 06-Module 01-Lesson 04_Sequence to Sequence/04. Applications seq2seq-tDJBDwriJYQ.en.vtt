@@ -1,0 +1,140 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.610 --> 00:00:03.129
+I do want to say a couple
+of words on applications
+
+00:00:03.129 --> 00:00:05.740
+before delving deeper
+into the concept.
+
+00:00:05.740 --> 00:00:08.900
+That's because the term
+sequence-to-sequence RNN
+
+00:00:08.900 --> 00:00:11.140
+is a little bit
+abstract and doesn't
+
+00:00:11.140 --> 00:00:14.798
+relay how many amazing things we
+can do with this type of model.
+
+00:00:14.798 --> 00:00:16.089
+So let's think of it like this.
+
+00:00:16.089 --> 00:00:18.609
+We have a model that
+can learn to generate
+
+00:00:18.609 --> 00:00:20.739
+any sequence of vectors.
+
+00:00:20.739 --> 00:00:22.089
+And these can be letters.
+
+00:00:22.089 --> 00:00:24.759
+They can be words or
+images or anything, really.
+
+00:00:24.760 --> 00:00:26.350
+If you can represent
+it as a vector,
+
+00:00:26.350 --> 00:00:29.770
+it can be used in a
+sequence-to-sequence model.
+
+00:00:29.769 --> 00:00:32.500
+So this model can
+learn to generate
+
+00:00:32.500 --> 00:00:34.479
+any sequence of
+vectors after we feed
+
+00:00:34.479 --> 00:00:37.629
+it a sequence of input vectors.
+
+00:00:37.630 --> 00:00:39.830
+What can we do with that?
+
+00:00:39.829 --> 00:00:41.829
+So let's see.
+
+00:00:41.829 --> 00:00:44.619
+Say you train it
+on a dataset where
+
+00:00:44.619 --> 00:00:48.663
+the source is an English
+phrase and the target is
+
+00:00:48.664 --> 00:00:49.329
+a French phrase.
+
+00:00:49.329 --> 00:00:51.614
+And you have a lot
+of these examples.
+
+00:00:51.615 --> 00:00:53.490
+If you do that and you
+train it successfully,
+
+00:00:53.490 --> 00:00:58.410
+then your model is now in
+English-to-French translator.
+
+00:00:58.409 --> 00:01:01.539
+Train it on a dataset of news
+articles and their summaries
+
+00:01:01.539 --> 00:01:04.010
+and you have a
+summarization bot.
+
+00:01:04.010 --> 00:01:07.510
+Train it on a dataset of
+questions and their answers
+
+00:01:07.510 --> 00:01:10.390
+and you have a
+question-answering model.
+
+00:01:10.390 --> 00:01:14.980
+Train it on a lot of dialogue
+data and you have a chatbot.
+
+00:01:14.980 --> 00:01:18.130
+But the inputs don't only
+have to be words, remember.
+
+00:01:18.129 --> 00:01:23.079
+The RNNs are used along
+convolutional nets and image
+
+00:01:23.079 --> 00:01:25.060
+captioning tests, for example.
+
+00:01:25.060 --> 00:01:28.719
+So it can also be-- the input
+sequence can also be audio.
+
+00:01:28.719 --> 00:01:30.789
+As we saw, there are
+many possibilities
+
+00:01:30.790 --> 00:01:34.420
+for what you can do after you
+master sequence-to-sequence.
+
+00:01:34.420 --> 00:01:36.430
+The challenge will be to
+find the right dataset
+
+00:01:36.430 --> 00:01:40.050
+to feed your model and guide it
+through the learning process.
+

@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.534 --> 00:00:02.934
+Quero falar um pouco
+sobre aplicações,
+
+00:00:02.968 --> 00:00:05.467
+antes de nos aprofundarmos
+no conceito.
+
+00:00:05.501 --> 00:00:08.701
+O termo "sequence-to-sequence"
+para rede neural recorrente
+
+00:00:08.734 --> 00:00:10.501
+é meio abstrato
+
+00:00:10.534 --> 00:00:14.734
+e não representa as coisas incríveis
+que podemos fazer com esse modelo.
+
+00:00:14.767 --> 00:00:15.868
+Vamos pensar assim:
+
+00:00:15.901 --> 00:00:20.567
+esse modelo pode aprender a gerar
+qualquer sequência de vetores,
+
+00:00:20.601 --> 00:00:24.667
+que podem ser letras, palavras,
+imagens, qualquer coisa.
+
+00:00:24.701 --> 00:00:26.901
+Se pode ser representado
+como vetor,
+
+00:00:26.934 --> 00:00:29.701
+pode ser usado num modelo
+sequence-to-sequence.
+
+00:00:29.734 --> 00:00:33.534
+Esse modelo pode aprender a gerar
+qualquer sequência de vetores
+
+00:00:33.567 --> 00:00:37.367
+depois de o alimentarmos com
+uma sequência de vetores como input.
+
+00:00:37.400 --> 00:00:39.701
+O que podemos fazer com isso?
+
+00:00:39.734 --> 00:00:41.434
+Vamos ver.
+
+00:00:41.734 --> 00:00:44.400
+Digamos que você o treine
+num banco de dados
+
+00:00:44.434 --> 00:00:48.033
+em que a fonte
+é uma frase em inglês
+
+00:00:48.067 --> 00:00:51.400
+e o alvo é uma frase em francês,
+e há muitos exemplos assim.
+
+00:00:51.434 --> 00:00:53.367
+Se fizer isso
+e conseguir treiná-lo,
+
+00:00:53.400 --> 00:00:58.033
+seu modelo se torna
+um tradutor de inglês para francês.
+
+00:00:58.067 --> 00:01:01.767
+Treine-o num banco de dados
+de reportagens e seus resumos,
+
+00:01:01.801 --> 00:01:04.000
+e terá um bot de resumir.
+
+00:01:04.033 --> 00:01:07.501
+Treine-o num banco de dados
+de perguntas e respostas
+
+00:01:07.534 --> 00:01:10.501
+e terá um modelo
+que responde perguntas.
+
+00:01:10.534 --> 00:01:13.968
+Treine com muitos dados
+de diálogos e terá um chatbot.
+
+00:01:14.767 --> 00:01:18.100
+Os inputs nem sempre
+precisam ser palavras, lembra?
+
+00:01:18.133 --> 00:01:21.834
+As redes neurais recorrentes
+são usadas em redes convolucionais
+
+00:01:21.868 --> 00:01:24.901
+em tarefas de legendar imagens,
+por exemplo.
+
+00:01:24.934 --> 00:01:28.634
+A sequência de input
+também pode ser um áudio.
+
+00:01:28.667 --> 00:01:32.033
+Como vimos, há muitas possibilidades
+do que pode ser feito
+
+00:01:32.067 --> 00:01:34.133
+após dominar
+o sequence-to-sequence.
+
+00:01:34.167 --> 00:01:37.367
+O desafio é achar o banco de dados
+certo para alimentar o modelo
+
+00:01:37.400 --> 00:01:39.567
+e guiá-lo pelo processo
+de aprendizagem.
+

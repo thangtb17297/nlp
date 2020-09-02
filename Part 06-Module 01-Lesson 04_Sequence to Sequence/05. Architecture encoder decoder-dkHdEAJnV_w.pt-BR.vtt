@@ -1,0 +1,252 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.334 --> 00:00:04.100
+Vejamos em detalhes como modelos
+sequence-to-sequence funcionam.
+
+00:00:04.133 --> 00:00:06.467
+Começaremos
+num nível mais alto
+
+00:00:06.501 --> 00:00:08.834
+e depois nos aprofundaremos
+cada vez mais.
+
+00:00:08.868 --> 00:00:12.234
+Aqui temos
+duas redes recorrentes.
+
+00:00:12.267 --> 00:00:14.400
+A da esquerda é o codificador.
+
+00:00:14.434 --> 00:00:16.267
+Ele lê a sequência de input
+
+00:00:16.300 --> 00:00:19.834
+e transmite o que compreendeu
+para a rede à direita,
+
+00:00:20.267 --> 00:00:22.133
+que chamamos de decodificador.
+
+00:00:22.167 --> 00:00:25.601
+O decodificador gera
+a sequência de output.
+
+00:00:25.634 --> 00:00:31.467
+O "entendimento" que é transmitido
+é um tensor de tamanho fixo,
+
+00:00:31.501 --> 00:00:33.467
+que é chamado de estado.
+
+00:00:33.501 --> 00:00:36.467
+Às vezes é chamado de contexto,
+o "C" é de contexto.
+
+00:00:37.000 --> 00:00:40.834
+Não importa o tamanho
+dos inputs ou dos outputs,
+
+00:00:40.868 --> 00:00:45.834
+o contexto continua do mesmo tamanho
+declarado na construção do modelo.
+
+00:00:45.868 --> 00:00:49.133
+Nesse nível, o processo
+de inferência ocorre
+
+00:00:49.167 --> 00:00:52.100
+ao se fornecer inputs
+para o codificador.
+
+00:00:52.133 --> 00:00:54.434
+O codificador, então,
+resume o que entendeu
+
+00:00:54.467 --> 00:00:57.300
+numa variável de contexto
+ou estado
+
+00:00:57.334 --> 00:00:59.467
+e a transfere
+para o decodificador,
+
+00:00:59.501 --> 00:01:03.100
+que então gera a sequência
+de output.
+
+00:01:03.467 --> 00:01:05.234
+Se nos aprofundarmos
+um nível,
+
+00:01:05.267 --> 00:01:09.501
+começamos a ver que o codificador
+e o decodificador são redes
+
+00:01:09.534 --> 00:01:12.167
+e têm loops, naturalmente.
+
+00:01:12.200 --> 00:01:16.667
+É isso que os permite processar
+as sequências de inputs e outputs.
+
+00:01:16.934 --> 00:01:18.734
+Vejamos um exemplo.
+
+00:01:18.767 --> 00:01:21.534
+Digamos que o modelo
+é um chatbot e queremos perguntar
+
+00:01:21.567 --> 00:01:23.968
+"Como vai você?".
+
+00:01:24.000 --> 00:01:30.000
+Primeiro, vamos tokenizar esse input
+e segmentá-lo em quatro tokens.
+
+00:01:31.067 --> 00:01:32.934
+Como ele tem quatro elementos,
+
+00:01:32.968 --> 00:01:37.000
+a rede levará quatro time steps
+para ler a sequência inteira.
+
+00:01:37.033 --> 00:01:41.634
+A cada vez, ela lerá um input e fará
+uma transformação no estado oculto,
+
+00:01:41.667 --> 00:01:44.934
+então, enviará o estado oculto
+para o próximo time step.
+
+00:01:45.334 --> 00:01:49.434
+O relógio indica o movimento
+de um time step para outro.
+
+00:01:50.667 --> 00:01:53.868
+Uma forma útil de representar
+o fluxo de dados pela rede
+
+00:01:53.901 --> 00:01:57.167
+é "desenrolar"
+a rede neural recorrente.
+
+00:01:57.200 --> 00:01:59.033
+Ou seja, fazer um gráfico
+
+00:01:59.067 --> 00:02:01.501
+para mostrar os time steps
+em células separadas.
+
+00:02:01.534 --> 00:02:05.100
+Mesmo que na prática
+seja a mesma célula,
+
+00:02:05.133 --> 00:02:07.367
+ela está processando
+um novo input
+
+00:02:07.400 --> 00:02:11.400
+e está pegando o estado oculto
+do time step anterior.
+
+00:02:12.501 --> 00:02:15.334
+Você talvez pergunte
+o que é um estado oculto.
+
+00:02:15.367 --> 00:02:18.868
+No caso mais simples, pode vê-lo
+como o número de unidades ocultas
+
+00:02:18.901 --> 00:02:20.734
+dentro da célula.
+
+00:02:20.767 --> 00:02:22.968
+Na prática,
+costuma ser o estado oculto
+
+00:02:23.000 --> 00:02:25.968
+dentro da célula de memória
+de curto e longo prazo,
+
+00:02:26.000 --> 00:02:28.234
+a LSTM.
+
+00:02:28.267 --> 00:02:31.234
+O tamanho da rede geralmente
+é mais um hiperparâmetro
+
+00:02:31.267 --> 00:02:33.901
+que podemos configurar
+para construir o modelo.
+
+00:02:33.934 --> 00:02:37.133
+Quanto maior o estado oculto,
+maior o tamanho
+
+00:02:37.167 --> 00:02:40.234
+e maior a capacidade
+do modelo para aprender
+
+00:02:40.267 --> 00:02:43.601
+e para observar padrões
+e entendê-los,
+
+00:02:44.200 --> 00:02:49.100
+mas também serão necessários
+mais recursos para treinar o modelo,
+
+00:02:49.133 --> 00:02:51.567
+em termos de processamento
+e demandas de memória.
+
+00:02:51.601 --> 00:02:56.567
+Essa é a compensação
+que geralmente precisamos encarar.
+
+00:02:57.567 --> 00:03:00.534
+Um processo parecido
+acontece no lado do decodificador.
+
+00:03:00.567 --> 00:03:03.834
+Primeiro o alimentamos com o estado
+gerado pelo codificador,
+
+00:03:03.868 --> 00:03:06.701
+e ele gera o output
+elemento por elemento.
+
+00:03:07.234 --> 00:03:08.934
+Se desenrolarmos
+o decodificador,
+
+00:03:08.968 --> 00:03:11.267
+como fizemos
+com o codificador,
+
+00:03:11.300 --> 00:03:14.334
+veremos que estamos
+alimentando-o de volta
+
+00:03:14.367 --> 00:03:16.133
+com os elementos do output.
+
+00:03:16.634 --> 00:03:18.467
+Isso o permite
+ser mais coerente,
+
+00:03:18.501 --> 00:03:23.267
+já que cada time step lembra
+o que o time step anterior fez.
+
+00:03:24.167 --> 00:03:27.300
+No próximo vídeo,
+nos aprofundaremos mais um nível
+
+00:03:27.334 --> 00:03:29.767
+na parte interna
+da arquitetura.
+

@@ -1,0 +1,308 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.919
+Hello,
+my name is J. I'm
+
+00:00:02.919 --> 00:00:06.379
+a content developer at
+Udacity, and today we'll
+
+00:00:06.379 --> 00:00:10.129
+be talking about a powerful
+RNN technique called sequence
+
+00:00:10.130 --> 00:00:11.930
+to sequence.
+
+00:00:11.929 --> 00:00:14.509
+In a previous
+lesson, Andrew Trask
+
+00:00:14.509 --> 00:00:16.609
+showed us how to do
+sentiment analysis
+
+00:00:16.609 --> 00:00:20.300
+using normal feedforward
+neural networks.
+
+00:00:20.300 --> 00:00:22.400
+The network was
+able to learn how
+
+00:00:22.399 --> 00:00:25.250
+positive or negative
+each word was, and could
+
+00:00:25.250 --> 00:00:28.490
+tell if a sequence as a whole
+had positive or negative things
+
+00:00:28.489 --> 00:00:31.189
+to say about its subjects.
+
+00:00:31.190 --> 00:00:33.109
+We start running
+into issues, however,
+
+00:00:33.109 --> 00:00:36.950
+when we want to do a little bit
+more advanced models that deal
+
+00:00:36.950 --> 00:00:40.120
+with language and
+in sequential data.
+
+00:00:40.119 --> 00:00:41.500
+Let's take an example.
+
+00:00:41.500 --> 00:00:44.329
+So the authors of the
+"Deep Learning" book
+
+00:00:44.329 --> 00:00:46.969
+present the following
+example to showcase this.
+
+00:00:46.969 --> 00:00:49.100
+So say we have
+these two sentences,
+
+00:00:49.100 --> 00:00:55.250
+I went to Nepal in 2009, and
+in 2009, I went to Nepal.
+
+00:00:55.250 --> 00:00:57.920
+If we train a model
+to read these inputs
+
+00:00:57.920 --> 00:01:02.030
+and extract the year that
+the person went to Nepal,
+
+00:01:02.030 --> 00:01:04.099
+we would want them
+to recognize 2009
+
+00:01:04.099 --> 00:01:07.430
+as the piece of information
+we're looking for, right?
+
+00:01:07.430 --> 00:01:11.180
+So if we actually train a
+regular feedforward neural
+
+00:01:11.180 --> 00:01:14.720
+network on this task, it
+will have separate parameters
+
+00:01:14.719 --> 00:01:16.969
+for each input feature.
+
+00:01:16.969 --> 00:01:21.109
+So technically it would have to
+learn all the rules of language
+
+00:01:21.109 --> 00:01:25.890
+separately at each position
+in the input sentiments.
+
+00:01:25.890 --> 00:01:28.439
+Then in another
+previous lesson, Matt
+
+00:01:28.439 --> 00:01:32.789
+showed us our first recurrent
+neural network, RNN.
+
+00:01:32.790 --> 00:01:36.440
+Recurrent nets are a powerful
+class of neural networks
+
+00:01:36.439 --> 00:01:38.750
+that deal with sequential data.
+
+00:01:38.750 --> 00:01:42.439
+They are especially suited for
+language and translation tasks,
+
+00:01:42.439 --> 00:01:46.269
+because they can extend to
+sequences of any length.
+
+00:01:46.269 --> 00:01:49.789
+But more importantly, they
+share their parameters
+
+00:01:49.790 --> 00:01:51.470
+across different timesteps.
+
+00:01:51.469 --> 00:01:54.469
+So when they do learn
+a language model,
+
+00:01:54.469 --> 00:01:56.319
+they do it a lot
+more efficiently
+
+00:01:56.319 --> 00:02:00.109
+than a traditional
+feedforward network would.
+
+00:02:00.109 --> 00:02:03.230
+Now when we say
+sequential data, we
+
+00:02:03.230 --> 00:02:06.230
+can be referring
+either to the input
+
+00:02:06.230 --> 00:02:09.379
+or the output of the model.
+
+00:02:09.379 --> 00:02:13.340
+I guess you might have
+seen this diagram before.
+
+00:02:13.340 --> 00:02:17.659
+This is from the
+incredible essay about RNNs
+
+00:02:17.659 --> 00:02:19.509
+by Andrej Karpathy.
+
+00:02:19.509 --> 00:02:21.409
+And it shows different
+kinds of RNNs
+
+00:02:21.409 --> 00:02:24.500
+that are suited for
+different types of tasks.
+
+00:02:24.500 --> 00:02:28.969
+The sentiment analysis RNN that
+Matt showed us is this one.
+
+00:02:28.969 --> 00:02:31.490
+It reads a sequence of
+words, and then outputs
+
+00:02:31.490 --> 00:02:33.719
+just a single value.
+
+00:02:33.719 --> 00:02:36.830
+It's a many to one network.
+
+00:02:36.830 --> 00:02:40.700
+But if you want to build a chat
+bot or a translation service,
+
+00:02:40.699 --> 00:02:42.949
+you're going to have
+both sequential inputs
+
+00:02:42.949 --> 00:02:44.750
+and sequential outputs.
+
+00:02:44.750 --> 00:02:47.870
+So that's going to be
+on the many to many side
+
+00:02:47.870 --> 00:02:50.060
+of the diagram
+there to the right.
+
+00:02:50.060 --> 00:02:52.069
+So we have these two options.
+
+00:02:52.069 --> 00:02:54.289
+So if we use a
+single RNN, then we
+
+00:02:54.289 --> 00:02:59.900
+are forced to output at most
+as many vectors as we input.
+
+00:02:59.900 --> 00:03:02.150
+And that wouldn't
+work for a chat bot.
+
+00:03:02.150 --> 00:03:06.170
+We also want our model to
+take in the entire input
+
+00:03:06.169 --> 00:03:08.822
+before we start
+generating the response.
+
+00:03:08.823 --> 00:03:12.626
+So this is not
+appropriate for our needs.
+
+00:03:12.626 --> 00:03:14.000
+But then if you
+look at this one,
+
+00:03:14.000 --> 00:03:18.669
+there's this other
+many to many RNN.
+
+00:03:18.669 --> 00:03:23.149
+In 2014, luckily,
+two RNN architectures
+
+00:03:23.150 --> 00:03:25.909
+were introduced that can
+map a sequence of any length
+
+00:03:25.909 --> 00:03:28.400
+to another sequence
+of any length.
+
+00:03:28.400 --> 00:03:30.590
+The basic premise
+is that you use
+
+00:03:30.590 --> 00:03:34.310
+two RNNS, one that reads
+the input sequence,
+
+00:03:34.310 --> 00:03:37.159
+then hands over
+what it had learned
+
+00:03:37.159 --> 00:03:41.810
+to another RNN, which starts
+producing the output sequence.
+
+00:03:41.810 --> 00:03:44.180
+In the next videos, we'll
+be looking more closely
+
+00:03:44.180 --> 00:03:47.659
+at the intuition and the
+major concepts of RNNs.
+
+00:03:47.659 --> 00:03:50.210
+And we'll be also touching
+on the implementation
+
+00:03:50.210 --> 00:03:53.210
+details in TensorFlow
+of sequence to sequence.
+
+00:03:53.210 --> 00:03:55.189
+But before that, I
+just want you to think
+
+00:03:55.189 --> 00:03:56.930
+about the incredible
+variety of tasks
+
+00:03:56.930 --> 00:04:01.497
+that you can accomplish when you
+can teach a network like this.
+

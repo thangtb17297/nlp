@@ -1,0 +1,281 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.000 --> 00:00:02.701
+Olá. Meu nome é Jay.
+
+00:00:02.734 --> 00:00:05.334
+Sou desenvolvedor de conteúdo
+da Udacity.
+
+00:00:05.367 --> 00:00:08.934
+Hoje falaremos sobre uma técnica
+poderosa de rede neural recorrente,
+
+00:00:08.968 --> 00:00:11.734
+chamada sequence-to-sequence.
+
+00:00:11.767 --> 00:00:13.434
+Numa lição anterior,
+
+00:00:13.467 --> 00:00:16.367
+Andrew Trask nos ensinou
+a fazer análise de sentimentos
+
+00:00:16.400 --> 00:00:20.133
+usando uma rede neural
+feedforward comum.
+
+00:00:20.167 --> 00:00:21.767
+A rede conseguiu aprender
+
+00:00:21.801 --> 00:00:24.567
+o quão positiva ou negativa
+era uma palavra
+
+00:00:24.601 --> 00:00:28.534
+e dizer se uma sequência completa
+tinha coisas positivas ou negativas
+
+00:00:28.567 --> 00:00:30.200
+para dizer sobre um assunto.
+
+00:00:31.234 --> 00:00:36.300
+Começamos a encontrar problemas
+ao partirmos para modelos avançados
+
+00:00:36.334 --> 00:00:40.367
+que tinham que lidar com língua
+e dados sequenciais.
+
+00:00:40.400 --> 00:00:43.968
+Para ilustrar, os autores
+do livro "Deep Learning"
+
+00:00:44.000 --> 00:00:46.667
+apresentam o seguinte exemplo
+para demonstrar isso:
+
+00:00:46.701 --> 00:00:48.968
+digamos que temos duas frases,
+
+00:00:49.000 --> 00:00:51.968
+"Eu fui ao Nepal em 2009"
+
+00:00:52.000 --> 00:00:55.133
+e "Em 2009, eu fui ao Nepal".
+
+00:00:55.167 --> 00:00:58.200
+Se treinarmos um modelo
+para ler esses inputs
+
+00:00:58.234 --> 00:01:01.334
+e extrair o ano
+em que a pessoa foi ao Nepal,
+
+00:01:01.901 --> 00:01:06.701
+gostaríamos que reconhecesse "2009"
+como a informação que procuramos.
+
+00:01:07.400 --> 00:01:12.801
+Se treinarmos uma rede neural
+feedforward comum nesta tarefa,
+
+00:01:12.834 --> 00:01:16.200
+ela teria parâmetros diferentes
+para cada atributo dos inputs.
+
+00:01:16.801 --> 00:01:17.934
+Tecnicamente,
+
+00:01:17.968 --> 00:01:20.901
+ela teria que aprender
+todas as regras da língua
+
+00:01:20.934 --> 00:01:25.767
+para cada parte
+da frase do input.
+
+00:01:25.801 --> 00:01:27.801
+Em uma lição anterior,
+
+00:01:27.834 --> 00:01:32.601
+Matt nos mostrou nossa primeira
+rede neural recorrente.
+
+00:01:32.634 --> 00:01:36.167
+Redes recorrentes são uma classe
+poderosa de redes neurais
+
+00:01:36.200 --> 00:01:38.167
+que lidam
+com dados sequenciais.
+
+00:01:38.601 --> 00:01:42.234
+São especialmente adequadas
+para tarefas de tradução,
+
+00:01:42.267 --> 00:01:45.667
+porque podem generalizar para
+sequências de qualquer comprimento.
+
+00:01:45.901 --> 00:01:51.434
+O mais importante é que compartilham
+parâmetros em diferentes etapas,
+
+00:01:51.467 --> 00:01:54.334
+então, quando aprendem
+um modelo de língua,
+
+00:01:54.367 --> 00:01:57.200
+elas o fazem de forma
+muito mais eficiente
+
+00:01:57.234 --> 00:01:59.534
+do que uma rede
+feedforward comum.
+
+00:02:00.067 --> 00:02:02.934
+Quando dizemos
+"dados sequenciais",
+
+00:02:02.968 --> 00:02:06.033
+podemos estar nos referindo
+tanto ao input
+
+00:02:06.067 --> 00:02:08.901
+quanto ao output do modelo.
+
+00:02:08.934 --> 00:02:13.234
+Você já deve ter visto
+este diagrama.
+
+00:02:13.267 --> 00:02:17.367
+É do incrível ensaio
+sobre redes neurais recorrentes
+
+00:02:17.400 --> 00:02:19.501
+do Andrej Karpathy.
+
+00:02:19.534 --> 00:02:21.734
+Ele mostra os diferentes tipos
+de redes neurais
+
+00:02:21.767 --> 00:02:24.334
+e para que tipos de texto
+são mais adequadas.
+
+00:02:24.367 --> 00:02:28.734
+A rede para análise de sentimentos
+que Matt nos mostrou é esta aqui.
+
+00:02:28.767 --> 00:02:33.901
+Ela lê uma sequência de palavras
+e dá como output um único valor.
+
+00:02:33.934 --> 00:02:36.501
+É uma rede many-to-one.
+
+00:02:36.534 --> 00:02:38.868
+Se você quiser construir
+um chatbot
+
+00:02:38.901 --> 00:02:40.601
+ou um serviço de tradução,
+
+00:02:40.634 --> 00:02:44.701
+terá tanto inputs sequenciais
+quanto outputs sequenciais.
+
+00:02:44.734 --> 00:02:49.868
+Isso fica na parte many-to-many
+do diagrama, à direita.
+
+00:02:49.901 --> 00:02:52.033
+Temos estas duas opções.
+
+00:02:52.067 --> 00:02:57.734
+Se usarmos uma única rede,
+somos forçados a liberar como output
+
+00:02:57.767 --> 00:03:00.067
+a mesma quantidade
+de vetores do input.
+
+00:03:00.100 --> 00:03:02.100
+Isso não funcionaria
+para um chatbot.
+
+00:03:02.133 --> 00:03:05.934
+Também queremos que o modelo
+processe o input inteiro
+
+00:03:05.968 --> 00:03:09.167
+antes de começarmos
+a gerar a resposta,
+
+00:03:09.634 --> 00:03:12.334
+então este não é apropriado
+para nossas necessidades.
+
+00:03:12.634 --> 00:03:13.834
+Porém, veja esta aqui,
+
+00:03:13.868 --> 00:03:17.901
+esta outra rede neural recorrente
+many-to-many.
+
+00:03:18.400 --> 00:03:20.868
+Em 2014, por sorte,
+
+00:03:20.901 --> 00:03:23.767
+duas arquiteturas de redes neurais
+foram apresentadas.
+
+00:03:23.801 --> 00:03:25.934
+Elas mapeiam sequências
+de qualquer comprimento
+
+00:03:25.968 --> 00:03:28.367
+para outras sequências
+de qualquer comprimento.
+
+00:03:28.400 --> 00:03:31.767
+A premissa básica é utilizar
+duas redes neurais recorrentes.
+
+00:03:32.100 --> 00:03:34.100
+Uma lê a sequência do input
+
+00:03:34.133 --> 00:03:38.501
+e transmite o que aprendeu
+para a outra rede neural,
+
+00:03:38.534 --> 00:03:41.601
+que começa a produzir
+a sequência do output.
+
+00:03:41.634 --> 00:03:46.167
+Nos próximos vídeos, estudaremos
+a intuição e os principais conceitos
+
+00:03:46.200 --> 00:03:47.701
+das redes neurais.
+
+00:03:47.734 --> 00:03:52.767
+E falaremos sobre implementação
+sequence-to-sequence no TensorFlow.
+
+00:03:53.100 --> 00:03:55.300
+Antes disso,
+quero que você pense
+
+00:03:55.334 --> 00:03:57.968
+na grande variedade
+de tarefas que pode executar
+
+00:03:58.367 --> 00:04:01.100
+quando conseguimos ensinar
+a uma rede como essa.
+

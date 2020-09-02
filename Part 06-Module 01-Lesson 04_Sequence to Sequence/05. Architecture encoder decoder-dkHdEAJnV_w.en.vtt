@@ -1,0 +1,297 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.500 --> 00:00:03.209
+Let's look more closely at
+how sequence to sequence models
+
+00:00:03.209 --> 00:00:03.890
+work.
+
+00:00:03.890 --> 00:00:06.720
+We'll start with
+a high level look
+
+00:00:06.719 --> 00:00:09.189
+and then go deeper and deeper.
+
+00:00:09.189 --> 00:00:12.390
+Here are our two recurrent nets.
+
+00:00:12.390 --> 00:00:14.490
+The one on the left
+is called the encoder.
+
+00:00:14.490 --> 00:00:16.679
+It reads the input
+sequence, then
+
+00:00:16.679 --> 00:00:19.320
+hands over what it has
+understood to the RNN
+
+00:00:19.320 --> 00:00:22.460
+and on the right, which
+we call the decoder.
+
+00:00:22.460 --> 00:00:25.679
+And the decoder generates
+the output sequence.
+
+00:00:25.679 --> 00:00:27.689
+The quote unquote
+"understanding"
+
+00:00:27.690 --> 00:00:31.710
+that gets handed over
+is a fixed size tenser
+
+00:00:31.710 --> 00:00:35.100
+that is called a state, or
+sometimes called the context.
+
+00:00:35.100 --> 00:00:37.050
+C is for context here.
+
+00:00:37.049 --> 00:00:40.859
+So no matter how short or long
+the inputs and outputs are,
+
+00:00:40.859 --> 00:00:42.630
+the context remains
+the same size
+
+00:00:42.630 --> 00:00:46.290
+that was declared when we built
+the model in the beginning.
+
+00:00:46.289 --> 00:00:48.570
+So at this high level,
+the inference process
+
+00:00:48.570 --> 00:00:52.079
+is done by handing
+inputs to the encoder.
+
+00:00:52.079 --> 00:00:53.879
+The encoder summarizes
+what it then
+
+00:00:53.880 --> 00:00:57.300
+understood into a context
+variable or state.
+
+00:00:57.299 --> 00:00:59.609
+And it hands it
+over to the decoder,
+
+00:00:59.609 --> 00:01:03.629
+which then proceeds to
+generate the output sequence.
+
+00:01:03.630 --> 00:01:05.820
+Now if we go a level
+deeper, we begin
+
+00:01:05.819 --> 00:01:09.869
+to see that since the encoder
+and decoder are both RNNs,
+
+00:01:09.870 --> 00:01:12.719
+they have loops,
+naturally, and that's
+
+00:01:12.719 --> 00:01:15.840
+what allows them to process
+these sequences of inputs
+
+00:01:15.840 --> 00:01:17.100
+and outputs.
+
+00:01:17.099 --> 00:01:18.649
+Let's take an example.
+
+00:01:18.650 --> 00:01:20.700
+Say our model is
+a jackpot, and we
+
+00:01:20.700 --> 00:01:23.939
+want to ask it, "How
+are you," question mark.
+
+00:01:23.939 --> 00:01:26.750
+So first, we have to
+tokenize that input,
+
+00:01:26.750 --> 00:01:31.170
+and break it down
+into four tokens.
+
+00:01:31.170 --> 00:01:33.090
+And since it has
+four elements, it
+
+00:01:33.090 --> 00:01:35.490
+will take the RNN
+four timesteps to read
+
+00:01:35.489 --> 00:01:37.140
+in this entire sequence.
+
+00:01:37.140 --> 00:01:39.000
+Each time, it would
+read an input,
+
+00:01:39.000 --> 00:01:41.790
+and then do a transformation
+on its hidden state,
+
+00:01:41.790 --> 00:01:45.430
+then send that hidden state
+out to the next time step.
+
+00:01:45.430 --> 00:01:48.660
+The clock symbol indicates that
+we're moving from one timestep
+
+00:01:48.659 --> 00:01:50.729
+to the next.
+
+00:01:50.730 --> 00:01:54.030
+One useful way to represent
+the flow of data through an RNN
+
+00:01:54.030 --> 00:01:57.299
+is by "unrolling,"
+quote unquote, the RNN.
+
+00:01:57.299 --> 00:02:00.119
+That is, graphing it
+to show each timestep
+
+00:02:00.120 --> 00:02:01.650
+as a separate cell.
+
+00:02:01.650 --> 00:02:05.070
+Even though, in practice,
+it's just the same cell.
+
+00:02:05.069 --> 00:02:07.439
+Only it's processing
+a new input,
+
+00:02:07.439 --> 00:02:09.900
+and it's taking over
+the hidden state
+
+00:02:09.900 --> 00:02:12.599
+from the previous timestep.
+
+00:02:12.599 --> 00:02:15.164
+So, what's a hidden
+state, you may ask.
+
+00:02:15.164 --> 00:02:17.039
+In the simplest scenario,
+you can think of it
+
+00:02:17.039 --> 00:02:20.789
+as a number of hidden
+units inside the cell.
+
+00:02:20.789 --> 00:02:22.739
+In practice, it's
+more likely to be
+
+00:02:22.740 --> 00:02:25.740
+the hidden state inside
+a long, short-term memory
+
+00:02:25.740 --> 00:02:28.409
+cell, an LSTM.
+
+00:02:28.409 --> 00:02:31.829
+So, the size of the network is
+usually another hyperparameter
+
+00:02:31.830 --> 00:02:34.050
+that we can set to
+build the model.
+
+00:02:34.050 --> 00:02:36.510
+The bigger the hidden
+states, and the bigger the
+
+00:02:36.509 --> 00:02:38.639
+size, the more
+capacity of the model
+
+00:02:38.639 --> 00:02:44.429
+to learn, and look at patterns,
+and try to understand them.
+
+00:02:44.430 --> 00:02:47.550
+But the more resource
+intensive the model
+
+00:02:47.550 --> 00:02:51.160
+will be to train or deploy, in
+terms of processing and memory
+
+00:02:51.159 --> 00:02:51.659
+demand.
+
+00:02:51.659 --> 00:02:54.299
+So it's that trade-off
+that you usually
+
+00:02:54.300 --> 00:02:57.510
+face with models, in general.
+
+00:02:57.509 --> 00:03:00.789
+A similar process happens on
+the decoder side, as well.
+
+00:03:00.789 --> 00:03:03.900
+So we begin by feeding it this
+data generated by the encoder.
+
+00:03:03.900 --> 00:03:07.230
+And it generates the output
+elements by elements.
+
+00:03:07.229 --> 00:03:09.389
+If we unroll the
+decoder, just like
+
+00:03:09.389 --> 00:03:12.059
+we did earlier with
+the encoder, so we
+
+00:03:12.060 --> 00:03:15.300
+can see that we are actually
+feeding it back every element
+
+00:03:15.300 --> 00:03:16.590
+that it outputs.
+
+00:03:16.590 --> 00:03:20.400
+This allows it to be more
+coherent as each timestep
+
+00:03:20.400 --> 00:03:23.280
+sort of remembers what the
+previous timestep has committed
+
+00:03:23.280 --> 00:03:24.210
+to.
+
+00:03:24.210 --> 00:03:27.420
+In the next video, we'll
+go another level deeper
+
+00:03:27.419 --> 00:03:31.269
+into some of the internals
+of the architecture.
+
