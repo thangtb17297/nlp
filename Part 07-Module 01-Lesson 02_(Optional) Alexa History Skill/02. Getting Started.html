@@ -1,0 +1,220 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Getting Started</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>(Optional) Alexa History Skill</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Overview.html">01. Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Getting Started.html">02. Getting Started</a>
+    </li>
+    <li class="">
+      <a href="03. Tasks.html">03. Tasks</a>
+    </li>
+    <li class="">
+      <a href="04. Deploying Your Skill.html">04. Deploying Your Skill</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Getting Started</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="getting-started">Getting Started</h1>
+<p>Now that you've completed the <a href="https://github.com/alexa/skill-sample-nodejs-fact" target="_blank">Alexa Fact Skill tutorial</a>, we can start talking about the History Skill. We are providing you with <a href="https://github.com/udacity/NLPND-VUI-Alexa" target="_blank">starter code</a> from GitHub with some unit tests to help guide your progress. The next concept has some tasks that you need to complete to build the history skill. You can run the unit tests as you complete the tasks to see a reflection of your progress.</p>
+<h3 id="your-amazon-accounts">Your Amazon accounts</h3>
+<p>By completing the Fact skill tutorial, you should have already completed setting up your <a href="https://developer.amazon.com/alexa/" target="_blank">Amazon Alexa Developer account</a> and <a href="https://aws.amazon.com/" target="_blank">Amazon AWS account</a>. </p>
+<p>If you do not already have an AWS account, be sure to create one.  You will need to provide a credit card to set up the account, but new accounts receive the <a href="https://aws.amazon.com/free/" target="_blank">AWS Free Tier</a> which should suffice for this project as it includes one million non-expiring AWS Lambda requests per month.  Note: Lambda functions for Alexa skills can be hosted in either the US East (N. Virginia) or EU (Ireland) region. These are the only regions the Alexa Skills Kit supports, so you may need to change this setting in the upper right portion of your screen on the console.</p>
+<h3 id="starter-code">Starter Code</h3>
+<p>Install your starter code locally.</p>
+<ul>
+<li>Download or clone the <a href="https://github.com/udacity/NLPND-VUI-Alexa" target="_blank">starter code</a> from GitHub</li>
+<li>Save it in a directory named <code>NLPND-VUI-Alexa</code>.  It contains the following directories and files:<ul>
+<li><strong>src/model/en-US.json</strong> - This is the main Alexa file. It contains the components that Alexa needs to build the "Interaction Model" for your skill. It used to declare "intents", which are ways to handle user requests. The file is also used to give Alexa samples for what a user might say to trigger a certain intent (for example, "tell me a history fact").</li>
+<li><strong>src/lambda/index.js</strong> - This is the main Lambda file. It will contain the code that is tasked with finding the right response to give to the user -- initially picking a random fact from a list, but later searching a list for facts for a certain year.</li>
+<li><strong>tests/*.js</strong> - various unit tests to be run locally with mocha; you do not need to change these</li></ul></li>
+</ul>
+<p>After completing the tasks locally, we'll just copy the contents of the first two files in the list above and paste them in specific places in the Alexa and AWS consoles. You can think of the Alexa code as front-end code guiding the user's interaction with Alexa, and, the lambda code as the back-end that gets a programmatic request and returns an appropriate response.</p>
+<h3 id="environment">Environment</h3>
+<h5 id="1-install-nodejshttpsnodejsorg-per-instructions-on-the-website-for-your-machine">1. Install <a href="https://nodejs.org/" target="_blank">Node.js</a> per instructions on the website for your machine.</h5>
+<h5 id="2-install-dependencies-for-the-project">2. Install dependencies for the project</h5>
+<ul>
+<li>Navigate to the <code>NLPND-VUI-Alexa/src</code> directory of the starter code and open a terminal window.  </li>
+<li>The dependencies we need are listed in the <code>package.json</code> file and include the <a href="https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs" target="_blank">alexa-sdk</a> library for Alexa as well as  <a href="https://mochajs.org/" target="_blank">mocha</a> test framework for Node.js along with <a href="http://chaijs.com/" target="_blank">chai</a> and <a href="https://www.npmjs.com/package/aws-lambda-mock-context" target="_blank">aws-lambda-mock-context</a> for local unit testing.  Install them all with the following command:</li>
+</ul>
+<pre><code class="shell language-shell">$ npm install</code></pre>
+<ul>
+<li>There should now be a directory named <code>node_modules</code> within the <code>src</code> directory.  This is how Node.js attaches libraries for your code.</li>
+</ul>
+<h5 id="3-unit-testing">3. Unit testing</h5>
+<ul>
+<li>You can now run the provided unit tests from the command line within the <code>src</code> directory with the following command.  Try it now:</li>
+</ul>
+<pre><code class="shell language-shell">$ npm test</code></pre>
+<p>The test code is in two parts:  "Part 1", and "Part 2". Initially, all tests will fail.  As you complete the tasks ahead, you can use these unit tests (and write more yourself) to quickly test code changes prior to deployment to AWS Lambda.</p>
+<h5 id="4-javascript-coding">4. JavaScript coding</h5>
+<ul>
+<li><p>At this point, you can open your project with a code editor of your choice.  Some free ones that support JavaScript and Node.js include <a href="https://atom.io/" target="_blank">Atom</a> and <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></p></li>
+<li><p>Udacity has a free course available that will quickly bring you up to speed on JS syntax: </p></li>
+</ul>
+<h3 id="introduction-to-javascripthttpswwwudacitycomcourseintro-to-javascript--ud803"><a href="https://www.udacity.com/course/intro-to-javascript--ud803" target="_blank">Introduction to Javascript</a></h3>
+<p><a href="https://www.udacity.com/course/intro-to-javascript--ud803" target="_blank"><img alt="Introduction to Javascript" src="media/unnamed-723082-0.gif" /></a>  <br />
+The JavaScript skills needed for this project primarily require following patterns you find in the existing starter code and the use of general coding constructs such as for loops, conditional statements, and arrays. Here are a few links that might be helpful for quick reference:<br />
+    * <a href="https://www.w3schools.com/js/js_loop_for.asp" target="_blank">js for loops</a><br />
+    * <a href="https://www.w3schools.com/js/js_if_else.asp" target="_blank">js conditional statements</a><br />
+    * <a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank">js arrays</a><br />
+    * <a href="https://www.w3schools.com/jsref/jsref_includes.asp" target="_blank">js String includes() method</a><br />
+    * <a href="https://www.w3schools.com/js/js_json.asp" target="_blank">js JSON</a><br />
+    * <a href="https://github.com/alexa" target="_blank">Alexa skill examples</a><br />
+    * <a href="https://nodejs.org/dist/latest-v6.x/docs/api/" target="_blank">Node.js API reference</a></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. Tasks.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Getting Started')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

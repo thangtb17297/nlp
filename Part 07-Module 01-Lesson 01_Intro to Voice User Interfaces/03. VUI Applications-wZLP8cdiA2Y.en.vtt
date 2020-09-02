@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.785
+VUI applications are becoming more and more common place.
+
+00:00:04.785 --> 00:00:07.048
+There are a few reasons driving this.
+
+00:00:07.049 --> 00:00:10.115
+First of all voice is natural for humans.
+
+00:00:10.115 --> 00:00:15.060
+It's effortless for us to converse by voice compared to reading and typing.
+
+00:00:15.060 --> 00:00:18.315
+And secondly, it turns out it's also fast.
+
+00:00:18.315 --> 00:00:23.309
+Speaking into a text transcriber is three times faster than typing.
+
+00:00:23.309 --> 00:00:26.309
+In addition there are times when it is just too
+
+00:00:26.309 --> 00:00:32.353
+distracting to look at a visual interface like when you're walking or driving.
+
+00:00:32.353 --> 00:00:35.908
+With the advent of better and more accessible speech recognition and
+
+00:00:35.908 --> 00:00:41.269
+speech synthesis technologies a number of applications have flourished.
+
+00:00:41.270 --> 00:00:45.960
+For example voice interfaces can be found in cars,
+
+00:00:45.960 --> 00:00:50.130
+drivers can initiate and answer phone calls given receive
+
+00:00:50.130 --> 00:00:52.859
+navigation commands and even receive
+
+00:00:52.859 --> 00:00:57.655
+texts and e-mail without ever taking their eyes off the road.
+
+00:00:57.655 --> 00:01:00.210
+Other applications in web and mobile have been around
+
+00:01:00.210 --> 00:01:03.939
+for a few years now but are getting better and better.
+
+00:01:03.939 --> 00:01:05.715
+Dictation applications,
+
+00:01:05.715 --> 00:01:11.775
+Leverage speech recognition technologies to make putting thoughts into words a snap.
+
+00:01:11.775 --> 00:01:17.469
+Translation applications, Leverage speech recognition and speech synthesis as well
+
+00:01:17.468 --> 00:01:20.078
+as some reasoning logic in between to
+
+00:01:20.078 --> 00:01:23.818
+convert speech in one language to speech in another.
+
+00:01:23.819 --> 00:01:26.620
+If you've tried any of these you know it's not quite
+
+00:01:26.620 --> 00:01:29.319
+a universal translator but it's pretty
+
+00:01:29.319 --> 00:01:31.569
+amazing to be able to communicate through one of
+
+00:01:31.569 --> 00:01:35.805
+these apps with someone you couldn't even speak to before.
+
+00:01:35.805 --> 00:01:42.129
+One of the most exciting innovations in VUI today is conversational AI technology.
+
+00:01:42.129 --> 00:01:44.709
+We can now carry on a conversation with
+
+00:01:44.709 --> 00:01:49.280
+a cloud based system that incorporates well-tuned speech recognition,
+
+00:01:49.280 --> 00:01:54.995
+some functionality and speech synthesis into one system or device.
+
+00:01:54.995 --> 00:01:57.385
+Examples include Apple's Siri,
+
+00:01:57.385 --> 00:02:03.069
+Microsoft's Cortana, Google home and Amazon's Alexa on Eco.
+
+00:02:03.069 --> 00:02:08.289
+Conversational AI really captures our imaginations because it seems to be
+
+00:02:08.288 --> 00:02:13.684
+an early step toward the more general AI we've seen in science fiction movies.
+
+00:02:13.685 --> 00:02:17.500
+The Home Assistant devices in this category are quite flexible.
+
+00:02:17.500 --> 00:02:21.788
+In addition to running a search or giving you the weather these devices can
+
+00:02:21.788 --> 00:02:26.146
+interface with other devices on the internet linked with your accounts if you want,
+
+00:02:26.146 --> 00:02:29.598
+fetching save data, the list goes on.
+
+00:02:29.598 --> 00:02:34.774
+Even better, development with these technologies is accessible to all of us.
+
+00:02:34.775 --> 00:02:37.300
+You really only need your computer to get started
+
+00:02:37.300 --> 00:02:40.930
+creating your own application in conversational AI.
+
+00:02:40.930 --> 00:02:43.569
+The heavy lifting of speech recognition and
+
+00:02:43.568 --> 00:02:49.489
+speech synthesis have been done for you and turned into a cloud based APIs.
+
+00:02:49.490 --> 00:02:52.030
+The field is new and just waiting for
+
+00:02:52.030 --> 00:02:56.585
+smart developers to imagine and implement the next big thing.
+
+00:02:56.585 --> 00:02:59.455
+There's a lot of opportunity out there to come up with
+
+00:02:59.455 --> 00:03:03.000
+any voice and able application you can think of.
+

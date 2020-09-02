@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.029
+Hello and welcome to voice user interfaces.
+
+00:00:03.029 --> 00:00:08.310
+A VUI is a speech platform that enables humans to communicate with machines by voice.
+
+00:00:08.310 --> 00:00:12.089
+To help you learn how to design voice user interfaces we have Dana Sheahen.
+
+00:00:12.089 --> 00:00:13.345
+Hello.
+
+00:00:13.345 --> 00:00:17.269
+This is a great topic and I'm delighted to have the chance to teach it.
+
+00:00:17.268 --> 00:00:20.354
+VUIs used to be the stuff of science fiction.
+
+00:00:20.355 --> 00:00:23.324
+Movies and TV shows featuring spaceship crews
+
+00:00:23.324 --> 00:00:26.745
+that communicated verbally with their computers seemed fantastic.
+
+00:00:26.745 --> 00:00:29.734
+But that fantastic future is here now.
+
+00:00:29.734 --> 00:00:34.678
+Voice enabled agents are becoming commonplace on our phones, computers,
+
+00:00:34.677 --> 00:00:37.769
+cars to the point that many people may no
+
+00:00:37.770 --> 00:00:41.490
+longer think of these systems as artificial intelligence at all.
+
+00:00:41.490 --> 00:00:44.960
+Under the hood, though, there is a lot going on.
+
+00:00:44.960 --> 00:00:48.270
+Audio sound waves from voice must be converted into
+
+00:00:48.270 --> 00:00:53.228
+language texts using machine learning algorithms and probabilistic models.
+
+00:00:53.228 --> 00:00:56.759
+The resulting text must be reasoned-over using
+
+00:00:56.759 --> 00:01:01.064
+AI logic to determine the meaning and formulate a response.
+
+00:01:01.064 --> 00:01:04.480
+Finally, the response text must be converted
+
+00:01:04.480 --> 00:01:09.709
+back into understandable speech again with machine learning tools.
+
+00:01:09.709 --> 00:01:12.655
+These three parts constitute a general pipeline
+
+00:01:12.655 --> 00:01:16.519
+for building an end to end voice enabled application.
+
+00:01:16.519 --> 00:01:19.950
+Each part employs some aspect of a AI.
+
+00:01:19.950 --> 00:01:21.640
+And that's why we're here.
+
+00:01:21.640 --> 00:01:23.665
+In this lesson we'll go through
+
+00:01:23.665 --> 00:01:28.304
+a VUI system's overview and talk about some current VUI applications.
+
+00:01:28.304 --> 00:01:33.055
+We'll focus on conversational AI applications where you'll learn
+
+00:01:33.055 --> 00:01:37.180
+some VUI best practices and why we need to think differently
+
+00:01:37.180 --> 00:01:43.000
+about user design for voice as compared to other interface mediums.
+
+00:01:43.000 --> 00:01:45.700
+Finally, you will put these ideas into practice
+
+00:01:45.700 --> 00:01:49.959
+by building your own conversational AI application.
+

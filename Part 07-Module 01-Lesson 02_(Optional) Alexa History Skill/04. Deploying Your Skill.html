@@ -1,0 +1,277 @@
+<!-- udacimak v1.3.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deploying Your Skill</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>(Optional) Alexa History Skill</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Overview.html">01. Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Getting Started.html">02. Getting Started</a>
+    </li>
+    <li class="">
+      <a href="03. Tasks.html">03. Tasks</a>
+    </li>
+    <li class="">
+      <a href="04. Deploying Your Skill.html">04. Deploying Your Skill</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Deploying Your Skill</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="deploying-your-skill">Deploying your Skill</h1>
+<p>The Fact Skill <a href="https://github.com/alexa/skill-sample-nodejs-fact" target="_blank">tutorial</a> steps you through setting up an Alexa Skill.  The starter code can be deployed in the same way.  The following step-by-step instructions assume you already have completed the steps in the <strong>Getting Started</strong> concept, and are ready to deploy your starter code.  Open both <a href="https://developer.amazon.com/alexa/" target="_blank">Alexa Developer</a> portal and the <a href="https://aws.amazon.com/" target="_blank">Amazon AWS</a> console to complete the tasks. </p>
+<h4 id="tasks-inside-alexa-developer-portal">Tasks inside Alexa Developer portal:</h4>
+<ol>
+<li>On Alexa Developer portal, click <code>Create Skill</code>, enter <code>Skill name</code>, and choose <code>Custom</code> model and <code>Fact Skill</code> template.</li>
+<li>Navigate to the <em>Build</em> tab inside the skill <em>Interaction Model</em>.</li>
+<li>From the <em>Interaction Model</em> menu on the left, select <em>JSON Editor</em>.</li>
+<li>Paste or drag-and-drop the contents of your <code>src/model/en-US.json</code> file in the text box on that page.</li>
+<li>Click Save Model at the top of the page.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/alexa-interaction-model.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="tasks-inside-aws-console">Tasks inside AWS console:</h4>
+<ol>
+<li>Navigate to AWS console and choose the <a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> service.</li>
+<li>Create and set up the Lambda function using <code>Serverless Application Repository</code> and <code>NodeJS</code> template by following <a href="https://github.com/alexa/skill-sample-nodejs-fact/blob/en-US/instructions/2-lambda-function.md" target="_blank">step 2</a> of Alexa sample skills set instructions.</li>
+<li>Time to connect AWS Lambda service and Alexa Developer VUI console! Copy <code>AWS Lambda ARN</code> into VUI <code>Endpoint</code>. See <a href="https://github.com/alexa/skill-sample-nodejs-fact/blob/en-US/instructions/3-connect-vui-to-code.md" target="_blank">step 3</a> detail instructions.</li>
+<li>Copy the contents of your <code>src/lambda/index.js</code> into the <code>index.js</code> file in the editor under the <strong>Function Code</strong> header.</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><em>Copy AWS Lambda ARN into VUI Endpoint to connect Lambda service and VUI console:</em></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/vui-endpoint.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><em>Copy <code>index.js</code> script into AWS Lambda Function Code:</em></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/alexa-lambda-function-code.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="test-your-alexa-skill-deployment">Test your Alexa skill deployment</h4>
+<p>Once your Lambda function is deployed and ready, and you have successfully built the skill in the Alexa Developer Console, you can proceed to the Test tab in the Alexa Developer Console to test your skill.</p>
+<p>Notes on testing:</p>
+<ul>
+<li>You might have to enable testing your skill by toggling the button on the top left </li>
+<li>You can use the Alexa simulator to utterances by voice or by typing text into the text box.</li>
+<li>With more advanced utterances (especially those including slots), you might have to run more explicit tests from the <em>Manual JSON</em> tab. </li>
+<li>You can monitor the logs in <a href="https://console.aws.amazon.com/cloudwatch" target="_blank">AWS Cloudwatch</a> to check any error messages logged by the Lambda function. You can also see the output of any log messages your code creates (using <code>console.log('')</code>).</li>
+<li>More at <a href="https://developer.amazon.com/docs/devconsole/test-your-skill.html" target="_blank">Test Your Skill</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/alexa-simulator.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.3.0</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Deploying Your Skill')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>
